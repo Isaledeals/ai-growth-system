@@ -1,535 +1,542 @@
-# Tech-Stack Setup Guide
-**AI Growth System | Vollständige Einrichtungs-Dokumentation**
+# Tech Stack Setup Guide
+**AI Growth System | Vollständige Einrichtungsanleitung**
 
 ---
 
-## Übersicht
+## Übersicht: Was wir verwenden und warum
 
-Dieses Dokument beschreibt die komplette technische Einrichtung des AI Growth Systems für einen neuen Kunden. Es richtet sich an das interne Team das die Onboardings durchführt.
+| Tool | Zweck | Kosten/Monat | Priorität |
+|------|-------|--------------|-----------|
+| Make.com | Automatisierungen & Workflows | ~20-40€ | Kern |
+| 360dialog | WhatsApp Business API | ~5€ + Nachrichten | Kern |
+| Cal.com | Terminbuchungssystem | 0€ (Self-hosted) | Kern |
+| Claude API (Anthropic) | AI Chatbot & Antworten | ~20-50€/Kunde | Kern |
+| Brevo (ex-Sendinblue) | Email Marketing | ~25€ (25k Emails) | Email |
+| Supabase | Datenbank & Auth | 0€ (Free Tier) | Backend |
+| Vercel | Hosting Landing Page | 0€ (Hobby Plan) | Hosting |
+| Google My Business API | Review-Automatisierung | 0€ | Reviews |
 
-**Gesamtdauer Einrichtung:** 4-6 Stunden (verteilt über 2-3 Tage)
-**Benötigte Zugänge:** Siehe Kundenübergabe-Checkliste (onboarding-kunde.md)
-
----
-
-## Stack-Übersicht
-
-| Komponente | Tool | Zweck | Kosten |
-|-----------|------|-------|--------|
-| Automatisierung | Make.com (ehemals Integromat) | Alle Workflows orchestrieren | ab 9€/Monat |
-| WhatsApp | 360dialog | WhatsApp Business API | ab 5€/Monat + per Nachricht |
-| Chatbot | Claude API (Anthropic) | AI-Antworten generieren | ~0,01€/Nachricht |
-| Kalender | Cal.com (Self-hosted) | Terminbuchung | kostenlos (selbst gehostet) |
-| Datenbank | Airtable oder Notion | Leads & Kontakte speichern | ab 0€ |
-| Email Backup | Brevo (Sendinblue) | Email-Fallback wenn kein WhatsApp | bis 300/Tag kostenlos |
-| Google Business | Google API | Review-Anfragen + Monitoring | kostenlos |
-| CRM-Basis | HubSpot Free oder Airtable | Lead-Tracking | kostenlos |
+**Gesamtkosten pro Kunde (ca.):** 80-120€/Monat
+**Preis an Kunde:** 900-1.500€/Monat
+**Gross Margin:** ~90%
 
 ---
 
-## SCHRITT 1: Make.com Setup
+## TEIL 1: Make.com — Das Automatisierungs-Herz
 
-### Account erstellen
-1. Gehe auf make.com → Account erstellen (Team-Account empfohlen)
-2. Erstelle einen neuen "Space" für den Kunden: `[Kundenname]-workspace`
-3. Benenne alle Szenarien mit Präfix: `[Kundenname] - [Funktion]`
+Make.com ist der Klebstoff zwischen allen Tools. Hier laufen alle Flows zusammen.
 
-### Szenarien die eingerichtet werden müssen
+### Account Setup
 
-#### Szenario A: Website-Chatbot → Terminbuchung
+1. Account anlegen auf make.com
+2. Plan wählen: **Core Plan** (~9$/Monat für Start, 10.000 Operationen)
+3. Für jeden Kunden eine eigene **Organization** anlegen (sauber trennen)
+
+### Wichtigste Connections einrichten
+
 ```
-Trigger: Webhook (von Chatbot auf Website)
-  ↓
-Filter: Ist das eine Terminbuchungs-Anfrage?
-  ↓
-Cal.com: Verfügbare Slots abfragen
-  ↓
-Claude API: Antwort generieren mit Slot-Angeboten
-  ↓
-360dialog: WhatsApp-Nachricht an Interessenten senden
-  ↓
-Airtable: Lead-Datensatz anlegen
+Settings → Connections → Create Connection:
+- Google Calendar (OAuth2)
+- Google Sheets (OAuth2)  
+- HTTP (für WhatsApp/360dialog API)
+- Anthropic / OpenAI (HTTP Module)
+- Brevo/SMTP (für Email)
+- Webhooks (für Website-Chatbot)
 ```
 
-**Make.com Modul-Konfiguration:**
-- Webhook-URL generieren → in Website-Chatbot eintragen
-- Cal.com Connection: API Key aus Cal.com Settings
-- Claude API: HTTP Module → POST zu api.anthropic.com/v1/messages
-- 360dialog: HTTP Module → POST zu eu.chat-api.com/v1/messages
-
-#### Szenario B: Termin-Erinnerungen (WhatsApp)
-```
-Trigger: Cal.com Webhook (neue Buchung)
-  ↓
-Daten speichern: Airtable (Name, Nummer, Termin-Zeit)
-  ↓
-Schedule: 48h vor Termin
-  ↓
-360dialog: WhatsApp-Erinnerung senden
-  ↓
-Schedule: 3h vor Termin
-  ↓
-360dialog: Letzte Erinnerung + Absage-Link
-```
-
-**Wichtig:** Make.com "Sleep" Modul oder Google Sheets als Scheduler nutzen für zeitgesteuerte Nachrichten.
-
-**Alternative:** Direkt in Cal.com Reminder-Emails einrichten + 360dialog für WhatsApp via Zapier-Trigger.
-
-#### Szenario C: Nach-Termin → Google Review
-```
-Trigger: Cal.com Webhook (Termin abgeschlossen / Status: "done")
-  ODER: Manuelle Trigger-Liste in Airtable (für Handwerker)
-  ↓
-Wait: 2 Stunden
-  ↓
-360dialog: WhatsApp → "Wie war Ihr Besuch?"
-  ↓
-Trigger: Antwort-Webhook (bei positiver Antwort)
-  ↓
-360dialog: Google Review Link senden
-```
-
-**Tipp:** Google Business Review-Link generieren:
-`https://search.google.com/local/writereview?placeid=[PLACE_ID]`
-Place ID über Google Maps API oder manuell in Google Business finden.
-
-#### Szenario D: Angebots-Nachfassen (Handwerk/Dienstleister)
-```
-Trigger: Manuelle Eingabe in Airtable ODER CSV-Import
-  (Felder: Kundenname, Handynummer, Angebotsdatum, Angebotssumme)
-  ↓
-Tag 3: 360dialog → WhatsApp Nachfass-Nachricht 1
-  ↓
-Tag 7: 360dialog → WhatsApp Nachfass-Nachricht 2
-  ↓
-Tag 14: Airtable → Lead als "keine Antwort" markieren
-```
-
-#### Szenario E: Lead-Reaktivierung
-```
-Trigger: Airtable Scheduled Search — alle 7 Tage
-  (Filter: letzter Kontakt > 90 Tage UND reaktivierung_gesendet = false)
-  ↓
-Claude API: Personalisierte Reaktivierungs-Nachricht generieren
-  ↓
-360dialog: WhatsApp senden
-  ↓
-Airtable: reaktivierung_gesendet = true, reaktivierung_datum = heute
-```
+### Core Flows — was wir bauen
 
 ---
 
-## SCHRITT 2: 360dialog WhatsApp API
+#### FLOW 1: Website Lead → WhatsApp Sofort-Antwort
 
-### Setup-Prozess
-1. Account erstellen auf hub.360dialog.com
-2. Neue WhatsApp Business Nummer registrieren
-3. Kundennummer verifizieren (OTP per SMS oder Anruf)
-4. Channel Partner Request — WICHTIG: 24h+ Wartezeit einplanen
-5. API Key generieren: Settings → Developers → API Key
+**Trigger:** Webhook (wenn Formular auf Website abgeschickt)
+**Schritte:**
+1. Webhook empfängt Lead-Daten (Name, Tel, Anfrage-Text)
+2. Claude API: Anfrage analysieren, passende Antwort generieren
+3. 360dialog API: WhatsApp Nachricht an den Lead schicken
+4. Google Sheets: Lead in Tracking-Sheet eintragen
+5. Optional: Email-Benachrichtigung an Unternehmer
 
-### WhatsApp Message Templates
-WhatsApp erfordert für ausgehende Nachrichten (außerhalb 24h-Fenster) genehmigte Templates.
-
-**Templates die eingereicht werden müssen:**
-
-**Template 1: Terminbestätigung**
-```
-Name: termin_bestaetigung
-Kategorie: UTILITY
-Sprache: de
-
-Hallo {{1}}, 
-
-Ihr Termin am {{2}} um {{3}} Uhr ist bestätigt.
-
-Adresse: {{4}}
-
-Bei Fragen: Einfach hier antworten.
-```
-
-**Template 2: Termin-Erinnerung 48h**
-```
-Name: termin_erinnerung_48h
-Kategorie: UTILITY
-Sprache: de
-
-Hallo {{1}},
-
-kurze Erinnerung: Morgen haben Sie einen Termin um {{2}} Uhr.
-
-Falls Sie absagen müssen, klicken Sie hier: {{3}}
-```
-
-**Template 3: Termin-Erinnerung 3h**
-```
-Name: termin_erinnerung_3h
-Kategorie: UTILITY
-Sprache: de
-
-Hallo {{1}}, bis gleich! Ihr Termin beginnt in ca. 3 Stunden ({{2}} Uhr).
-
-Absagen nur noch per Anruf möglich: {{3}}
-```
-
-**Template 4: Google Review Anfrage**
-```
-Name: review_anfrage
-Kategorie: UTILITY
-Sprache: de
-
-Hallo {{1}},
-
-schön dass Sie heute da waren! Wenn Sie zufrieden waren, würden wir uns über eine kurze Google-Bewertung freuen:
-
-{{2}}
-
-Danke & bis zum nächsten Mal!
-```
-
-**Template 5: Angebots-Nachfassen**
-```
-Name: angebot_nachfassen
-Kategorie: MARKETING
-Sprache: de
-
-Hallo {{1}},
-
-ich wollte kurz nachfragen ob Sie unser Angebot vom {{2}} erhalten haben und ob noch Fragen offen sind.
-
-Bei Interesse können Sie hier direkt einen Termin buchen: {{3}}
-```
-
-**Einreichung:** Templates über 360dialog Hub einreichen. Genehmigung dauert 24-48h.
-
-### Kosten-Kalkulation 360dialog
-- Monatliche Grundgebühr: ca. 5€ pro Nummer
-- Pro gesendete Nachricht (außerhalb 24h): ca. 0,05-0,10€
-- Bei 500 Kunden-Nachrichten/Monat: ca. 30-55€
-
----
-
-## SCHRITT 3: Claude API — Chatbot Integration
-
-### API Key Setup
-1. console.anthropic.com → API Keys → New Key
-2. Key sicher speichern (wird nur einmal angezeigt)
-3. In Make.com: HTTP Module → Authorization Header: `x-api-key: [KEY]`
-
-### System Prompt Template (anpassbar pro Kunde)
-
-```
-Du bist ein freundlicher Assistent für [UNTERNEHMENSNAME], ein [BRANCHE]-Unternehmen in [STADT].
-
-DEINE AUFGABEN:
-1. Beantworte Kundenfragen zu unseren Leistungen und Preisen
-2. Qualifiziere Interessenten (Was suchen sie? Wann? Kontaktdaten?)
-3. Biete Terminbuchung an wenn der Kunde konkret interessiert ist
-4. Gib bei Notfällen die Notfall-Nummer durch: [NUMMER]
-
-UNSERE LEISTUNGEN:
-[Hier Leistungen und Preise des Kunden eintragen]
-
-TONALITÄT:
-[Formell/Informell — je nach Branche]
-Kurze, klare Antworten. Keine langen Texte.
-Immer freundlich, nie aufdringlich.
-
-WENN DU NICHT WEISST:
-Sage: "Das beantworte ich gerne persönlich — darf ich Sie zurückrufen oder möchten Sie direkt einen Termin buchen?"
-
-NIEMALS:
-- Preise nennen die wir nicht kennen
-- Versprechen die der Kunde nicht verifiziert hat
-- Auf Konkurrenten eingehen
-```
-
-### Make.com HTTP-Modul Konfiguration für Claude
-
-```
-URL: https://api.anthropic.com/v1/messages
-Method: POST
-Headers:
-  x-api-key: [ANTHROPIC_API_KEY]
-  anthropic-version: 2023-06-01
-  content-type: application/json
-
-Body (JSON):
+**Vorlage Webhook-Payload:**
+```json
 {
-  "model": "claude-3-5-haiku-20241022",
-  "max_tokens": 300,
-  "system": "[SYSTEM PROMPT]",
-  "messages": [
-    {
-      "role": "user",
-      "content": "{{1.message_text}}"
-    }
-  ]
+  "name": "Max Mustermann",
+  "phone": "+49123456789",
+  "message": "Wie viel kostet eine Reinigung?",
+  "source": "website-kontaktformular",
+  "timestamp": "2026-04-03T10:00:00Z"
 }
 ```
 
-**Hinweis:** claude-3-5-haiku ist das günstigste Modell — ideal für einfache Chatbot-Antworten. Kosten: ca. 0,001€ pro Antwort.
+---
+
+#### FLOW 2: WhatsApp Eingehende Nachricht → AI Antwort
+
+**Trigger:** 360dialog Webhook (eingehende WhatsApp Nachricht)
+**Schritte:**
+1. Nachricht empfangen
+2. Konversationshistorie aus Supabase laden (letzten 10 Nachrichten)
+3. Claude API: Kontext + System-Prompt + neue Nachricht → Antwort generieren
+4. Antwort zurück via 360dialog schicken
+5. Konversation in Supabase speichern
+6. Wenn "Termin buchen" erkannt: Cal.com Link mitschicken
+
+**System-Prompt Template:**
+```
+Du bist der freundliche AI-Assistent von [Firmenname].
+Du hilfst Kunden bei Fragen zu: [Leistungen].
+Öffnungszeiten: [Zeiten].
+Preise: [Preisinfo oder "Bitte auf Anfrage"].
+Wenn jemand einen Termin möchte: Schicke diesen Link: [Cal.com Link].
+Wenn die Anfrage komplex ist oder du unsicher bist: Sag "Ich leite das kurz weiter".
+Schreibe immer auf Deutsch. Sei freundlich aber kurz. Max 3-4 Sätze.
+```
 
 ---
 
-## SCHRITT 4: Cal.com Setup (Self-Hosted auf Hetzner)
+#### FLOW 3: Termin-Erinnerung (24h vorher)
 
-### Empfohlene Server-Konfiguration
-- Hetzner CX21: 2 vCPU, 4GB RAM, 40GB SSD — reicht für Cal.com
-- Monatliche Kosten: ca. 6€
-- Alternativ: Cal.com Cloud (ab 12$/Monat) — einfacher, kein Server-Management
+**Trigger:** Scheduler (täglich 9 Uhr) ODER Cal.com Webhook
+**Schritte:**
+1. Cal.com API: Alle Termine der nächsten 24h abrufen
+2. Für jeden Termin: WhatsApp Erinnerung schicken
+3. Text: "Guten Morgen [Name]! Nur kurz: Ihr Termin bei [Firma] ist morgen um [Zeit]. Sehen wir uns dann? 👍 (Zum Absagen einfach hier antworten)"
 
-### Self-Hosted Installation
+---
 
+#### FLOW 4: Post-Termin → Google Review Request
+
+**Trigger:** Cal.com Webhook (Termin abgeschlossen) ODER Manueller Trigger
+**Warten:** 2 Stunden nach Termin-Ende
+**Schritte:**
+1. WhatsApp Nachricht: "Hallo [Name], wie war Ihr Termin bei uns heute? Wir würden uns sehr über Ihr Feedback freuen: [Google Review Link] — Danke! 🙏"
+2. Falls Reply "gut" / positiv: Automatisch danken
+3. Falls Reply negativ: Interne Eskalation (Email an Unternehmer)
+
+---
+
+#### FLOW 5: Follow-up Sequenz (für Angebote)
+
+**Trigger:** Webhook (wenn Angebot verschickt wird) ODER Manuell via Sheet
+**Sequenz:**
+- Tag 0: Angebot verschickt → Lead ins Sheet
+- Tag 3: WhatsApp "Haben Sie unser Angebot erhalten?"
+- Tag 7 (wenn keine Antwort): "Kurze Frage — haben Sie noch Interesse?"
+- Tag 14 (wenn keine Antwort): "Letzter Kontakt von uns — falls Sie doch Fragen haben: [Termin buchen]"
+
+---
+
+## TEIL 2: 360dialog — WhatsApp Business API
+
+360dialog ist der günstigste WhatsApp Business API Provider. Wichtig: Meta genehmigt Templates vorher.
+
+### Setup Schritt für Schritt
+
+**1. Account anlegen**
+- Account auf 360dialog.com erstellen
+- Business Verification: Gewerbeschein oder Impressum hochladen
+- Warten: 1-3 Werktage für Approval
+
+**2. WhatsApp Business Number verbinden**
+- Entweder neue Nummer (SIM-Karte) oder bestehende Nummer portieren
+- Achtung: Nummer kann danach NICHT mehr als normale WhatsApp genutzt werden
+- Empfehlung für Kunden: Separate SIM für Business kaufen
+
+**3. API Key generieren**
+```
+Dashboard → API → Generate Key
+→ Diesen Key in Make.com als HTTP Header speichern:
+  Header: D360-API-KEY: [KEY]
+```
+
+**4. Webhook URL eintragen**
+```
+Dashboard → Webhooks → Add Webhook:
+URL: https://hook.eu1.make.com/[YOUR-MAKE-WEBHOOK-ID]
+Events: messages, statuses
+```
+
+**5. Message Templates erstellen (für ausgehende Nachrichten)**
+
+Template-Kategorien:
+- **UTILITY**: Erinnerungen, Termine, Bestätigungen → Auto-approved
+- **MARKETING**: Angebote, Reaktivierungen → Requires Meta review (1-3 Tage)
+- **AUTHENTICATION**: OTP-Codes
+
+Beispiel Template (Termin-Erinnerung):
+```
+Name: appointment_reminder_v1
+Category: UTILITY
+Language: de
+Body: "Hallo {{1}}! Ihr Termin bei uns ist am {{2}} um {{3}} Uhr. 
+Bis dann! Bei Fragen einfach antworten."
+```
+
+**Wichtige Limits:**
+- 250 Nachrichten/Tag (initiales Limit, steigt mit Nutzung)
+- Templates müssen 24h vorher genehmigt sein
+- Freie Nachrichten (Replies) nur innerhalb 24h nach letzter Kunden-Nachricht möglich
+
+---
+
+## TEIL 3: Cal.com — Terminbuchungssystem
+
+Cal.com ist Open Source und kann selbst gehostet werden (keine laufenden Kosten).
+
+### Option A: Cal.com Cloud (einfacher)
+
+1. Account auf cal.com
+2. Free Plan: 1 User, 1 Event Type — ausreichend für Start
+3. Event Types anlegen:
+   - "Erstgespräch (kostenfrei)" → 20 Minuten
+   - "Demo-Termin" → 30 Minuten
+   - "[Branche]-Beratung" → 45 Minuten
+
+### Option B: Cal.com Self-Hosted (empfohlen ab Kunde 3+)
+
+**Voraussetzungen:** Hetzner VPS (CX21, 6€/Monat reicht)
+
+**Installation:**
 ```bash
 # Server vorbereiten
-sudo apt update && sudo apt upgrade -y
-sudo apt install docker.io docker-compose -y
+apt update && apt upgrade -y
+apt install docker.io docker-compose -y
 
 # Cal.com klonen
 git clone https://github.com/calcom/cal.com.git
 cd cal.com
 
-# Umgebungsvariablen einrichten
+# .env ausfüllen
 cp .env.example .env
 nano .env
 
-# Wichtige .env Einträge:
-NEXTAUTH_SECRET=[random_32_char_string]
-DATABASE_URL=postgresql://[user]:[pass]@localhost:5432/calcom
-NEXTAUTH_URL=https://termine.[kundendomain].de
-EMAIL_FROM=[email]
-SMTP_HOST=[smtp_server]
-SMTP_PORT=587
-SMTP_USER=[email]
-SMTP_PASSWORD=[pass]
+# Wichtige .env Variablen:
+DATABASE_URL="postgresql://user:pass@localhost:5432/calcom"
+NEXTAUTH_SECRET="[random-32-char-string]"
+NEXTAUTH_URL="https://termine.KUNDENOMAIN.de"
+GOOGLE_API_CREDENTIALS="[Google OAuth JSON]"
 
 # Starten
 docker-compose up -d
 ```
 
-### Nginx Reverse Proxy (für SSL/Domain)
+### Cal.com in Make.com integrieren
 
-```nginx
-server {
-    server_name termine.kundendomain.de;
-    
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
+**Webhook einrichten:**
+```
+Cal.com → Settings → Developer → Webhooks → Add Webhook
+URL: https://hook.eu1.make.com/[WEBHOOK-ID]
+Triggers: BOOKING_CREATED, BOOKING_CANCELLED, BOOKING_RESCHEDULED
+```
+
+**API Key für Abfragen:**
+```
+Cal.com → Settings → Developer → API Keys → New Key
+→ In Make.com als HTTP Header: Authorization: Bearer [KEY]
+```
+
+---
+
+## TEIL 4: Claude API (Anthropic) — Der AI Brain
+
+### API Key holen
+
+1. console.anthropic.com → Account erstellen
+2. API Keys → Create Key
+3. Limits setzen! (wichtig: Spending Limit pro Monat setzen)
+
+### Modell-Empfehlung für Chatbots
+
+| Anwendungsfall | Modell | Kosten |
+|----------------|--------|--------|
+| Chatbot-Antworten | claude-haiku-3-5 | ~0,25$/1M Tokens |
+| Komplexe Analysen | claude-sonnet-3-5 | ~3$/1M Tokens |
+| Kritische Inhalte | claude-opus | ~15$/1M Tokens |
+
+**Für 99% der Chatbot-Anfragen: Haiku reicht vollständig.**
+
+### Make.com HTTP Module für Claude
+
+```
+URL: https://api.anthropic.com/v1/messages
+Method: POST
+Headers:
+  x-api-key: [API_KEY]
+  anthropic-version: 2023-06-01
+  content-type: application/json
+
+Body (JSON):
+{
+  "model": "claude-haiku-3-5-20241022",
+  "max_tokens": 500,
+  "system": "{{system_prompt}}",
+  "messages": [
+    {"role": "user", "content": "{{user_message}}"}
+  ]
 }
 ```
 
-```bash
-# SSL mit Certbot
-certbot --nginx -d termine.kundendomain.de
+**Response auslesen:**
 ```
-
-### Cal.com Konfiguration pro Kunde
-1. Admin-Account erstellen
-2. Event Types anlegen (Erstgespräch, Besichtigung, Behandlung etc.)
-3. Verfügbarkeiten konfigurieren
-4. Webhook einrichten: Settings → Webhooks → BOOKING_CREATED, BOOKING_CANCELLED
-5. Webhook-URL: Make.com Webhook-URL für Szenario B
-
-### Kalender-Integration
-- Google Calendar: OAuth-Verbindung in Cal.com Settings
-- Outlook: OAuth-Verbindung
-- iCal: Import/Export URL
+content[0].text → Das ist die Antwort von Claude
+```
 
 ---
 
-## SCHRITT 5: Chatbot auf Kunden-Website integrieren
+## TEIL 5: Google Review Automatisierung
 
-### Option A: JavaScript Widget (empfohlen)
+### Vorbereitung: Google My Business API
 
-Einfachste Option — ein Script-Tag in den HTML `<head>` oder vor `</body>`:
+1. Google Cloud Console → Neues Projekt
+2. APIs & Services → My Business Business Information API aktivieren
+3. My Business Account Management API aktivieren
+4. OAuth 2.0 Credentials erstellen
+5. Scope: `https://www.googleapis.com/auth/business.manage`
 
-```html
-<!-- AI Growth System Chatbot Widget -->
-<script>
-  window.AGSConfig = {
-    webhookUrl: 'https://hook.make.com/[WEBHOOK_ID]',
-    primaryColor: '#[KUNDENFARBE]',
-    greeting: 'Hallo! Wie kann ich Ihnen helfen?',
-    position: 'bottom-right',
-    businessName: '[UNTERNEHMENSNAME]'
-  };
-</script>
-<script src="https://cdn.aigrowthsystem.de/widget.js" async></script>
+### Review-Link generieren
+
+Der direkte Review-Link für jeden Kunden:
+```
+https://search.google.com/local/writereview?placeid=[PLACE_ID]
 ```
 
-**Hinweis:** Widget-Script muss noch gebaut werden (Next.js Component → CDN deployen).
-Kurzfristig Alternative: Tidio oder Crisp als Frontend, Make.com als Backend.
-
-### Option B: Tidio (kurzfristige Lösung)
-
-Tidio kostenlos nutzen als Chat-Interface, Anfragen per Webhook an Make.com weitersenden:
-1. Tidio-Account erstellen
-2. Widget auf Website einbetten (1 Zeile Code)
-3. Tidio Automation: Bei neuer Nachricht → HTTP Request an Make.com Webhook
-4. Make.com verarbeitet, Claude antwortet, zurück an Tidio
-
-Kosten: Tidio kostenlos (bis 100 Unterhaltungen/Monat), dann 29$/Monat
-
-### Option C: Crisp Chat (Alternative)
-
-Ähnlich wie Tidio, aber bessere API-Integration und günstiger im Pro-Plan.
-
----
-
-## SCHRITT 6: Airtable Datenbank
-
-### Basis-Tabellen Setup
-
-**Tabelle: Kontakte**
-| Feld | Typ | Beschreibung |
-|------|-----|--------------|
-| Name | Single line | Kundenname |
-| Telefon | Phone | WhatsApp-Nummer |
-| Email | Email | Optional |
-| Status | Select | lead / aktiv / inaktiv / reaktiviert |
-| Letzte_Interaktion | Date | Automatisch aktualisiert |
-| Quelle | Select | chatbot / empfehlung / kaltakquise |
-| Notizen | Long text | Manuell oder automatisch |
-
-**Tabelle: Termine**
-| Feld | Typ | Beschreibung |
-|------|-----|--------------|
-| Kontakt | Link to Contacts | Verknüpft |
-| Termin_Datum | Date & Time | |
-| Status | Select | geplant / abgeschlossen / abgesagt / no-show |
-| Erinnerung_48h | Checkbox | Gesendet? |
-| Erinnerung_3h | Checkbox | Gesendet? |
-| Review_Anfrage | Checkbox | Gesendet? |
-
-**Tabelle: Angebote (für Handwerk)**
-| Feld | Typ | Beschreibung |
-|------|-----|--------------|
-| Kontakt | Link to Contacts | |
-| Angebots_Datum | Date | |
-| Betrag | Currency | |
-| Status | Select | gesendet / nachgefasst / gewonnen / verloren |
-| Nachfassen_1 | Checkbox | Tag 3 gesendet? |
-| Nachfassen_2 | Checkbox | Tag 7 gesendet? |
-
----
-
-## SCHRITT 7: Brevo Email-Integration (Backup & Kampagnen)
-
-### Wofür Brevo genutzt wird
-- Fallback wenn WhatsApp-Nachricht nicht zugestellt wird
-- Email-Sequenzen für Kalt-Outreach (13k Liste)
-- Transaktionale Emails (Terminbestätigungen als Email-Backup)
-
-### Setup
-1. Account auf brevo.com erstellen (kostenlos bis 300 Emails/Tag)
-2. Sending Domain verifizieren: SPF + DKIM einrichten
-3. API Key generieren: Account → SMTP & API → API Keys
-4. In Make.com: Brevo Module hinzufügen oder HTTP Module für API
-
-### Email-Sender-Domain Setup (WICHTIG für Deliverability)
-
-```
-Für Kalt-Outreach: EIGENE Domain kaufen, NIEMALS die Haupt-Domain!
-Empfehlung: [kunde]-info.de oder [kunde]-team.de
-
-SPF Record (DNS):
-v=spf1 include:spf.brevo.com ~all
-
-DKIM: Brevo generiert Key → in DNS als TXT Record eintragen
-
-DMARC:
-v=DMARC1; p=quarantine; rua=mailto:[email]
-```
-
-**Domain Warmup:** Neue Domains brauchen 2-3 Wochen Warmup bevor große Kampagnen gesendet werden können. Täglich 20-50 Emails starten, langsam steigern.
-
----
-
-## SCHRITT 8: Google Business API Integration
-
-### Review-Link generieren (ohne API)
-Schnellste Methode — kein API-Zugang nötig:
-
+**Place ID finden:**
 1. Google Maps → Unternehmen suchen
-2. "Bewertung schreiben" Button → URL kopieren
-3. Diese URL in Template-Variablen speichern
+2. URL enthält `1s0x[...]` → Das ist die Place ID
+3. Oder: Google Maps Platform → Place ID Finder
 
-Format: `https://search.google.com/local/writereview?placeid=[PLACE_ID]`
+### WhatsApp Nachricht Template für Reviews
 
-### Place ID finden
-1. maps.google.com → Unternehmen suchen
-2. URL anschauen: `...place/ChIJ...` → das ist die Place ID
-3. Oder: developers.google.com/maps/documentation/places/web-service/place-id
+```
+Hallo {{Vorname}}! 
 
-### Negative Review Umleitung
-Bei negativer Antwort auf Review-Anfrage: NICHT zu Google leiten, sondern:
-- Direkt an Kundeninhaber weiterleiten: WhatsApp oder Email
-- Template: "Oh, das tut mir leid! Darf ich mich kurz melden um das zu klären?"
+Wir hoffen, dass alles zu Ihrer Zufriedenheit war. 
+Hätten Sie 1 Minute Zeit für eine kurze Bewertung? 
+Das hilft uns sehr! 🙏
 
----
+➡️ {{Google_Review_Link}}
 
-## Kosten-Übersicht pro Kunde (monatlich)
-
-| Service | Kosten |
-|---------|--------|
-| Make.com (Team) | 9-29€ (geteilt über mehrere Kunden) |
-| 360dialog | 5€ Grundgebühr + ~20-40€ Nachrichten |
-| Claude API | 5-15€ (abhängig von Chatbot-Nutzung) |
-| Cal.com (self-hosted) | ~1€ (Anteil am Hetzner Server) |
-| Airtable | 0€ (Free Plan reicht für Start) |
-| Brevo | 0€ (Free Plan: 300 Emails/Tag) |
-| **Gesamt pro Kunde** | **~40-90€ COGS** |
-| **Kunden-Preis** | **997-1.497€** |
-| **Gross Margin** | **~91-96%** |
+Vielen Dank,
+{{Unternehmensname}}
+```
 
 ---
 
-## Troubleshooting — Häufige Probleme
+## TEIL 6: Brevo — Email Marketing
 
-**WhatsApp-Nachrichten kommen nicht an:**
-- Template noch nicht genehmigt → 24-48h warten
-- 24h-Fenster überschritten → Template-Message statt Freitext verwenden
-- Nummer nicht als WhatsApp verifiziert → in 360dialog prüfen
+Brevo (ex-Sendinblue) ist die beste Option für Deutschland (DSGVO-konform, EU-Server).
 
-**Make.com Szenario läuft nicht:**
-- Webhook nicht korrekt verknüpft → URL neu generieren und testen
-- API-Limit erreicht → Operationen-Verbrauch in Make.com prüfen
-- JSON-Format falsch → Make.com Error Logs prüfen
+### Account Setup
 
-**Claude antwortet falsch:**
-- System Prompt zu lang oder unklar → vereinfachen
-- max_tokens zu niedrig → auf 500 erhöhen
-- Temperature zu hoch → 0 setzen für konsistentere Antworten
+1. brevo.com → Account erstellen
+2. Free Plan: 300 Emails/Tag — gut für Tests
+3. Starter Plan (ab 25€/Monat): 20.000 Emails/Monat → für Email-Kampagnen
 
-**Cal.com Termine werden nicht getriggert:**
-- Webhook-URL in Cal.com Settings falsch → neu eintragen
-- Webhook-Events nicht ausgewählt → alle BOOKING_* Events aktivieren
+### Domain Warmup (kritisch für Deliverability!)
+
+**Eigene Sending Domain einrichten:**
+```
+Brevo → Senders & IPs → Domains → Add Domain
+Domain z.B.: mail.ai-growth-system.de (SEPARATE Domain!)
+
+DNS Einträge setzen:
+SPF:  TXT  @  "v=spf1 include:sendinblue.com ~all"
+DKIM: TXT  [brevo-selector]._domainkey  [brevo-dkim-value]
+DMARC: TXT  _dmarc  "v=DMARC1; p=none; rua=mailto:dmarc@DOMAIN"
+```
+
+**Warmup-Plan (wichtig!):**
+```
+Woche 1: Max. 50 Emails/Tag (an beste Kontakte zuerst)
+Woche 2: Max. 150 Emails/Tag
+Woche 3: Max. 400 Emails/Tag
+Woche 4: Max. 1.000 Emails/Tag
+Ab Woche 5: Normal skalieren
+```
+
+### 13k Liste in Brevo importieren
+
+1. CSV vorbereiten: Vorname, Nachname, Email, Branche, PLZ
+2. Brevo → Contacts → Import
+3. Je Zielgruppe eine eigene **Liste** anlegen:
+   - Liste A: Ästhetik/Beauty/Kliniken
+   - Liste B: Zahnärzte
+   - Liste C: Immobilienmakler
+   - Liste D: Handwerk/Dienstleister
+
+### Email-Sequenz als Automation in Brevo
+
+```
+Automations → New Automation → "Email Sequence"
+
+Trigger: "Contact added to list [A/B/C/D]"
+
+Steps:
+  → Tag 1:  Email 1 senden
+  → Warten: 2 Tage
+  → Email 2 senden
+  → Warten: 3 Tage
+  → Email 3 senden
+  → Warten: 4 Tage
+  → Email 4 senden
+  → Warten: 4 Tage
+  → Email 5 senden
+  → Ende (Kontakt aus Sequenz entfernen)
+
+Exit Condition: Kontakt hat geantwortet ODER Link geklickt
+```
 
 ---
 
-## Checkliste: Go-Live
+## TEIL 7: Supabase — Lead-Tracking Datenbank
 
-Vor dem ersten Kunden-Go-Live:
+### Schema für Lead-Management
 
-- [ ] Make.com alle 5 Szenarien aktiv und getestet
-- [ ] WhatsApp Templates genehmigt (alle 5)
-- [ ] 360dialog Nummer verifiziert und live
-- [ ] Cal.com Termintypen angelegt, Kalender verknüpft
-- [ ] Chatbot auf Test-Website getestet (10 Test-Gespräche)
-- [ ] Airtable Tabellen korrekt verknüpft
-- [ ] Google Review Link korrekt
-- [ ] Negative Review Umleitung getestet
-- [ ] Angebots-Nachfassen getestet mit Test-Nummer
-- [ ] Reaktivierungs-Szenario mit Test-Datensatz geprüft
-- [ ] Brevo Domain verifiziert (SPF + DKIM)
-- [ ] Kunde hat Texte und Tonalität genehmigt
-- [ ] Notfall-Kontakt des Kunden hinterlegt
+```sql
+-- Leads Tabelle
+CREATE TABLE leads (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT,
+  phone TEXT,
+  email TEXT,
+  source TEXT, -- 'chatbot', 'website-form', 'whatsapp-direct'
+  branche TEXT,
+  status TEXT DEFAULT 'new', -- 'new', 'contacted', 'demo-booked', 'customer', 'lost'
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Conversations Tabelle (WhatsApp Chat-History)
+CREATE TABLE conversations (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  lead_id UUID REFERENCES leads(id),
+  phone TEXT,
+  role TEXT, -- 'user' oder 'assistant'
+  content TEXT,
+  timestamp TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Termine Tabelle
+CREATE TABLE appointments (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  lead_id UUID REFERENCES leads(id),
+  cal_booking_id TEXT,
+  scheduled_at TIMESTAMPTZ,
+  status TEXT DEFAULT 'scheduled', -- 'scheduled', 'completed', 'cancelled', 'no-show'
+  reminder_sent BOOLEAN DEFAULT FALSE,
+  review_requested BOOLEAN DEFAULT FALSE
+);
+```
+
+### Make.com → Supabase Connection
+
+```
+Make.com → Connections → Supabase → New Connection
+URL: https://[PROJECT-ID].supabase.co
+Service Role Key: [aus Supabase → Settings → API]
+```
 
 ---
 
-*AI Growth System | Tech-Stack Setup Guide | Version 1.0 | Trinity*
+## TEIL 8: Deployment & Monitoring
+
+### Checkliste vor Go-Live
+
+**Make.com:**
+- [ ] Alle Scenarios aktiv und getestet (Test-Runs durchgeführt)
+- [ ] Error-Handling eingebaut (was passiert wenn API down ist?)
+- [ ] Email-Benachrichtigung bei Fehlern aktiviert
+- [ ] Limits gesetzt (max. Operations/Tag)
+
+**360dialog / WhatsApp:**
+- [ ] Alle Templates approved
+- [ ] Webhook funktioniert (Testmessage gesendet)
+- [ ] Opt-Out Keyword eingerichtet: "STOP" → Kontakt aus Sequenz entfernen
+
+**Cal.com:**
+- [ ] Testbuchung durchgeführt
+- [ ] Webhook feuert korrekt
+- [ ] Google Calendar Sync getestet
+- [ ] Bestätigungs-Emails ankommen
+
+**Brevo:**
+- [ ] SPF/DKIM/DMARC verifiziert (grünes Häkchen)
+- [ ] Test-Email aus Domain gesendet und empfangen
+- [ ] Abmelde-Link funktioniert (legal requirement!)
+- [ ] Automation mit Test-Kontakt durchgespielt
+
+**Supabase:**
+- [ ] Row Level Security aktiviert
+- [ ] Test-Lead erstellt und aus Make.com abrufbar
+- [ ] Backups aktiviert
+
+### Monitoring Setup
+
+**Was wir täglich checken:**
+```
+Make.com → Scenarios → Check failed executions
+360dialog → Dashboard → Delivery Rate (sollte >95% sein)
+Supabase → Table Editor → Neue Leads heute?
+Brevo → Campaigns → Open Rate, Bounce Rate
+```
+
+**Alert wenn:**
+- Make.com Scenario schlägt 3x fehl → Email Alert
+- Bounce Rate in Brevo > 5% → Sofort stoppen und Liste prüfen
+- WhatsApp Delivery Rate < 90% → Template prüfen
+
+---
+
+## TEIL 9: Kosten-Übersicht pro Kunde
+
+### Kalkulation (monatlich)
+
+| Tool | Kosten | Anmerkung |
+|------|--------|-----------|
+| Make.com Core | 9€ | Geteilt über alle Kunden, ~1-2€/Kunde |
+| 360dialog | 5€ + ~0,05€/Nachricht | Ca. 200 Nachrichten = 15€ |
+| Cal.com | 0€ | Self-hosted auf Hetzner |
+| Claude API (Haiku) | ~20-30€ | Je nach Chatbot-Volumen |
+| Brevo | ~3€ | Anteil am Starter Plan |
+| Supabase | 0€ | Free Tier reicht für viele Kunden |
+| Hetzner VPS | ~6€ | Geteilt, ~1€/Kunde |
+| **Gesamt** | **~50-65€** | Pro Kunde pro Monat |
+
+**Preis an Kunden: 900-1.500€**
+**Margin: 85-93%**
+
+---
+
+## QUICK-START CHECKLISTE (für neuen Kunden)
+
+```
+Tag 1:
+□ Make.com Organization für Kunden anlegen
+□ 360dialog Account + Webhook Setup
+□ Cal.com Event Types anlegen
+□ Supabase Tabellen anlegen
+□ Claude API Key anlegen (Limit setzen: 50$/Monat)
+
+Tag 2-3:
+□ System-Prompt für Kunden-Chatbot schreiben
+□ Flow 1 (Lead → WhatsApp) bauen und testen
+□ Flow 2 (Chat-Antworten) bauen und testen
+□ Flow 3 (Termin-Erinnerung) bauen und testen
+
+Tag 4-5:
+□ Flow 4 (Review Request) bauen
+□ Flow 5 (Follow-up Sequenz) bauen
+□ Google Review Link des Kunden eintragen
+□ Alle Templates bei 360dialog einreichen
+
+Tag 6-7:
+□ Full Test: Kompletten Flow einmal durchspielen
+□ Onboarding-Call mit Kunde
+□ Go Live 🚀
+```
+
+---
+
+*AI Growth System | Tech Stack Setup Guide v1.0 | April 2026*

@@ -17,7 +17,7 @@ Kein technisches Wissen nötig. Wir richten alles ein. Der Unternehmer macht wei
 - Beantwortet Anfragen automatisch rund um die Uhr
 - Qualifiziert Leads bevor ein Mensch Zeit investiert
 - Integriert auf Website, Facebook, Instagram, WhatsApp
-- Spricht wie ein echter Mitarbeiter — keine roboterhaften Antworten
+- Powered by Claude (Anthropic)
 
 ### 2. 📱 Automatisches Follow-up — WhatsApp + Email
 - Kein Lead fällt mehr durchs Raster
@@ -28,30 +28,19 @@ Kein technisches Wissen nötig. Wir richten alles ein. Der Unternehmer macht wei
 ### 3. 📅 AI Terminbuchung — direkt in den Kalender
 - Kunden buchen 24/7 selbst — ohne Anruf, ohne Sekretärin
 - Automatische Erinnerungen reduzieren No-Shows um bis zu 80%
-- Sync mit Google Calendar, Outlook, Calendly
-- Intelligente Slot-Vergabe nach Verfügbarkeit
+- Sync mit Google Calendar, Outlook
+- Powered by Cal.com
 
 ### 4. ⭐ Reputations-Automatisierung — Google Reviews
 - Automatisch nach jedem Termin/Kauf um Bewertung bitten
 - Mehr 5-Sterne-Reviews = mehr organische Neukunden
-- Negative Bewertungen intern auffangen bevor sie online gehen
+- Negative Bewertungen intern auffangen
 - Durchschnittliche Steigerung: +1,2 Sterne in 60 Tagen
 
 ### 5. 🎯 Lead Scraping + erstes Outreach
 - Neue potenzielle Kunden automatisch identifizieren
 - Erstes Outreach vollautomatisch per Email/WhatsApp
 - Gezielte Regionen und Branchen targetbar
-- Fertige Kampagnen, kein manueller Aufwand
-
----
-
-## Ergebnis für den Kunden
-
-✅ Mehr Leads ohne mehr Werbung
-✅ Kein No-Show mehr
-✅ Bessere Google-Bewertungen = mehr Vertrauen
-✅ Reaktivierung schlafender Kunden
-✅ 24/7 erreichbar ohne Personal
 
 ---
 
@@ -63,26 +52,7 @@ Kein technisches Wissen nötig. Wir richten alles ein. Der Unternehmer macht wei
 | Growth | 1.200€ | Module 1-4 |
 | Complete | 1.500€ | Alle 5 Module |
 
-Setup-Fee: 500€ einmalig (kann erlassen werden bei 6-Monats-Commitment)
-
----
-
-## Zielgruppen (Priorität)
-
-1. Zahnarztpraxen
-2. Kosmetikstudios & Nagelstudios
-3. Immobilienmakler
-4. Physiotherapie-Praxen
-5. Handwerksbetriebe
-
----
-
-## Sales-Strategie
-
-- 2 Cold Call Agents aktiv
-- 500€ Provision pro Abschluss
-- 13.000 Unternehmensleads für Email Marketing
-- Lead Scraping über iSale.deals für neue Targets
+Setup-Fee: 500€ einmalig (entfällt bei 6-Monats-Commitment)
 
 ---
 
@@ -90,96 +60,112 @@ Setup-Fee: 500€ einmalig (kann erlassen werden bei 6-Monats-Commitment)
 
 ```
 ai-growth-system/
+├── README.md                          ← Dieses Dokument
+├── BUSINESS-PLAN.md                   ← Business Plan & Finanzmodell
+├── PRICING.md                         ← Pricing Strategie
+├── ZIELGRUPPEN.md                     ← Zielgruppen-Analyse & Pain Points
+├── TECH_STACK.md                      ← Tech Stack Übersicht
+├── COLD_CALL_SCRIPT.md               ← Cold Call Scripts (alle Branchen)
+├── EMAIL_KAMPAGNE.md                  ← Email-Kampagnen Übersicht
 │
-├── README.md                          ← Diese Datei
-├── BUSINESS-PLAN.md                   ← Vollständiger Business Plan
-├── PRICING.md                         ← Preisstruktur & Pakete
-├── ZIELGRUPPEN.md                     ← Zielgruppen, Pain Points, ROI-Argumente
-├── COLD-CALL-SCRIPTS.md               ← Cold Call Scripts (alle Branchen)
-├── TECH_STACK.md                      ← Tool-Übersicht & Kostenstruktur
+├── emails/                            ← Email-Sequenzen pro Zielgruppe
+│   ├── email-sequenz-aesthetik.md    ← Sequenz A: Ästhetik & Beauty-Kliniken
+│   ├── email-sequenz-zahnarzt.md     ← Sequenz B: Zahnarztpraxen & Ärzte
+│   ├── email-sequenz-immobilien.md   ← Sequenz C: Immobilienmakler
+│   └── email-sequenz-handwerk.md     ← Sequenz D: Handwerk & Dienstleister
 │
-├── emails/                            ← Email-Kampagnen für 13k Leads
-│   ├── email-sequenz-aesthetik.md     ← Sequenz A: Ästhetik/Beauty/Kliniken
-│   ├── email-sequenz-zahnarzt.md      ← Sequenz B: Ärzte/Zahnarzt
-│   ├── email-sequenz-immobilien.md    ← Sequenz C: Immobilien/Makler
-│   └── email-sequenz-handwerk.md      ← Sequenz D: Handwerk/Dienstleister
+├── docs/                              ← Strategische Dokumente
+│   ├── onboarding-guide.md           ← Kompletter Kunden-Onboarding Prozess
+│   └── tech-setup-guide.md           ← Technischer Setup Guide (Make/WhatsApp/Cal.com)
 │
-├── docs/                              ← Vollständige Dokumentation
-│   ├── 01-business-plan.md            ← Detaillierter Business Plan
-│   ├── 02-tech-stack.md               ← Technologie-Entscheidungen
-│   ├── 03-90-tage-plan.md             ← Launch-Roadmap 90 Tage
-│   ├── 04-pitch-deck-outline.md       ← Demo-Call Struktur
-│   ├── onboarding-neukunde.md         ← Kunden-Onboarding Dokument ✨
-│   ├── tech-setup-guide.md            ← Vollständiger Setup-Guide ✨
-│   └── zielgruppen-analyse.md         ← Detaillierte Zielgruppen-Analyse
+├── scripts/                           ← Code & Automatisierungen
+│   └── lead-scraper.py               ← Google Maps Scraping Script
 │
-├── templates/                         ← Vorlagen
-│   └── onboarding-checklist.md        ← Interne Setup-Checkliste
-│
-└── scripts/                           ← Code & Automatisierung
-    └── lead-scraper.py                ← Google Maps Lead Scraper
+└── templates/                         ← Wiederverwendbare Templates
 ```
 
 ---
 
-## Email-Kampagnen Übersicht (13k Leads)
+## Email-Kampagne: 13.000 Leads
 
-Vier vollständige 5-teilige Email-Sequenzen über 14 Tage:
+Wir haben 13.000 Unternehmensleads segmentiert in 4 Zielgruppen:
 
-| Segment | Datei | Zielgruppe | Haupthook |
-|---------|-------|-----------|-----------|
-| A — Ästhetik | email-sequenz-aesthetik.md | Beauty/Kliniken/Kosmetik | Verlorene Anfragen abends |
-| B — Zahnarzt | email-sequenz-zahnarzt.md | Zahnarzt/Ärzte | No-Shows & Google-Bewertungen |
-| C — Immobilien | email-sequenz-immobilien.md | Makler/Immobilienbüros | Stille Pipeline, verlorene Deals |
-| D — Handwerk | email-sequenz-handwerk.md | Handwerk/Dienstleister | Angebote die verschwinden |
+| Segment | Zielgruppe | Sequenz |
+|---------|-----------|---------|
+| A | Ästhetik, Beauty, Kliniken | `emails/email-sequenz-aesthetik.md` |
+| B | Ärzte, Zahnärzte | `emails/email-sequenz-zahnarzt.md` |
+| C | Immobilienmakler | `emails/email-sequenz-immobilien.md` |
+| D | Handwerk & Dienstleister | `emails/email-sequenz-handwerk.md` |
 
-**Sequenz-Struktur (alle Segmente):**
-- Email 1 (Tag 1): Starker Hook — Pain direkt ansprechen
-- Email 2 (Tag 3): Zahlen & Social Proof
-- Email 3 (Tag 6): Visualisierung / Konkretisierung
-- Email 4 (Tag 10): Verknappung / ROI-Rechnung
-- Email 5 (Tag 14): Letzte Chance + Starter-Angebot
+Jede Sequenz: **5 Emails über 14 Tage**
+
+**Erwartete Ergebnisse (bei 13k Leads):**
+- Open Rate 35-45%: ~4.500-5.800 geöffnete Emails
+- Reply Rate 5-8%: ~650-1.040 Antworten
+- Demo-Buchungen 1,5-2,5%: ~195-325 Calls
+- Abschluss-Rate 20-30%: **39-98 neue Kunden**
+- MRR-Potenzial: **39.000-147.000€/Monat**
 
 ---
 
-## Tech-Stack Kurzübersicht
+## Tech-Stack
 
-| Tool | Zweck | Kosten/Monat |
-|------|-------|-------------|
-| n8n (self-hosted) | Automatisierungs-Backbone | ~0€ (Hetzner bereits vorhanden) |
-| 360dialog | WhatsApp Business API | 45€ + Nachrichten |
-| Voiceflow | Chatbot Builder | 49$ |
-| Claude API (Haiku) | Chatbot AI Engine | ~20-30€ |
-| Cal.com (self-hosted) | Terminbuchung | ~0€ |
-| Brevo | Email-Versand | 25€ |
-| Airtable | CRM / Übersicht | 20$ |
-| **Gesamt** | **pro Kunde** | **~200-250€** |
+| Tool | Zweck |
+|------|-------|
+| Make.com | Workflow-Automatisierung |
+| Claude API (Haiku/Sonnet) | AI Chatbot Intelligenz |
+| 360dialog | WhatsApp Business API |
+| Cal.com | Terminbuchung |
+| Google Business API | Review-Automatisierung |
+| Brevo | Email-Versand |
 
-**Marge bei 1.297€ Complete Paket: ~1.050€/Monat (81%)**
+Gross Margin: ~90%
+Kosten pro Kunde: 76-96€/Monat
+Umsatz pro Kunde: 900-1.500€/Monat
 
 ---
 
 ## Nächste Schritte
 
-- [ ] Landing Page bauen (Next.js unter aigrowthsystem.de)
-- [ ] GoHighLevel oder Make.com Account einrichten (Entscheidung ausstehend)
-- [ ] Cold Caller rekrutieren (Upwork / Stepstone)
-- [ ] WhatsApp Business API Account aktivieren (Meta Business Konto nötig)
-- [ ] 13k Leads segmentieren nach Branche (Script vorhanden)
-- [ ] Email-Domain für Kampagne kaufen (separate Domain!)
-- [ ] Brevo Account + Email-Sequenzen einrichten
-- [ ] Erste Pilot-Kundin aus Netzwerk für Beta (günstig, Case Study)
+### Sofort (diese Woche)
+- [ ] Landing Page bauen (Next.js)
+- [ ] GoHighLevel oder Make.com Account aufsetzen
+- [ ] 360dialog Account erstellen + WhatsApp API aktivieren
+- [ ] Cal.com auf Hetzner deployen (oder Cloud-Version)
+- [ ] Domain für Email-Kampagne kaufen + Domain Warmup starten
+
+### Kurzfristig (nächste 2 Wochen)
+- [ ] Cold Caller rekrutieren (Upwork / Stepstone / Empfehlung)
+- [ ] Pilot-Kunde akquirieren (aus Netzwerk, günstig als Beta)
+- [ ] 13k Leads in Brevo importieren und segmentieren
+- [ ] Email-Kampagne starten (nach Warmup)
+
+### Mittelfristig (30-60 Tage)
+- [ ] Erste 5 zahlende Kunden
+- [ ] Case Studies aufbauen
+- [ ] Cold Call Prozess skalieren
+- [ ] Referral-Programm für Kunden einführen
 
 ---
 
 ## Offene Entscheidungen (Boss muss entscheiden)
 
-1. **Firmenname / Branding:** Eigene GmbH oder als Freelancer starten?
-2. **WhatsApp Business:** Meta Business Konto muss mit echter Firmenadresse erstellt werden
-3. **Cold Caller:** Wo rekrutieren? Upwork, LinkedIn, oder Bekannte?
-4. **Erster Zielmarkt:** Mit Handwerkern oder Kosmetik/Ästhetik starten?
-5. **Domain:** aigrowthsystem.de registrieren?
+1. **Produktname / Branding** — "AI Growth System" oder anderer Name?
+2. **Erstes Zielgruppen-Segment** — Handwerker, Ärzte oder Kosmetik zuerst?
+3. **Cold Caller** — Wo rekrutieren? Upwork, Stepstone, Bekannte?
+4. **Email-Domain** — Welche Domain für Kampagne? (Separate Domain empfohlen!)
+5. **Pilot-Kunde** — Jemanden im Netzwerk für Beta-Test mit Rabatt?
+6. **GoHighLevel** — Alternative zu Make.com (höhere Kosten aber mehr Features für Agencies)
 
 ---
 
-*AI Growth System | Stand: April 2026 | Built by Trinity*
+## Kontakt & Verantwortlichkeiten
+
+- **Strategie & Entscheidungen:** Kostas
+- **Technischer Setup & Automatisierungen:** Trinity
+- **Cold Calls:** [Noch zu rekrutieren]
+- **Email-Kampagne:** Trinity koordiniert, Brevo sendet
+
+---
+
+*AI Growth System | Stand: 03.04.2026 | Built with Trinity 🤖*
