@@ -1,162 +1,135 @@
-# AI Growth System — Cold Call Script
-**Für Cold Caller | Version 1.0 | Trinity**
+# Cold Call Script — AI Growth System
+Version 1.0 | Stand: 03.04.2026
+
+Primäre Zielgruppe: Zahnarztpraxen, Fitnessstudios, Handwerker
 
 ---
 
-## VORBEREITUNG (vor jedem Call)
+## VORBEREITUNG (vor dem Anruf)
 
-Recherchiere 2 Minuten:
-- Hat das Unternehmen Google Reviews? Wie viele? Letzte Review wann?
-- Gibt es eine Website? Hat sie einen Chatbot?
-- Was verkaufen sie? Was ist ihre Behandlung/Dienstleistung?
-- Name des Inhabers/Entscheiders herausfinden (Google, Impressum, LinkedIn)
+1. Praxis/Betrieb googeln: Wie viele Google-Bewertungen? Wie schnell antworten sie auf Anfragen?
+2. Name des Inhabers herausfinden (oft auf der Website)
+3. Region merken — lokaler Bezug = sofort mehr Vertrauen
 
 ---
 
-## SCRIPT A: Ästhetik-Kliniken / Beauty-Kliniken
+## DER ANRUF
 
-### OPENER (erste 15 Sekunden — entscheiden alles)
+### OPENER — Die ersten 10-15 Sekunden entscheiden alles
 
-**Variante 1 — Direkt:**
-> "Guten Tag, hier ist [Name], ich spreche kurz mit [Inhabername]?
-> — [Pause] —
-> Super. [Inhabername], ich komme direkt zum Punkt — ich hab mir kurz Ihre Praxis angeschaut und festgestellt, dass Sie wahrscheinlich jeden Monat mehrere tausend Euro an Anfragen verlieren, weil die nicht schnell genug nachgefasst werden. Hab ich eine Minute, um Ihnen zu erklären was ich meine?"
+**Für Zahnarztpraxen:**
+> "Guten Tag, [Inhaber-Name], mein Name ist [Ihr Name], ich rufe kurz an weil wir gerade mit drei Praxen hier in [Stadt/Region] zusammenarbeiten und die haben ihre Terminausfälle um fast 40 Prozent reduziert — vollautomatisch. Habe ich Sie kurz erwischt, oder soll ich in zwei Stunden nochmal anrufen?"
 
-**Variante 2 — Review-Opener:**
-> "Guten Tag, [Name] hier — ich spreche mit [Inhabername]?
-> — [Pause] —
-> Perfekt. Ich hab mir Ihre Google Bewertungen angeschaut — Sie haben tolle Reviews, das fällt auf. Die meisten Ihrer Mitbewerber haben das nicht. Ich zeige ästhetischen Praxen gerade, wie sie das als Wachstumshebel nutzen. Haben Sie 60 Sekunden?"
+**Für Fitnessstudios:**
+> "Guten Tag, [Name], ich bin [Ihr Name]. Ich rufe an weil wir gerade Fitnessstudios hier in [Region] dabei helfen, Interessenten die über Instagram oder Google anfragen, automatisch innerhalb von 3 Minuten nachzufassen — ohne dass der Inhaber dabei sein muss. Kurze Frage erlaubt?"
 
-**Variante 3 — Konkurrenz-Opener:**
-> "[Inhabername], ich arbeite gerade mit einer anderen Ästhetik-Klinik hier in [Stadt] zusammen — die haben seit 3 Monaten einen AI-Assistenten, der Anfragen rund um die Uhr beantwortet und automatisch Termine bucht. Die haben ihren Umsatz um 30% gesteigert. Darf ich kurz erklären wie?"
+**Für Handwerker:**
+> "Guten Morgen [Name], ich bin [Ihr Name]. Kurze Frage: Wie viele Anrufe schätzen Sie, gehen bei Ihnen täglich drauf, weil die Leitung besetzt ist oder keiner rangeht? Ich frage weil wir das für Betriebe wie Ihren automatisch auffangen — auch am Wochenende."
 
----
-
-### WENN SIE ZUHÖREN — Der Bridge (30-45 Sekunden)
-
-> "Wir haben ein System, das ich 'AI Growth System' nenne. Einfach ausgedrückt:
-> Wenn jemand um 22 Uhr auf Ihrer Website fragt 'Was kostet eine Botox-Behandlung' — antwortet unser AI-Chatbot sofort, qualifiziert die Person und bucht direkt einen Beratungstermin in Ihren Kalender.
-> 
-> Gleichzeitig läuft im Hintergrund automatisch ein WhatsApp Follow-up — bei jeder Person die nicht direkt gebucht hat.
-> 
-> Und nach jedem Termin geht automatisch eine Review-Anfrage raus.
-> 
-> Das Ganze braucht keinerlei Zeit von Ihnen. Es läuft einfach."
+**WICHTIG:**
+- NIEMALS "Störe ich?" — lädt zum Nein ein
+- Immer konkretes Ergebnis nennen (40% weniger Ausfälle, 3 Minuten Response etc.)
+- Dann Respekt-Frage: "Habe ich Sie kurz erwischt?" — gibt dem Gegenüber Kontrolle zurück
 
 ---
 
-### QUALIFIZIERUNGS-FRAGEN (eine davon stellen)
+### QUALIFIZIERUNG — 2 Fragen, nicht mehr
 
-- "Wie viele Anfragen bekommen Sie so im Monat, die Sie dann manuell beantworten müssen?"
-- "Was passiert gerade, wenn jemand außerhalb der Öffnungszeiten anfrägt?"
-- "Wie schnell können Sie gerade auf eine neue Anfrage reagieren?"
-- "Haben Sie schon mal ausgerechnet, wie viele Anfragen bei Ihnen nicht gebucht haben?"
+**Frage 1 — Problem validieren:**
+> "Wie läuft das bei Ihnen gerade, wenn ein Termin kurzfristig absagt — haben Sie da ein System, oder macht das jemand manuell?"
 
----
+*(Wenn "manuell" oder "eigentlich gar nicht" → perfekter Lead, weiter)*
+*(Wenn "wir haben schon ein System" → Einwand-Handling unten)*
 
-### EINWAND-BEHANDLUNG
+**Frage 2 — Entscheider prüfen:**
+> "Und sind Sie derjenige, der entscheidet, wenn es um externe Dienstleister oder Software für die Praxis geht?"
 
-**"Wir haben das schon" / "Wir haben schon einen Chatbot"**
-> "Das freut mich. Darf ich fragen — bucht der auch direkt Termine und schickt danach automatisch WhatsApp Follow-ups? Die meisten Chatbots die ich kenne beantworten nur FAQs, das ist was anderes. Darf ich kurz zeigen was ich meine?"
-
-**"Kein Interesse"**
-> "Verstehe ich, Sie wissen ja noch nicht was es ist. Eine kurze Frage: Wenn ich Ihnen zeigen kann, dass dieses System innerhalb von 30 Tagen mindestens eine neue Behandlung durch einen Patienten bringt den Sie sonst verloren hätten — wäre das dann grundsätzlich interessant für Sie?"
-
-**"Zu teuer" / "Was kostet das?"**
-> "Das zeige ich Ihnen gerne in einem kurzen Demo-Gespräch, weil der Preis vom Umfang abhängt. Aber damit Sie eine Größenordnung haben: Unsere Kliniken zahlen zwischen 1.000 und 1.500 Euro im Monat — und der Break-even ist typischerweise eine zusätzliche Behandlung im Monat. Für welchen Termin diese Woche hätten Sie 20 Minuten?"
-
-**"Schicken Sie mir erst mal Infos zu"**
-> "Gerne. Damit ich Ihnen die richtigen Unterlagen schicke — darf ich kurz fragen: Was ist gerade Ihr größtes Problem wenn es um neue Patientengewinnung geht? Dann schicke ich Ihnen genau das was relevant ist."
-> [Notiz machen, dann spezifische Infos schicken + in 3 Tagen Follow-up anrufen]
-
-**"Keine Zeit gerade"**
-> "Das verstehe ich total. Wann wäre es besser — morgen früh oder lieber am Donnerstag?"
-> [Immer eine Alternative geben, nie "wann haben Sie Zeit?"]
-
-**"Wir machen das intern"**
-> "Das ist gut. Darf ich fragen wer sich darum kümmert? Der Grund warum ich frage: Fast alle Praxen die mir das sagen, haben jemanden der das 'auch noch' macht — aber kein dediziertes System. Das ist ein Unterschied. Ich würde gerne kurz zeigen was ich meine."
+*(Wenn JA → Pitch starten)*
+*(Wenn NEIN → "Wer wäre das? Könnte ich direkt mit ihr/ihm sprechen?")*
 
 ---
 
-### ABSCHLUSS — Demo-Termin buchen
+### DER 30-SEKUNDEN PITCH
 
-> "Super. Ich würde Ihnen gerne in einem 20-minütigen Video-Call live zeigen, wie das für eine Praxis wie Ihre aussieht — mit echten Zahlen von bestehenden Kliniken. 
-> Wann passt Ihnen diese Woche besser — Mittwoch um 10 oder Donnerstag um 14 Uhr?"
+**Zahnarztversion:**
+> "Was wir konkret machen: Wenn jemand einen Termin absagt, geht sofort automatisch eine WhatsApp raus mit zwei freien Terminen — der Platz ist in Minuten wieder gefüllt. Neue Anfragen über Google oder Ihre Website werden sofort beantwortet, auch wenn Sie gerade behandeln. Und nach jedem Termin fragt das System automatisch nach einer Google-Bewertung. Ihr Team macht dabei nichts extra — das läuft komplett im Hintergrund. Unsere Kunden sehen das typischerweise im ersten Monat schon über die eingesparten Ausfälle refinanziert."
 
-**Wenn Termin gesetzt:**
-> "Perfekt. Ich schick Ihnen gleich eine Kalendereinladung an welche Email-Adresse? [Email notieren]
-> Ich schicke auch kurz einen Link zu einem 2-Minuten-Video damit Sie sehen was Sie erwartet. Bis [Datum], [Name]!"
-
----
-
-## SCRIPT B: Zahnarztpraxen
-
-### OPENER
-
-**Variante 1 — No-Show Opener:**
-> "Guten Tag, [Name] hier, ich spreche kurz mit Frau/Herrn [Name]?
-> Ich bin kurz — ich zeige Zahnarztpraxen gerade wie sie No-Shows automatisch um 60-70% reduzieren. Das ist gerade ein riesiges Thema in der Branche. Haben Sie eine Minute?"
-
-**Variante 2 — Telefon-Überlastung:**
-> "Guten Tag, [Name] hier. Ich wette die Antwort ist Ja — klingelt bei Ihnen in der Praxis das Telefon öfter als Ihre Mitarbeiter rangehen können?"
-> [Pause — sie sagen fast immer 'Ja']
-> "Das dachte ich mir. Wir haben dafür eine Lösung die das komplett automatisiert. Darf ich kurz erklären?"
+**Kurzversion für alle:**
+> "Wir bauen Ihnen eine komplette Automatisierung: Anfragen werden sofort beantwortet, Termine automatisch befüllt, und Google-Bewertungen kommen von selbst. Kein Aufwand für Sie — das System arbeitet, auch wenn Sie schlafen."
 
 ---
 
-### QUALIFIZIERUNGS-FRAGEN
+### EINWAND-HANDLING
 
-- "Wie viele Neupatienten gewinnen Sie ungefähr im Monat?"
-- "Was passiert wenn jemand anruft und niemand rangeht?"
-- "Haben Sie gerade ein System für Termin-Erinnerungen?"
+#### "Das ist zu teuer" / "900 Euro ist viel"
 
----
+> "Das verstehe ich vollkommen. Darf ich kurz mit Ihnen rechnen? Ein verpasster Termin bei Ihnen kostet ungefähr wie viel — 80, 100 Euro? Wenn wir nur 10 davon im Monat auffangen, sind wir schon bei 1.000 Euro. Das System hat sich dann selbst bezahlt, und der Rest ist reiner Gewinn. Ich frage Sie nicht ob Sie Geld ausgeben wollen — ich frage, ob Sie möchten, dass das sich selbst refinanziert. Das ist der einzige Punkt."
 
-### BRIDGE
-
-> "Stellen Sie sich vor: Ein Patient ruft Samstagabend an, weil er Schmerzen hat und Montag einen Termin braucht. Gerade: Anrufbeantworter, er ruft woanders an.
-> 
-> Mit unserem System: AI-Voice-Agent geht ran, bucht sofort einen Termin, schickt WhatsApp-Bestätigung, und erinnert 24h vorher automatisch. Patient erscheint, kein No-Show.
-> 
-> Das läuft 24/7, ohne dass Ihr Team auch nur einen Finger rühren muss."
+*(Wenn immer noch zögerlich:)*
+> "Wir haben auch eine 30-Tage-Garantie: Wenn Sie nach einem Monat keinen messbaren Unterschied sehen, erstatten wir Ihnen den ersten Monat vollständig. Das Risiko liegt komplett bei uns."
 
 ---
 
-## ALLGEMEINE TIPPS FÜR CALLER
+#### "Kein Interesse" / "Brauchen wir nicht"
 
-### Die goldenen Regeln:
-1. **Immer der Schnellste sein** — wer zuerst Vertrauen aufbaut, gewinnt
-2. **Niemals pitchen, bevor man qualifiziert hat** — erst Fragen, dann Lösung
-3. **Immer zwei Alternativen anbieten** — nie "wann haben Sie Zeit?"
-4. **Einwände = Interesse** — wer keine Fragen hat, ist wirklich desinteressiert
-5. **Follow-up ist alles** — 80% der Deals entstehen nach dem 5. Kontakt
-
-### Tages-Routine:
-- 08:30 Uhr: Lead-Liste vorbereiten (20 für den Vormittag)
-- 09:00-12:00 Uhr: Prime-Time Calls (Entscheider am besten erreichbar)
-- 12:00-13:00 Uhr: Follow-up Emails/WhatsApp aus gestrigen Calls
-- 14:00-16:30 Uhr: Weitere 30 Calls
-- 16:30-17:00 Uhr: CRM updaten, morgen vorbereiten
-
-### KPIs pro Woche:
-- Minimum 200 Calls
-- Minimum 10 Demos/Calls vereinbart
-- Minimum 2 Abschlüsse (=1.000€ Provision)
+> "Okay, fair. Darf ich trotzdem kurz eine Frage stellen, rein neugierheitshalber: Wie viele Anfragen würden Sie schätzen, kommen bei Ihnen rein und werden nicht innerhalb von 5 Minuten beantwortet? *(kurze Pause)* Genau das ist der Punkt. Kein Interesse heißt oft, das Problem ist noch nicht groß genug auf dem Radar — oder es ist noch keiner aufgefallen wie viel das kostet. Ich würde Ihnen gerne 20 Minuten zeigen, was das konkret für Sie bedeutet. Wenn's nichts ist, sagen Sie Nein und wir hören nie wieder voneinander. Deal?"
 
 ---
 
-## DEMO-CALL SCRIPT (für Kostas oder Closer)
+#### "Wir haben schon etwas" / "Nutzen bereits [Tool X]"
 
-### Agenda (20 Minuten):
-1. **0-3 Min:** Kurze Vorstellung + "Ich stell Ihnen 2 Fragen bevor ich zeige"
-2. **3-8 Min:** Discovery — Pain rausarbeiten
-3. **8-15 Min:** Live-Demo (Bildschirm teilen, echtes System zeigen)
-4. **15-18 Min:** ROI-Rechnung live durchgehen
-5. **18-20 Min:** Closing + nächste Schritte
-
-### Closing-Frage:
-> "Also basierend auf dem was Sie mir erzählt haben — der Chatbot alleine würde bei Ihnen [X] Anfragen pro Monat abfangen, das Follow-up rettet wahrscheinlich [Y] davon. Das entspricht ungefähr [Z]€ Mehrwert pro Monat bei Kosten von 1.297€. Macht es für Sie Sinn, das zu starten?"
+> "Gut, was nutzen Sie denn? *(Zuhören)* Okay — macht das auch den automatischen WhatsApp-Follow-up wenn ein Termin absagt, und fragt danach automatisch nach einer Google-Bewertung? *(meistens: Nein)* Das ist genau die Lücke, die wir schließen. Ich will Ihr bestehendes System nicht ersetzen, sondern das ergänzen was fehlt. Wäre es interessant zu sehen wie das konkret aussieht — in 20 Minuten, an Ihrem Beispiel?"
 
 ---
 
-*AI Growth System | Cold Call Playbook v1.0 | Trinity*
+#### "Keine Zeit gerade"
+
+> "Verstehe ich, deswegen halte ich es kurz: Ich brauche nur 20 Minuten Ihrer Zeit, per Video-Call, und zeige Ihnen live wie das bei einer ähnlichen Praxis hier in der Region läuft — fertig aufgebaut, keine Theorie. Wann wäre am besten — eher [Dienstag 10 Uhr] oder lieber [Donnerstag 14 Uhr]?"
+
+---
+
+#### "Schicken Sie mir erst Infos"
+
+> "Mache ich gerne. Ich schicke Ihnen aber ehrlich gesagt lieber einen kurzen Video-Link, das zeigt es in 5 Minuten besser als jede E-Mail. Und dann sehen Sie direkt ob das für Sie relevant ist. Darf ich den an Ihre E-Mail schicken? Und falls Sie Fragen haben, können wir kurz telefonieren — passt Ihnen [Dienstag] oder [Mittwoch]?"
+
+*(Nie nur Infos schicken ohne Termin vereinbaren — Leads sterben in E-Mails)*
+
+---
+
+### TERMINABSCHLUSS
+
+> "Ich mache das so: Ich zeige Ihnen in 20 Minuten per Video-Call wie das bei einer ähnlichen Praxis / einem ähnlichen Betrieb hier in [Region] aussieht — fertig aufgebaut, keine PowerPoint, kein Vertriebsgespräch. Passt Ihnen eher [Dienstag 10 Uhr] oder [Mittwoch 14 Uhr]?"
+
+**Regel:** Immer ZWEI konkrete Optionen nennen — nie "Wann hätten Sie Zeit?" (gibt Kontrolle ab)
+
+---
+
+## NACH DEM CALL
+
+1. Lead in CRM eintragen mit: Name, Praxis, Termin, Pain Point, Bemerkungen
+2. Wenn Termin vereinbart → Bestätigungs-WhatsApp/Email schicken (sofort, nicht später)
+3. Wenn kein Interesse → in 6 Wochen nochmal versuchen (Situation ändert sich)
+4. Wenn "Infos schicken" → Email + Video-Link + in 3 Tagen nochmal anrufen
+
+---
+
+## CALL-STATS TRACKING (täglich)
+
+| Metric | Ziel |
+|---|---|
+| Calls gemacht | 50/Tag pro Agent |
+| Durchgestellte Calls | 25-30/Tag |
+| Qualifizierte Gespräche | 10-15/Tag |
+| Termine vereinbart | 3-5/Tag |
+| Abschlüsse/Woche | 2-4/Woche pro Agent |
+
+---
+
+## PSYCHOLOGIE — Was wirklich funktioniert
+
+1. **Lokaler Bezug schlägt alles:** "Praxis hier in [Stadt]" ist 3x überzeugender als "Kunden bundesweit"
+2. **Zahlen statt Versprechen:** "40% weniger Ausfälle" nicht "deutliche Verbesserung"
+3. **ROI vor Feature:** Nie Features pitchen — immer Geld das gespart/verdient wird
+4. **Garantie eliminiert Risiko:** 30-Tage-Garantie verdoppelt Conversion
+5. **Zwei Optionen:** Immer zwei Uhrzeiten anbieten, nie offene Frage
+6. **Tempo halten:** Kurze, direkte Sätze. Nicht quasseln. Pausen lassen.

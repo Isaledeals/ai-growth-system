@@ -1,199 +1,203 @@
 # AI Growth System — Business Plan
-*Stand: April 2026 | Kostas Dias / Trinity*
+Stand: 03.04.2026 | Status: In Aufbau
 
 ---
 
-## Produkt-Vision
+## Das Produkt
 
-Das **AI Growth System** ist ein vollständig gemanagtes, monatliches Abo-Bundle für lokale Unternehmen im DACH-Raum. Wir verkaufen keine Software — wir verkaufen **Wachstum als Service**. Der Kunde muss nichts wissen, nichts einrichten, nichts lernen. Wir bauen auf, wir managen, er bekommt mehr Kunden.
+**"AI Growth System"** — Ein vollständig betreutes AI-Automatisierungs-Bundle für lokale deutsche Unternehmen.
+
+Kein technisches Wissen nötig. Wir richten alles ein. Der Kunde zahlt monatlich und kriegt Ergebnisse.
 
 ---
 
-## Das Bundle (5 Module, 1 Preis)
+## Die 5 Module
 
-### Modul 1: AI Chatbot (24/7 Lead-Qualifizierung)
-- Website-Chatbot der rund um die Uhr antwortet
-- Qualifiziert Leads automatisch (Name, Telefon, Anliegen)
-- Schickt sofortige Benachrichtigung an den Inhaber
-- Beantwortete FAQs, Öffnungszeiten, Preise etc.
-- **Wert-Argument**: 70% der Anfragen außerhalb Öffnungszeiten gehen verloren
-
-### Modul 2: Automatisches Follow-up (WhatsApp + Email)
-- Wenn jemand Kontakt aufnimmt → automatische WhatsApp-Nachricht innerhalb 60 Sekunden
-- Follow-up Sequenz: 3-5 Nachrichten über 7 Tage wenn keine Antwort
-- Email-Backup für alle die kein WhatsApp nutzen
-- Inaktive Kunden reaktivieren (Datenbank-Reaktivierung)
-- **Wert-Argument**: 78% der Kunden kaufen beim ersten Anbieter der antwortet
-
-### Modul 3: AI Terminbuchung
-- Direkte Buchung in Kalender (Google Cal, Calendly, eigenes System)
-- Automatische Bestätigungs- und Erinnerungsnachrichten
-- Reduces No-Shows um ca. 40%
-- 24/7 buchbar ohne Telefonat
-- **Wert-Argument**: Jeder No-Show kostet 50-500€
-
-### Modul 4: Reputations-Automatisierung (Google Reviews)
-- Nach jedem Kundenkontakt automatische Review-Anfrage per WhatsApp/SMS
-- Filtert negative Erfahrungen intern (kommen nicht zu Google)
-- Positve Erfahrungen direkt zu Google-Review weiterleiten
-- Monitoring und Benachrichtigung bei neuen Reviews
-- **Wert-Argument**: +1 Stern auf Google = +5-9% mehr Umsatz (Harvard Study)
-
-### Modul 5: Lead Scraping + erstes Outreach
-- Monatlich 50-100 qualifizierte Leads aus der Zielregion scrapen
-- Erster Outreach per Email/WhatsApp automatisiert
-- Tracking welche Leads reagiert haben
-- Übergabe heißer Leads an Inhaber
-- **Wert-Argument**: Aktive Neukundengewinnung statt nur passiv warten
+| # | Modul | Was es macht |
+|---|---|---|
+| 1 | **AI Chatbot** | 24/7 Lead-Qualifizierung auf Website + WhatsApp |
+| 2 | **Automatisches Follow-up** | WhatsApp + Email nach Anfragen, Terminabsagen, Käufen |
+| 3 | **AI Terminbuchung** | Direkt in Kalender, automatische Bestätigungen & Reminders |
+| 4 | **Reputations-Automatisierung** | Google Reviews nach jedem Termin automatisch anfragen |
+| 5 | **Lead Scraping + Outreach** | Neue potenzielle Kunden finden + erstes Outreach automatisieren |
 
 ---
 
 ## Pricing
 
-| Paket | Preis/Monat | Laufzeit | Einmaliges Setup |
-|-------|------------|---------|-----------------|
-| **Starter** | 900€ | 6 Monate | 500€ |
-| **Growth** | 1.200€ | 3 Monate | 300€ |
-| **Pro** | 1.500€ | Monatlich kündbar | 0€ |
+### Starter — 900€/Monat
+- Module 1 + 3 + 4 (Chatbot, Terminbuchung, Reviews)
+- Bis 500 Conversations/Monat
+- Onboarding + Setup inklusive
+- Email Support
 
-**Empfehlung**: Starter als Hook (günstigster Monatspreis + Setup), Growth als Standard.
+### Growth — 1.200€/Monat ⭐ (Best Seller)
+- Alle 5 Module
+- Bis 1.500 Conversations/Monat
+- WhatsApp Business API Setup inklusive
+- Monatliches Reporting
+- Priority Support
 
-**Upsells**:
-- Zusätzliche Standorte: +300€/Monat
-- Webseite-Erstellung: 1.500€ einmalig
-- SEO-Optimierung: +400€/Monat
-- Meta Ads Management: +500€/Monat + Adspend
+### Pro — 1.500€/Monat
+- Alle 5 Module unbegrenzt
+- Custom Flows + Integrationen
+- Dedicated Account Manager
+- Wöchentliches Reporting
+- SLA 24h Response
 
----
+### Setup Fee
+- Einmalig 500-1.000€ Setup Fee (je nach Plan)
+- Dient als Commitment-Filter + deckt Einrichtungsaufwand
 
-## Zielgruppen (Priorisiert)
-
-### Tier 1 — Bestes ROI-Argument, schnellstes Close
-
-**1. Ärzte & Zahnärzte (Privatpraxen)**
-- Pain: Telefon klingelt ständig, Terminverwaltung zeitfressend, No-Shows kosten Geld
-- ROI: 1 verhindeter No-Show/Monat = Setup amortisiert
-- Durchschnittlicher Auftragswert: 200-800€/Patient
-- Entscheider: Praxisinhaber (direkt erreichbar)
-- Besonderheit: Sehr honorar-bewusst, zahlen gerne wenn ROI klar
-
-**2. Kosmetik-Studios & Nagel-Salons**
-- Pain: Termine über WhatsApp-Chaos managen, ständige Absagen, wenig Zeit für Marketing
-- ROI: 3-4 mehr Termine/Woche = Abo gedeckt
-- Durchschnittlicher Auftragswert: 60-150€/Termin
-- Entscheider: Inhaberin (oft Einzelperson)
-- Besonderheit: SEHR social-media-affin, Google Reviews extrem wichtig
-
-**3. Fitnessstudios & Personal Trainer**
-- Pain: Mitglieder-Akquise teuer, hohe Churn-Rate, Leads werden nicht nachgefasst
-- ROI: 2-3 neue Mitglieder/Monat = Abo mehrfach gedeckt
-- Durchschnittlicher Auftragswert: 50-150€/Monat recurring
-- Entscheider: Inhaber (oft selbst trainiert)
-- Besonderheit: Verstehen Recurring Revenue, denken selbst in Abos
-
-### Tier 2 — Hoher Wert, etwas längerer Close
-
-**4. Handwerksbetriebe (Sanitär, Elektro, Dachdecker)**
-- Pain: Anrufe verpassen, Angebote vergessen nachzufassen, keine Zeit für Marketing
-- ROI: 1 zusätzlicher Auftrag/Monat (Ø 2.000-5.000€) = Jahresabo gerechtfertigt
-- Entscheider: Meister/Inhaber
-- Besonderheit: ROI-Argument sehr stark, brauchen aber Vertrauen
-
-**5. Restaurants & Cafés (mit Reservierungssystem)**
-- Pain: Reservierungen chaotisch, No-Shows, Google-Bewertungen vernachlässigt
-- ROI: 10 mehr Reservierungen/Monat = deutlich positiv
-- Entscheider: Inhaber/Manager
-- Besonderheit: Saisonale Schwankungen, oft preissensitiv
-
-**6. Immobilienmakler (Kleine Büros)**
-- Pain: Leads fallen durchs Raster, Exposé-Anfragen nicht sofort beantwortet
-- ROI: 1 zusätzliche Vermittlung/Quartal = Abo für 1 Jahr gedeckt
-- Entscheider: Inhaber/Solo-Makler
-- Besonderheit: Sehr hoher Auftragswert, können hohe Abo-Preise rechtfertigen
-
-### Tier 3 — Guter Markt, mehr Aufwand
-
-**7. Physiotherapeuten & Heilpraktiker**
-**8. Autohäuser & KFZ-Werkstätten**
-**9. Steuerberater & Rechtsanwälte (kleine Kanzleien)**
-**10. Reinigungsunternehmen & Haushaltsservices**
+### Garantie-Strategie (Empfehlung)
+"30-Tage-Ergebnis-Garantie: Wenn Sie nach 30 Tagen keinen messbaren Mehrwert sehen, erstatten wir den ersten Monat."
+→ Nimmt Kaufrisiko, erhöht Conversion massiv
 
 ---
 
-## Revenue Modell
+## Zielgruppen — Ranking nach Conversion-Wahrscheinlichkeit
 
-| Szenario | Kunden | MRR | Jahres-ARR |
-|---------|--------|-----|-----------|
-| Minimal (Monat 3) | 5 | 6.000€ | 72.000€ |
-| Ziel (Monat 6) | 15 | 18.000€ | 216.000€ |
-| Scale (Monat 12) | 40 | 48.000€ | 576.000€ |
+### #1 Zahnarztpraxen & Kieferorthopäden ⭐⭐⭐⭐⭐
+**Warum top:**
+- Fachkräftemangel in Verwaltung → Automation löst echtes Problem
+- No-Show kostet 80-150€ pro Termin → ROI sofort klar
+- Praxisinhaber = Entscheider = Budget vorhanden
+- Schon 3 gesparte No-Shows = System finanziert sich selbst
 
-**Kosten-Struktur pro Kunde:**
-- Tools/APIs: ca. 50-80€/Monat (ManyChat/WATI, Calendly, GoHighLevel white-label o.ä.)
-- Zeit Onboarding: ca. 3-4 Stunden einmalig
-- Laufende Betreuung: ca. 1-2h/Monat
-- Gross Margin: ~90%
+**Pain Points:**
+- Rezeption überlastet oder unterbesetzt
+- Terminausfälle ohne Nachbesetzung
+- Kaum Google Bewertungen trotz guter Arbeit
+- Recall-System läuft manuell
+
+**Hook:** "Wir füllen Ihren Terminkalender automatisch — und holen No-Shows zurück, bevor der Platz leer bleibt."
+
+**Kontakt:** Direktwahl Praxis, morgens 8-10h oder mittags 13-14h
+**Entscheider:** Praxisinhaber (Zahnarzt selbst)
+**Deal Speed:** 1-2 Wochen
+
+---
+
+### #2 Fitnessstudios & Personal Trainer (Einzelstudios) ⭐⭐⭐⭐
+**Warum gut:**
+- Inhaber = Einzelkämpfer, oft kein Backoffice
+- Instagram/Google Leads werden nicht nachgefasst → Geld liegt auf der Straße
+- Saisonalität erzeugt echten Druck (Januar, September)
+- Direkte Entscheidung, kein Ausschuss
+
+**Pain Points:**
+- Probetraining-Anfragen versanden (keine Antwort = kein Kunde)
+- Mitglieder kündigen ohne Retention-Automation
+- WhatsApp-Chaos: Inhaber tippt alles manuell
+
+**Hook:** "Ihre Interessenten fragen an und hören nie wieder was — wir schließen die Lücke automatisch in 3 Minuten per WhatsApp."
+
+**Kontakt:** Instagram DM + Follow-up Call, oder direkter Anruf abends 18-20h
+**Entscheider:** Inhaber direkt
+**Deal Speed:** 3-7 Tage
+
+---
+
+### #3 Handwerksbetriebe (Sanitär, Elektro, Heizung, 5-20 MA) ⭐⭐⭐
+**Warum solide:**
+- Extrem hohe Auslastung → keine Zeit für Marketing, aber Geld vorhanden
+- Verpasste Anrufe = direkter Umsatzverlust
+- Pipeline riesig (allein in DE: 100k+ Betriebe)
+- Digitalisierungsrückstand = Low Competition
+
+**Pain Points:**
+- Telefon klingelt, keiner geht ran
+- Angebote werden zu spät verschickt
+- Kaum Google-Bewertungen trotz hervorragender Arbeit
+
+**Hook:** "Jeder Anruf den Sie verpassen, geht zum Konkurrenten. Wir fangen die ab — auch nachts und am Wochenende."
+
+**Kontakt:** Anruf morgens 7-8h (auf der Baustelle, entspannt)
+**Entscheider:** Chef/Inhaber
+**Deal Speed:** 2-4 Wochen
+
+---
+
+### #4 Kosmetikstudios & Beautysalons ⭐⭐⭐
+**Pain Points:** Spontane Terminanfragen via Instagram, keine automatische Bestätigung, Bewertungen fehlen
+**Hook:** "Jede Terminanfrage um Mitternacht beantwortet sich selbst — und der Kalender ist morgens voll."
+**Deal Speed:** 1 Woche (Inhaberinnen entscheiden schnell)
+
+---
+
+### #5 Physiotherapie & Osteopathie ⭐⭐⭐
+**Pain Points:** Wartelist-Management, Rezeptablauf-Erinnerungen, Google Reviews trotz treuer Stammpatienten kaum vorhanden
+**Hook:** "Ihre Warteliste arbeitet jetzt automatisch für Sie."
+**Deal Speed:** 2-3 Wochen
+
+---
+
+### MEIDEN (warum):
+- **Restaurants:** Zu geringes Budget, zu viel Fluktuation, Decision-Maker schwer erreichbar
+- **Ketten/Franchises:** Zentrale Entscheidung, langer Sales-Cycle, Corporate Procurement
+- **Einzelhandel klassisch:** Margins zu klein, Online-Konkurrenz-Narrative lenkt ab
+- **Anwälte/Steuerberater:** Konservativ, Datenschutz-Paranoia, sehr langer Entscheidungs-Cycle
+
+---
+
+## Revenue-Projektion
+
+| Zeitraum | Kunden | MRR | ARR |
+|---|---|---|---|
+| Monat 1 | 3-5 | 3.600-6.000€ | — |
+| Monat 2 | 8-12 | 9.600-14.400€ | — |
+| Monat 3 | 15-20 | 18.000-24.000€ | — |
+| Monat 6 | 30-40 | 36.000-48.000€ | ~500k ARR |
+
+**Break-Even:** ~8 Kunden (Growth-Plan)
 
 ---
 
 ## Sales-Strategie
 
-### Kanal 1: Cold Calling (2 Agents)
-- Provision: 500€ pro Abschluss
-- Ziel: 4-6 Abschlüsse/Monat pro Agent
-- Script: Kurz, ROI-fokussiert, Demo anbieten (nicht verkaufen am Telefon)
-- Warm-Up: Google-Suche nach schlecht bewerteten Unternehmen in Zielregion
+### Kanal 1: Cold Calling (primär)
+- 2 Cold Caller mit 500€ Provision pro Abschluss
+- Ziel: 50 Calls/Tag pro Agent = 100 Calls/Tag total
+- Conversion Cold Call → Termin: ~5-10% = 5-10 Termine/Tag
+- Conversion Termin → Abschluss: ~30-40% = 1-4 Abschlüsse/Tag (realistisch: 1-2)
+- **Ziel: 3-5 Neukunden/Woche**
 
-### Kanal 2: Email-Kampagne (13.000 Leads)
-- Segmentierung nach Branche + Region
-- 3-Email Sequenz über 2 Wochen
-- Ziel: 2-3% Response Rate = 260-390 Antworten
-- Conversion Antwort → Abschluss: 10-15% = 26-58 Neukunden möglich
+### Kanal 2: Email Marketing (13k Liste)
+- 3-teilige Sequenz (Details: docs/03-email-campaign.md)
+- Erwartete Open Rate: 25-35%
+- Response Rate: 2-5% = 260-650 Leads
+- Conversion zu Demo: 20% = 52-130 Demo-Calls
+- Conversion zu Abschluss: 30% = 15-40 Kunden aus Email allein
 
-### Kanal 3: LinkedIn + Instagram Outreach
-- Inhaber lokaler Unternehmen targetieren
-- Case Studies posten (mit Erlaubnis)
-- Kurzvideos: Vorher/Nachher (Google Reviews, Response Time etc.)
-
-### Kanal 4: Referral-Programm
-- 250€ für jeden empfohlenen Kunden der abschließt
-- Kunden empfehlen innerhalb ihrer Branchengruppen
+### Kanal 3: LinkedIn Outreach (später)
+- Speziell für Zahnarztpraxen und Physiotherapeuten (Inhaber auf LinkedIn aktiv)
 
 ---
 
-## Tech-Stack (für Service-Delivery)
+## Kostenstruktur (pro Kunde/Monat, Growth Plan 1.200€)
 
-- **CRM/Automation-Plattform**: GoHighLevel (White-Label möglich, ~97$/Monat für alle Kunden)
-- **WhatsApp Business API**: WATI oder ManyChat (ab ~50$/Monat)
-- **Terminbuchung**: Calendly oder native GHL-Funktion
-- **Chatbot**: GHL Bot + Claude API für komplexe Fragen
-- **Reviews**: Birdeye oder nativer GHL-Review-Flow
-- **Lead Scraping**: Apollo.io, Phantombuster, oder eigenes Tool
-- **Reporting**: GHL Dashboard für Kunden
+| Tool | Kosten/Monat |
+|---|---|
+| Chatbot (Botpress Cloud) | ~30-40€ |
+| WhatsApp Business API (360dialog oder WATI) | ~50-80€ |
+| Terminbuchung (Cal.com Team) | ~15€ |
+| Review Automation (eigenes n8n Script) | ~5€ (Server-Anteil) |
+| Lead Scraping Tool | ~20-30€ (geteilt) |
+| n8n Cloud (Automations) | ~20€ (geteilt) |
+| **Gesamt Kosten/Kunde** | **~140-190€/Monat** |
+| **Marge bei Growth 1.200€** | **~1.010-1.060€ (85%)** |
 
-**Total-Kosten für Setup einer GHL-Instanz**: ca. 97$/Monat (flat, egal wie viele Kunden!)
-**Pro Kunde**: ~50-80€ an variablen Kosten (WhatsApp API Credits etc.)
-
----
-
-## Wettbewerb & Differenzierung
-
-| Konkurrent | Preise | Problem |
-|-----------|--------|---------|
-| GoHighLevel DIY | 97-297$/Monat | Zu komplex für lokale Unternehmen |
-| Lokale Agenturen | 300-500€/Monat | Nur Einzellösungen, kein Bundle |
-| Große Agenturen | 3.000-8.000€/Monat | Zu teuer für KMU |
-
-**Unser USP**: Vollständig gemanagte All-in-One Lösung, done-for-you, klare monatliche Kosten, messbarer ROI. Keine Technik-Kenntnisse nötig. Deutschsprachiger Support.
+→ **Bruttomargin: 85%** — Extrem profitables Modell
 
 ---
 
-## Nächste Schritte
+## Nächste Schritte (Woche 1)
 
-1. ✅ Business Plan fertig
-2. ⬜ Cold Call Script erstellen (Deutsch, für alle Tier-1 Branchen)
-3. ⬜ Email-Sequenz (3 Emails) für 13k Liste
-4. ⬜ Landing Page / Pitch Deck
-5. ⬜ GoHighLevel Account aufsetzen
-6. ⬜ Erste Cold Caller briefen
-7. ⬜ Erstes Pilot-Unternehmen onboarden (ideally Freundschaftspreis für Case Study)
+- [ ] Cold Call Script finalisieren (docs/02-cold-call-script.md)
+- [ ] Email-Sequenz fertigstellen (docs/03-email-campaign.md)
+- [ ] Tech Stack einrichten (tech-stack/setup.md)
+- [ ] 2 Cold Caller finden und briefen
+- [ ] 13k Email-Liste segmentieren nach Branche
+- [ ] Landing Page bauen (ai-growth-system.de oder ähnlich)
+- [ ] Demo-Video aufnehmen (15 Min Screen Recording)
+- [ ] 10 Pilot-Calls in Zahnarzt-Nische starten
