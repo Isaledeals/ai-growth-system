@@ -1,142 +1,158 @@
-# AI Growth System — Business Plan
-**Stand: April 2026**
+# Business Plan — AI Growth System
+
+## Executive Summary
+
+AI Growth System ist ein vollständig gemanagtes AI-Automatisierungsprodukt für lokale Unternehmen im DACH-Raum.
+
+Kunden zahlen 900–1.500€/Monat recurring für ein Bundle aus 5 Modulen das Leads automatisch erfasst, nachverfolgt, Termine bucht und Google-Bewertungen sammelt.
+
+**Target**: 50 Kunden in 12 Monaten = 45.000–75.000€ MRR
 
 ---
 
-## 1. Executive Summary
+## Marktanalyse
 
-Das AI Growth System ist ein Full-Service AI-Automatisierungspaket für lokale Unternehmen in Deutschland. Wir verkaufen kein Software-Abo — wir liefern **schlüsselfertige Ergebnisse** auf monatlicher Basis.
+**Marktgröße DACH**: ~3,8 Millionen lokale Unternehmen
+**Addressable Market**: ~500.000 (aktiv nach neuen Kunden suchend, tech-offen)
+**Realistischer Anteil Jahr 1**: 50–100 Kunden
 
-**Kern-Value-Proposition:** "Wir richten alles ein, Sie machen nichts. Am Ende des ersten Monats haben Sie mindestens 8 neue Google Reviews und automatische Follow-ups für jeden Lead — oder Sie zahlen den Monat nicht."
-
----
-
-## 2. Marktanalyse
-
-### Marktgröße Deutschland
-- ~3,5 Millionen kleine Unternehmen in Deutschland (< 10 Mitarbeiter)
-- Davon ~500.000 in unserer primären Zielgruppe (lokale Dienstleister)
-- Nur ~3% nutzen aktuell AI-Automatisierung → riesige Lücke
-
-### Wettbewerbs-Landschaft
-- **NoraAI**: SaaS-Modell, 39–699€/Monat, Kunde richtet selbst ein → hohe Churn-Rate, kein Support
-- **LocalPilot**: GHL-Reseller, 97–497$/Monat, keine deutsche Betreuung
-- **Klassische Agenturen**: 2.000–5.000€/Monat Projektarbeit, kein Recurring
-- **Unser Vorteil**: Full-Service + Garantie + persönlicher Kontakt + Deutsch
+**Wettbewerb**:
+- Agenturen: Zu teuer (3.000-5.000€+), zu langsam, zu custom
+- Do-it-yourself Tools: Zu komplex für lokale Betriebe
+- Billig-Bots: Kein echtes AI, keine Integration
+- **Unser USP**: Managed + AI-Qualität + lokale Sprache + faire Preise
 
 ---
 
-## 3. Produkt
+## Revenue Model
 
-### Modul 1: AI Chatbot (Website)
-- Beantwortet Anfragen 24/7
-- Qualifiziert Leads (Name, Problem, Kontakt)
-- Übergibt an CRM oder WhatsApp
-- **Tech**: GHL Chatbot + Claude API für natürliche Antworten
+### Pricing Tiers
 
-### Modul 2: Auto Follow-up (WhatsApp + Email)
-- Jeder neue Lead bekommt sofort WhatsApp-Nachricht
-- Sequenz: Sofort → 24h → 72h → 7 Tage
-- Individuell auf Branche angepasste Texte
-- **Tech**: GHL + WhatsApp Business API (360Dialog)
+| Paket | Module | Preis | Onboarding |
+|-------|--------|-------|-----------|
+| Starter | AI Chatbot + Follow-up + Terminbuchung | 900€/Monat | 500€ |
+| Growth | + Review-Automatisierung | 1.200€/Monat | 500€ |
+| Pro | + Lead Scraping & Outreach | 1.500€/Monat | 500€ |
 
-### Modul 3: AI Terminbuchung
-- Direkte Kalenderintegration (Google Calendar, Calendly)
-- Kein hin-und-her per Telefon
-- Bestätigung + Reminder automatisch
-- **Tech**: GHL Appointments + Make.com
+### Projizierte MRR-Entwicklung
 
-### Modul 4: Reputations-Automatisierung
-- Nach jedem Termin/Kauf: Automatische Review-Anfrage per WhatsApp
-- Timing: 2h nach dem Besuch (höchste Conversion)
-- Negative Reviews intern abfangen
-- **Garantie**: 8 neue Reviews in 30 Tagen
+| Monat | Neue Kunden | Gesamt Kunden | MRR (avg 1.100€) |
+|-------|-------------|--------------|-----------------|
+| 1 | 5 | 5 | 5.500€ |
+| 2 | 8 | 13 | 14.300€ |
+| 3 | 10 | 23 | 25.300€ |
+| 4 | 10 | 33 | 36.300€ |
+| 5 | 8 | 41 | 45.100€ |
+| 6 | 7 | 48 | 52.800€ |
 
-### Modul 5: Lead Scraping + Outreach
-- Monatlich 200–500 neue potenzielle Kunden identifizieren
-- Branche + Region spezifisch
-- Erster Kontakt automatisch per Email oder WhatsApp
-- **Tech**: Apollo.io / PhantomBuster + GHL
+### Jahres-ARR Ziel: 600.000€
 
 ---
 
-## 4. Sales & Go-to-Market
+## Sales Strategy
 
-### Phase 1: Cold Calling (sofort starten)
-- 2 Cold Caller (freiberuflich oder Mini-Job)
-- Provision: 500€ pro Abschluss
-- Ziel: 5 Abschlüsse/Woche gesamt = 10 Neukunden/Monat
-- Scripts: nach Branche (siehe /scripts/)
+### Kanal 1: Cold Calling
+- 2 Cold Caller (remote, provisionsbasiert)
+- 500€ Provision pro Abschluss
+- Ziel: 2 Abschlüsse/Woche pro Caller
+- Erwartung: 4 neue Kunden/Woche = 16-18/Monat ab Monat 2
 
-### Phase 2: Email Marketing (13k Liste)
-- Segmentierung nach Branche
-- Sequenz: 3 Emails im Abstand von 3 Tagen
-- CTA: Kostenloses 20-Minuten Demo-Gespräch
-- Erwartete Conversion: 1–2% = 130–260 Demos
+**Caller-Profil**:
+- Vertriebserfahrung im B2B oder lokalen Markt
+- Fließend Deutsch
+- Motiviert durch Provision (nicht Fixgehalt)
+- Testphase: 2 Wochen, dann Entscheidung
 
-### Phase 3: Referral
-- Jeder Kunde der einen Neukunden bringt: 1 Monat gratis
-- Besonders in Handwerker-Netzwerken: Weiterempfehlung ist König
+**Recruiting**:
+- Stepstone/Indeed: "Freier Vertriebler — AI SaaS — 500€ Provision"
+- LinkedIn: Direktansprache von Vertrieblern mit lokalem Fokus
 
----
+### Kanal 2: Email-Marketing (13.000 Leads)
+- 5-Email Sequenz (Case Study First)
+- Segmentierung nach Branche + Region
+- Ziel: 2% Conversion → 260 Demo-Anfragen → 50+ Kunden
+- Tool: Brevo (300 Emails/Tag kostenlos)
 
-## 5. Finanzplan
-
-### Kosten (monatlich)
-| Position | Kosten |
-|----------|--------|
-| GoHighLevel (Agency Plan) | 280€ |
-| WhatsApp Business API (360Dialog) | ~50€/Kunde |
-| Make.com | 9€ |
-| Apollo.io (Lead Scraping) | 46€ |
-| Sonstige | ~50€ |
-| **Fix-Kosten (ohne WhatsApp)** | **~385€/Monat** |
-
-### Revenue-Projektion
-
-| Monat | Kunden | MRR | Provision Caller | Netto |
-|-------|--------|-----|-----------------|-------|
-| 1 | 3 | 3.300€ | 1.500€ | 1.415€ |
-| 2 | 7 | 8.400€ | 2.000€ | 5.715€ |
-| 3 | 12 | 14.400€ | 2.500€ | 11.515€ |
-| 6 | 25 | 30.000€ | 2.500€ | 27.115€ |
-| 12 | 50 | 60.000€ | 2.500€ | 57.115€ |
-
-**Break-Even: ab dem 1. zahlenden Kunden profitabel.**
+### Kanal 3: Content Marketing (ab Monat 2)
+- LinkedIn Posts: Case Studies von Kunden (anonymisiert)
+- "Vorher/Nachher" Stories
+- "Wie ein [Handwerker] in [Stadt] 8 neue Kunden automatisch gewann"
 
 ---
 
-## 6. Garantie-Struktur
+## Kosten-Struktur
 
-**"8 Google Reviews Garantie"**
-> "Wenn Sie in den ersten 30 Tagen nicht mindestens 8 neue verifizierte Google Reviews erhalten, bezahlen Sie diesen Monat nicht."
+### Monatliche Fixkosten
+| Posten | Kosten |
+|--------|--------|
+| Make.com Team Plan | 29€ |
+| Apollo.io | 49€ |
+| Brevo (Email) | 25€ |
+| Hetzner VPS (Cal.com) | 8€ |
+| Claude API Base | ~50€ |
+| **Total Fix** | **~161€/Monat** |
 
-- Warum das machbar ist: Zahnarzt mit 100 Patienten/Monat → 8 Reviews absolut erreichbar
-- Warum das verkauft: Kein Wettbewerber in DE bietet eine solche Garantie
-- Risiko minimal, Conversion-Effekt enorm
+### Variable Kosten (pro Kunde)
+- ~20-25€/Kunde/Monat (API, WhatsApp, anteilmäßig)
 
----
+### Sales Kosten
+- 500€ Provision pro Kunde (einmalig)
+- Bei 10 Kunden/Monat: 5.000€ Provision
 
-## 7. Onboarding-Prozess
-
-1. **Discovery Call (20 Min)**: Aktuellen Stand, Branche, Ziele
-2. **Angebot & Vertrag (24h)**: Individuell, Paket festlegen
-3. **Setup (5–7 Tage)**: Chatbot, WhatsApp, Kalender konfigurieren
-4. **Go-Live**: Alles live, Kunde tut nichts
-5. **30-Tage-Check-in**: Ergebnisse zeigen, Feedback, Upsell besprechen
-
----
-
-## 8. Metriken & KPIs
-
-| KPI | Ziel |
-|-----|------|
-| MRR | 60.000€ in Monat 12 |
-| Churn Rate | < 5%/Monat |
-| CAC | < 500€ |
-| LTV | > 10.000€ (9 Monate Retention) |
-| LTV/CAC | > 20x |
+### Break-even
+- Bei 5 Kunden: MRR 4.500€ → Fix-Kosten gedeckt
+- Ab Kunde 6: 100% Profit auf variable Marge
 
 ---
 
-*Erstellt von Trinity — AI Growth System April 2026*
+## 90-Tage-Plan
+
+### Monat 1: Foundation
+**Woche 1-2**:
+- [ ] Cold Caller rekrutieren (2 Personen)
+- [ ] Make.com Template für Handwerker-Branche bauen
+- [ ] Cal.com selbst hosten
+- [ ] Landing Page live (next.js)
+- [ ] Brevo Account + Email-Sequenz einrichten
+
+**Woche 3-4**:
+- [ ] Email-Liste segmentieren (Branche + Region)
+- [ ] Erste Email-Kampagne starten (1.000 Handwerker)
+- [ ] Cold Calls starten (Handwerker + Kosmetik)
+- [ ] Ziel: 3-5 erste Kunden
+
+### Monat 2: Sales Machine
+- Cold Caller produktiv (2 Abschlüsse/Woche)
+- Email-Kampagne auf 5.000 erweitern
+- Erste Case Studies documentieren
+- Ziel: 10+ Kunden gesamt
+
+### Monat 3: Optimize & Scale
+- Onboarding automatisieren
+- Zweite Branche erschließen (Zahnärzte)
+- LinkedIn Content starten
+- Ziel: 20+ Kunden, 22.000€+ MRR
+
+---
+
+## Risiken & Mitigation
+
+| Risiko | Wahrscheinlichkeit | Impact | Mitigation |
+|--------|-------------------|--------|-----------|
+| Cold Caller performen nicht | Mittel | Hoch | 2-Wochen-Test, schnell ersetzen |
+| WhatsApp API Probleme | Niedrig | Mittel | Backup via SMS (Twilio) |
+| Hoher Churn | Mittel | Hoch | Onboarding-Qualität, monatliche Check-ins |
+| Preis zu hoch | Niedrig | Mittel | 14-Tage-Testphase eliminiert Risiko |
+| DSGVO-Probleme | Niedrig | Hoch | EU-Server, AV-Verträge von Anfang an |
+
+---
+
+## Erfolgsmessung (KPIs)
+
+- **MRR**: Ziel Monat 3: 25.000€, Monat 6: 50.000€
+- **Churn Rate**: Max 5% pro Monat
+- **CAC**: Max 700€ (500€ Provision + 200€ Marketing)
+- **LTV**: Min 13.200€ (avg 1.100€ × 12 Monate)
+- **LTV/CAC Ratio**: Min 18:1
+- **Email Open Rate**: >35%
+- **Cold Call Conversion**: >3%
