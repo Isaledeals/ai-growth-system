@@ -12,6 +12,7 @@ export const SITE_CONFIG = {
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
   email: "kostasdias.dubai@gmail.com",
   domain: "https://aigrowthsystem.de",             // TODO: Replace with real domain
+  gaMeasurementId: "G-XXXXXXXXXX",                 // TODO: Replace with real GA4 Measurement ID
 } as const;
 
 // ------ Pricing Tiers ------

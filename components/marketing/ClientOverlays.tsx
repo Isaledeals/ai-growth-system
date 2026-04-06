@@ -17,10 +17,15 @@ const ScrollToTop = dynamic(
   () => import("@/components/marketing/ScrollToTop"),
   { ssr: false }
 );
+const GoogleAnalytics = dynamic(
+  () => import("@/components/marketing/GoogleAnalytics"),
+  { ssr: false }
+);
 
 export default function ClientOverlays() {
   return (
     <>
+      <GoogleAnalytics />
       <FloatingCTA />
       <WhatsAppButton />
       <CookieConsent />
