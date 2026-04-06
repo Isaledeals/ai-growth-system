@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PhoneOff, MessageSquareOff, CalendarX, EyeOff } from "lucide-react";
+import { PhoneOff, CalendarX, StarOff, UserX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface PainPoint {
@@ -13,27 +13,27 @@ interface PainPoint {
 const painPoints: PainPoint[] = [
   {
     icon: PhoneOff,
-    title: "Verpasste Anfragen",
+    title: "Verpasste Anrufe",
     description:
-      "Kunden rufen an und niemand geht ran. Abends um 20 Uhr kommt eine WhatsApp \u2014 du siehst sie erst morgen. Der Kunde ist l\u00e4ngst woanders.",
-  },
-  {
-    icon: MessageSquareOff,
-    title: "Kein Follow-up",
-    description:
-      "80% deiner Angebote versanden ohne Nachfass. Du wei\u00dft es, aber wer hat die Zeit 50 Leads pro Woche manuell nachzutelefonieren?",
+      "Jeder 4. Anruf geht verloren weil niemand rangeht. Das sind \u00d8 \u20ac150 pro Anruf die zur Konkurrenz gehen.",
   },
   {
     icon: CalendarX,
-    title: "No-Shows & Absagen",
+    title: "No-Shows",
     description:
-      "Termine werden vergessen, nicht wahrgenommen, kurzfristig abgesagt. Jeder leere Slot kostet dich \u20ac80-150.",
+      "18% deiner Termine erscheinen nicht. Leerer Stuhl, verlorenes Geld, kein Ersatz.",
   },
   {
-    icon: EyeOff,
-    title: "Unsichtbar bei Google",
+    icon: StarOff,
+    title: "Keine Bewertungen",
     description:
-      "Deine Konkurrenz hat 200 Google Bewertungen. Du hast 12. Raten wir mal wer den n\u00e4chsten Neukunden bekommt.",
+      "Nur 5% der zufriedenen Kunden bewerten freiwillig. Dein Google-Profil w\u00e4chst nicht.",
+  },
+  {
+    icon: UserX,
+    title: "Schlafende Kunden",
+    description:
+      "62% deiner Bestandskunden waren seit 6+ Monaten nicht mehr da. Sie haben dich vergessen \u2014 nicht umgekehrt.",
   },
 ];
 

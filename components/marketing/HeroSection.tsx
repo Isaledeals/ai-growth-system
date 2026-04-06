@@ -158,7 +158,10 @@ export default function HeroSection() {
             variants={fadeUpVariants}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl"
           >
-            Deine Konkurrenz nutzt es bereits. 147+ lokale Unternehmen in Deutschland gewinnen jeden Monat automatisch neue Kunden — während du noch Anfragen verpasst.
+            Nie wieder verpasste Anrufe. Nie wieder No-Shows. Nie wieder vergessene Kunden.{' '}
+            <span className="text-gray-300">
+              147+ lokale Unternehmen in Deutschland stoppen bereits den Umsatzverlust — vollautomatisch mit KI.
+            </span>
           </motion.p>
 
           {/* CTA Buttons */}

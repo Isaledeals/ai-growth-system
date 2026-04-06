@@ -4,13 +4,8 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight } from "lucide-react";
 import { CASE_STUDIES } from "@/lib/constants";
 
-interface CaseStudyExtended {
-  id: string;
-  business: string;
-  industry: string;
-  stats: { label: string; value: string }[];
+interface CaseStudyMeta {
   description: string;
-  quote: string;
   color: string;
   bgColor: string;
   textColor: string;
@@ -18,23 +13,24 @@ interface CaseStudyExtended {
   borderColor: string;
 }
 
-const caseStudyMeta: Record<
-  string,
-  {
-    description: string;
-    quote: string;
-    color: string;
-    bgColor: string;
-    textColor: string;
-    ringColor: string;
-    borderColor: string;
-  }
-> = {
+interface CaseStudyExtended {
+  id: string;
+  business: string;
+  industry: string;
+  stats: { label: string; value: string }[];
+  quote: string;
+  description: string;
+  color: string;
+  bgColor: string;
+  textColor: string;
+  ringColor: string;
+  borderColor: string;
+}
+
+const caseStudyMeta: Record<string, CaseStudyMeta> = {
   "zahnarzt-weber": {
     description:
       "Zahnarztpraxis mit 3 Behandlungszimmern in München. Hohe No-Show-Rate und fehlende Online-Bewertungen bremsten das Wachstum.",
-    quote:
-      "Seit wir das System nutzen, hat sich unsere No-Show-Rate drastisch reduziert. Die automatischen Erinnerungen und die Bewertungsautomatisierung laufen komplett im Hintergrund — wir konzentrieren uns endlich wieder auf unsere Patienten.",
     color: "text-blue-400",
     bgColor: "bg-blue-500/10",
     textColor: "text-blue-300",
@@ -44,8 +40,6 @@ const caseStudyMeta: Record<
   "beauty-glamour": {
     description:
       "Premium Beauty Studio in Hamburg. Stamm­kunden kamen seltener, neue Kunden fanden den Salon kaum online.",
-    quote:
-      "Innerhalb von 60 Tagen hatten wir 40 neue Google Bewertungen und reaktivierten 20% unserer inaktiven Kunden. Das sind 2.400 Euro Extra-Umsatz — jeden Monat, ganz automatisch.",
     color: "text-pink-400",
     bgColor: "bg-pink-500/10",
     textColor: "text-pink-300",
@@ -55,8 +49,6 @@ const caseStudyMeta: Record<
   "handwerk-mueller": {
     description:
       "Handwerksbetrieb mit 12 Mitarbeitern in Stuttgart. Angebote versandeten, Neukunden-Akquise war rein auf Empfehlung.",
-    quote:
-      "Früher haben wir 70% unserer Angebote nie nachgefasst. Jetzt macht das System das automatisch — und wir gewinnen 8 Neukunden pro Monat. Die 15 Stunden Zeitersparnis pro Woche nutzen wir für die eigentliche Arbeit.",
     color: "text-amber-400",
     bgColor: "bg-amber-500/10",
     textColor: "text-amber-300",
