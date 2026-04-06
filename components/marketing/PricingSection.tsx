@@ -57,6 +57,11 @@ function PricingCard({ tier }: { tier: PricingTier }) {
         {tier.name}
       </h3>
 
+      {/* Subtitle */}
+      {tier.subtitle && (
+        <p className="text-sm text-muted">{tier.subtitle}</p>
+      )}
+
       {/* Price */}
       <div className="mt-4 flex items-baseline gap-1">
         <span
@@ -171,8 +176,7 @@ export default function PricingSection() {
             <span className="gradient-text">automatisches Wachstum</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            W&auml;hle das Paket das zu deinem Unternehmen passt. Alle Pakete
-            beinhalten pers&ouml;nliches Onboarding und Support.
+            Jedes Paket macht sich ab dem ersten Monat bezahlt. Garantiert.
           </p>
         </motion.div>
 

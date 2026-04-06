@@ -18,9 +18,9 @@ interface ComparisonRow {
 const rows: ComparisonRow[] = [
   {
     feature: "Monatliche Kosten",
-    ours: { kind: "text", value: "Ab €997", color: "green" },
-    tools: { kind: "text", value: "€500-2.000+", color: "red" },
-    agency: { kind: "text", value: "€3.000-10.000", color: "red" },
+    ours: { kind: "text", value: "Ab \u20AC997", color: "green" },
+    tools: { kind: "text", value: "\u20AC500-2.000+", color: "red" },
+    agency: { kind: "text", value: "\u20AC3.000-10.000", color: "red" },
   },
   {
     feature: "Setup-Zeit",
@@ -29,7 +29,13 @@ const rows: ComparisonRow[] = [
     agency: { kind: "text", value: "Monate", color: "red" },
   },
   {
-    feature: "AI Chatbot 24/7",
+    feature: "KI-Telefonassistent 24/7",
+    ours: { kind: "check" },
+    tools: { kind: "x" },
+    agency: { kind: "x" },
+  },
+  {
+    feature: "KI-Chatbot (Multi-Channel)",
     ours: { kind: "check" },
     tools: { kind: "text", value: "Teilweise", color: "yellow" },
     agency: { kind: "check" },
@@ -41,31 +47,31 @@ const rows: ComparisonRow[] = [
     agency: { kind: "check" },
   },
   {
-    feature: "KI-Terminbuchung",
+    feature: "No-Show Killer + Warteliste",
     ours: { kind: "check" },
     tools: { kind: "x" },
-    agency: { kind: "check" },
+    agency: { kind: "x" },
   },
   {
-    feature: "Google Reviews",
+    feature: "Google Reviews Autopilot",
     ours: { kind: "check" },
     tools: { kind: "x" },
     agency: { kind: "text", value: "Manuell", color: "yellow" },
   },
   {
-    feature: "Lead Scraping",
+    feature: "Kundenreaktivierung",
     ours: { kind: "check" },
     tools: { kind: "x" },
     agency: { kind: "text", value: "Extra Kosten", color: "yellow" },
   },
   {
-    feature: "Alles aus einer Hand",
+    feature: "Social Media Autopilot",
     ours: { kind: "check" },
     tools: { kind: "x" },
     agency: { kind: "check" },
   },
   {
-    feature: "Kein technisches Wissen nötig",
+    feature: "Kein technisches Wissen n\u00F6tig",
     ours: { kind: "check" },
     tools: { kind: "x" },
     agency: { kind: "check" },
