@@ -176,7 +176,10 @@ export default function PricingSection() {
             <span className="gradient-text">automatisches Wachstum</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            Jedes Paket macht sich ab dem ersten Monat bezahlt. Garantiert.
+            Weniger als &euro;23/Tag. Deine Empfangskraft kostet &euro;2.500/Mo und arbeitet nur 8 Stunden.
+          </p>
+          <p className="mt-2 text-xs text-muted/60">
+            &Oslash; Marketing-Agentur: &euro;3.000&ndash;10.000/Mo &nbsp;|&nbsp; &Oslash; Rezeptionskraft: &euro;2.500/Mo &nbsp;|&nbsp; AI Growth System: ab &euro;697/Mo
           </p>
         </motion.div>
 
@@ -186,7 +189,7 @@ export default function PricingSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8 items-start"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl mx-auto lg:gap-8 items-start"
         >
           {PRICING.map((tier) => (
             <PricingCard key={tier.name} tier={tier} />

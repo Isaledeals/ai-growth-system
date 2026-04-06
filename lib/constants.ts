@@ -6,7 +6,7 @@
 // ------ Site Config (Placeholders — replace before launch) ------
 
 export const SITE_CONFIG = {
-  bookingUrl: "https://calendly.com/isaledeals/sales",
+  bookingUrl: "https://isale.deals/book/ai-growth-demo", // TODO: Booking-Link Slug in iSale.deals anlegen
   whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
   whatsappMessage: "Hallo! Ich interessiere mich für das AI Growth System.",
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
@@ -30,46 +30,37 @@ export interface PricingTier {
 
 export const PRICING: PricingTier[] = [
   {
-    name: "Starter",
-    subtitle: "Nie wieder einen Lead verlieren",
-    price: 997,
-    setup: 500,
+    name: "Pro",
+    subtitle: "Alle 8 Module. Null Aufwand.",
+    price: 697,
+    setup: 499,
     modules: [
       "KI-Chatbot 24/7",
-      "Automatisches Follow-up",
+      "KI-Telefonassistent",
       "Smart Terminbuchung",
       "No-Show Killer",
-    ],
-  },
-  {
-    name: "Growth",
-    subtitle: "Dein Geschäft auf Autopilot",
-    price: 1497,
-    setup: "GRATIS",
-    originalSetup: 500,
-    modules: [
-      "Alles aus Starter",
-      "KI-Telefonassistent 24/7",
+      "Automatisches Follow-up",
       "Reputations-Autopilot",
       "Kundenreaktivierung",
-      "Persönliches Onboarding",
+      "Social Media Autopilot",
     ],
-    highlight: true,
-    badge: "Beliebteste Wahl",
   },
   {
-    name: "Scale",
-    subtitle: "White-Glove für maximales Wachstum",
-    price: 2497,
+    name: "Premium",
+    subtitle: "White-Glove Service für maximales Wachstum",
+    price: 1297,
     setup: "GRATIS",
+    originalSetup: 499,
     modules: [
-      "Alles aus Growth",
-      "Social Media Autopilot",
+      "Alle 8 KI-Module inklusive",
       "Dedicated Account Manager",
       "Monatliche Strategie-Calls",
       "Priority Support (< 2h)",
+      "Individuelle Anpassungen",
+      "Quartalsweise Optimierung",
     ],
-    badge: "Premium",
+    highlight: true,
+    badge: "Empfohlen",
   },
 ];
 

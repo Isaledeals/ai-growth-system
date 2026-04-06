@@ -18,7 +18,7 @@ interface ComparisonRow {
 const rows: ComparisonRow[] = [
   {
     feature: "Monatliche Kosten",
-    ours: { kind: "text", value: "Ab \u20AC997", color: "green" },
+    ours: { kind: "text", value: "Ab \u20AC697", color: "green" },
     tools: { kind: "text", value: "\u20AC500-2.000+", color: "red" },
     agency: { kind: "text", value: "\u20AC3.000-10.000", color: "red" },
   },
