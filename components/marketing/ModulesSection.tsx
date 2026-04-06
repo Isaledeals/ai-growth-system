@@ -4,10 +4,13 @@ import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Bot,
-  MessageCircle,
+  Phone,
   CalendarCheck,
+  MessageCircle,
+  ShieldCheck,
   Star,
-  Search,
+  UserCheck,
+  Share2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -15,6 +18,7 @@ interface Module {
   icon: LucideIcon;
   title: string;
   description: string;
+  painPoint: string;
   color: string;
   bgColor: string;
   ringColor: string;
@@ -24,53 +28,91 @@ interface Module {
 const modules: Module[] = [
   {
     icon: Bot,
-    title: "AI Chatbot 24/7",
+    title: "KI-Chatbot 24/7",
     description:
-      "Beantwortet Anfragen in Sekunden, qualifiziert Leads automatisch. Aktiv auf Website, WhatsApp & Social Media.",
+      "Beantwortet Kundenanfragen in Sekunden — auf Website, WhatsApp, Instagram und Facebook. Qualifiziert Leads automatisch und bucht direkt Termine.",
+    painPoint: "62% der Anfragen kommen außerhalb der Öffnungszeiten",
     color: "text-blue-400",
     bgColor: "bg-blue-500/10",
     ringColor: "ring-blue-500/20",
     glowColor: "rgba(59, 130, 246, 0.25)",
   },
   {
-    icon: MessageCircle,
-    title: "Automatisches Follow-up",
+    icon: Phone,
+    title: "KI-Telefonassistent",
     description:
-      "WhatsApp + Email Sequenzen die Leads warm halten. Kein Lead geht mehr verloren.",
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-500/10",
-    ringColor: "ring-emerald-500/20",
-    glowColor: "rgba(16, 185, 129, 0.25)",
+      "Dein virtueller Mitarbeiter am Telefon. Nimmt jeden Anruf an, beantwortet Fragen, bucht Termine — auch um 23 Uhr oder am Wochenende.",
+    painPoint: "Jeder verpasste Anruf = Ø €150 verlorener Umsatz",
+    color: "text-rose-400",
+    bgColor: "bg-rose-500/10",
+    ringColor: "ring-rose-500/20",
+    glowColor: "rgba(244, 63, 94, 0.25)",
   },
   {
     icon: CalendarCheck,
-    title: "KI-Terminbuchung",
+    title: "Smart Terminbuchung",
     description:
-      "Bucht Termine automatisch, sendet Erinnerungen, reduziert No-Shows um 70\u201380%.",
+      "Kunden buchen online, per Chat oder am Telefon. Automatische Kalender-Synchronisation, Bestätigungen und intelligente Terminfindung.",
+    painPoint: "Manuelles Hin-und-Her kostet 5+ Stunden pro Woche",
     color: "text-violet-400",
     bgColor: "bg-violet-500/10",
     ringColor: "ring-violet-500/20",
     glowColor: "rgba(139, 92, 246, 0.25)",
   },
   {
-    icon: Star,
-    title: "Reputations-Automatisierung",
+    icon: MessageCircle,
+    title: "Automatisches Follow-up",
     description:
-      "Sammelt Google Bewertungen automatisch nach jedem Termin. Dein Ruf w\u00e4chst auf Autopilot.",
+      "WhatsApp- und Email-Sequenzen die Interessenten warm halten. Nach 5 Min, 1 Std, 1 Tag — bis der Termin steht. Kein Lead geht mehr verloren.",
+    painPoint: "80% der Leads brauchen 3-5 Kontaktpunkte bis zur Buchung",
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-500/10",
+    ringColor: "ring-emerald-500/20",
+    glowColor: "rgba(16, 185, 129, 0.25)",
+  },
+  {
+    icon: ShieldCheck,
+    title: "No-Show Killer",
+    description:
+      "SMS- und WhatsApp-Erinnerungen 24h und 1h vor dem Termin. Bei Absage: Wartelisten-Nachbesetzung in Minuten statt leerem Stuhl.",
+    painPoint: "No-Shows kosten lokale Unternehmen Ø €800-2.000/Monat",
+    color: "text-amber-400",
+    bgColor: "bg-amber-500/10",
+    ringColor: "ring-amber-500/20",
+    glowColor: "rgba(245, 158, 11, 0.25)",
+  },
+  {
+    icon: Star,
+    title: "Reputations-Autopilot",
+    description:
+      "Nach jedem Termin geht automatisch eine Review-Anfrage raus. Zufriedene Kunden bewerten auf Google, unzufriedene melden sich direkt bei dir.",
+    painPoint: "Nur 5% der zufriedenen Kunden hinterlassen freiwillig eine Bewertung",
     color: "text-yellow-400",
     bgColor: "bg-yellow-500/10",
     ringColor: "ring-yellow-500/20",
     glowColor: "rgba(234, 179, 8, 0.25)",
   },
   {
-    icon: Search,
-    title: "Lead Scraping + Outreach",
+    icon: UserCheck,
+    title: "Kundenreaktivierung",
     description:
-      "Findet neue Kunden in deiner Region und kontaktiert sie automatisch. Jeden Monat.",
+      "Automatisch Kunden kontaktieren die seit 3, 6 oder 12 Monaten nicht mehr da waren. Personalisierte Nachrichten mit Angeboten bringen sie zurück.",
+    painPoint: "Bestehende Kunden zurückzugewinnen kostet 5x weniger als Neukunden",
     color: "text-cyan-400",
     bgColor: "bg-cyan-500/10",
     ringColor: "ring-cyan-500/20",
     glowColor: "rgba(6, 182, 212, 0.25)",
+  },
+  {
+    icon: Share2,
+    title: "Social Media Autopilot",
+    description:
+      "KI generiert Posts für Instagram, Facebook und Google Business. Automatische Updates wie freie Termine, neue Bewertungen oder Aktionen.",
+    painPoint: "Konsistente Social-Media-Präsenz bringt 3x mehr Anfragen",
+    color: "text-indigo-400",
+    bgColor: "bg-indigo-500/10",
+    ringColor: "ring-indigo-500/20",
+    glowColor: "rgba(99, 102, 241, 0.25)",
   },
 ];
 
@@ -113,7 +155,7 @@ function ModuleCard({ mod }: { mod: Module }) {
       whileHover={{ scale: 1.03 }}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": mod.glowColor } as React.CSSProperties}
-      className="glass-card relative rounded-2xl p-6 sm:p-8 cursor-default transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group overflow-hidden"
+      className="glass-card relative rounded-2xl p-6 cursor-default transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group overflow-hidden flex flex-col"
     >
       {/* Spotlight radial gradient that follows mouse */}
       <div
@@ -126,27 +168,36 @@ function ModuleCard({ mod }: { mod: Module }) {
 
       {/* Icon circle */}
       <div
-        className={`relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${mod.bgColor} ${mod.color} ring-1 ${mod.ringColor} transition-all duration-300 group-hover:scale-110`}
+        className={`relative mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${mod.bgColor} ${mod.color} ring-1 ${mod.ringColor} transition-all duration-300 group-hover:scale-110`}
       >
-        <Icon className="h-7 w-7" strokeWidth={1.8} aria-hidden="true" />
+        <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
       </div>
 
       {/* Title */}
-      <h3 className="relative text-lg sm:text-xl font-semibold text-foreground mb-2">
+      <h3 className="relative text-base sm:text-lg font-semibold text-foreground mb-2">
         {mod.title}
       </h3>
 
       {/* Description */}
-      <p className="relative text-muted leading-relaxed text-sm sm:text-base">
+      <p className="relative text-muted leading-relaxed text-sm flex-1">
         {mod.description}
       </p>
+
+      {/* Pain Point badge */}
+      <div className="relative mt-4 pt-3 border-t border-white/5">
+        <span
+          className={`inline-block text-xs font-medium px-3 py-1.5 rounded-full ${mod.bgColor} ${mod.color} ring-1 ${mod.ringColor}`}
+        >
+          {mod.painPoint}
+        </span>
+      </div>
     </motion.div>
   );
 }
 
 export default function ModulesSection() {
-  const topRow = modules.slice(0, 3);
-  const bottomRow = modules.slice(3);
+  const topRow = modules.slice(0, 4);
+  const bottomRow = modules.slice(4);
 
   return (
     <section id="module" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -156,7 +207,7 @@ export default function ModulesSection() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -166,34 +217,34 @@ export default function ModulesSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            5 Module. Ein System.{" "}
-            <span className="gradient-text">Null Aufwand</span> f&uuml;r dich.
+            8 Module. Ein System.{" "}
+            <span className="gradient-text">Null Aufwand f&uuml;r dich.</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            Alles was du brauchst, um Kunden zu gewinnen und zu halten &mdash; vollautomatisch.
+            Jedes Modul l&ouml;st ein echtes Alltagsproblem &mdash; vollautomatisch.
           </p>
         </motion.div>
 
-        {/* Top row: 3 cards */}
+        {/* Top row: 4 cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {topRow.map((mod) => (
             <ModuleCard key={mod.title} mod={mod} />
           ))}
         </motion.div>
 
-        {/* Bottom row: 2 cards centered */}
+        {/* Bottom row: 4 cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {bottomRow.map((mod) => (
             <ModuleCard key={mod.title} mod={mod} />
