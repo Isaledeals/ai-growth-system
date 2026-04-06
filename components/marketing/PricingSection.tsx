@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Check, ShieldCheck } from "lucide-react";
 import { PRICING, type PricingTier } from "@/lib/constants";
@@ -28,17 +29,41 @@ function formatPrice(price: number): string {
 
 function PricingCard({ tier }: { tier: PricingTier }) {
   const isHighlight = tier.highlight === true;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowColor = isHighlight ? "rgba(16, 185, 129, 0.25)" : "rgba(59, 130, 246, 0.25)";
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
 
   return (
     <motion.div
+      ref={cardRef}
       variants={cardVariants}
       whileHover={{ scale: isHighlight ? 1.02 : 1.04 }}
-      className={`relative flex flex-col rounded-2xl p-6 sm:p-8 transition-shadow duration-300 ${
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": glowColor } as React.CSSProperties}
+      className={`relative flex flex-col rounded-2xl p-6 sm:p-8 transition-all duration-300 group overflow-hidden hover:shadow-[0_0_30px_var(--hover-glow)] ${
         isHighlight
           ? "glass-card ring-2 ring-emerald-500/50 shadow-[0_0_40px_rgba(16,185,129,0.2)] lg:scale-105 lg:z-10"
           : "glass-card"
       }`}
     >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
       {/* Badge */}
       {tier.badge && (
         <div
@@ -53,17 +78,17 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       )}
 
       {/* Tier Name */}
-      <h3 className="mt-2 text-lg font-semibold text-foreground">
+      <h3 className="relative mt-2 text-lg font-semibold text-foreground">
         {tier.name}
       </h3>
 
       {/* Subtitle */}
       {tier.subtitle && (
-        <p className="text-sm text-muted">{tier.subtitle}</p>
+        <p className="relative text-sm text-muted">{tier.subtitle}</p>
       )}
 
       {/* Price */}
-      <div className="mt-4 flex items-baseline gap-1">
+      <div className="relative mt-4 flex items-baseline gap-1">
         <span
           className={`text-4xl sm:text-5xl font-extrabold tracking-tight ${
             isHighlight ? "gradient-text" : "text-foreground"
@@ -75,7 +100,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       </div>
 
       {/* Setup Fee */}
-      <p className="mt-2 text-sm text-muted">
+      <p className="relative mt-2 text-sm text-muted">
         Setup:{" "}
         {tier.originalSetup ? (
           <>
@@ -101,7 +126,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
 
       {/* Urgency label for highlighted tier with originalSetup */}
       {isHighlight && tier.originalSetup && (
-        <div className="mt-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-2 text-center">
+        <div className="relative mt-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-2 text-center">
           <p className="text-xs font-semibold text-emerald-400">
             Spare &euro;{formatPrice(tier.originalSetup)} &mdash; Setup GRATIS bei Buchung diese Woche
           </p>
@@ -109,10 +134,10 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       )}
 
       {/* Divider */}
-      <div className="my-6 h-px bg-border/50" />
+      <div className="relative my-6 h-px bg-border/50" />
 
       {/* Feature List */}
-      <ul className="flex flex-1 flex-col gap-3">
+      <ul className="relative flex flex-1 flex-col gap-3">
         {tier.modules.map((mod) => (
           <li key={mod} className="flex items-start gap-3 text-sm">
             <Check
@@ -130,7 +155,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       {/* CTA Button */}
       <a
         href="#demo"
-        className={`mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 ${
+        className={`relative mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 ${
           isHighlight
             ? "text-white hover:brightness-110 hover:shadow-lg hover:shadow-emerald-500/25"
             : "border border-white/20 bg-white/5 text-white backdrop-blur-sm hover:border-white/40 hover:bg-white/10"

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
@@ -132,6 +133,97 @@ const fadeUpVariants = {
   },
 };
 
+const TABLE_GLOW = "rgba(16, 185, 129, 0.2)";
+const MOBILE_CARD_GLOW = "rgba(16, 185, 129, 0.2)";
+
+function DesktopTableCard({ children }: { children: React.ReactNode }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={fadeUpVariants}
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": TABLE_GLOW } as React.CSSProperties}
+      className="glass-card relative overflow-hidden rounded-2xl group transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)]"
+    >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(400px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+      {children}
+    </motion.div>
+  );
+}
+
+function MobileComparisonCard({ row }: { row: ComparisonRow }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={fadeUpVariants}
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": MOBILE_CARD_GLOW } as React.CSSProperties}
+      className="glass-card relative rounded-xl p-5 group overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20"
+    >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
+      <h3 className="relative mb-3 text-sm font-semibold text-foreground">
+        {row.feature}
+      </h3>
+      <div className="relative flex flex-col gap-2">
+        {/* Our value — highlighted */}
+        <div className="flex items-center justify-between rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
+          <span className="text-xs font-medium text-emerald-400">
+            AI Growth System
+          </span>
+          <Cell cell={row.ours} />
+        </div>
+        <div className="flex items-center justify-between px-3 py-2">
+          <span className="text-xs text-muted">Einzeltools</span>
+          <Cell cell={row.tools} />
+        </div>
+        <div className="flex items-center justify-between px-3 py-2">
+          <span className="text-xs text-muted">Agentur</span>
+          <Cell cell={row.agency} />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ComparisonSection() {
   return (
     <section
@@ -171,7 +263,7 @@ export default function ComparisonSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="hidden md:block"
         >
-          <motion.div variants={fadeUpVariants} className="glass-card overflow-hidden rounded-2xl">
+          <DesktopTableCard>
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-border/50">
@@ -250,7 +342,7 @@ export default function ComparisonSection() {
                   "inset 1px 0 0 rgba(16,185,129,0.25), inset -1px 0 0 rgba(59,130,246,0.25)",
               }}
             />
-          </motion.div>
+          </DesktopTableCard>
         </motion.div>
 
         {/* ── Mobile: Stacked Cards (visible on small screens) ── */}
@@ -262,32 +354,7 @@ export default function ComparisonSection() {
           className="flex flex-col gap-4 md:hidden"
         >
           {rows.map((row) => (
-            <motion.div
-              key={row.feature}
-              variants={fadeUpVariants}
-              className="glass-card rounded-xl p-5"
-            >
-              <h3 className="mb-3 text-sm font-semibold text-foreground">
-                {row.feature}
-              </h3>
-              <div className="flex flex-col gap-2">
-                {/* Our value — highlighted */}
-                <div className="flex items-center justify-between rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
-                  <span className="text-xs font-medium text-emerald-400">
-                    AI Growth System
-                  </span>
-                  <Cell cell={row.ours} />
-                </div>
-                <div className="flex items-center justify-between px-3 py-2">
-                  <span className="text-xs text-muted">Einzeltools</span>
-                  <Cell cell={row.tools} />
-                </div>
-                <div className="flex items-center justify-between px-3 py-2">
-                  <span className="text-xs text-muted">Agentur</span>
-                  <Cell cell={row.agency} />
-                </div>
-              </div>
-            </motion.div>
+            <MobileComparisonCard key={row.feature} row={row} />
           ))}
         </motion.div>
       </div>

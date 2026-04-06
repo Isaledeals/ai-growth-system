@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { FAQ, type FaqItem } from "@/lib/constants";
+
+const FAQ_GLOW_COLOR = "rgba(59, 130, 246, 0.2)";
 
 function FAQItem({
   item,
@@ -16,18 +18,42 @@ function FAQItem({
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="glass-card rounded-2xl overflow-hidden"
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": FAQ_GLOW_COLOR } as React.CSSProperties}
+      className="glass-card relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20"
     >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors duration-200 hover:bg-white/5"
+        className="relative flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors duration-200 hover:bg-white/5"
         aria-expanded={isOpen}
       >
         <span className="text-sm sm:text-base font-semibold text-foreground leading-snug">
@@ -51,7 +77,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 pt-0">
+            <div className="relative px-6 pb-5 pt-0">
               <p className="text-sm sm:text-base text-muted leading-relaxed">
                 {item.answer}
               </p>

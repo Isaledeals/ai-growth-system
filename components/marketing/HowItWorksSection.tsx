@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Phone, Settings, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -9,6 +10,7 @@ interface Step {
   icon: LucideIcon;
   title: string;
   description: string;
+  glowColor: string;
 }
 
 const steps: Step[] = [
@@ -18,6 +20,7 @@ const steps: Step[] = [
     title: "Kostenloser Demo-Call",
     description:
       "In 15 Minuten zeigen wir dir live wie das System f\u00fcr DEINE Branche funktioniert. Keine Verpflichtung.",
+    glowColor: "rgba(59, 130, 246, 0.2)",
   },
   {
     number: "02",
@@ -25,6 +28,7 @@ const steps: Step[] = [
     title: "Wir richten alles ein",
     description:
       "Unser Team konfiguriert das komplette System f\u00fcr dich. Du musst keinen Finger r\u00fchren.",
+    glowColor: "rgba(16, 185, 129, 0.2)",
   },
   {
     number: "03",
@@ -32,6 +36,7 @@ const steps: Step[] = [
     title: "Dein Business w\u00e4chst automatisch",
     description:
       "Das System arbeitet 24/7. Du bekommst mehr Anfragen, mehr Termine, mehr Kunden \u2014 auf Autopilot.",
+    glowColor: "rgba(139, 92, 246, 0.2)",
   },
 ];
 
@@ -52,6 +57,71 @@ const stepVariants = {
     transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
+
+function StepCard({ step }: { step: Step }) {
+  const Icon = step.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={stepVariants}
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": step.glowColor } as React.CSSProperties}
+      className="relative flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center gap-5 lg:gap-0 pl-16 lg:pl-0 group rounded-2xl lg:p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] overflow-hidden"
+    >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
+      {/* Step number with gradient */}
+      <div className="absolute left-0 lg:relative flex-shrink-0">
+        <div className="relative flex h-16 w-16 items-center justify-center">
+          {/* Glow ring */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-20 blur-md" />
+          {/* Number circle */}
+          <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-surface ring-2 ring-accent/30">
+            <span className="text-2xl font-bold gradient-text">
+              {step.number}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative lg:mt-6">
+        {/* Icon */}
+        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 lg:mx-auto transition-all duration-300 group-hover:scale-110">
+          <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+        </div>
+
+        {/* Title */}
+        <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+          {step.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-muted leading-relaxed text-sm sm:text-base max-w-xs lg:mx-auto">
+          {step.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function HowItWorksSection() {
   return (
@@ -92,47 +162,9 @@ export default function HowItWorksSection() {
           <div className="lg:hidden absolute top-0 bottom-0 left-8 w-[2px] bg-gradient-to-b from-primary via-accent to-primary opacity-20" />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-            {steps.map((step) => {
-              const Icon = step.icon;
-              return (
-                <motion.div
-                  key={step.number}
-                  variants={stepVariants}
-                  className="relative flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center gap-5 lg:gap-0 pl-16 lg:pl-0"
-                >
-                  {/* Step number with gradient */}
-                  <div className="absolute left-0 lg:relative flex-shrink-0">
-                    <div className="relative flex h-16 w-16 items-center justify-center">
-                      {/* Glow ring */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-20 blur-md" />
-                      {/* Number circle */}
-                      <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-surface ring-2 ring-accent/30">
-                        <span className="text-2xl font-bold gradient-text">
-                          {step.number}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="lg:mt-6">
-                    {/* Icon */}
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 lg:mx-auto">
-                      <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-                      {step.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-muted leading-relaxed text-sm sm:text-base max-w-xs lg:mx-auto">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {steps.map((step) => (
+              <StepCard key={step.number} step={step} />
+            ))}
           </div>
         </motion.div>
 

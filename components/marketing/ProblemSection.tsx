@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { PhoneOff, CalendarX, StarOff, UserX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -55,6 +56,57 @@ const cardVariants = {
   },
 };
 
+const GLOW_COLOR = "rgba(239, 68, 68, 0.25)";
+
+function PainPointCard({ point }: { point: PainPoint }) {
+  const Icon = point.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={cardVariants}
+      onMouseMove={handleMouseMove}
+      style={{ "--hover-glow": GLOW_COLOR } as React.CSSProperties}
+      className="glass-card relative rounded-2xl p-6 sm:p-8 group hover:border-red-500/30 transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] overflow-hidden"
+    >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
+      {/* Icon */}
+      <div className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400 ring-1 ring-red-500/20 group-hover:bg-red-500/15 transition-all duration-300 group-hover:scale-110">
+        <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+      </div>
+
+      {/* Title */}
+      <h3 className="relative text-lg sm:text-xl font-semibold text-foreground mb-2">
+        {point.title}
+      </h3>
+
+      {/* Description */}
+      <p className="relative text-muted leading-relaxed text-sm sm:text-base">
+        {point.description}
+      </p>
+    </motion.div>
+  );
+}
+
 export default function ProblemSection() {
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -87,31 +139,9 @@ export default function ProblemSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {painPoints.map((point) => {
-            const Icon = point.icon;
-            return (
-              <motion.div
-                key={point.title}
-                variants={cardVariants}
-                className="glass-card rounded-2xl p-6 sm:p-8 group hover:border-red-500/30 transition-colors duration-300"
-              >
-                {/* Icon */}
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400 ring-1 ring-red-500/20 group-hover:bg-red-500/15 transition-colors duration-300">
-                  <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-                  {point.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted leading-relaxed text-sm sm:text-base">
-                  {point.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {painPoints.map((point) => (
+            <PainPointCard key={point.title} point={point} />
+          ))}
         </motion.div>
       </div>
     </section>
