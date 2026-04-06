@@ -7,15 +7,15 @@ const productLinks = [
 ];
 
 const companyLinks = [
-  { label: "\u00dcber uns", href: "#" },
-  { label: "Kontakt", href: "#" },
-  { label: "Karriere", href: "#" },
+  { label: "Module", href: "#module" },
+  { label: "So funktioniert\u2019s", href: "#so-funktionierts" },
+  { label: "Kontakt", href: "#demo" },
 ];
 
 const legalLinks = [
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
-  { label: "AGB", href: "#" },
+  { label: "AGB", href: "/agb" },
 ];
 
 const socialLinks: { icon: ReactNode; href: string; label: string }[] = [

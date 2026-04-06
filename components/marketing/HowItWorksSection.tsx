@@ -177,7 +177,7 @@ export default function HowItWorksSection() {
           className="mt-16 text-center"
         >
           <a
-            href="#contact"
+            href="#demo"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />

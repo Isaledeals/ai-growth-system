@@ -190,11 +190,11 @@ export default function CaseStudiesSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            Echte Ergebnisse.{" "}
-            <span className="gradient-text">Echte Unternehmen.</span>
+            So kann dein Ergebnis aussehen.{" "}
+            <span className="gradient-text">Branchenbeispiele.</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            So profitieren lokale Unternehmen bereits von unserem KI-System.
+            Beispielberechnungen basierend auf Branchendurchschnittswerten und typischen Ergebnissen vergleichbarer Unternehmen.
           </p>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
@@ -221,7 +221,7 @@ export default function CaseStudiesSection() {
           className="mt-14 text-center"
         >
           <a
-            href="#contact"
+            href="#demo"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
           >
             Werde die nächste Erfolgsgeschichte

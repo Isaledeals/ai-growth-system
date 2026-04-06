@@ -294,11 +294,80 @@ export default function DatenschutzPage() {
             <h2 className="text-xl font-semibold text-foreground mb-4">
               8. Analyse-Tools und Werbung
             </h2>
+
+            <h3 className="text-base font-medium text-foreground mb-2">
+              Google Analytics 4
+            </h3>
+            <p className="text-muted leading-relaxed text-sm mb-4">
+              Diese Website nutzt Google Analytics 4, einen Webanalysedienst der
+              Google Ireland Limited (&bdquo;Google&ldquo;), Gordon House,
+              Barrow Street, Dublin 4, Irland. Google Analytics 4 verwendet
+              Cookies, die eine Analyse der Benutzung der Website durch Sie
+              erm&ouml;glichen. Die durch das Cookie erzeugten Informationen
+              &uuml;ber Ihre Benutzung dieser Website werden in der Regel an
+              einen Server von Google &uuml;bertragen und dort gespeichert.
+            </p>
+
+            <h3 className="text-base font-medium text-foreground mb-2">
+              IP-Anonymisierung
+            </h3>
+            <p className="text-muted leading-relaxed text-sm mb-4">
+              Google Analytics 4 verwendet standardm&auml;&szlig;ig
+              IP-Anonymisierung. Das bedeutet, dass Ihre IP-Adresse von Google
+              innerhalb von Mitgliedstaaten der Europ&auml;ischen Union oder in
+              anderen Vertragsstaaten des Abkommens &uuml;ber den
+              Europ&auml;ischen Wirtschaftsraum gek&uuml;rzt und damit
+              anonymisiert wird. Nur in Ausnahmef&auml;llen wird die volle
+              IP-Adresse an einen Server von Google in den USA &uuml;bertragen
+              und dort gek&uuml;rzt.
+            </p>
+
+            <h3 className="text-base font-medium text-foreground mb-2">
+              Cookie-Einwilligung
+            </h3>
+            <p className="text-muted leading-relaxed text-sm mb-4">
+              Google Analytics Cookies werden erst nach Ihrer ausdr&uuml;cklichen
+              Einwilligung &uuml;ber unseren Cookie-Consent-Banner gesetzt. Ohne
+              Ihre Einwilligung findet kein Tracking durch Google Analytics
+              statt. Sie k&ouml;nnen Ihre Einwilligung jederzeit &uuml;ber den
+              Cookie-Banner widerrufen.
+            </p>
+
+            <h3 className="text-base font-medium text-foreground mb-2">
+              Rechtsgrundlage
+            </h3>
+            <p className="text-muted leading-relaxed text-sm mb-4">
+              Die Nutzung von Google Analytics erfolgt auf Grundlage Ihrer
+              Einwilligung gem&auml;&szlig; Art. 6 Abs. 1 lit. a DSGVO. Sie
+              k&ouml;nnen eine bereits erteilte Einwilligung jederzeit
+              widerrufen. Die Rechtm&auml;&szlig;igkeit der bis zum Widerruf
+              erfolgten Datenverarbeitung bleibt vom Widerruf unber&uuml;hrt.
+            </p>
+
+            <h3 className="text-base font-medium text-foreground mb-2">
+              Weitere Informationen
+            </h3>
             <p className="text-muted leading-relaxed text-sm">
-              Wir setzen derzeit keine Analyse-Tools oder Werbetracker von
-              Drittanbietern ein. Sollte sich dies in Zukunft &auml;ndern,
-              werden wir diese Datenschutzerkl&auml;rung entsprechend
-              aktualisieren und Sie gegebenenfalls um Ihre Einwilligung bitten.
+              N&auml;here Informationen zu Nutzungsbedingungen und Datenschutz
+              von Google Analytics finden Sie unter:{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-light hover:underline"
+              >
+                https://policies.google.com/privacy
+              </a>{" "}
+              sowie unter:{" "}
+              <a
+                href="https://support.google.com/analytics/answer/6004245"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-light hover:underline"
+              >
+                https://support.google.com/analytics/answer/6004245
+              </a>
+              .
             </p>
           </section>
 

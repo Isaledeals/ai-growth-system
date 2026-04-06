@@ -219,8 +219,8 @@ export interface CaseStudy {
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: "zahnarzt-weber",
-    business: "Zahnarztpraxis Dr. Weber",
-    industry: "Zahnarztpraxis, München",
+    business: "Beispiel: Zahnarztpraxis",
+    industry: "Zahnarztpraxis, Großstadt",
     quote: "Wir verpassen keinen Anruf mehr. Allein der KI-Telefonassistent hat uns im ersten Monat 12 neue Patienten gebracht die sonst bei der Konkurrenz gelandet wären.",
     stats: [
       { label: "Mehr Terminbuchungen", value: "+34%" },
@@ -231,8 +231,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: "beauty-glamour",
-    business: "Beauty Studio Glamour",
-    industry: "Beauty & Kosmetik, Hamburg",
+    business: "Beispiel: Beauty Studio",
+    industry: "Beauty & Kosmetik, Großstadt",
     quote: "Die Kundenreaktivierung allein bringt uns €2.400 Extra-Umsatz pro Monat. Kunden die wir komplett vergessen hatten kommen jetzt regelmäßig wieder.",
     stats: [
       { label: "Reaktivierte Kunden", value: "38 in 90 Tagen" },
@@ -243,8 +243,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: "handwerk-mueller",
-    business: "Müller Elektrotechnik",
-    industry: "Handwerk, Stuttgart",
+    business: "Beispiel: Elektrotechnik-Betrieb",
+    industry: "Handwerk, Großstadt",
     quote: "Früher haben wir 30% der Anrufe verpasst weil wir auf der Baustelle waren. Jetzt nimmt die KI jeden Anruf an und bucht direkt Besichtigungstermine.",
     stats: [
       { label: "Verpasste Anrufe", value: "von 30% auf 0%" },
