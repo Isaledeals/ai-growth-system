@@ -38,7 +38,7 @@ function FAQItem({
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="shrink-0"
         >
-          <ChevronDown className="h-5 w-5 text-muted" />
+          <ChevronDown className="h-5 w-5 text-muted" aria-hidden="true" />
         </motion.span>
       </button>
 

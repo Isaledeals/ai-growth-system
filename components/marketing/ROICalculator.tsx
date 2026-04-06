@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calculator,
@@ -92,6 +92,137 @@ function formatCurrency(value: number): string {
   }).format(value);
 }
 
+function useAnimatedCounter(target: number, shouldAnimate: boolean, duration = 1500) {
+  const [count, setCount] = useState(0);
+  const animatedRef = useRef(false);
+
+  const animate = useCallback(() => {
+    if (animatedRef.current) return;
+    animatedRef.current = true;
+
+    const startTime = performance.now();
+
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }, [target, duration]);
+
+  useEffect(() => {
+    if (shouldAnimate) {
+      // Reset for new calculations
+      animatedRef.current = false;
+      setCount(0);
+      // Small delay so the entering animation plays first
+      const timer = setTimeout(() => animate(), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [shouldAnimate, target, animate]);
+
+  return count;
+}
+
+interface ResultsDisplayProps {
+  results: { additionalRevenue: number; roi: number; daysToPayback: number };
+  resultsKey: number;
+  onGoBack: () => void;
+}
+
+function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) {
+  const shouldAnimate = resultsKey > 0;
+  const animatedRevenue = useAnimatedCounter(results.additionalRevenue, shouldAnimate, 1500);
+  const animatedROI = useAnimatedCounter(Math.abs(results.roi), shouldAnimate, 1500);
+  const animatedDays = useAnimatedCounter(results.daysToPayback, shouldAnimate, 1500);
+
+  return (
+    <>
+      {/* Results grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
+        {/* Additional Revenue */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="rounded-xl bg-accent/10 ring-1 ring-accent/20 p-5 sm:p-6 text-center"
+        >
+          <Euro className="h-6 w-6 text-accent mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-accent tabular-nums">
+            {formatCurrency(shouldAnimate ? animatedRevenue : results.additionalRevenue)}
+          </div>
+          <div className="text-sm text-muted mt-1">
+            Zusätzlicher Umsatz/Monat
+          </div>
+        </motion.div>
+
+        {/* ROI */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="rounded-xl bg-primary/10 ring-1 ring-primary/20 p-5 sm:p-6 text-center"
+        >
+          <TrendingUp className="h-6 w-6 text-primary mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tabular-nums">
+            {results.roi > 0 ? "+" : results.roi < 0 ? "-" : ""}
+            {shouldAnimate ? animatedROI : Math.abs(results.roi)}%
+          </div>
+          <div className="text-sm text-muted mt-1">ROI</div>
+        </motion.div>
+
+        {/* Days to Payback */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="rounded-xl bg-surface-light ring-1 ring-border p-5 sm:p-6 text-center"
+        >
+          <Clock className="h-6 w-6 text-foreground mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tabular-nums">
+            {shouldAnimate ? animatedDays : results.daysToPayback}
+          </div>
+          <div className="text-sm text-muted mt-1">
+            Amortisiert in Tagen
+          </div>
+        </motion.div>
+      </div>
+
+      {/* CTA */}
+      <div className="text-center">
+        <a
+          href="#contact"
+          className="pulse-glow inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
+        >
+          <Phone className="h-5 w-5" aria-hidden="true" />
+          Diese Ergebnisse für DEIN Unternehmen — Demo buchen
+        </a>
+        <p className="mt-3 text-xs text-muted">
+          Kostenlos &middot; Unverbindlich &middot; Individuelle
+          Berechnung
+        </p>
+      </div>
+
+      {/* Back link */}
+      <div className="mt-6 text-center">
+        <button
+          onClick={onGoBack}
+          className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200 text-sm"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Werte anpassen
+        </button>
+      </div>
+    </>
+  );
+}
+
 export default function ROICalculator() {
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
@@ -100,6 +231,7 @@ export default function ROICalculator() {
   );
   const [monthlyInquiries, setMonthlyInquiries] = useState(60);
   const [orderValue, setOrderValue] = useState(0);
+  const [resultsKey, setResultsKey] = useState(0);
 
   const currentIndustry = industries.find((i) => i.key === selectedIndustry);
 
@@ -114,6 +246,9 @@ export default function ROICalculator() {
 
   function goToStep(target: number) {
     setDirection(target > step ? 1 : -1);
+    if (target === 3) {
+      setResultsKey((k) => k + 1);
+    }
     setStep(target);
   }
 
@@ -185,7 +320,7 @@ export default function ROICalculator() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-gray-300 backdrop-blur-sm">
-            <Calculator className="h-4 w-4 text-accent" />
+            <Calculator className="h-4 w-4 text-accent" aria-hidden="true" />
             ROI-Rechner
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
@@ -211,6 +346,8 @@ export default function ROICalculator() {
                     goToStep(s);
                   }
                 }}
+                aria-label={`Schritt ${s}${s === 1 ? ': Branche wählen' : s === 2 ? ': Deine Zahlen' : ': Ergebnis'}`}
+                aria-current={s === step ? "step" : undefined}
                 className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-all duration-300 ${
                   s === step
                     ? "bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/25"
@@ -280,7 +417,7 @@ export default function ROICalculator() {
                               : "bg-primary/10 text-primary group-hover:bg-primary/15"
                           }`}
                         >
-                          <Icon className="h-6 w-6" strokeWidth={1.8} />
+                          <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
                         </div>
                         <span
                           className={`text-sm sm:text-base font-medium transition-colors duration-300 ${
@@ -330,6 +467,7 @@ export default function ROICalculator() {
                       max={200}
                       step={5}
                       value={monthlyInquiries}
+                      aria-label={`Monatliche Anfragen: ${monthlyInquiries}`}
                       onChange={(e) =>
                         setMonthlyInquiries(Number(e.target.value))
                       }
@@ -347,7 +485,7 @@ export default function ROICalculator() {
                       {currentIndustry.orderValueLabel}
                     </label>
                     <div className="relative">
-                      <Euro className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted" />
+                      <Euro className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted" aria-hidden="true" />
                       <input
                         type="number"
                         value={orderValue}
@@ -367,7 +505,7 @@ export default function ROICalculator() {
                     onClick={() => goToStep(1)}
                     className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200 text-sm sm:text-base"
                   >
-                    <ArrowLeft className="h-4 w-4" />
+                    <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                     Branche ändern
                   </button>
                   <button
@@ -375,7 +513,7 @@ export default function ROICalculator() {
                     className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
                   >
                     Berechnen
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               </motion.div>
@@ -401,81 +539,12 @@ export default function ROICalculator() {
                   </span>
                 </p>
 
-                {/* Results grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
-                  {/* Additional Revenue */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    className="rounded-xl bg-accent/10 ring-1 ring-accent/20 p-5 sm:p-6 text-center"
-                  >
-                    <Euro className="h-6 w-6 text-accent mx-auto mb-2" />
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-accent tabular-nums">
-                      {formatCurrency(results.additionalRevenue)}
-                    </div>
-                    <div className="text-sm text-muted mt-1">
-                      Zusätzlicher Umsatz/Monat
-                    </div>
-                  </motion.div>
-
-                  {/* ROI */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                    className="rounded-xl bg-primary/10 ring-1 ring-primary/20 p-5 sm:p-6 text-center"
-                  >
-                    <TrendingUp className="h-6 w-6 text-primary mx-auto mb-2" />
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tabular-nums">
-                      {results.roi > 0 ? "+" : ""}
-                      {results.roi}%
-                    </div>
-                    <div className="text-sm text-muted mt-1">ROI</div>
-                  </motion.div>
-
-                  {/* Days to Payback */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                    className="rounded-xl bg-surface-light ring-1 ring-border p-5 sm:p-6 text-center"
-                  >
-                    <Clock className="h-6 w-6 text-foreground mx-auto mb-2" />
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tabular-nums">
-                      {results.daysToPayback}
-                    </div>
-                    <div className="text-sm text-muted mt-1">
-                      Amortisiert in Tagen
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* CTA */}
-                <div className="text-center">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
-                  >
-                    <Phone className="h-5 w-5" />
-                    Diese Ergebnisse für DEIN Unternehmen — Demo buchen
-                  </a>
-                  <p className="mt-3 text-xs text-muted">
-                    Kostenlos &middot; Unverbindlich &middot; Individuelle
-                    Berechnung
-                  </p>
-                </div>
-
-                {/* Back link */}
-                <div className="mt-6 text-center">
-                  <button
-                    onClick={() => goToStep(2)}
-                    className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200 text-sm"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    Werte anpassen
-                  </button>
-                </div>
+                {/* Results grid with animated counters */}
+                <ResultsDisplay
+                  results={results}
+                  resultsKey={resultsKey}
+                  onGoBack={() => goToStep(2)}
+                />
               </motion.div>
             )}
           </AnimatePresence>

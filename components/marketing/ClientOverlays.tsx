@@ -13,6 +13,10 @@ const CookieConsent = dynamic(
   () => import("@/components/marketing/CookieConsent"),
   { ssr: false }
 );
+const ScrollToTop = dynamic(
+  () => import("@/components/marketing/ScrollToTop"),
+  { ssr: false }
+);
 
 export default function ClientOverlays() {
   return (
@@ -20,6 +24,7 @@ export default function ClientOverlays() {
       <FloatingCTA />
       <WhatsAppButton />
       <CookieConsent />
+      <ScrollToTop />
     </>
   );
 }

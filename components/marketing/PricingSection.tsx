@@ -72,18 +72,36 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       {/* Setup Fee */}
       <p className="mt-2 text-sm text-muted">
         Setup:{" "}
-        <span
-          className={
-            tier.setup === "GRATIS"
-              ? "font-semibold text-emerald-400"
-              : "font-medium text-foreground"
-          }
-        >
-          {tier.setup === "GRATIS"
-            ? "GRATIS"
-            : `€${formatPrice(tier.setup)} einmalig`}
-        </span>
+        {tier.originalSetup ? (
+          <>
+            <span className="text-gray-500 line-through">
+              &euro;{formatPrice(tier.originalSetup)}
+            </span>{" "}
+            <span className="font-semibold text-emerald-400">GRATIS</span>
+          </>
+        ) : (
+          <span
+            className={
+              tier.setup === "GRATIS"
+                ? "font-semibold text-emerald-400"
+                : "font-medium text-foreground"
+            }
+          >
+            {tier.setup === "GRATIS"
+              ? "GRATIS"
+              : `€${formatPrice(tier.setup as number)} einmalig`}
+          </span>
+        )}
       </p>
+
+      {/* Urgency label for highlighted tier with originalSetup */}
+      {isHighlight && tier.originalSetup && (
+        <div className="mt-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-2 text-center">
+          <p className="text-xs font-semibold text-emerald-400">
+            Spare &euro;{formatPrice(tier.originalSetup)} &mdash; Setup GRATIS bei Buchung diese Woche
+          </p>
+        </div>
+      )}
 
       {/* Divider */}
       <div className="my-6 h-px bg-border/50" />
@@ -97,6 +115,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
                 isHighlight ? "text-emerald-400" : "text-blue-400"
               }`}
               strokeWidth={2.5}
+              aria-hidden="true"
             />
             <span className="text-gray-300">{mod}</span>
           </li>
@@ -184,7 +203,7 @@ export default function PricingSection() {
 
           {/* Money-back guarantee badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-sm font-medium text-emerald-400">
-            <ShieldCheck className="h-4 w-4" strokeWidth={2} />
+            <ShieldCheck className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             30 Tage Geld-zur&uuml;ck-Garantie
           </div>
         </motion.div>

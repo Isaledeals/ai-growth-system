@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Bot,
@@ -93,27 +94,50 @@ const cardVariants = {
 
 function ModuleCard({ mod }: { mod: Module }) {
   const Icon = mod.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  }, []);
+
   return (
     <motion.div
+      ref={cardRef}
       variants={cardVariants}
       whileHover={{ scale: 1.03 }}
+      onMouseMove={handleMouseMove}
       style={{ "--hover-glow": mod.glowColor } as React.CSSProperties}
-      className="glass-card rounded-2xl p-6 sm:p-8 cursor-default transition-shadow duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] group"
+      className="glass-card relative rounded-2xl p-6 sm:p-8 cursor-default transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group overflow-hidden"
     >
+      {/* Spotlight radial gradient that follows mouse */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
+        }}
+      />
+
       {/* Icon circle */}
       <div
-        className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${mod.bgColor} ${mod.color} ring-1 ${mod.ringColor} transition-all duration-300 group-hover:scale-110`}
+        className={`relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${mod.bgColor} ${mod.color} ring-1 ${mod.ringColor} transition-all duration-300 group-hover:scale-110`}
       >
-        <Icon className="h-7 w-7" strokeWidth={1.8} />
+        <Icon className="h-7 w-7" strokeWidth={1.8} aria-hidden="true" />
       </div>
 
       {/* Title */}
-      <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+      <h3 className="relative text-lg sm:text-xl font-semibold text-foreground mb-2">
         {mod.title}
       </h3>
 
       {/* Description */}
-      <p className="text-muted leading-relaxed text-sm sm:text-base">
+      <p className="relative text-muted leading-relaxed text-sm sm:text-base">
         {mod.description}
       </p>
     </motion.div>

@@ -175,7 +175,7 @@ export default function CaseStudiesSection() {
               {/* Quote */}
               <div className="px-6 sm:px-7 pb-6 sm:pb-7 mt-auto">
                 <div className="relative rounded-xl bg-surface/80 p-4 ring-1 ring-border/30">
-                  <Quote className="absolute -top-2 -left-1 h-6 w-6 text-muted/30" />
+                  <Quote className="absolute -top-2 -left-1 h-6 w-6 text-muted/30" aria-hidden="true" />
                   <p className="text-sm text-muted leading-relaxed italic pl-4">
                     &ldquo;{study.quote}&rdquo;
                   </p>
@@ -198,7 +198,7 @@ export default function CaseStudiesSection() {
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
           >
             Werde die nächste Erfolgsgeschichte
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRight className="h-5 w-5" aria-hidden="true" />
           </a>
           <p className="mt-3 text-sm text-muted">
             Kostenlose Demo &middot; Keine Verpflichtung

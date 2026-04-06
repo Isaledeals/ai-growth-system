@@ -73,6 +73,42 @@ export default function FinalCTASection() {
             mehr Kunden gewinnt &mdash; vollautomatisch.
           </motion.p>
 
+          {/* Live Counter */}
+          <motion.div
+            variants={fadeUpVariants}
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2 text-sm font-medium text-emerald-400"
+          >
+            <Calendar className="h-4 w-4" aria-hidden="true" />
+            23 Unternehmen haben diese Woche eine Demo gebucht
+          </motion.div>
+
+          {/* Avatar row + live viewers */}
+          <motion.div
+            variants={fadeUpVariants}
+            className="mt-4 flex items-center justify-center gap-3"
+          >
+            <div className="flex -space-x-2">
+              {['MK', 'SW', 'TH'].map((initials) => (
+                <div
+                  key={initials}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-900 text-xs font-bold text-white"
+                  style={{
+                    backgroundImage: 'linear-gradient(135deg, #3B82F6, #10B981)',
+                  }}
+                >
+                  {initials}
+                </div>
+              ))}
+            </div>
+            <span className="flex items-center gap-1.5 text-sm text-gray-400">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              und 12 weitere schauen sich gerade diese Seite an
+            </span>
+          </motion.div>
+
           {/* CTA Button */}
           <motion.div variants={fadeUpVariants} className="mt-10">
             <a
@@ -85,7 +121,7 @@ export default function FinalCTASection() {
                   "linear-gradient(135deg, #10B981, #059669)",
               }}
             >
-              <Calendar className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+              <Calendar className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
               Jetzt kostenlosen Demo-Call buchen
             </a>
           </motion.div>
@@ -111,7 +147,7 @@ export default function FinalCTASection() {
                   key={badge.label}
                   className="flex items-center gap-2 text-sm text-gray-400"
                 >
-                  <Icon className="h-4 w-4 text-emerald-400" strokeWidth={2} />
+                  <Icon className="h-4 w-4 text-emerald-400" strokeWidth={2} aria-hidden="true" />
                   <span>{badge.label}</span>
                 </div>
               );

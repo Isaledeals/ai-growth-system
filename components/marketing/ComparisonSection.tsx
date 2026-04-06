@@ -88,14 +88,16 @@ function Cell({ cell }: { cell: CellType }) {
   if (cell.kind === "check") {
     return (
       <span className="inline-flex items-center justify-center rounded-full bg-emerald-500/15 p-1">
-        <Check className="h-4 w-4 text-emerald-400" strokeWidth={3} />
+        <Check className="h-4 w-4 text-emerald-400" strokeWidth={3} aria-hidden="true" />
+        <span className="sr-only">Ja</span>
       </span>
     );
   }
   if (cell.kind === "x") {
     return (
       <span className="inline-flex items-center justify-center rounded-full bg-red-500/15 p-1">
-        <X className="h-4 w-4 text-red-400" strokeWidth={3} />
+        <X className="h-4 w-4 text-red-400" strokeWidth={3} aria-hidden="true" />
+        <span className="sr-only">Nein</span>
       </span>
     );
   }

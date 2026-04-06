@@ -97,7 +97,7 @@ export default function ProblemSection() {
               >
                 {/* Icon */}
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/10 text-red-400 ring-1 ring-red-500/20 group-hover:bg-red-500/15 transition-colors duration-300">
-                  <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
                 </div>
 
                 {/* Title */}

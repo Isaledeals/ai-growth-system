@@ -3,6 +3,7 @@ import Navbar from "@/components/marketing/Navbar";
 import HeroSection from "@/components/marketing/HeroSection";
 import Footer from "@/components/marketing/Footer";
 import ClientOverlays from "@/components/marketing/ClientOverlays";
+import FAQSchema from "@/components/marketing/FAQSchema";
 
 // Lazy load below-the-fold sections
 const SocialProofBar = dynamic(() => import("@/components/marketing/SocialProofBar"));
@@ -34,6 +35,7 @@ export default function Home() {
         <FinalCTASection />
       </main>
       <Footer />
+      <FAQSchema />
       <ClientOverlays />
     </>
   );

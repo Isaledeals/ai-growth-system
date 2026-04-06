@@ -34,7 +34,7 @@ export default function FloatingCTA() {
           {/* Pulse ring */}
           <span className="pointer-events-none absolute inset-0 animate-ping rounded-full opacity-20 bg-emerald-400" />
 
-          <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
+          <Calendar className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
           <span>Demo buchen</span>
         </motion.a>
       )}

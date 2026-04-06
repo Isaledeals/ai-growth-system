@@ -117,7 +117,7 @@ export default function HowItWorksSection() {
                   <div className="lg:mt-6">
                     {/* Icon */}
                     <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 lg:mx-auto">
-                      <Icon className="h-6 w-6" strokeWidth={1.8} />
+                      <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
                     </div>
 
                     {/* Title */}
@@ -148,7 +148,7 @@ export default function HowItWorksSection() {
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
           >
-            <Phone className="h-5 w-5" />
+            <Phone className="h-5 w-5" aria-hidden="true" />
             Jetzt Demo-Call buchen
           </a>
           <p className="mt-3 text-sm text-muted">

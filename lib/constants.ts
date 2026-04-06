@@ -20,6 +20,7 @@ export interface PricingTier {
   name: string;
   price: number;
   setup: number | "GRATIS";
+  originalSetup?: number;
   modules: string[];
   highlight?: boolean;
   badge?: string;
@@ -39,7 +40,8 @@ export const PRICING: PricingTier[] = [
   {
     name: "Growth",
     price: 1297,
-    setup: 500,
+    setup: "GRATIS",
+    originalSetup: 500,
     modules: [
       "AI Chatbot 24/7",
       "Automatisches Follow-up",

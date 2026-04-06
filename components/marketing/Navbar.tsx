@@ -14,10 +14,16 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
+
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
+      setScrollProgress(progress)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -40,6 +46,19 @@ export default function Navbar() {
           : 'bg-gray-950/60 backdrop-blur-md'
       }`}
     >
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute top-0 left-0 h-[2px] transition-[width] duration-150 ease-out"
+        style={{
+          width: `${scrollProgress * 100}%`,
+          backgroundImage: 'linear-gradient(90deg, #3B82F6, #10B981)',
+        }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Scroll-Fortschritt"
+      />
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <a
@@ -95,7 +114,7 @@ export default function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
         </button>
       </nav>
 
