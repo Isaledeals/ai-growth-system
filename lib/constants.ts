@@ -6,11 +6,11 @@
 // ------ Site Config (Placeholders — replace before launch) ------
 
 export const SITE_CONFIG = {
-  bookingUrl: "https://calendly.com/DEIN-LINK",   // TODO: Replace with real Calendly link
+  bookingUrl: "https://calendly.com/isaledeals/sales",
   whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
   whatsappMessage: "Hallo! Ich interessiere mich für das AI Growth System.",
-  phone: "+49 123 456 7890",                       // TODO: Replace
-  email: "info@aigrowthsystem.de",                 // TODO: Replace
+  phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
+  email: "kostasdias.dubai@gmail.com",
   domain: "https://aigrowthsystem.de",             // TODO: Replace with real domain
 } as const;
 
