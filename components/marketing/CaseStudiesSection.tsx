@@ -39,7 +39,7 @@ const caseStudyMeta: Record<string, CaseStudyMeta> = {
     textColor: "text-blue-300",
     ringColor: "ring-blue-500/20",
     borderColor: "border-l-blue-500",
-    glowColor: "rgba(59, 130, 246, 0.25)",
+    glowColor: "rgba(16, 185, 129, 0.18)",
   },
   "beauty-glamour": {
     description:
@@ -49,7 +49,7 @@ const caseStudyMeta: Record<string, CaseStudyMeta> = {
     textColor: "text-pink-300",
     ringColor: "ring-pink-500/20",
     borderColor: "border-l-pink-500",
-    glowColor: "rgba(236, 72, 153, 0.25)",
+    glowColor: "rgba(16, 185, 129, 0.18)",
   },
   "handwerk-mueller": {
     description:
@@ -59,7 +59,7 @@ const caseStudyMeta: Record<string, CaseStudyMeta> = {
     textColor: "text-amber-300",
     ringColor: "ring-amber-500/20",
     borderColor: "border-l-amber-500",
-    glowColor: "rgba(245, 158, 11, 0.25)",
+    glowColor: "rgba(16, 185, 129, 0.18)",
   },
 };
 
@@ -106,7 +106,7 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
       whileHover={{ y: -4 }}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": study.glowColor } as React.CSSProperties}
-      className={`glass-card relative rounded-2xl overflow-hidden border-l-4 ${study.borderColor} transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group flex flex-col`}
+      className={`glass-card relative rounded-2xl overflow-hidden border border-white/10 border-l-4 ${study.borderColor} transition-colors duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group flex flex-col`}
     >
       {/* Spotlight radial gradient that follows mouse */}
       <div
@@ -173,7 +173,7 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
 
 export default function CaseStudiesSection() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full bg-primary/5 blur-3xl" />

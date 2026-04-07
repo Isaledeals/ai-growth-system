@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Geist, Geist_Mono } from "next/font/google";
+import AuroraBackground from "@/components/marketing/AuroraBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -94,6 +95,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
       <body className="min-h-full flex flex-col">
+        <AuroraBackground />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

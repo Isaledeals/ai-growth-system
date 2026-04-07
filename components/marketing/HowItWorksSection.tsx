@@ -20,7 +20,7 @@ const steps: Step[] = [
     title: "Kostenloser Demo-Call",
     description:
       "In 15 Minuten zeigen wir dir live wie das System f\u00fcr DEINE Branche funktioniert. Keine Verpflichtung.",
-    glowColor: "rgba(59, 130, 246, 0.2)",
+    glowColor: "rgba(59, 130, 246, 0.18)",
   },
   {
     number: "02",
@@ -28,7 +28,7 @@ const steps: Step[] = [
     title: "Wir richten alles ein",
     description:
       "Unser Team konfiguriert das komplette System f\u00fcr dich. Du musst keinen Finger r\u00fchren.",
-    glowColor: "rgba(16, 185, 129, 0.2)",
+    glowColor: "rgba(45, 158, 187, 0.18)",
   },
   {
     number: "03",
@@ -36,7 +36,7 @@ const steps: Step[] = [
     title: "Dein Business w\u00e4chst automatisch",
     description:
       "Das System arbeitet 24/7. Du bekommst mehr Anfragen, mehr Termine, mehr Kunden \u2014 auf Autopilot.",
-    glowColor: "rgba(139, 92, 246, 0.2)",
+    glowColor: "rgba(16, 185, 129, 0.18)",
   },
 ];
 
@@ -78,7 +78,7 @@ function StepCard({ step }: { step: Step }) {
       variants={stepVariants}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": step.glowColor } as React.CSSProperties}
-      className="relative flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center gap-5 lg:gap-0 pl-16 lg:pl-0 group rounded-2xl lg:p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] overflow-hidden"
+      className="relative flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center gap-5 lg:gap-0 pl-16 lg:pl-0 group rounded-2xl lg:p-6 lg:border lg:border-white/10 transition-colors duration-300 lg:hover:border-white/20 hover:shadow-[0_0_30px_var(--hover-glow)] overflow-hidden"
     >
       {/* Spotlight radial gradient that follows mouse */}
       <div
@@ -125,7 +125,7 @@ function StepCard({ step }: { step: Step }) {
 
 export default function HowItWorksSection() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-accent/5 blur-3xl" />

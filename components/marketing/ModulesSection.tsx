@@ -155,7 +155,7 @@ function ModuleCard({ mod }: { mod: Module }) {
       whileHover={{ scale: 1.03 }}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": mod.glowColor } as React.CSSProperties}
-      className="glass-card relative rounded-2xl p-6 cursor-default transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group overflow-hidden flex flex-col"
+      className="glass-card relative rounded-2xl p-6 cursor-default border border-white/10 transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group overflow-hidden flex flex-col"
     >
       {/* Spotlight radial gradient that follows mouse */}
       <div
@@ -200,7 +200,7 @@ export default function ModulesSection() {
   const bottomRow = modules.slice(4);
 
   return (
-    <section id="module" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="module" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />

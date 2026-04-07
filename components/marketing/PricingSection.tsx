@@ -36,7 +36,7 @@ function mapTierToPlan(tier: PricingTier): "pro" | "premium" {
 function PricingCard({ tier }: { tier: PricingTier }) {
   const isHighlight = tier.highlight === true;
   const cardRef = useRef<HTMLDivElement>(null);
-  const glowColor = isHighlight ? "rgba(16, 185, 129, 0.25)" : "rgba(59, 130, 246, 0.25)";
+  const glowColor = isHighlight ? "rgba(16, 185, 129, 0.18)" : "rgba(59, 130, 246, 0.18)";
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
@@ -55,7 +55,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       whileHover={{ scale: isHighlight ? 1.02 : 1.04 }}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": glowColor } as React.CSSProperties}
-      className={`relative flex flex-col rounded-2xl p-6 sm:p-8 transition-all duration-300 group overflow-hidden hover:shadow-[0_0_30px_var(--hover-glow)] ${
+      className={`relative flex flex-col rounded-2xl p-6 sm:p-8 border border-white/10 transition-colors duration-300 group overflow-hidden hover:border-white/20 hover:shadow-[0_0_30px_var(--hover-glow)] ${
         isHighlight
           ? "glass-card ring-2 ring-emerald-500/50 shadow-[0_0_40px_rgba(16,185,129,0.2)] lg:scale-105 lg:z-10"
           : "glass-card"
@@ -186,7 +186,7 @@ export default function PricingSection() {
   return (
     <section
       id="preise"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">

@@ -26,8 +26,12 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+html {
   background: var(--background);
+}
+
+body {
+  background: transparent;
   color: var(--foreground);
 }
 
@@ -219,4 +223,82 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ===== Aurora Background (Aufwind metaphor) ===== */
+
+/* Aurora orbs — slow, dreamy drift */
+.aurora-orb {
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1);
+  backface-visibility: hidden;
+}
+
+@keyframes auroraFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, 3%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-3%, 5%, 0) scale(1.02);
+  }
+}
+
+@keyframes auroraFloatReverse {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, -4%, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(3%, -2%, 0) scale(1.04);
+  }
+}
+
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(130px) hue-rotate(0deg);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.06);
+    filter: blur(140px) hue-rotate(20deg);
+  }
+  100% {
+    transform: translate3d(-3%, 2%, 0) scale(1.03);
+    filter: blur(130px) hue-rotate(-10deg);
+  }
+}
+
+/* Rising particles — the "Aufwind" updraft */
+.rising-particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rise {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(0, calc(-100vh - 40px), 0);
+    opacity: 0;
+  }
 }
