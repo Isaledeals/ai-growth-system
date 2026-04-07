@@ -103,7 +103,8 @@ export async function createCheckoutSession({
 
   const params: NonNullable<CreateArgs> = {
     mode: "subscription",
-    payment_method_types: ["card", "sepa_debit"],
+    // payment_method_types omitted → Stripe uses dashboard default (Card + alle aktivierten)
+    // SEPA Debit muss erst im Stripe Dashboard aktiviert werden, bevor wir es hinzufügen
     line_items: lineItems,
     success_url: successUrl,
     cancel_url: cancelUrl,

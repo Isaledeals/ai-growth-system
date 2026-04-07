@@ -326,57 +326,57 @@ ALTER TABLE dunning_events ENABLE ROW LEVEL SECURITY;
 
 -- Helper: extract tenant_id from JWT claims
 -- We use a custom claim "tenant_id" set via Supabase Auth hooks
-CREATE OR REPLACE FUNCTION auth.tenant_id()
+CREATE OR REPLACE FUNCTION public.tenant_id()
 RETURNS UUID AS $$
-  SELECT COALESCE(
-    (current_setting('request.jwt.claims', true)::jsonb ->> 'tenant_id')::uuid,
-    auth.uid()
-  );
+  SELECT NULLIF(
+    current_setting('request.jwt.claims', true)::jsonb ->> 'tenant_id',
+    ''
+  )::uuid;
 $$ LANGUAGE sql STABLE;
 
 -- ----- tenants policies -----
 DROP POLICY IF EXISTS "Tenants can view own row" ON tenants;
 CREATE POLICY "Tenants can view own row" ON tenants
-  FOR SELECT USING (id = auth.tenant_id());
+  FOR SELECT USING (id = public.tenant_id());
 
 DROP POLICY IF EXISTS "Tenants can update own row" ON tenants;
 CREATE POLICY "Tenants can update own row" ON tenants
-  FOR UPDATE USING (id = auth.tenant_id());
+  FOR UPDATE USING (id = public.tenant_id());
 
 -- ----- contacts policies -----
 DROP POLICY IF EXISTS "Contacts scoped to tenant" ON contacts;
 CREATE POLICY "Contacts scoped to tenant" ON contacts
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- ----- conversations policies -----
 DROP POLICY IF EXISTS "Conversations scoped to tenant" ON conversations;
 CREATE POLICY "Conversations scoped to tenant" ON conversations
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- ----- reviews policies -----
 DROP POLICY IF EXISTS "Reviews scoped to tenant" ON reviews;
 CREATE POLICY "Reviews scoped to tenant" ON reviews
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- ----- appointments policies -----
 DROP POLICY IF EXISTS "Appointments scoped to tenant" ON appointments;
 CREATE POLICY "Appointments scoped to tenant" ON appointments
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- ----- health_events policies -----
 DROP POLICY IF EXISTS "Health events scoped to tenant" ON health_events;
 CREATE POLICY "Health events scoped to tenant" ON health_events
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- ----- referrals policies -----
 DROP POLICY IF EXISTS "Referrals scoped to referrer" ON referrals;
 CREATE POLICY "Referrals scoped to referrer" ON referrals
-  FOR ALL USING (referrer_tenant_id = auth.tenant_id());
+  FOR ALL USING (referrer_tenant_id = public.tenant_id());
 
 -- ----- dunning_events policies -----
 DROP POLICY IF EXISTS "Dunning events scoped to tenant" ON dunning_events;
 CREATE POLICY "Dunning events scoped to tenant" ON dunning_events
-  FOR ALL USING (tenant_id = auth.tenant_id());
+  FOR ALL USING (tenant_id = public.tenant_id());
 
 -- Service role bypass: service_role key always bypasses RLS by default in Supabase.
 -- No additional policy needed for server-side operations.
