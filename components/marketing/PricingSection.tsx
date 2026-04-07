@@ -4,6 +4,7 @@ import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Check, ShieldCheck } from "lucide-react";
 import { PRICING, type PricingTier } from "@/lib/constants";
+import CheckoutButton from "./CheckoutButton";
 
 const containerVariants = {
   hidden: {},
@@ -25,6 +26,11 @@ const cardVariants = {
 
 function formatPrice(price: number): string {
   return price.toLocaleString("de-DE");
+}
+
+function mapTierToPlan(tier: PricingTier): "pro" | "premium" {
+  if (tier.name === "Premium") return "premium";
+  return "pro";
 }
 
 function PricingCard({ tier }: { tier: PricingTier }) {
@@ -153,9 +159,10 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       </ul>
 
       {/* CTA Button */}
-      <a
-        href="#demo"
-        className={`relative mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 ${
+      <CheckoutButton
+        plan={mapTierToPlan(tier)}
+        branche="default"
+        className={`relative mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed ${
           isHighlight
             ? "text-white hover:brightness-110 hover:shadow-lg hover:shadow-emerald-500/25"
             : "border border-white/20 bg-white/5 text-white backdrop-blur-sm hover:border-white/40 hover:bg-white/10"
@@ -169,8 +176,8 @@ function PricingCard({ tier }: { tier: PricingTier }) {
             : undefined
         }
       >
-        {isHighlight ? "Jetzt starten" : "Demo buchen"}
-      </a>
+        {isHighlight ? "Jetzt starten" : "Plan waehlen"}
+      </CheckoutButton>
     </motion.div>
   );
 }
