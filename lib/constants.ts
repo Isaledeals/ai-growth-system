@@ -17,6 +17,8 @@ export const SITE_CONFIG = {
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
   email: "kontakt@aufwind.ai",
   domain: "https://aufwind.ai",
+  url: "https://aufwind.ai",
+  ogImage: "https://aufwind.ai/opengraph-image",
   gaMeasurementId: "G-XXXXXXXXXX",                 // TODO: Replace with real GA4 Measurement ID
 } as const;
 
