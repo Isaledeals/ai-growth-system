@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — SEO Daten (Städte für programmatic SEO)
+// Aufwind AI — SEO Daten (Städte für programmatic SEO)
 // ============================================================
 
 export const STAEDTE = [

@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Supabase Client (Browser + Server)
+// Aufwind AI — Supabase Client (Browser + Server)
 // ============================================================
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";

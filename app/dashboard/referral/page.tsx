@@ -22,7 +22,7 @@ import {
 // ────────────────── Mock Data ──────────────────
 
 const REFERRAL_CODE = "WACHSTUM-A7K2";
-const REFERRAL_LINK = `aigrowthsystem.de/ref/${REFERRAL_CODE}`;
+const REFERRAL_LINK = `aufwind.ai/ref/${REFERRAL_CODE}`;
 
 const stats = [
   {
@@ -197,17 +197,17 @@ export default function ReferralPage() {
 
   const shareWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hey! Ich nutze das AI Growth System für mein Geschäft und spare extrem viel Zeit. Mit meinem Code ${REFERRAL_CODE} bekommst du 50% Rabatt im ersten Monat: https://${REFERRAL_LINK}`
+      `Hey! Ich nutze das Aufwind AI für mein Geschäft und spare extrem viel Zeit. Mit meinem Code ${REFERRAL_CODE} bekommst du 50% Rabatt im ersten Monat: https://${REFERRAL_LINK}`
     );
     window.open(`https://wa.me/?text=${text}`, "_blank");
   };
 
   const shareEmail = () => {
     const subject = encodeURIComponent(
-      "50% Rabatt auf das AI Growth System"
+      "50% Rabatt auf das Aufwind AI"
     );
     const body = encodeURIComponent(
-      `Hallo,\n\nich nutze das AI Growth System und bin begeistert. Damit verliere ich keinen einzigen Kundenanruf mehr und spare über 15 Stunden pro Woche.\n\nMit meinem persönlichen Code ${REFERRAL_CODE} bekommst du 50% Rabatt im ersten Monat:\nhttps://${REFERRAL_LINK}\n\nProbier es aus!\n\nViele Grüße`
+      `Hallo,\n\nich nutze das Aufwind AI und bin begeistert. Damit verliere ich keinen einzigen Kundenanruf mehr und spare über 15 Stunden pro Woche.\n\nMit meinem persönlichen Code ${REFERRAL_CODE} bekommst du 50% Rabatt im ersten Monat:\nhttps://${REFERRAL_LINK}\n\nProbier es aus!\n\nViele Grüße`
     );
     window.open(`mailto:?subject=${subject}&body=${body}`, "_blank");
   };

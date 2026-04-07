@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AGB — AI Growth System",
+  title: "AGB — Aufwind AI",
   description:
-    "Allgemeine Gesch\u00e4ftsbedingungen der DIAS SALES SOLUTIONS - FZCO f\u00fcr das AI Growth System.",
+    "Allgemeine Gesch\u00e4ftsbedingungen der DIAS SALES SOLUTIONS - FZCO f\u00fcr Aufwind AI.",
 };
 
 export default function AGBPage() {
@@ -20,7 +20,7 @@ export default function AGBPage() {
               backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
             }}
           >
-            AI Growth System
+            Aufwind AI
           </Link>
           <Link
             href="/"
@@ -49,11 +49,10 @@ export default function AGBPage() {
               DIAS SALES SOLUTIONS - FZCO, Dubai Silicon Oasis, DDP, Building A2,
               Dubai, Vereinigte Arabische Emirate (nachfolgend
               &bdquo;Anbieter&ldquo;) und dem Kunden (nachfolgend
-              &bdquo;Auftraggeber&ldquo;) &uuml;ber die Nutzung des AI Growth
-              System.
+              &bdquo;Auftraggeber&ldquo;) &uuml;ber die Nutzung von Aufwind AI.
             </p>
             <p className="text-muted leading-relaxed text-sm mb-3">
-              Das AI Growth System ist ein Done-for-you
+              Aufwind AI ist ein Done-for-you
               KI-Automatisierungsservice, der lokalen Unternehmen
               ma&szlig;geschneiderte KI-L&ouml;sungen zur Automatisierung von
               Gesch&auml;ftsprozessen bereitstellt.

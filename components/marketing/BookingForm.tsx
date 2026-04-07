@@ -126,11 +126,11 @@ function buildIcsContent(params: {
     return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
   }
 
-  const uid = `${Date.now()}@aigrowthsystem.de`;
+  const uid = `${Date.now()}@aufwind.ai`;
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//AI Growth System//Demo Booking//DE",
+    "PRODID:-//Aufwind AI//Demo Booking//DE",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
@@ -138,10 +138,10 @@ function buildIcsContent(params: {
     `DTSTAMP:${fmt(new Date())}`,
     `DTSTART:${fmt(start)}`,
     `DTEND:${fmt(end)}`,
-    "SUMMARY:Strategie-Call mit AI Growth System",
+    "SUMMARY:Strategie-Call mit Aufwind AI",
     "DESCRIPTION:30 Min kostenloser Strategie-Call mit Kostas Dias. Du erhaeltst kurz vor dem Termin den Zoom-Link per Email.",
     "LOCATION:Online (Zoom-Link folgt per Email)",
-    "ORGANIZER;CN=AI Growth System:mailto:noreply@aigrowthsystem.de",
+    "ORGANIZER;CN=Aufwind AI:mailto:kontakt@aufwind.ai",
     `ATTENDEE;CN=${params.name};RSVP=TRUE:mailto:${params.email}`,
     "STATUS:CONFIRMED",
     "BEGIN:VALARM",

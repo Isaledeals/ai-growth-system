@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Dunning Flow Logic
+// Aufwind AI — Dunning Flow Logic
 // State machine for handling failed payments
 // Actual email/SMS sending will be via n8n webhooks later
 // ============================================================

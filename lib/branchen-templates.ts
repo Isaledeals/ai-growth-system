@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Branchen-Templates
+// Aufwind AI — Branchen-Templates
 // Comprehensive industry templates for programmatic SEO pages
 // ============================================================
 

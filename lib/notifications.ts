@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — External Notifications
+// Aufwind AI — External Notifications
 // n8n webhook + Trinity API + Resend email
 // All calls are graceful: never throw, always log
 // ============================================================
@@ -9,7 +9,7 @@ const TRINITY_API_URL = process.env.TRINITY_API_URL ?? "";
 const TRINITY_API_KEY = process.env.TRINITY_API_KEY ?? "";
 const RESEND_API_KEY = process.env.RESEND_API_KEY ?? "";
 const RESEND_FROM =
-  process.env.RESEND_FROM ?? "AI Growth System <noreply@aigrowthsystem.de>";
+  process.env.RESEND_FROM ?? "Aufwind AI <kontakt@aufwind.ai>";
 
 // ------ Types ------
 
@@ -23,7 +23,7 @@ export interface BookingPayload {
   problem: string;
   preferredDate: string;
   preferredTime: string;
-  source: "ai-growth-system";
+  source: "aufwind-ai";
   receivedAt: string;
 }
 
@@ -35,7 +35,7 @@ export interface CustomerPayload {
   email: string;
   stripeCustomerId: string;
   stripeSubscriptionId: string;
-  source: "ai-growth-system";
+  source: "aufwind-ai";
   receivedAt: string;
 }
 

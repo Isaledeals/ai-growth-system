@@ -30,11 +30,11 @@ export async function generateMetadata({
 
   if (!template) {
     return {
-      title: "Branche nicht gefunden | AI Growth System",
+      title: "Branche nicht gefunden | Aufwind AI",
     };
   }
 
-  const title = `KI-Automatisierung für ${template.name} | AI Growth System`;
+  const title = `KI-Automatisierung für ${template.name} | Aufwind AI`;
   const description = `KI-Chatbot, Telefonassistent & Automatisierung speziell für ${template.name}. Mehr Termine, weniger No-Shows, bessere Google-Bewertungen — 24/7 aktiv.`;
 
   return {
@@ -48,7 +48,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${SITE_CONFIG.domain}/branche/${template.slug}`,
-      siteName: "AI Growth System",
+      siteName: "Aufwind AI",
       locale: "de_DE",
       type: "website",
     },
@@ -77,7 +77,7 @@ export default async function BranchePage({ params }: PageProps) {
     description: template.description,
     provider: {
       "@type": "Organization",
-      name: "AI Growth System by DIAS SALES SOLUTIONS",
+      name: "Aufwind AI by DIAS SALES SOLUTIONS",
       url: SITE_CONFIG.domain,
     },
     serviceType: "KI-Automatisierung",
@@ -153,7 +153,7 @@ export default async function BranchePage({ params }: PageProps) {
               {template.name} in deiner Stadt
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-center text-gray-400">
-              AI Growth System ist bundesweit verfügbar. Finde maßgeschneiderte
+              Aufwind AI ist bundesweit verfügbar. Finde maßgeschneiderte
               Lösungen für {template.name} in deiner Stadt.
             </p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

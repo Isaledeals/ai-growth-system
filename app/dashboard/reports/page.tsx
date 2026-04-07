@@ -184,7 +184,7 @@ export default function ReportsPage() {
             </span>
           </div>
           <p className="text-sm text-gray-400 mt-3">
-            Dein AI Growth System hat dir diesen Monat einen geschätzten Wert
+            Dein Aufwind AI System hat dir diesen Monat einen geschätzten Wert
             von{" "}
             <span className="text-white font-semibold">
               {totalROI.toLocaleString("de-DE")} EUR

@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Stripe Webhook Handler
+// Aufwind AI — Stripe Webhook Handler
 // POST /api/webhooks/stripe
 // ============================================================
 
@@ -97,7 +97,7 @@ async function handleCheckoutSessionCompleted(
     email,
     stripeCustomerId: customerId,
     stripeSubscriptionId: subscriptionId,
-    source: "ai-growth-system",
+    source: "aufwind-ai",
     receivedAt: new Date().toISOString(),
   };
   void sendN8nWebhook(customerPayload);

@@ -35,11 +35,11 @@ export async function generateMetadata({
 
   if (!template || !stadt) {
     return {
-      title: "Seite nicht gefunden | AI Growth System",
+      title: "Seite nicht gefunden | Aufwind AI",
     };
   }
 
-  const title = `KI-Chatbot für ${template.name} in ${stadt.name} | AI Growth System`;
+  const title = `KI-Chatbot für ${template.name} in ${stadt.name} | Aufwind AI`;
   const description = `KI-Automatisierung für ${template.name} in ${stadt.name}: Telefonassistent, Chatbot, Terminbuchung. Mehr Termine, weniger No-Shows — 24/7.`;
 
   const keywords = [
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${SITE_CONFIG.domain}/branche/${template.slug}/${stadt.slug}`,
-      siteName: "AI Growth System",
+      siteName: "Aufwind AI",
       locale: "de_DE",
       type: "website",
     },
@@ -87,7 +87,7 @@ export default async function StadtBranchePage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: `AI Growth System — KI für ${template.name} in ${stadt.name}`,
+    name: `Aufwind AI — KI für ${template.name} in ${stadt.name}`,
     description: `${template.description} Speziell für ${template.name} in ${stadt.name}.`,
     url: `${SITE_CONFIG.domain}/branche/${template.slug}/${stadt.slug}`,
     areaServed: {
@@ -214,7 +214,7 @@ export default async function StadtBranchePage({ params }: PageProps) {
               {template.name} in weiteren Städten
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-center text-gray-400">
-              AI Growth System ist deutschlandweit verfügbar. Entdecke unsere
+              Aufwind AI ist deutschlandweit verfügbar. Entdecke unsere
               Lösungen für {template.name} in weiteren Städten:
             </p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

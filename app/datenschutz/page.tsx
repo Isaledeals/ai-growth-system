@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerkl\u00e4rung — AI Growth System",
+  title: "Datenschutzerkl\u00e4rung — Aufwind AI",
   description:
     "Datenschutzerkl\u00e4rung der DIAS SALES SOLUTIONS - FZCO. Informationen zum Umgang mit Ihren personenbezogenen Daten.",
 };
@@ -20,7 +20,7 @@ export default function DatenschutzPage() {
               backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
             }}
           >
-            AI Growth System
+            Aufwind AI
           </Link>
           <Link
             href="/"

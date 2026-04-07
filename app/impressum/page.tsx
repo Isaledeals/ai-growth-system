@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Impressum — AI Growth System",
+  title: "Impressum — Aufwind AI",
   description:
     "Impressum der DIAS SALES SOLUTIONS - FZCO. Angaben gemäß gesetzlicher Vorgaben.",
 };
@@ -20,7 +20,7 @@ export default function ImpressumPage() {
               backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
             }}
           >
-            AI Growth System
+            Aufwind AI
           </Link>
           <Link
             href="/"
@@ -82,10 +82,10 @@ export default function ImpressumPage() {
               <p>
                 E-Mail:{" "}
                 <a
-                  href="mailto:kostasdias.dubai@gmail.com"
+                  href="mailto:kontakt@aufwind.ai"
                   className="text-primary-light hover:underline"
                 >
-                  kostasdias.dubai@gmail.com
+                  kontakt@aufwind.ai
                 </a>
               </p>
             </div>

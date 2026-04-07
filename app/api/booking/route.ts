@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Demo Booking API
+// Aufwind AI — Demo Booking API
 // POST /api/booking
 // ============================================================
 //
@@ -120,7 +120,7 @@ function buildConfirmationEmail(b: BookingRequestBody): string {
         </ul>
         <p style="font-size:15px;line-height:1.6;color:#D1D5DB;">
           Bis bald,<br/>
-          Kostas &amp; Team AI Growth System
+          Kostas &amp; Team Aufwind AI
         </p>
       </td></tr>
     </table>
@@ -150,7 +150,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     ...validBody,
     id: crypto.randomUUID(),
     receivedAt: new Date().toISOString(),
-    source: "ai-growth-system",
+    source: "aufwind-ai",
     userAgent: request.headers.get("user-agent") ?? "",
     ip:
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
@@ -178,7 +178,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     problem: validBody.problem,
     preferredDate: validBody.date,
     preferredTime: validBody.time,
-    source: "ai-growth-system",
+    source: "aufwind-ai",
     receivedAt: booking.receivedAt,
   };
   // Fire-and-forget — kein await, blockt nicht den Response
@@ -186,7 +186,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 
   // 3. Trinity Customer-Profil anlegen (graceful)
   void notifyTrinity("/api/customers/lead", {
-    source: "ai-growth-system",
+    source: "aufwind-ai",
     type: "demo_booking",
     booking,
   });
@@ -194,7 +194,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   // 4. Bestaetigungs-Email
   void sendEmail({
     to: validBody.email,
-    subject: "Dein Strategie-Call ist gesichert | AI Growth System",
+    subject: "Dein Strategie-Call ist gesichert | Aufwind AI",
     html: buildConfirmationEmail(validBody),
   });
 

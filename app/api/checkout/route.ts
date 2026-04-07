@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Create Checkout Session
+// Aufwind AI — Create Checkout Session
 // POST /api/checkout
 // ============================================================
 //

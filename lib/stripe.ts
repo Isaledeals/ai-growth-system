@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Stripe Client & Helpers
+// Aufwind AI — Stripe Client & Helpers
 // ============================================================
 
 import Stripe from "stripe";

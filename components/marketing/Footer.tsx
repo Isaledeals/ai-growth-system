@@ -88,7 +88,7 @@ export default function Footer() {
                 backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
               }}
             >
-              AI Growth System
+              Aufwind AI
             </span>
             <p className="mt-3 max-w-xs text-sm text-muted leading-relaxed">
               Das KI-System f&uuml;r lokale Unternehmen in Deutschland.
@@ -123,7 +123,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
           <p className="text-xs text-muted">
-            &copy; 2026 AI Growth System. Alle Rechte vorbehalten.
+            &copy; 2026 Aufwind AI. Alle Rechte vorbehalten.
           </p>
           <p className="text-xs text-muted">
             Made with ❤️ in Deutschland

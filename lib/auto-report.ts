@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Monthly Auto-Report Generator
+// Aufwind AI — Monthly Auto-Report Generator
 // Generates structured report data + HTML email for each tenant
 // ============================================================
 
@@ -394,7 +394,7 @@ export function generateReportHTML(report: MonthlyReportData): string {
     <tr>
       <td style="padding:24px;text-align:center;border-top:1px solid rgba(255,255,255,0.05);">
         <p style="margin:0;font-size:12px;color:#6B7280;">
-          Dieser Bericht wurde automatisch erstellt von deinem AI Growth System.
+          Dieser Bericht wurde automatisch erstellt von deinem Aufwind AI System.
         </p>
         <p style="margin:8px 0 0;font-size:12px;color:#6B7280;">
           Fragen? Antworte einfach auf diese Email.
@@ -446,7 +446,7 @@ export function generateReportPlainText(report: MonthlyReportData): string {
 
   lines.push(
     `---`,
-    `Automatisch erstellt von AI Growth System`,
+    `Automatisch erstellt von Aufwind AI`,
     `DIAS SALES SOLUTIONS - FZCO`
   );
 

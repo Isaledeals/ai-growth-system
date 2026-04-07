@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Health Score Calculation
+// Aufwind AI — Health Score Calculation
 // Deterministic scoring: 0-100 based on tenant activity & status
 // ============================================================
 

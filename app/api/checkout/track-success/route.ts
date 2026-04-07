@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Track Checkout Success
+// Aufwind AI — Track Checkout Success
 // POST /api/checkout/track-success
 // ============================================================
 // Wird vom SuccessTracker-Client nach erfolgreichem Stripe-Checkout
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest): Promise<Response> {
       email: "",
       stripeCustomerId: "",
       stripeSubscriptionId: "",
-      source: "ai-growth-system",
+      source: "aufwind-ai",
       receivedAt: new Date().toISOString(),
     });
 

@@ -3,9 +3,9 @@ import Link from "next/link";
 import SuccessTracker from "@/components/marketing/SuccessTracker";
 
 export const metadata: Metadata = {
-  title: "Willkommen an Bord — AI Growth System",
+  title: "Willkommen an Bord — Aufwind AI",
   description:
-    "Vielen Dank fuer dein Vertrauen. So geht es jetzt weiter mit deinem AI Growth System.",
+    "Vielen Dank fuer dein Vertrauen. So geht es jetzt weiter mit deinem Aufwind AI.",
   robots: {
     index: false,
     follow: false,
@@ -30,7 +30,7 @@ const nextSteps = [
   {
     n: "3",
     title: "Live in 5-7 Tagen",
-    text: "Dein AI Growth System ist innerhalb von 5-7 Werktagen live. Ab Tag 1 verpasst du keine Anfrage mehr.",
+    text: "Dein Aufwind AI ist innerhalb von 5-7 Werktagen live. Ab Tag 1 verpasst du keine Anfrage mehr.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default async function CheckoutSuccessPage({ searchParams }: PageProps) {
               backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
             }}
           >
-            AI Growth System
+            Aufwind AI
           </Link>
         </nav>
       </header>
@@ -176,7 +176,7 @@ export default async function CheckoutSuccessPage({ searchParams }: PageProps) {
       <footer className="border-t border-border/50 bg-[#060A14] py-8">
         <div className="mx-auto max-w-3xl px-4 text-center text-xs text-muted sm:px-6 lg:px-8">
           <p>
-            &copy; 2026 AI Growth System &middot; DIAS SALES SOLUTIONS - FZCO
+            &copy; 2026 Aufwind AI &middot; DIAS SALES SOLUTIONS - FZCO
           </p>
         </div>
       </footer>

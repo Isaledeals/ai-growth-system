@@ -7,7 +7,7 @@ import { getAllBranchenTemplates } from "@/lib/branchen-templates";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "KI-Automatisierung nach Branche | AI Growth System",
+  title: "KI-Automatisierung nach Branche | Aufwind AI",
   description:
     "Maßgeschneiderte KI-Lösungen für Zahnärzte, Friseure, Handwerk, Beauty, Gastro, Physio & Anwälte. Mehr Termine, weniger Arbeit — vollautomatisch.",
   keywords: [
@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     canonical: "/branche",
   },
   openGraph: {
-    title: "KI-Automatisierung nach Branche | AI Growth System",
+    title: "KI-Automatisierung nach Branche | Aufwind AI",
     description:
       "Maßgeschneiderte KI-Lösungen für lokale Unternehmen. Wähle deine Branche und entdecke, wie wir dein Wachstum automatisieren.",
     url: `${SITE_CONFIG.domain}/branche`,
-    siteName: "AI Growth System",
+    siteName: "Aufwind AI",
     locale: "de_DE",
     type: "website",
   },

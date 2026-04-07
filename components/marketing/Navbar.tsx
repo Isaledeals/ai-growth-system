@@ -75,7 +75,7 @@ export default function Navbar() {
               backgroundImage: 'linear-gradient(135deg, #3B82F6, #10B981)',
             }}
           >
-            AI Growth System
+            Aufwind AI
           </span>
         </a>
 

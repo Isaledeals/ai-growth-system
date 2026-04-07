@@ -1,19 +1,22 @@
 // ============================================================
-// AI Growth System — Constants & Data
+// Aufwind AI — Constants & Data
 // German B2B SaaS for AI automation for local businesses
 // ============================================================
 
-// ------ Site Config (Placeholders — replace before launch) ------
+// ------ Site Config ------
 
 export const SITE_CONFIG = {
+  brand: "Aufwind AI",
+  brandShort: "Aufwind",
+  tagline: "KI-Automatisierung für lokale Unternehmen",
   // Native Booking-Page (Demo-Buchung). Externer Slug bleibt als Fallback.
   bookingUrl: "/buchen",
-  externalBookingUrl: "https://isale.deals/book/ai-growth-demo", // iSale.deals Slug
+  externalBookingUrl: "https://isale.deals/book/aufwind-demo", // iSale.deals Slug
   whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
-  whatsappMessage: "Hallo! Ich interessiere mich für das AI Growth System.",
+  whatsappMessage: "Hallo! Ich interessiere mich für Aufwind AI.",
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
-  email: "kostasdias.dubai@gmail.com",
-  domain: "https://aigrowthsystem.de",             // TODO: Replace with real domain
+  email: "kontakt@aufwind.ai",
+  domain: "https://aufwind.ai",
   gaMeasurementId: "G-XXXXXXXXXX",                 // TODO: Replace with real GA4 Measurement ID
 } as const;
 

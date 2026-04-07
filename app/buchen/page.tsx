@@ -3,7 +3,7 @@ import Link from "next/link";
 import BookingForm from "@/components/marketing/BookingForm";
 
 export const metadata: Metadata = {
-  title: "Demo buchen — AI Growth System",
+  title: "Demo buchen — Aufwind AI",
   description:
     "30 Minuten Strategie-Call mit Kostas Dias, Gruender von DIAS SALES SOLUTIONS. Kostenlos, unverbindlich, individuell auf dein Unternehmen.",
   alternates: {
@@ -34,7 +34,7 @@ export default function BuchenPage() {
               backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
             }}
           >
-            AI Growth System
+            Aufwind AI
           </Link>
           <Link
             href="/"

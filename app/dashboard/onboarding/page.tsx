@@ -369,7 +369,7 @@ export default function OnboardingPage() {
 
   // ── Widget Code ──
 
-  const widgetCode = `<script src="https://aigrowthsystem.de/widget.js" data-tenant="${businessData.companyName.toLowerCase().replace(/\s+/g, "-") || "mein-unternehmen"}"></script>`;
+  const widgetCode = `<script src="https://aufwind.ai/widget.js" data-tenant="${businessData.companyName.toLowerCase().replace(/\s+/g, "-") || "mein-unternehmen"}"></script>`;
 
   const copyWidgetCode = () => {
     navigator.clipboard.writeText(widgetCode);
@@ -1000,7 +1000,7 @@ export default function OnboardingPage() {
                 transition={{ delay: 0.4 }}
                 className="text-3xl font-bold text-white"
               >
-                Dein AI Growth System ist{" "}
+                Dein Aufwind AI System ist{" "}
                 <span className="gradient-text">live!</span>
               </motion.h2>
               <motion.p

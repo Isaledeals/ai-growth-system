@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Auto-Provisioning Logic
+// Aufwind AI — Auto-Provisioning Logic
 // Temporary JSON file store until Supabase is connected
 // ============================================================
 
@@ -217,7 +217,7 @@ export interface WelcomeEmailPayload {
 function createWelcomeEmailPayload(tenant: Tenant): WelcomeEmailPayload {
   return {
     to: tenant.business.email,
-    subject: `Willkommen bei AI Growth System, ${tenant.business.name}!`,
+    subject: `Willkommen bei Aufwind AI, ${tenant.business.name}!`,
     businessName: tenant.business.name,
     plan: tenant.plan === "premium" ? "Premium" : "Pro",
     referralCode: tenant.referralCode,

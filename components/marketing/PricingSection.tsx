@@ -211,7 +211,7 @@ export default function PricingSection() {
             Weniger als &euro;23/Tag. Deine Empfangskraft kostet &euro;2.500/Mo und arbeitet nur 8 Stunden.
           </p>
           <p className="mt-2 text-xs text-muted/60">
-            &Oslash; Marketing-Agentur: &euro;3.000&ndash;10.000/Mo &nbsp;|&nbsp; &Oslash; Rezeptionskraft: &euro;2.500/Mo &nbsp;|&nbsp; AI Growth System: ab &euro;697/Mo
+            &Oslash; Marketing-Agentur: &euro;3.000&ndash;10.000/Mo &nbsp;|&nbsp; &Oslash; Rezeptionskraft: &euro;2.500/Mo &nbsp;|&nbsp; Aufwind AI: ab &euro;697/Mo
           </p>
         </motion.div>
 

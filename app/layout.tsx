@@ -27,11 +27,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aigrowthsystem.de"),
-  title: "AI Growth System — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
+  metadataBase: new URL("https://aufwind.ai"),
+  title: "Aufwind AI — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
   description:
-    "Das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren — 24/7 aktiv",
+    "Aufwind AI — das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren. 24/7 aktiv.",
   keywords: [
+    "Aufwind AI",
     "KI Automatisierung",
     "lokale Unternehmen",
     "AI Chatbot",
@@ -44,19 +45,19 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AI Growth System — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
+    title: "Aufwind AI — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
     description:
-      "Das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren — 24/7 aktiv",
-    url: "https://aigrowthsystem.de",
-    siteName: "AI Growth System",
+      "Aufwind AI — das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren. 24/7 aktiv.",
+    url: "https://aufwind.ai",
+    siteName: "Aufwind AI",
     locale: "de_DE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Growth System — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
+    title: "Aufwind AI — Mehr Kunden. Weniger Arbeit. Vollautomatisch.",
     description:
-      "Das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren — 24/7 aktiv",
+      "Aufwind AI — das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren. 24/7 aktiv.",
   },
   robots: {
     index: true,
@@ -105,9 +106,9 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   name: "DIAS SALES SOLUTIONS - FZCO",
-                  url: "https://aigrowthsystem.de",
+                  url: "https://aufwind.ai",
                   description:
-                    "AI Growth System — KI-gestütztes Wachstumssystem für lokale Unternehmen in Deutschland",
+                    "Aufwind AI — KI-gestütztes Wachstumssystem für lokale Unternehmen in Deutschland",
                   contactPoint: {
                     "@type": "ContactPoint",
                     contactType: "sales",
@@ -116,8 +117,8 @@ export default function RootLayout({
                 },
                 {
                   "@type": "LocalBusiness",
-                  name: "AI Growth System by DIAS SALES SOLUTIONS",
-                  url: "https://aigrowthsystem.de",
+                  name: "Aufwind AI by DIAS SALES SOLUTIONS",
+                  url: "https://aufwind.ai",
                   description:
                     "Das KI-System das lokale Unternehmen nutzen um keine Anfrage mehr zu verlieren — 24/7 aktiv",
                   priceRange: "$$",
@@ -135,8 +136,8 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebSite",
-                  name: "AI Growth System",
-                  url: "https://aigrowthsystem.de",
+                  name: "Aufwind AI",
+                  url: "https://aufwind.ai",
                   inLanguage: "de-DE",
                 },
               ],

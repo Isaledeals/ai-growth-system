@@ -1,5 +1,5 @@
 -- ============================================================
--- AI Growth System — Complete Supabase Database Schema
+-- Aufwind AI — Complete Supabase Database Schema
 -- Run this entire file in Supabase SQL Editor (one-shot)
 -- ============================================================
 

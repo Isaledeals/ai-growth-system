@@ -109,7 +109,7 @@ export default function BranchePageContent({ template, stadtName }: Props) {
             >
               {template.description}
               {stadtName
-                ? ` Lokale ${template.name} in ${stadtName} vertrauen auf AI Growth System.`
+                ? ` Lokale ${template.name} in ${stadtName} vertrauen auf Aufwind AI.`
                 : ""}
             </motion.p>
 
@@ -242,7 +242,7 @@ export default function BranchePageContent({ template, stadtName }: Props) {
               Reale Ergebnisse
             </span>
             <h2 className="mb-4 font-[family-name:var(--font-display)] text-3xl font-bold text-white sm:text-4xl">
-              Das ist möglich mit AI Growth System
+              Das ist möglich mit Aufwind AI
             </h2>
             <p className="mx-auto max-w-2xl text-gray-400">
               Durchschnittliche Verbesserungen, die unsere Kunden in{" "}

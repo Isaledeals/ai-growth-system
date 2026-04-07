@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Database TypeScript Types
+// Aufwind AI — Database TypeScript Types
 // Must match lib/supabase/schema.sql exactly
 // ============================================================
 

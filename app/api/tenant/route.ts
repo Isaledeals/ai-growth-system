@@ -1,5 +1,5 @@
 // ============================================================
-// AI Growth System — Tenant CRUD API
+// Aufwind AI — Tenant CRUD API
 // GET /api/tenant — Get current tenant
 // PATCH /api/tenant — Update tenant settings
 // ============================================================

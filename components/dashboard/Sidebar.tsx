@@ -69,7 +69,7 @@ export default function Sidebar({
         </div>
         <div>
           <h1 className="text-sm font-bold text-white tracking-tight">
-            AI Growth System
+            Aufwind AI
           </h1>
           <p className="text-[11px] text-gray-500">Dashboard</p>
         </div>

@@ -207,7 +207,7 @@ function MobileComparisonCard({ row }: { row: ComparisonRow }) {
         {/* Our value — highlighted */}
         <div className="flex items-center justify-between rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
           <span className="text-xs font-medium text-emerald-400">
-            AI Growth System
+            Aufwind AI
           </span>
           <Cell cell={row.ours} />
         </div>
@@ -247,7 +247,7 @@ export default function ComparisonSection() {
         >
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
             Warum{" "}
-            <span className="gradient-text">AI Growth System</span>?
+            <span className="gradient-text">Aufwind AI</span>?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted sm:text-lg">
             Vergleiche selbst &mdash; und entscheide, was f&uuml;r dein
@@ -272,7 +272,7 @@ export default function ComparisonSection() {
                   </th>
                   <th className="relative px-6 py-5 text-center text-sm font-semibold text-foreground">
                     {/* Glow highlight column header */}
-                    <span className="gradient-text">AI Growth System</span>
+                    <span className="gradient-text">Aufwind AI</span>
                   </th>
                   <th className="px-6 py-5 text-center text-sm font-medium text-muted">
                     Einzeltools

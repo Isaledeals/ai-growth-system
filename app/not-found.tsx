@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "404 — AI Growth System",
+  title: "404 — Aufwind AI",
 };
 
 export default function NotFound() {

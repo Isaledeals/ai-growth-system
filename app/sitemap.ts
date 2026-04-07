@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { BRANCHEN_SLUGS } from "@/lib/branchen-templates";
 import { STAEDTE } from "@/lib/seo-data";
 
-const BASE_URL = "https://aigrowthsystem.de";
+const BASE_URL = "https://aufwind.ai";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
