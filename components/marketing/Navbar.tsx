@@ -96,8 +96,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <a
-            href="#demo"
-            onClick={(e) => handleSmoothScroll(e, '#demo')}
+            href="/buchen"
             className="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all hover:brightness-110"
             style={{
               backgroundImage: 'linear-gradient(135deg, #10B981, #059669)',
@@ -140,8 +139,8 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#demo"
-                onClick={(e) => handleSmoothScroll(e, '#demo')}
+                href="/buchen"
+                onClick={() => setIsOpen(false)}
                 className="mt-2 inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-semibold text-white transition-all hover:brightness-110"
                 style={{
                   backgroundImage: 'linear-gradient(135deg, #10B981, #059669)',

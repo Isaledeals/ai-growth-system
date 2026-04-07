@@ -113,8 +113,6 @@ export default function FinalCTASection() {
           <motion.div variants={fadeUpVariants} className="mt-10">
             <a
               href={SITE_CONFIG.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 rounded-xl px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:brightness-110 hover:shadow-emerald-500/25 hover:scale-[1.03]"
               style={{
                 backgroundImage:

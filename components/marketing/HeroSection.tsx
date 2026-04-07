@@ -171,8 +171,6 @@ export default function HeroSection() {
           >
             <a
               href={SITE_CONFIG.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="pulse-glow inline-flex items-center rounded-xl px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:brightness-110 hover:shadow-emerald-500/25 sm:text-lg"
               style={{
                 backgroundImage: 'linear-gradient(135deg, #10B981, #059669)',

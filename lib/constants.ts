@@ -6,7 +6,9 @@
 // ------ Site Config (Placeholders — replace before launch) ------
 
 export const SITE_CONFIG = {
-  bookingUrl: "https://isale.deals/book/ai-growth-demo", // TODO: Booking-Link Slug in iSale.deals anlegen
+  // Native Booking-Page (Demo-Buchung). Externer Slug bleibt als Fallback.
+  bookingUrl: "/buchen",
+  externalBookingUrl: "https://isale.deals/book/ai-growth-demo", // iSale.deals Slug
   whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
   whatsappMessage: "Hallo! Ich interessiere mich für das AI Growth System.",
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
@@ -343,3 +345,179 @@ export const SOCIAL_PROOF: SocialProofStat[] = [
   { label: "Google Bewertungen generiert", value: "1.250+" },
   { label: "Ø ROI nach 30 Tagen", value: "340%" },
 ];
+
+// ------ Industry Templates for Onboarding ------
+
+export interface IndustryTemplate {
+  id: string;
+  name: string;
+  icon: string;
+  services: string[];
+  defaultHours: { open: string; close: string };
+  sampleGreeting: string;
+  sampleConversation: { role: "customer" | "ai"; text: string }[];
+}
+
+export const INDUSTRY_TEMPLATES: Record<string, IndustryTemplate> = {
+  zahnarzt: {
+    id: "zahnarzt",
+    name: "Zahnarzt",
+    icon: "Stethoscope",
+    services: [
+      "Professionelle Zahnreinigung",
+      "Kontrolluntersuchung",
+      "Zahnfüllung",
+      "Wurzelbehandlung",
+      "Bleaching",
+      "Zahnimplantat",
+      "Kieferorthopädie",
+      "Notfallbehandlung",
+    ],
+    defaultHours: { open: "08:00", close: "18:00" },
+    sampleGreeting: "Willkommen bei unserer Zahnarztpraxis! Wie kann ich Ihnen helfen?",
+    sampleConversation: [
+      { role: "customer", text: "Hallo, ich hätte gerne einen Termin für eine Zahnreinigung." },
+      { role: "ai", text: "Gerne! Ich kann Ihnen folgende Termine anbieten: Morgen um 10:00 Uhr oder Donnerstag um 14:30 Uhr. Was passt Ihnen besser?" },
+      { role: "customer", text: "Donnerstag um 14:30 wäre super." },
+      { role: "ai", text: "Perfekt! Ich habe Ihren Termin für Donnerstag, 14:30 Uhr für eine professionelle Zahnreinigung eingetragen. Sie erhalten eine Bestätigung per SMS. Bis dann!" },
+    ],
+  },
+  friseur: {
+    id: "friseur",
+    name: "Friseur",
+    icon: "Scissors",
+    services: [
+      "Herrenschnitt",
+      "Damenschnitt",
+      "Kinderschnitt",
+      "Waschen & Föhnen",
+      "Färben / Tönen",
+      "Strähnen / Balayage",
+      "Hochsteckfrisur",
+      "Bartpflege",
+    ],
+    defaultHours: { open: "09:00", close: "19:00" },
+    sampleGreeting: "Herzlich willkommen in unserem Salon! Was dürfen wir für Sie tun?",
+    sampleConversation: [
+      { role: "customer", text: "Hi, ich würde gerne einen Termin zum Färben machen." },
+      { role: "ai", text: "Natürlich! Bei welcher Stylistin möchten Sie den Termin? Wir haben diese Woche noch Freitag um 11:00 oder Samstag um 09:30 frei." },
+      { role: "customer", text: "Samstag um 09:30 bitte." },
+      { role: "ai", text: "Wunderbar! Ihr Termin für Samstag um 09:30 Uhr zum Färben ist gebucht. Bitte planen Sie ca. 2 Stunden ein. Bis Samstag!" },
+    ],
+  },
+  handwerk: {
+    id: "handwerk",
+    name: "Handwerk",
+    icon: "Wrench",
+    services: [
+      "Erstberatung / Besichtigung",
+      "Kostenvoranschlag",
+      "Reparaturarbeiten",
+      "Neuinstallation",
+      "Wartung & Service",
+      "Notdienst",
+      "Umbau / Renovierung",
+      "Energieberatung",
+    ],
+    defaultHours: { open: "07:00", close: "17:00" },
+    sampleGreeting: "Willkommen! Wir sind Ihr zuverlässiger Handwerksbetrieb. Wie können wir helfen?",
+    sampleConversation: [
+      { role: "customer", text: "Hallo, unsere Heizung macht komische Geräusche. Können Sie vorbeikommen?" },
+      { role: "ai", text: "Das klingt nach einem Fall für unsere Techniker! Ich kann Ihnen einen Besichtigungstermin anbieten: Morgen zwischen 8-12 Uhr oder Mittwoch zwischen 13-17 Uhr. Wann passt es Ihnen?" },
+      { role: "customer", text: "Morgen Vormittag wäre perfekt." },
+      { role: "ai", text: "Eingetragen! Unser Techniker kommt morgen zwischen 8-12 Uhr zu Ihnen. Sie erhalten vorab eine SMS mit dem genauen Zeitfenster. Ihre Adresse habe ich bereits gespeichert." },
+    ],
+  },
+  beauty: {
+    id: "beauty",
+    name: "Beauty",
+    icon: "Sparkles",
+    services: [
+      "Gesichtsbehandlung",
+      "Maniküre",
+      "Pediküre",
+      "Waxing",
+      "Wimpernverlängerung",
+      "Augenbrauen-Styling",
+      "Massage",
+      "Make-up",
+    ],
+    defaultHours: { open: "09:00", close: "20:00" },
+    sampleGreeting: "Willkommen in unserem Beauty Studio! Gönnen Sie sich etwas Gutes.",
+    sampleConversation: [
+      { role: "customer", text: "Hallo, ich hätte gerne einen Termin für Wimpernverlängerung." },
+      { role: "ai", text: "Sehr gerne! Für die Wimpernverlängerung sollten wir ca. 90 Minuten einplanen. Ich habe noch Mittwoch um 15:00 oder Freitag um 10:00 frei. Was ist besser für Sie?" },
+      { role: "customer", text: "Freitag um 10:00 bitte!" },
+      { role: "ai", text: "Perfekt, Freitag um 10:00 Uhr ist gebucht! Bitte kommen Sie ungeschminkt und ohne Kontaktlinsen. Sie erhalten eine Terminbestätigung per WhatsApp. Bis Freitag!" },
+    ],
+  },
+  gastro: {
+    id: "gastro",
+    name: "Gastro",
+    icon: "UtensilsCrossed",
+    services: [
+      "Tischreservierung",
+      "Catering-Anfrage",
+      "Eventbuchung",
+      "Take-Away Bestellung",
+      "Gruppenreservierung",
+      "Allergieberatung",
+      "Geschenkgutschein",
+      "Feedback",
+    ],
+    defaultHours: { open: "11:00", close: "23:00" },
+    sampleGreeting: "Herzlich willkommen in unserem Restaurant! Wie dürfen wir Ihnen behilflich sein?",
+    sampleConversation: [
+      { role: "customer", text: "Ich möchte für Samstag einen Tisch für 6 Personen reservieren." },
+      { role: "ai", text: "Sehr gerne! Für Samstag habe ich noch Plätze um 18:00 und um 20:30 Uhr. Haben Sie eine Vorliebe? Und darf ich fragen, ob besondere Anlässe anstehen?" },
+      { role: "customer", text: "20:30 bitte, es ist ein Geburtstag!" },
+      { role: "ai", text: "Wunderbar, herzlichen Glückwunsch! Tisch für 6 Personen am Samstag um 20:30 Uhr ist reserviert. Wir bereiten gerne eine kleine Überraschung vor. Haben Gäste Allergien oder besondere Wünsche?" },
+    ],
+  },
+  physio: {
+    id: "physio",
+    name: "Physio",
+    icon: "HeartPulse",
+    services: [
+      "Krankengymnastik",
+      "Manuelle Therapie",
+      "Lymphdrainage",
+      "Sportphysiotherapie",
+      "Massage",
+      "Elektrotherapie",
+      "Erstuntersuchung",
+      "Hausbesuch",
+    ],
+    defaultHours: { open: "07:30", close: "19:00" },
+    sampleGreeting: "Willkommen in unserer Physiotherapie-Praxis! Wir helfen Ihnen, schmerzfrei zu werden.",
+    sampleConversation: [
+      { role: "customer", text: "Hallo, ich brauche einen Termin für Krankengymnastik. Habe eine Verordnung vom Arzt." },
+      { role: "ai", text: "Sehr gut! Bringen Sie die Verordnung bitte zum ersten Termin mit. Ich habe morgen um 8:00 oder Donnerstag um 16:30 frei. Was passt besser?" },
+      { role: "customer", text: "Donnerstag um 16:30 bitte." },
+      { role: "ai", text: "Eingetragen! Donnerstag, 16:30 Uhr — Krankengymnastik. Bitte bringen Sie Ihre Verordnung und bequeme Kleidung mit. Die Sitzung dauert ca. 25 Minuten. Bis dann!" },
+    ],
+  },
+  anwalt: {
+    id: "anwalt",
+    name: "Anwalt",
+    icon: "Scale",
+    services: [
+      "Erstberatung",
+      "Vertragsrecht",
+      "Arbeitsrecht",
+      "Familienrecht",
+      "Mietrecht",
+      "Verkehrsrecht",
+      "Strafrecht",
+      "Erbrecht",
+    ],
+    defaultHours: { open: "08:30", close: "17:30" },
+    sampleGreeting: "Willkommen in unserer Kanzlei. Wie können wir Ihnen rechtlich weiterhelfen?",
+    sampleConversation: [
+      { role: "customer", text: "Guten Tag, ich brauche eine Beratung zum Thema Mietrecht. Mein Vermieter hat die Miete erhöht." },
+      { role: "ai", text: "Ich verstehe. Mieterhöhungen sind ein häufiges Thema. Für eine fundierte Erstberatung würde ich Ihnen einen Termin bei unserem Fachanwalt empfehlen. Nächste Woche Dienstag um 10:00 oder Mittwoch um 14:00?" },
+      { role: "customer", text: "Dienstag um 10:00 wäre gut." },
+      { role: "ai", text: "Perfekt! Dienstag um 10:00 Uhr — Erstberatung Mietrecht. Bitte bringen Sie Ihren Mietvertrag und das Mieterhöhungsschreiben mit. Die Erstberatung kostet €190 zzgl. MwSt. und dauert ca. 45 Minuten." },
+    ],
+  },
+};
