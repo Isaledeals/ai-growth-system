@@ -168,7 +168,8 @@ export default function AuroraBackground() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-white"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      style={{ background: '#FFFFFF' }}
     >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
