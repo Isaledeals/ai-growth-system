@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 const productLinks = [
-  { label: "Module", href: "#module" },
+  { label: "KI-Module", href: "#module" },
   { label: "Preise", href: "#preise" },
+  { label: "ROI-Rechner", href: "#roi" },
   { label: "FAQ", href: "#faq" },
 ];
 
 const companyLinks = [
-  { label: "Module", href: "#module" },
-  { label: "So funktioniert\u2019s", href: "#so-funktionierts" },
-  { label: "Kontakt", href: "#demo" },
+  { label: "So funktioniert's", href: "#so-funktionierts" },
+  { label: "Case Studies", href: "#ergebnisse" },
+  { label: "Demo buchen", href: SITE_CONFIG.bookingUrl },
+  { label: "Kontakt", href: `mailto:${SITE_CONFIG.email}` },
 ];
 
 const legalLinks = [
@@ -20,16 +23,7 @@ const legalLinks = [
 
 const socialLinks: { icon: ReactNode; href: string; label: string }[] = [
   {
-    label: "LinkedIn",
-    href: "#",
-    icon: (
-      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Twitter",
+    label: "Twitter / X",
     href: "#",
     icon: (
       <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -57,13 +51,13 @@ function FooterLinkColumn({
 }) {
   return (
     <div>
-      <h4 className="text-sm font-semibold text-foreground mb-4">{title}</h4>
+      <h4 className="mb-4 text-sm font-bold text-slate-900">{title}</h4>
       <ul className="flex flex-col gap-2.5">
         {links.map((link) => (
           <li key={link.label}>
             <a
               href={link.href}
-              className="text-sm text-muted transition-colors duration-200 hover:text-foreground"
+              className="text-sm text-slate-500 transition-colors duration-200 hover:text-slate-900"
             >
               {link.label}
             </a>
@@ -76,37 +70,58 @@ function FooterLinkColumn({
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-[#060A14]">
+    <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         {/* Top area */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
-          {/* Logo & description */}
+          {/* Brand column */}
           <div className="lg:col-span-2">
-            <span
-              className="text-xl font-bold bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #3B82F6, #10B981)",
-              }}
-            >
-              Aufwind AI
-            </span>
-            <p className="mt-3 max-w-xs text-sm text-muted leading-relaxed">
-              Das KI-System f&uuml;r lokale Unternehmen in Deutschland.
-              Automatisiere Kundengewinnung, Follow-ups und Terminbuchung
-              &mdash; rund um die Uhr.
+            {/* Logo */}
+            <div className="flex items-center gap-2.5">
+              <div
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-black text-white"
+                style={{ backgroundImage: 'linear-gradient(135deg, #2563EB, #1D4ED8)' }}
+                aria-hidden="true"
+              >
+                A
+              </div>
+              <span className="text-xl font-bold text-slate-900">
+                Aufwind{' '}
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(135deg, #2563EB, #1D4ED8)' }}
+                >
+                  AI
+                </span>
+              </span>
+            </div>
+
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
+              Das KI-System für lokale Unternehmen in Deutschland. Automatisiere Kundengewinnung,
+              Follow-ups und Terminbuchung — rund um die Uhr.
             </p>
 
+            {/* Contact info */}
+            <div className="mt-5 flex flex-col gap-1.5">
+              <a
+                href={`mailto:${SITE_CONFIG.email}`}
+                className="text-sm text-slate-500 transition-colors hover:text-blue-600"
+              >
+                {SITE_CONFIG.email}
+              </a>
+            </div>
+
             {/* Social icons */}
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex items-center gap-2">
               {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/50 bg-white/5 text-muted transition-all duration-200 hover:border-white/30 hover:bg-white/10 hover:text-foreground"
-                  >
-                    {social.icon}
-                  </a>
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
+                >
+                  {social.icon}
+                </a>
               ))}
             </div>
           </div>
@@ -118,16 +133,19 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 h-px bg-border/30" />
+        <div className="mt-12 h-px bg-slate-200" />
 
         {/* Bottom bar */}
         <div className="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
-          <p className="text-xs text-muted">
-            &copy; 2026 Aufwind AI. Alle Rechte vorbehalten.
+          <p className="text-xs text-slate-400">
+            &copy; {new Date().getFullYear()} Aufwind AI. Alle Rechte vorbehalten.
           </p>
-          <p className="text-xs text-muted">
-            Made with ❤️ in Deutschland
-          </p>
+          <div className="flex items-center gap-1.5">
+            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            <p className="text-xs text-slate-400">
+              Entwickelt in Deutschland &bull; DSGVO-konform
+            </p>
+          </div>
         </div>
       </div>
     </footer>
