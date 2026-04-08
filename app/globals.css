@@ -197,6 +197,100 @@ body {
   background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
 }
 
+/* ===== Premium Typography ===== */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* ===== Premium Card Shadows (Stripe/Linear style) ===== */
+.card-premium {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.02),
+    0 1px 2px rgba(0,0,0,0.04),
+    0 4px 8px rgba(0,0,0,0.04),
+    0 12px 24px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-premium:hover {
+  box-shadow:
+    0 0 0 1px rgba(37,99,235,0.08),
+    0 2px 4px rgba(0,0,0,0.06),
+    0 8px 16px rgba(37,99,235,0.06),
+    0 24px 48px rgba(37,99,235,0.08);
+  border-color: rgba(37,99,235,0.15);
+  transform: translateY(-2px);
+}
+
+/* ===== Premium Button ===== */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.12),
+    0 4px 12px rgba(37,99,235,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1D4ED8, #1E40AF);
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.15),
+    0 8px 24px rgba(37,99,235,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ===== Aufwind Glow — hero accent text ===== */
+.aufwind-glow {
+  text-shadow:
+    0 0 40px rgba(37,99,235,0.25),
+    0 0 80px rgba(37,99,235,0.1);
+}
+
+/* ===== Smooth border gradient (Stripe-style card border) ===== */
+.border-gradient {
+  position: relative;
+}
+
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), transparent, rgba(5,150,105,0.15));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ===== Number highlight (big stats) ===== */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.04em;
+}
+
+/* ===== Page-level ambient glow on scroll ===== */
+@keyframes aufwindPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
 /* ===== Accessibility ===== */
 
 *:focus-visible {
