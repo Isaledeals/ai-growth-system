@@ -12,7 +12,6 @@ interface CaseStudyMeta {
   textColor: string;
   ringColor: string;
   borderColor: string;
-  glowColor: string;
 }
 
 interface CaseStudyExtended {
@@ -27,39 +26,35 @@ interface CaseStudyExtended {
   textColor: string;
   ringColor: string;
   borderColor: string;
-  glowColor: string;
 }
 
 const caseStudyMeta: Record<string, CaseStudyMeta> = {
   "zahnarzt-weber": {
     description:
       "Zahnarztpraxis mit 3 Behandlungszimmern in München. Hohe No-Show-Rate und fehlende Online-Bewertungen bremsten das Wachstum.",
-    color: "text-blue-400",
-    bgColor: "bg-blue-500/10",
-    textColor: "text-blue-300",
-    ringColor: "ring-blue-500/20",
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
+    textColor: "text-blue-700",
+    ringColor: "ring-blue-200",
     borderColor: "border-l-blue-500",
-    glowColor: "rgba(16, 185, 129, 0.18)",
   },
   "beauty-glamour": {
     description:
-      "Premium Beauty Studio in Hamburg. Stamm­kunden kamen seltener, neue Kunden fanden den Salon kaum online.",
-    color: "text-pink-400",
-    bgColor: "bg-pink-500/10",
-    textColor: "text-pink-300",
-    ringColor: "ring-pink-500/20",
+      "Premium Beauty Studio in Hamburg. Stammkunden kamen seltener, neue Kunden fanden den Salon kaum online.",
+    color: "text-pink-600",
+    bgColor: "bg-pink-50",
+    textColor: "text-pink-700",
+    ringColor: "ring-pink-200",
     borderColor: "border-l-pink-500",
-    glowColor: "rgba(16, 185, 129, 0.18)",
   },
   "handwerk-mueller": {
     description:
       "Handwerksbetrieb mit 12 Mitarbeitern in Stuttgart. Angebote versandeten, Neukunden-Akquise war rein auf Empfehlung.",
-    color: "text-amber-400",
-    bgColor: "bg-amber-500/10",
-    textColor: "text-amber-300",
-    ringColor: "ring-amber-500/20",
+    color: "text-amber-600",
+    bgColor: "bg-amber-50",
+    textColor: "text-amber-700",
+    ringColor: "ring-amber-200",
     borderColor: "border-l-amber-500",
-    glowColor: "rgba(16, 185, 129, 0.18)",
   },
 };
 
@@ -105,17 +100,10 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
       variants={cardVariants}
       whileHover={{ y: -4 }}
       onMouseMove={handleMouseMove}
-      style={{ "--hover-glow": study.glowColor } as React.CSSProperties}
-      className={`glass-card relative rounded-2xl overflow-hidden border border-white/10 border-l-4 ${study.borderColor} transition-colors duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 group flex flex-col`}
+      className={`spotlight-card bg-white rounded-2xl overflow-hidden border border-slate-200 border-l-4 ${study.borderColor} shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col`}
     >
-      {/* Spotlight radial gradient that follows mouse */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
-        }}
-      />
+      {/* Spotlight overlay */}
+      <div className="spotlight-overlay" />
 
       {/* Header */}
       <div className="relative p-6 sm:p-7 pb-0">
@@ -127,12 +115,12 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
         </span>
 
         {/* Company name */}
-        <h3 className="mt-4 text-lg sm:text-xl font-bold text-foreground">
+        <h3 className="mt-4 text-lg sm:text-xl font-bold text-slate-900">
           {study.business}
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-sm text-muted leading-relaxed">
+        <p className="mt-2 text-sm text-slate-500 leading-relaxed">
           {study.description}
         </p>
       </div>
@@ -143,14 +131,14 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
           {study.stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl bg-surface-light/60 p-3 text-center ring-1 ring-border/50"
+              className={`rounded-xl ${study.bgColor} p-3 text-center ring-1 ${study.ringColor}`}
             >
               <div
                 className={`text-lg sm:text-xl font-bold ${study.textColor} tabular-nums`}
               >
                 {stat.value}
               </div>
-              <div className="text-[11px] sm:text-xs text-muted mt-0.5 leading-tight">
+              <div className="text-[11px] sm:text-xs text-slate-500 mt-0.5 leading-tight">
                 {stat.label}
               </div>
             </div>
@@ -160,9 +148,9 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
 
       {/* Quote */}
       <div className="relative px-6 sm:px-7 pb-6 sm:pb-7 mt-auto">
-        <div className="relative rounded-xl bg-surface/80 p-4 ring-1 ring-border/30">
-          <Quote className="absolute -top-2 -left-1 h-6 w-6 text-muted/30" aria-hidden="true" />
-          <p className="text-sm text-muted leading-relaxed italic pl-4">
+        <div className="relative rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+          <Quote className="absolute -top-2 -left-1 h-6 w-6 text-blue-400" aria-hidden="true" />
+          <p className="text-sm text-slate-600 leading-relaxed italic pl-4">
             &ldquo;{study.quote}&rdquo;
           </p>
         </div>
@@ -173,11 +161,11 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
 
 export default function CaseStudiesSection() {
   return (
-    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white">
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[350px] rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full bg-blue-50 blur-3xl opacity-60" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[350px] rounded-full bg-emerald-50 blur-3xl opacity-60" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
@@ -189,11 +177,11 @@ export default function CaseStudiesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
             So kann dein Ergebnis aussehen.{" "}
             <span className="gradient-text">Branchenbeispiele.</span>
           </h2>
-          <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="mt-4 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
             Beispielberechnungen basierend auf Branchendurchschnittswerten und typischen Ergebnissen vergleichbarer Unternehmen.
           </p>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
@@ -227,7 +215,7 @@ export default function CaseStudiesSection() {
             Werde die nächste Erfolgsgeschichte
             <ArrowRight className="h-5 w-5" aria-hidden="true" />
           </a>
-          <p className="mt-3 text-sm text-muted">
+          <p className="mt-3 text-sm text-slate-500">
             Kostenlose Demo &middot; Keine Verpflichtung
           </p>
         </motion.div>

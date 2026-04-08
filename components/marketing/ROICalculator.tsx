@@ -151,13 +151,13 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="rounded-xl bg-accent/10 ring-1 ring-accent/20 p-5 sm:p-6 text-center"
+          className="rounded-xl bg-emerald-50 ring-1 ring-emerald-200 p-5 sm:p-6 text-center"
         >
-          <Euro className="h-6 w-6 text-accent mx-auto mb-2" aria-hidden="true" />
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-accent tabular-nums">
+          <Euro className="h-6 w-6 text-emerald-600 mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600 tabular-nums">
             {formatCurrency(shouldAnimate ? animatedRevenue : results.additionalRevenue)}
           </div>
-          <div className="text-sm text-muted mt-1">
+          <div className="text-sm text-slate-500 mt-1">
             Zusätzlicher Umsatz/Monat
           </div>
         </motion.div>
@@ -167,14 +167,14 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="rounded-xl bg-primary/10 ring-1 ring-primary/20 p-5 sm:p-6 text-center"
+          className="rounded-xl bg-blue-50 ring-1 ring-blue-200 p-5 sm:p-6 text-center"
         >
-          <TrendingUp className="h-6 w-6 text-primary mx-auto mb-2" aria-hidden="true" />
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tabular-nums">
+          <TrendingUp className="h-6 w-6 text-blue-600 mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-600 tabular-nums">
             {results.roi > 0 ? "+" : results.roi < 0 ? "-" : ""}
             {shouldAnimate ? animatedROI : Math.abs(results.roi)}%
           </div>
-          <div className="text-sm text-muted mt-1">ROI</div>
+          <div className="text-sm text-slate-500 mt-1">ROI</div>
         </motion.div>
 
         {/* Days to Payback */}
@@ -182,13 +182,13 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className="rounded-xl bg-surface-light ring-1 ring-border p-5 sm:p-6 text-center"
+          className="rounded-xl bg-slate-50 ring-1 ring-slate-200 p-5 sm:p-6 text-center"
         >
-          <Clock className="h-6 w-6 text-foreground mx-auto mb-2" aria-hidden="true" />
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tabular-nums">
+          <Clock className="h-6 w-6 text-slate-600 mx-auto mb-2" aria-hidden="true" />
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 tabular-nums">
             {shouldAnimate ? animatedDays : results.daysToPayback}
           </div>
-          <div className="text-sm text-muted mt-1">
+          <div className="text-sm text-slate-500 mt-1">
             Amortisiert in Tagen
           </div>
         </motion.div>
@@ -203,7 +203,7 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           <Phone className="h-5 w-5" aria-hidden="true" />
           Diese Ergebnisse für DEIN Unternehmen — Demo buchen
         </a>
-        <p className="mt-3 text-xs text-muted">
+        <p className="mt-3 text-xs text-slate-500">
           Kostenlos &middot; Unverbindlich &middot; Individuelle
           Berechnung
         </p>
@@ -213,7 +213,7 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
       <div className="mt-6 text-center">
         <button
           onClick={onGoBack}
-          className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200 text-sm"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors duration-200 text-sm"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Werte anpassen
@@ -259,7 +259,6 @@ export default function ROICalculator() {
 
     switch (selectedIndustry) {
       case "zahnarzt":
-        // additional_revenue = monthly_inquiries * noShowRate * noShowCost * 0.7
         additionalRevenue =
           monthlyInquiries *
           (data.noShowRate ?? 0.15) *
@@ -267,17 +266,14 @@ export default function ROICalculator() {
           0.7;
         break;
       case "beauty":
-        // additional_revenue = monthly_inquiries * reactivationRate * avgRevenue
         additionalRevenue =
           monthlyInquiries * (data.reactivationRate ?? 0.2) * orderValue;
         break;
       case "immobilien":
-        // additional_revenue = (monthly_inquiries * conversionBoost * avgDeal) / 12
         additionalRevenue =
           (monthlyInquiries * (data.conversionBoost ?? 0.15) * orderValue) / 12;
         break;
       case "handwerk":
-        // additional_revenue = monthly_inquiries * quoteToContract * avgJob * 0.28
         additionalRevenue =
           monthlyInquiries *
           (data.quoteToContract ?? 0.28) *
@@ -302,12 +298,12 @@ export default function ROICalculator() {
   return (
     <section
       id="vorteile"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-50"
     >
       {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-100 blur-3xl opacity-40" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-emerald-100 blur-3xl opacity-40" />
       </div>
 
       <div className="relative max-w-4xl mx-auto">
@@ -319,11 +315,11 @@ export default function ROICalculator() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-gray-300 backdrop-blur-sm">
-            <Calculator className="h-4 w-4 text-accent" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700">
+            <Calculator className="h-4 w-4 text-blue-600" aria-hidden="true" />
             ROI-Rechner
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
             Berechne deinen ROI in{" "}
             <span className="gradient-text">30 Sekunden</span>
           </h2>
@@ -352,8 +348,8 @@ export default function ROICalculator() {
                   s === step
                     ? "bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/25"
                     : s < step
-                    ? "bg-accent/20 text-accent ring-1 ring-accent/30"
-                    : "bg-surface-light text-muted ring-1 ring-border"
+                    ? "bg-emerald-100 text-emerald-700 ring-1 ring-emerald-300"
+                    : "bg-white text-slate-400 ring-1 ring-slate-200"
                 }`}
               >
                 {s}
@@ -363,7 +359,7 @@ export default function ROICalculator() {
                   className={`hidden sm:block w-16 h-[2px] rounded-full transition-colors duration-300 ${
                     s < step
                       ? "bg-gradient-to-r from-primary to-accent"
-                      : "bg-border"
+                      : "bg-slate-200"
                   }`}
                 />
               )}
@@ -377,7 +373,7 @@ export default function ROICalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass-card rounded-2xl p-6 sm:p-8 lg:p-10 min-h-[360px] relative overflow-hidden"
+          className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8 lg:p-10 min-h-[360px] relative overflow-hidden"
         >
           <AnimatePresence mode="wait" custom={direction}>
             {/* Step 1: Industry Selection */}
@@ -390,10 +386,10 @@ export default function ROICalculator() {
                 animate="center"
                 exit="exit"
               >
-                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
                   Wähle deine Branche
                 </h3>
-                <p className="text-muted mb-8 text-sm sm:text-base">
+                <p className="text-slate-500 mb-8 text-sm sm:text-base">
                   Wir berechnen deinen ROI basierend auf echten Branchendaten.
                 </p>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -406,22 +402,22 @@ export default function ROICalculator() {
                         onClick={() => handleIndustrySelect(industry.key)}
                         className={`group flex flex-col items-center gap-3 rounded-xl p-5 sm:p-6 transition-all duration-300 cursor-pointer ${
                           isSelected
-                            ? "bg-accent/15 ring-2 ring-accent/40 shadow-lg shadow-accent/10"
-                            : "bg-surface-light/50 ring-1 ring-border hover:ring-primary/30 hover:bg-surface-light"
+                            ? "bg-emerald-50 ring-2 ring-emerald-400 shadow-sm"
+                            : "bg-slate-50 ring-1 ring-slate-200 hover:ring-blue-300 hover:bg-blue-50"
                         }`}
                       >
                         <div
                           className={`flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 ${
                             isSelected
-                              ? "bg-accent/20 text-accent"
-                              : "bg-primary/10 text-primary group-hover:bg-primary/15"
+                              ? "bg-emerald-100 text-emerald-600"
+                              : "bg-blue-100 text-blue-600 group-hover:bg-blue-200"
                           }`}
                         >
                           <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
                         </div>
                         <span
                           className={`text-sm sm:text-base font-medium transition-colors duration-300 ${
-                            isSelected ? "text-accent" : "text-foreground"
+                            isSelected ? "text-emerald-700" : "text-slate-700"
                           }`}
                         >
                           {industry.label}
@@ -443,10 +439,10 @@ export default function ROICalculator() {
                 animate="center"
                 exit="exit"
               >
-                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
                   Deine Zahlen
                 </h3>
-                <p className="text-muted mb-8 text-sm sm:text-base">
+                <p className="text-slate-500 mb-8 text-sm sm:text-base">
                   Passe die Werte an dein Unternehmen an.
                 </p>
 
@@ -454,7 +450,7 @@ export default function ROICalculator() {
                   {/* Monthly Inquiries Slider */}
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <label className="text-sm sm:text-base font-medium text-foreground">
+                      <label className="text-sm sm:text-base font-medium text-slate-700">
                         Monatliche Anfragen
                       </label>
                       <span className="text-xl sm:text-2xl font-bold gradient-text tabular-nums">
@@ -471,9 +467,9 @@ export default function ROICalculator() {
                       onChange={(e) =>
                         setMonthlyInquiries(Number(e.target.value))
                       }
-                      className="w-full h-2 rounded-full appearance-none cursor-pointer bg-surface-light accent-primary [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gradient-to-br [&::-webkit-slider-thumb]:from-primary [&::-webkit-slider-thumb]:to-accent [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-primary/30 [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
+                      className="w-full h-2 rounded-full appearance-none cursor-pointer bg-slate-200 accent-blue-600 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gradient-to-br [&::-webkit-slider-thumb]:from-primary [&::-webkit-slider-thumb]:to-accent [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-primary/30 [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
                     />
-                    <div className="flex justify-between text-xs text-muted mt-1">
+                    <div className="flex justify-between text-xs text-slate-400 mt-1">
                       <span>10</span>
                       <span>200</span>
                     </div>
@@ -481,18 +477,18 @@ export default function ROICalculator() {
 
                   {/* Order Value Input */}
                   <div>
-                    <label className="block text-sm sm:text-base font-medium text-foreground mb-3">
+                    <label className="block text-sm sm:text-base font-medium text-slate-700 mb-3">
                       {currentIndustry.orderValueLabel}
                     </label>
                     <div className="relative">
-                      <Euro className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted" aria-hidden="true" />
+                      <Euro className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" aria-hidden="true" />
                       <input
                         type="number"
                         value={orderValue}
                         onChange={(e) =>
                           setOrderValue(Number(e.target.value) || 0)
                         }
-                        className="w-full rounded-xl bg-surface-light/80 border border-border px-12 py-3.5 text-lg font-semibold text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition-all duration-200"
+                        className="w-full rounded-xl bg-white border border-slate-200 px-12 py-3.5 text-lg font-semibold text-slate-900 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200"
                         placeholder="0"
                       />
                     </div>
@@ -503,7 +499,7 @@ export default function ROICalculator() {
                 <div className="flex items-center justify-between mt-10">
                   <button
                     onClick={() => goToStep(1)}
-                    className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors duration-200 text-sm sm:text-base"
+                    className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors duration-200 text-sm sm:text-base"
                   >
                     <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                     Branche ändern
@@ -529,12 +525,12 @@ export default function ROICalculator() {
                 animate="center"
                 exit="exit"
               >
-                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
                   Dein geschätzter ROI
                 </h3>
-                <p className="text-muted mb-8 text-sm sm:text-base">
+                <p className="text-slate-500 mb-8 text-sm sm:text-base">
                   Basierend auf Branchendurchschnitt für{" "}
-                  <span className="text-foreground font-medium">
+                  <span className="text-slate-800 font-medium">
                     {ROI_DATA[selectedIndustry!]?.label}
                   </span>
                 </p>
