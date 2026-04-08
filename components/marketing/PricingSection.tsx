@@ -230,14 +230,26 @@ export default function PricingSection() {
             Transparent. Fair.{" "}
             <span className="gradient-text">Kein Kleingedrucktes.</span>
           </h2>
-          <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            Weniger als &euro;23/Tag. Ihre Empfangskraft kostet &euro;2.500/Mo und arbeitet nur 8 Stunden.
-          </p>
-          <p className="mt-2 text-xs text-muted/70">
-            &Oslash; Marketing-Agentur: &euro;3.000&ndash;10.000/Mo &nbsp;|&nbsp;
-            &Oslash; Rezeptionskraft: &euro;2.500/Mo &nbsp;|&nbsp;
-            Aufwind AI: ab &euro;697/Mo
-          </p>
+
+          {/* Preisanker — zeigt Kontext BEVOR die Preise sichtbar sind */}
+          <div className="mt-8 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
+            {[
+              { label: 'Vollzeit-Empfang', price: '€3.500', sub: 'pro Monat', note: 'Urlaub · Krank · Kündigt', muted: true },
+              { label: 'Marketing-Agentur', price: '€4.000+', sub: 'pro Monat', note: 'Nur Leads, kein Service', muted: true },
+              { label: 'Aufwind AI', price: 'ab €697', sub: 'pro Monat', note: '24/7 · Nie krank · Vollauto.', muted: false },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className={`rounded-xl p-3 text-center ${item.muted ? 'bg-slate-100 opacity-70' : 'bg-white border-2 shadow-md'}`}
+                style={!item.muted ? { borderColor: '#2563EB', boxShadow: '0 4px 20px rgba(37,99,235,0.15)' } : {}}
+              >
+                <p className={`text-[11px] font-semibold uppercase tracking-wide mb-1 ${item.muted ? 'text-slate-400' : 'text-blue-600'}`}>{item.label}</p>
+                <p className={`text-xl font-extrabold tracking-tight ${item.muted ? 'text-slate-400 line-through' : 'gradient-number'}`}>{item.price}</p>
+                <p className={`text-[11px] ${item.muted ? 'text-slate-400' : 'text-slate-500'}`}>{item.sub}</p>
+                <p className={`mt-1.5 text-[10px] font-medium ${item.muted ? 'text-slate-400' : 'text-emerald-600'}`}>{item.note}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Pricing Cards */}
