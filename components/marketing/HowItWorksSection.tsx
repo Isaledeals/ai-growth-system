@@ -1,42 +1,37 @@
 "use client";
 
-import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Phone, Settings, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface Step {
-  number: string;
+  number: number;
   icon: LucideIcon;
   title: string;
   description: string;
-  glowColor: string;
 }
 
 const steps: Step[] = [
   {
-    number: "01",
+    number: 1,
     icon: Phone,
-    title: "Kostenloser Demo-Call",
+    title: "Demo buchen",
     description:
-      "In 15 Minuten zeigen wir dir live wie das System f\u00fcr DEINE Branche funktioniert. Keine Verpflichtung.",
-    glowColor: "rgba(59, 130, 246, 0.18)",
+      "In 15 Minuten zeigen wir dir live wie das System f\u00fcr DEINE Branche funktioniert. Kostenlos und unverbindlich.",
   },
   {
-    number: "02",
+    number: 2,
     icon: Settings,
-    title: "Wir richten alles ein",
+    title: "Setup durch unser Team",
     description:
-      "Unser Team konfiguriert das komplette System f\u00fcr dich. Du musst keinen Finger r\u00fchren.",
-    glowColor: "rgba(45, 158, 187, 0.18)",
+      "Unser Team konfiguriert das komplette System f\u00fcr dich. Kein technisches Wissen n\u00f6tig — du musst keinen Finger r\u00fchren.",
   },
   {
-    number: "03",
+    number: 3,
     icon: Rocket,
-    title: "Dein Business w\u00e4chst automatisch",
+    title: "KI l\u00e4uft 24/7",
     description:
-      "Das System arbeitet 24/7. Du bekommst mehr Anfragen, mehr Termine, mehr Kunden \u2014 auf Autopilot.",
-    glowColor: "rgba(16, 185, 129, 0.18)",
+      "Das System arbeitet rund um die Uhr. Mehr Anfragen, mehr Termine, mehr Kunden \u2014 vollautomatisch auf Autopilot.",
   },
 ];
 
@@ -58,66 +53,44 @@ const stepVariants = {
   },
 };
 
-function StepCard({ step }: { step: Step }) {
+function StepCard({ step, index }: { step: Step; index: number }) {
   const Icon = step.icon;
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--spotlight-x", `${x}px`);
-    card.style.setProperty("--spotlight-y", `${y}px`);
-  }, []);
 
   return (
     <motion.div
-      ref={cardRef}
       variants={stepVariants}
-      onMouseMove={handleMouseMove}
-      style={{ "--hover-glow": step.glowColor } as React.CSSProperties}
-      className="relative flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center gap-5 lg:gap-0 pl-16 lg:pl-0 group rounded-2xl lg:p-6 lg:border lg:border-white/10 transition-colors duration-300 lg:hover:border-white/20 hover:shadow-[0_0_30px_var(--hover-glow)] overflow-hidden"
+      className="relative flex flex-col items-center text-center group"
     >
-      {/* Spotlight radial gradient that follows mouse */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-2xl"
-        style={{
-          background:
-            "radial-gradient(300px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--hover-glow), transparent 60%)",
-        }}
-      />
-
-      {/* Step number with gradient */}
-      <div className="absolute left-0 lg:relative flex-shrink-0">
-        <div className="relative flex h-16 w-16 items-center justify-center">
-          {/* Glow ring */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent opacity-20 blur-md" />
-          {/* Number circle */}
-          <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-surface ring-2 ring-accent/30">
-            <span className="text-2xl font-bold gradient-text">
-              {step.number}
-            </span>
-          </div>
+      {/* Number circle */}
+      <div className="relative mb-6">
+        {/* Outer ring */}
+        <div className="absolute inset-0 rounded-full bg-blue-100 scale-125 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 shadow-lg shadow-blue-200/60 transition-transform duration-300 group-hover:scale-110">
+          <span className="text-2xl font-bold text-white">
+            {step.number}
+          </span>
         </div>
       </div>
 
-      <div className="relative lg:mt-6">
-        {/* Icon */}
-        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 lg:mx-auto transition-all duration-300 group-hover:scale-110">
-          <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
-        </div>
+      {/* Icon */}
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-100 group-hover:scale-110">
+        <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+      </div>
 
-        {/* Title */}
-        <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-          {step.title}
-        </h3>
+      {/* Title */}
+      <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
+        {step.title}
+      </h3>
 
-        {/* Description */}
-        <p className="text-muted leading-relaxed text-sm sm:text-base max-w-xs lg:mx-auto">
-          {step.description}
-        </p>
+      {/* Description */}
+      <p className="text-muted leading-relaxed text-sm sm:text-base max-w-xs mx-auto">
+        {step.description}
+      </p>
+
+      {/* Step indicator pill */}
+      <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+        Schritt {index + 1} von {steps.length}
       </div>
     </motion.div>
   );
@@ -125,10 +98,10 @@ function StepCard({ step }: { step: Step }) {
 
 export default function HowItWorksSection() {
   return (
-    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background accent */}
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+      {/* Subtle background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-blue-50 opacity-70 blur-3xl" />
       </div>
 
       <div className="relative max-w-5xl mx-auto">
@@ -141,10 +114,10 @@ export default function HowItWorksSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            In 3 Schritten zum{" "}
-            <span className="gradient-text">automatischen Wachstum</span>
+            In 3 Schritten live &mdash;{" "}
+            <span className="gradient-text">in 48 Stunden.</span>
           </h2>
-          <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
+          <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-blue-600" />
         </motion.div>
 
         {/* Steps */}
@@ -155,20 +128,24 @@ export default function HowItWorksSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="relative"
         >
-          {/* Connector line - horizontal on lg, vertical on smaller */}
-          {/* Desktop horizontal line */}
-          <div className="hidden lg:block absolute top-[72px] left-[16.67%] right-[16.67%] h-[2px] bg-gradient-to-r from-primary via-accent to-primary opacity-30" />
-          {/* Mobile/tablet vertical line */}
-          <div className="lg:hidden absolute top-0 bottom-0 left-8 w-[2px] bg-gradient-to-b from-primary via-accent to-primary opacity-20" />
+          {/* Connector line — horizontal on desktop */}
+          <div
+            className="hidden lg:block absolute top-8 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-[2px]"
+            style={{
+              background:
+                "linear-gradient(90deg, #2563EB, #3B82F6, #2563EB)",
+              opacity: 0.25,
+            }}
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-            {steps.map((step) => (
-              <StepCard key={step.number} step={step} />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+            {steps.map((step, i) => (
+              <StepCard key={step.number} step={step} index={i} />
             ))}
           </div>
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -178,7 +155,7 @@ export default function HowItWorksSection() {
         >
           <a
             href="/buchen"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-200/60 transition-all duration-300 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200/70 hover:scale-105 active:scale-[0.98]"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
             Jetzt Demo-Call buchen
