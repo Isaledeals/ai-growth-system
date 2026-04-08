@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Calendar, TrendingDown, Star, Users, ShieldCheck, MapPin, RefreshCw } from 'lucide-react'
+import AufwindBeam from '@/components/marketing/AufwindBeam'
 
 const liveActivities = [
   'Zahnarztpraxis Dr. Weber hat gerade 3 neue Termine gebucht',
@@ -122,14 +123,15 @@ export default function SocialProofBar() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm sm:p-8"
+          style={{ animation: 'glow-pulse 4s ease-in-out infinite' }}
         >
           {/* Section label */}
-          <motion.p
-            variants={itemVariants}
-            className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-slate-400"
-          >
-            Ergebnisse unserer Kunden
-          </motion.p>
+          <motion.div variants={itemVariants} className="mb-6 text-center">
+            <AufwindBeam variant="badge" />
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Ergebnisse unserer Kunden
+            </p>
+          </motion.div>
 
           {/* Metrics grid */}
           <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
@@ -144,7 +146,7 @@ export default function SocialProofBar() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
                     <Icon className="h-5 w-5 text-blue-600" aria-hidden="true" />
                   </div>
-                  <span className="text-2xl font-extrabold text-blue-600 sm:text-3xl">
+                  <span className="gradient-number text-2xl font-extrabold sm:text-3xl">
                     <AnimatedCounter
                       target={metric.value}
                       suffix={metric.suffix}
@@ -190,7 +192,10 @@ export default function SocialProofBar() {
               </span>
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Live</span>
             </div>
-            <div className="relative h-6 flex-1 overflow-hidden">
+            <div
+              className="relative h-6 flex-1 overflow-hidden border-l-2 pl-3"
+              style={{ borderColor: 'rgba(37,99,235,0.4)' }}
+            >
               <AnimatePresence mode="wait">
                 <motion.p
                   key={activeIndex}

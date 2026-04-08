@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 import {
   Bot,
   Phone,
@@ -152,7 +153,7 @@ function ModuleCard({ mod }: { mod: Module }) {
     <motion.div
       ref={cardRef}
       variants={cardVariants}
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -6 }}
       onMouseMove={handleMouseMove}
       className="spotlight-card light-card relative rounded-2xl p-6 cursor-default transition-all duration-300 group flex flex-col"
     >
@@ -212,6 +213,7 @@ export default function ModulesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
+          <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             8 KI-Module. Ein System.{" "}
             <span className="gradient-text">Null Aufwand.</span>

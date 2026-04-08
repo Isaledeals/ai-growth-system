@@ -4,6 +4,7 @@ import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { PhoneOff, CalendarX, StarOff, UserX, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 
 interface PainPoint {
   icon: LucideIcon;
@@ -153,6 +154,7 @@ export default function ProblemSection() {
           <span className="mb-4 inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-sm font-semibold text-red-600">
             Das Problem
           </span>
+          <AufwindBeam variant="badge" />
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Kennen Sie das?
           </h2>
@@ -184,12 +186,15 @@ export default function ProblemSection() {
           className="mt-14 flex flex-col items-center text-center"
         >
           <div className="mb-4 h-px w-24 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-          <p className="max-w-2xl text-xl font-semibold text-slate-700 sm:text-2xl">
-            Das war gestern.{' '}
-            <span className="text-blue-600">
-              Heute macht Aufwind AI das für Sie.
-            </span>
-          </p>
+          <div className="relative pl-6 max-w-2xl">
+            <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-blue-600 to-emerald-500" />
+            <p className="text-xl font-semibold text-slate-700 sm:text-2xl">
+              Das war gestern.{' '}
+              <span className="text-blue-600">
+                Heute macht Aufwind AI das für Sie.
+              </span>
+            </p>
+          </div>
           <a
             href="#module"
             onClick={(e) => {

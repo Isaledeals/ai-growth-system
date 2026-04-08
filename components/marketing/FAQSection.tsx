@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { FAQ, type FaqItem } from "@/lib/constants";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 
 const FAQ_GLOW_COLOR = "rgba(59, 130, 246, 0.2)";
 
@@ -39,7 +40,7 @@ function FAQItem({
       transition={{ duration: 0.4, delay: index * 0.06 }}
       onMouseMove={handleMouseMove}
       style={{ "--hover-glow": FAQ_GLOW_COLOR } as React.CSSProperties}
-      className="glass-card relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20"
+      className={`glass-card relative rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-[0_0_30px_var(--hover-glow)] hover:border-white/20 ${isOpen ? 'border-l-2 border-blue-500 pl-0' : ''}`}
     >
       {/* Spotlight radial gradient that follows mouse */}
       <div
@@ -78,7 +79,7 @@ function FAQItem({
             className="overflow-hidden"
           >
             <div className="relative px-6 pb-5 pt-0">
-              <p className="text-sm sm:text-base text-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 {item.answer}
               </p>
             </div>
@@ -115,6 +116,7 @@ export default function FAQSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
+          <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             H&auml;ufige{" "}
             <span className="gradient-text">Fragen</span>

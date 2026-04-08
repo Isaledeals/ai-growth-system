@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Phone, Settings, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 
 interface Step {
   number: number;
@@ -113,6 +114,7 @@ export default function HowItWorksSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
+          <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Tag 1: Demo-Call.{" "}
             <span className="gradient-text">Tag 5: Ihr KI-Assistent ist live.</span>
@@ -133,8 +135,8 @@ export default function HowItWorksSection() {
             className="hidden lg:block absolute top-8 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-[2px]"
             style={{
               background:
-                "linear-gradient(90deg, #2563EB, #3B82F6, #2563EB)",
-              opacity: 0.25,
+                "linear-gradient(90deg, #2563EB, #059669)",
+              opacity: 0.35,
             }}
           />
 
@@ -151,8 +153,9 @@ export default function HowItWorksSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-14 rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-6 text-center"
+          className="mt-14 rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-6 text-center relative overflow-hidden"
         >
+          <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl bg-gradient-to-b from-blue-600 to-emerald-500" />
           <p className="text-base font-bold text-emerald-800 sm:text-lg">
             60-Tage Garantie
           </p>

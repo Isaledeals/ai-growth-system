@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ShieldCheck, Lock, BadgeCheck, ArrowRight, Phone } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 
 const trustBadges = [
   { icon: ShieldCheck, label: "DSGVO-konform" },
@@ -79,13 +80,14 @@ export default function FinalCTASection() {
           </motion.div>
 
           {/* Headline */}
-          <motion.h2
-            variants={fadeUpVariants}
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
-          >
-            Ihr KI-Assistent.{' '}
-            <span className="text-blue-200">Nie krank. Nie im Urlaub. Immer für Ihre Kunden da.</span>
-          </motion.h2>
+          <motion.div variants={fadeUpVariants} className="w-full text-center">
+            <AufwindBeam variant="badge" className="mb-3" />
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Ihr KI-Assistent.{' '}
+              <span className="text-blue-200">Nie krank. Nie im Urlaub. Immer für Ihre Kunden da.</span>
+            </h2>
+            <AufwindBeam variant="wide" className="mt-4" />
+          </motion.div>
 
           {/* Subtext */}
           <motion.p

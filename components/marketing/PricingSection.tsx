@@ -2,7 +2,8 @@
 
 import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Check, ShieldCheck, Clock, Zap } from "lucide-react";
+import { Check, ShieldCheck, Zap } from "lucide-react";
+import AufwindBeam from "@/components/marketing/AufwindBeam";
 import { PRICING, type PricingTier } from "@/lib/constants";
 import CheckoutButton from "./CheckoutButton";
 
@@ -53,6 +54,14 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       variants={cardVariants}
       whileHover={{ y: -4 }}
       onMouseMove={handleMouseMove}
+      animate={isHighlight ? {
+        boxShadow: [
+          '0 0 20px rgba(37,99,235,0.3)',
+          '0 0 40px rgba(37,99,235,0.5)',
+          '0 0 20px rgba(37,99,235,0.3)',
+        ],
+      } : undefined}
+      transition={isHighlight ? { duration: 3, repeat: Infinity, ease: 'easeInOut' } : undefined}
       className={`spotlight-card relative flex flex-col rounded-2xl p-6 sm:p-8 transition-all duration-300 group overflow-hidden ${
         isHighlight
           ? "bg-gradient-to-br from-blue-600 to-blue-700 shadow-xl shadow-blue-200 ring-2 ring-blue-500 lg:scale-105 lg:z-10"
@@ -100,7 +109,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       <div className="relative mt-4 flex items-baseline gap-1">
         <span
           className={`text-4xl sm:text-5xl font-extrabold tracking-tight ${
-            isHighlight ? "text-white" : "text-foreground"
+            isHighlight ? "text-white" : "gradient-number"
           }`}
         >
           &euro;{formatPrice(tier.price)}
@@ -216,6 +225,7 @@ export default function PricingSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
+          <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Transparent. Fair.{" "}
             <span className="gradient-text">Kein Kleingedrucktes.</span>
