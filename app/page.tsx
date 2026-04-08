@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Navbar from "@/components/marketing/Navbar";
 import HeroSection from "@/components/marketing/HeroSection";
+import SectionTransition from "@/components/marketing/SectionTransition";
 import Footer from "@/components/marketing/Footer";
 import ClientOverlays from "@/components/marketing/ClientOverlays";
 import FAQSchema from "@/components/marketing/FAQSchema";
@@ -23,6 +24,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <SectionTransition />
         <SocialProofBar />
         <ProblemSection />
         <ModulesSection />

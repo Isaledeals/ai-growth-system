@@ -303,6 +303,15 @@ h1, h2, h3 {
   50%      { transform: translate(20px, -25px) scale(1.1); opacity: 1; }
 }
 
+/* ===== SectionTransition: Aufwind Rising Particles ===== */
+@keyframes aufwind-rise {
+  0%   { transform: translateY(0px) scale(0.8); opacity: 0; }
+  15%  { opacity: 1; }
+  50%  { transform: translateY(-55px) scale(1.1); opacity: 0.9; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-110px) scale(0.6); opacity: 0; }
+}
+
 /* ===== Accessibility ===== */
 
 *:focus-visible {
