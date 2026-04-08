@@ -16,33 +16,33 @@ interface PainPoint {
 const painPoints: PainPoint[] = [
   {
     icon: PhoneOff,
-    title: "Verpasste Anrufe",
+    title: "Verpasster Anruf = €150 weg",
     description:
-      "Jeder 4. Anruf geht verloren weil niemand rangeht. Das sind Ø €150 pro Anruf — die direkt zur Konkurrenz gehen.",
+      "Jeder 4. Anruf geht verloren weil niemand rangeht. Ø €150 pro Anruf — der Interessent wählt dann die Konkurrenz. Morgens: 3 Voicemails, 2 verpasste Anrufe, bevor Sie den ersten Patienten gesehen haben.",
     stat: "25%",
     statLabel: "aller Anrufe unbeantwortet",
   },
   {
     icon: CalendarX,
-    title: "No-Shows",
+    title: "No-Show = leerer Stuhl",
     description:
-      "18% deiner Termine erscheinen einfach nicht. Leerer Stuhl, verlorenes Geld, keine Zeit für Ersatz.",
+      "18% Ihrer Termine erscheinen einfach nicht. Der Zeitslot ist weg, die Einnahmen fehlen, kurzfristige Nachbesetzung ist unmöglich. Ø €800–2.000 verlorener Umsatz pro Monat.",
     stat: "18%",
     statLabel: "No-Show-Rate im Schnitt",
   },
   {
     icon: StarOff,
-    title: "Keine Bewertungen",
+    title: "Keine Bewertungen trotz guter Arbeit",
     description:
-      "Nur 5% der zufriedenen Kunden bewerten freiwillig. Dein Google-Profil wächst nicht — das der Konkurrenz schon.",
+      "Nur 5% der zufriedenen Kunden bewerten freiwillig. Ihr Google-Profil wächst nicht — das der Konkurrenz schon. 47 Nachrichten am Morgen, aber keine einzige Bewertung am Abend.",
     stat: "5%",
     statLabel: "bewerten freiwillig",
   },
   {
     icon: UserX,
-    title: "Schlafende Kunden",
+    title: "Kunden die nie zurückkommen",
     description:
-      "62% deiner Bestandskunden waren seit 6+ Monaten nicht mehr da. Sie haben dich vergessen — nicht umgekehrt.",
+      "62% Ihrer Bestandskunden waren seit 6+ Monaten nicht mehr da. Sie haben Sie vergessen — nicht umgekehrt. Das wären €300 pro Kunde — ohne Neukundenkosten.",
     stat: "62%",
     statLabel: "Kunden inaktiv seit 6 Monaten",
   },
@@ -154,7 +154,7 @@ export default function ProblemSection() {
             Das Problem
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Kennst du das?
+            Kennen Sie das?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
             Lokale Unternehmen verlieren täglich Umsatz durch diese vier Probleme — ohne es zu merken.
@@ -187,7 +187,7 @@ export default function ProblemSection() {
           <p className="max-w-2xl text-xl font-semibold text-slate-700 sm:text-2xl">
             Das war gestern.{' '}
             <span className="text-blue-600">
-              Heute macht Aufwind AI das für dich.
+              Heute macht Aufwind AI das für Sie.
             </span>
           </p>
           <a

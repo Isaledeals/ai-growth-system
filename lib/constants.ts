@@ -67,7 +67,7 @@ export const PRICING: PricingTier[] = [
       "Quartalsweise Optimierung",
     ],
     highlight: true,
-    badge: "Empfohlen",
+    badge: "Beliebteste Wahl",
   },
 ];
 
@@ -157,54 +157,44 @@ export interface FaqItem {
 
 export const FAQ: FaqItem[] = [
   {
-    question: "Wie funktioniert der KI-Telefonassistent?",
+    question: "Was kostet das wirklich — gibt es versteckte Kosten?",
     answer:
-      "Unser KI-Telefonassistent nimmt Anrufe entgegen, wenn du nicht erreichbar bist — oder auf Wunsch immer. Er beantwortet häufige Fragen (Öffnungszeiten, Preise, Leistungen), bucht Termine direkt in deinen Kalender und leitet dringende Anliegen an dich weiter. Er klingt natürlich und professionell — deine Kunden merken keinen Unterschied.",
+      "Pro kostet €697 pro Monat plus einmalig €499 Setup. Das ist alles. Kein Jahresvertrag im ersten Monat. Keine versteckten Onboarding-Gebühren. Monatlich kündbar ab Monat 3. Wenn es sich nach 60 Tagen nicht lohnt, erstatten wir die ersten zwei Monate vollständig zurück.",
   },
   {
-    question: "Wie lange dauert das Setup?",
+    question: "Ist Aufwind AI auch für kleine Betriebe?",
     answer:
-      "In der Regel ist dein System innerhalb von 5–7 Werktagen vollständig eingerichtet und einsatzbereit. Wir kümmern uns um alles — du musst nur deine Zugangsdaten bereitstellen und uns 30 Minuten für das Onboarding-Gespräch geben.",
+      "Unsere kleinsten Kunden haben 2 Mitarbeiter und 80 Patienten pro Monat. Unsere größten haben 8 Filialen. Kein Mindestumsatz, keine Mindestgröße. Wenn Sie täglich mit Terminen, Kunden und Rückrufen kämpfen — sind Sie genau richtig.",
   },
   {
-    question: "Brauche ich technisches Wissen?",
+    question: "Was wenn das System nicht funktioniert?",
     answer:
-      "Nein, überhaupt nicht. Wir richten alles für dich ein. Du bekommst ein einfaches Dashboard und kannst alles per Smartphone überwachen. Bei Fragen ist unser Support jederzeit erreichbar — per WhatsApp, Email oder Telefon.",
+      "Sie müssen nichts konfigurieren, nichts lernen, nichts einrichten. Unser Team übernimmt den kompletten Setup in 5 Werktagen. Nach Tag 5 läuft Ihr KI-Assistent — ohne dass Sie auch nur einmal in ein Dashboard geschaut haben müssen.",
   },
   {
     question: "Ist das DSGVO-konform?",
     answer:
-      "Ja, zu 100%. Alle Daten werden auf europäischen Servern verarbeitet. Der KI-Telefonassistent informiert Anrufer über die Aufzeichnung. Wir stellen alle nötigen Datenschutz-Dokumente bereit und helfen bei der Integration in deine bestehende Datenschutzerklärung.",
+      "Alle Daten Ihrer Kunden werden ausschließlich auf deutschen Servern gespeichert (Frankfurt). Keine Weitergabe an US-Dienste. Kein KI-Training mit Ihren Kundendaten. AVV liegt jedem Vertrag bei. Für Arztpraxen: vollständig konform mit §203 StGB und §22 BDSG.",
   },
   {
-    question: "Was passiert mit Kunden die sich beschweren?",
+    question: "Wie lange dauert der Setup?",
     answer:
-      "Unser Reputations-System erkennt unzufriedene Kunden und leitet sie direkt an dich weiter — BEVOR sie eine negative Google-Bewertung schreiben. Nur zufriedene Kunden werden zum Bewerten eingeladen. So schützt du deinen Ruf aktiv.",
-  },
-  {
-    question: "Kann ich jederzeit kündigen?",
-    answer:
-      "Ja. Monatlich kündbar, keine Mindestlaufzeit, keine versteckten Kosten. Aber ehrlich: Die meisten Kunden bleiben, weil das System sich ab dem ersten Monat bezahlt macht. Dazu gibt es 30 Tage Geld-zurück-Garantie — null Risiko.",
+      "Tag 1: Demo-Call (45 Min). Sie schicken uns Ihre bestehende Buchungs-URL. Tag 5: Ihr System ist live. Kein IT-Projekt, keine Wochen des Wartens.",
   },
   {
     question: "Wie schnell sehe ich Ergebnisse?",
     answer:
-      "Ab Tag 1. Sobald das System live ist, verpasst du keinen Anruf und keine Nachricht mehr. In den ersten 2–4 Wochen sehen unsere Kunden im Schnitt 25% mehr Terminbuchungen, 70% weniger No-Shows und die ersten automatisch generierten Google-Bewertungen.",
+      "Ab Tag 1. Sobald das System live ist, verpassen Sie keinen Anruf und keine Nachricht mehr. In den ersten 2–4 Wochen sehen unsere Kunden im Schnitt 25% mehr Terminbuchungen, 70% weniger No-Shows und die ersten automatisch generierten Google-Bewertungen.",
   },
   {
     question: "Funktioniert das für meine Branche?",
     answer:
-      "Unser System funktioniert für alle lokalen Dienstleister: Zahnärzte, Ärzte, Physiotherapeuten, Friseursalons, Beauty-Studios, Handwerksbetriebe, Fitnessstudios, Restaurants, Immobilienbüros und mehr. Wir passen jedes Modul individuell auf dein Geschäftsmodell an.",
-  },
-  {
-    question: "Was kostet mich das wirklich?",
-    answer:
-      "Nur den monatlichen Paketpreis. Keine versteckten Kosten, keine zusätzlichen Lizenzen. Alle Updates und Support sind inklusive. Rechne selbst: Ein verpasster Anruf kostet dich Ø €150. Wenn unser System nur 7 Anrufe pro Monat rettet, hat es sich schon bezahlt.",
+      "Unser System funktioniert für alle lokalen Dienstleister: Zahnärzte, Ärzte, Physiotherapeuten, Friseursalons, Beauty-Studios, Handwerksbetriebe, Fitnessstudios, Restaurants, Immobilienbüros und mehr. Wir passen jedes Modul individuell auf Ihr Geschäftsmodell an.",
   },
   {
     question: "Wie unterscheidet ihr euch von einer normalen Marketing-Agentur?",
     answer:
-      "Eine Agentur bringt dir Leads — aber wer kümmert sich um die? Wir automatisieren alles NACH dem Lead: Anrufannahme, Terminbuchung, Erinnerungen, Follow-ups, Reviews und Reaktivierung. Und das 24/7, nicht nur von 9-17 Uhr. Für einen Bruchteil der Agenturkosten.",
+      "Eine Agentur bringt Ihnen Leads — aber wer kümmert sich um die? Wir automatisieren alles NACH dem Lead: Anrufannahme, Terminbuchung, Erinnerungen, Follow-ups, Reviews und Reaktivierung. Und das 24/7, nicht nur von 9-17 Uhr. Für einen Bruchteil der Agenturkosten.",
   },
 ];
 

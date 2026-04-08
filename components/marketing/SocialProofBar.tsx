@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Calendar, TrendingDown, Star, Clock } from 'lucide-react'
+import { Calendar, TrendingDown, Star, Users, ShieldCheck, MapPin, RefreshCw } from 'lucide-react'
 
 const liveActivities = [
   'Zahnarztpraxis Dr. Weber hat gerade 3 neue Termine gebucht',
@@ -15,32 +15,38 @@ const liveActivities = [
 const metrics = [
   {
     icon: Calendar,
-    value: 2400,
+    value: 2847,
     suffix: '+',
-    display: '2.400+',
-    label: 'Termine gebucht',
+    display: '2.847+',
+    label: 'Termine diese Woche',
   },
   {
     icon: TrendingDown,
     value: 74,
     suffix: '%',
     display: '74%',
-    label: 'No-Shows reduziert',
+    label: 'No-Show-Reduktion',
   },
   {
     icon: Star,
-    value: 850,
-    suffix: '+',
-    display: '850+',
-    label: 'Google Bewertungen',
+    value: 49,
+    suffix: '/5',
+    display: '4.9/5',
+    label: 'Kundenbewertung',
   },
   {
-    icon: Clock,
-    value: 15,
-    suffix: 'h/Woche',
-    display: '15h/Woche',
-    label: 'Zeitersparnis',
+    icon: Users,
+    value: 150,
+    suffix: '+',
+    display: '150+',
+    label: 'Betriebe aktiv',
   },
+]
+
+const trustBadges = [
+  { icon: ShieldCheck, text: 'DSGVO-konform' },
+  { icon: MapPin, text: 'Server in Deutschland 🇩🇪' },
+  { icon: RefreshCw, text: 'Monatlich kündbar' },
 ]
 
 const containerVariants = {
@@ -153,10 +159,29 @@ export default function SocialProofBar() {
             })}
           </div>
 
+          {/* Trust Badges */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 border-t border-slate-200 pt-5"
+          >
+            {trustBadges.map((badge) => {
+              const Icon = badge.icon
+              return (
+                <div
+                  key={badge.text}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm"
+                >
+                  <Icon className="h-3.5 w-3.5 text-blue-600 shrink-0" aria-hidden="true" />
+                  {badge.text}
+                </div>
+              )
+            })}
+          </motion.div>
+
           {/* Live Activity Ticker */}
           <motion.div
             variants={itemVariants}
-            className="mt-6 flex items-center justify-center gap-3 border-t border-slate-200 pt-5"
+            className="mt-4 flex items-center justify-center gap-3 border-t border-slate-200 pt-4"
           >
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="relative flex h-2 w-2">

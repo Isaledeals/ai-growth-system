@@ -15,23 +15,23 @@ const steps: Step[] = [
   {
     number: 1,
     icon: Phone,
-    title: "Demo buchen",
+    title: "45-Min Demo-Call",
     description:
-      "In 15 Minuten zeigen wir dir live wie das System f\u00fcr DEINE Branche funktioniert. Kostenlos und unverbindlich.",
+      "Wir zeigen Ihnen wie es für Ihre Branche aussieht. Kostenlos, unverbindlich, ohne Vorbereitung Ihrerseits.",
   },
   {
     number: 2,
     icon: Settings,
-    title: "Setup durch unser Team",
+    title: "Buchungs-URL + Telefonnummer",
     description:
-      "Unser Team konfiguriert das komplette System f\u00fcr dich. Kein technisches Wissen n\u00f6tig — du musst keinen Finger r\u00fchren.",
+      "Sie schicken uns Ihre bestehende Buchungs-URL und Ihre Telefonnummer. Das ist alles. Kein IT-Projekt.",
   },
   {
     number: 3,
     icon: Rocket,
-    title: "KI l\u00e4uft 24/7",
+    title: "Tag 5: Ihr System ist live",
     description:
-      "Das System arbeitet rund um die Uhr. Mehr Anfragen, mehr Termine, mehr Kunden \u2014 vollautomatisch auf Autopilot.",
+      "Wir bauen alles. In 5 Werktagen ist Ihr KI-Assistent aktiv — ohne dass Sie auch nur einmal in ein Dashboard schauen müssen.",
   },
 ];
 
@@ -114,8 +114,8 @@ export default function HowItWorksSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            In 3 Schritten live &mdash;{" "}
-            <span className="gradient-text">in 48 Stunden.</span>
+            Tag 1: Demo-Call.{" "}
+            <span className="gradient-text">Tag 5: Ihr KI-Assistent ist live.</span>
           </h2>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-blue-600" />
         </motion.div>
@@ -145,13 +145,29 @@ export default function HowItWorksSection() {
           </div>
         </motion.div>
 
+        {/* 60-Tage Garantie Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-14 rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-6 text-center"
+        >
+          <p className="text-base font-bold text-emerald-800 sm:text-lg">
+            60-Tage Garantie
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-emerald-700 max-w-2xl mx-auto">
+            Wenn Sie nach 60 Tagen nicht mindestens 8 Stunden pro Woche einsparen — bekommen Sie jeden Euro zurück. Ohne Diskussion.
+          </p>
+        </motion.div>
+
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-10 text-center"
         >
           <a
             href="/buchen"
@@ -161,7 +177,7 @@ export default function HowItWorksSection() {
             Jetzt Demo-Call buchen
           </a>
           <p className="mt-3 text-sm text-muted">
-            Kostenlos &middot; Unverbindlich &middot; 15 Minuten
+            Kostenlos &middot; Unverbindlich &middot; 45 Minuten
           </p>
         </motion.div>
       </div>

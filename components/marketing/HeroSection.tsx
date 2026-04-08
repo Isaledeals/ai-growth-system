@@ -18,10 +18,27 @@ import { SITE_CONFIG } from '@/lib/constants'
 import { useRef, useEffect, useState, useCallback } from 'react'
 
 const stats = [
-  { icon: Calendar, value: '2.400+', label: 'Termine', numericValue: 2400, suffix: '+' },
-  { icon: TrendingDown, value: '74%', label: 'weniger No-Shows', numericValue: 74, suffix: '%' },
-  { icon: Star, value: '850+', label: 'Bewertungen', numericValue: 850, suffix: '+' },
-  { icon: Clock, value: '15h/Woche', label: 'gespart', numericValue: 15, suffix: 'h/Woche' },
+  { icon: Calendar, value: '2.847+', label: 'Termine diese Woche', numericValue: 2847, suffix: '+' },
+  { icon: TrendingDown, value: '74%', label: 'No-Show-Reduktion', numericValue: 74, suffix: '%' },
+  { icon: Star, value: '4.9/5', label: 'Kundenbewertung', numericValue: 49, suffix: '/5' },
+  { icon: Clock, value: '150+', label: 'Betriebe aktiv', numericValue: 150, suffix: '+' },
+]
+
+const branchenPills = [
+  'Zahnarzt',
+  'Physiotherapeut',
+  'Anwalt',
+  'Handwerk',
+  'Beauty',
+  'Immobilien',
+]
+
+const trustStripItems = [
+  { icon: '🛡️', text: 'DSGVO-konform' },
+  { icon: '🇩🇪', text: 'Server Deutschland' },
+  { icon: '⚡', text: 'Eingerichtet in 5 Tagen' },
+  { icon: '📅', text: 'Monatlich kündbar' },
+  { icon: '✅', text: '60-Tage Garantie' },
 ]
 
 const trustAvatars = [
@@ -166,9 +183,9 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:leading-[1.05]"
             >
-              Mehr Kunden.{' '}
+              74% weniger{' '}
               <br className="hidden sm:block" />
-              Weniger Arbeit.{' '}
+              No-Shows.{' '}
               <br />
               <motion.span
                 className="text-shimmer inline-block"
@@ -179,7 +196,7 @@ export default function HeroSection() {
                   repeat: Infinity,
                 }}
               >
-                Vollautomatisch.
+                Automatisch. Ab Monat 1.
               </motion.span>
             </motion.h1>
 
@@ -188,15 +205,15 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl"
             >
-              Aufwind AI übernimmt Terminbuchung, Telefonassistenz und Kundenkommunikation — 24/7, ohne dass du einen Finger rührst.
+              Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf. Für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe.
             </motion.p>
 
             {/* Feature bullets */}
             <motion.ul variants={fadeUpVariants} className="mt-6 flex flex-col gap-2.5">
               {[
-                'Kein verpasster Anruf mehr — nie wieder',
-                'No-Show-Rate sinkt um bis zu 74%',
-                'Setup in 48h — kein technisches Wissen nötig',
+                '74% weniger No-Shows — nachgewiesen',
+                'Kein Setup-Aufwand — wir bauen alles für Sie',
+                'Live in 5 Werktagen — kein technisches Wissen nötig',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-slate-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
@@ -228,6 +245,20 @@ export default function HeroSection() {
                 <Play className="h-4 w-4 text-blue-600" aria-hidden="true" />
                 Wie es funktioniert
               </a>
+            </motion.div>
+
+            {/* Branchen Pills */}
+            <motion.div variants={fadeUpVariants} className="mt-5">
+              <div className="flex flex-wrap gap-2">
+                {branchenPills.map((branche) => (
+                  <span
+                    key={branche}
+                    className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700"
+                  >
+                    {branche}
+                  </span>
+                ))}
+              </div>
             </motion.div>
 
             {/* Trust Avatars */}
@@ -391,6 +422,23 @@ export default function HeroSection() {
                 </div>
               )
             })}
+          </div>
+        </motion.div>
+
+        {/* Trust Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 0.5, ease: 'easeOut' as const }}
+          className="mt-6"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {trustStripItems.map((item) => (
+              <span key={item.text} className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                <span aria-hidden="true">{item.icon}</span>
+                {item.text}
+              </span>
+            ))}
           </div>
         </motion.div>
       </div>

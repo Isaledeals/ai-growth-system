@@ -120,7 +120,7 @@ export default function FAQSection() {
             <span className="gradient-text">Fragen</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-xl mx-auto">
-            Alles was du wissen musst &mdash; transparent und ehrlich.
+            Alles was Sie wissen m&uuml;ssen &mdash; transparent und ehrlich.
           </p>
         </motion.div>
 

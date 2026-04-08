@@ -221,7 +221,7 @@ export default function PricingSection() {
             <span className="gradient-text">Kein Kleingedrucktes.</span>
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-2xl mx-auto">
-            Weniger als &euro;23/Tag. Deine Empfangskraft kostet &euro;2.500/Mo und arbeitet nur 8 Stunden.
+            Weniger als &euro;23/Tag. Ihre Empfangskraft kostet &euro;2.500/Mo und arbeitet nur 8 Stunden.
           </p>
           <p className="mt-2 text-xs text-muted/70">
             &Oslash; Marketing-Agentur: &euro;3.000&ndash;10.000/Mo &nbsp;|&nbsp;
@@ -243,28 +243,44 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
+        {/* Garantie Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="mt-10 max-w-2xl mx-auto rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-5 text-center"
+        >
+          <p className="text-sm font-bold text-emerald-800">
+            Keine Überraschungen. Monatlich kündbar ab Monat 3. Keine versteckten Kosten.
+          </p>
+          <p className="mt-1 text-sm text-emerald-700">
+            60-Tage Geld-zurück-Garantie wenn es sich nicht lohnt.
+          </p>
+        </motion.div>
+
         {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 flex flex-col items-center gap-4"
+          className="mt-8 flex flex-col items-center gap-4"
         >
           <p className="text-sm text-muted">Alle Preise zzgl. MwSt.</p>
 
           <div className="flex flex-wrap justify-center gap-3">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700">
               <ShieldCheck className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              30 Tage Geld-zur&uuml;ck
+              60 Tage Geld-zur&uuml;ck
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
               <Check className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              Kein Vertrag
+              Monatlich k&uuml;ndbar
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700">
               <Zap className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              Setup in 48h
+              Live in 5 Werktagen
             </div>
           </div>
         </motion.div>

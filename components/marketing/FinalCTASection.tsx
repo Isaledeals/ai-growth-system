@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 const trustBadges = [
   { icon: ShieldCheck, label: "DSGVO-konform" },
   { icon: Lock, label: "SSL-verschlüsselt" },
-  { icon: BadgeCheck, label: "30-Tage Garantie" },
+  { icon: BadgeCheck, label: "60-Tage Garantie" },
 ];
 
 const containerVariants = {
@@ -83,8 +83,8 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
           >
-            Bereit für{' '}
-            <span className="text-blue-200">automatisches Wachstum</span>?
+            Ihr KI-Assistent.{' '}
+            <span className="text-blue-200">Nie krank. Nie im Urlaub. Immer für Ihre Kunden da.</span>
           </motion.h2>
 
           {/* Subtext */}
@@ -92,8 +92,7 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-6 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg"
           >
-            In 15 Minuten zeigen wir dir live, wie dein Unternehmen mit KI
-            mehr Kunden gewinnt — vollautomatisch, 24/7.
+            Buchen Sie jetzt Ihren kostenlosen Demo-Call — in 48h zeigen wir Ihnen wie Aufwind AI für Ihre Branche aussieht.
           </motion.p>
 
           {/* Avatar row */}
@@ -132,7 +131,7 @@ export default function FinalCTASection() {
               className="group inline-flex items-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-blue-700 shadow-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] sm:text-lg"
             >
               <Calendar className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
-              Jetzt Demo buchen
+              Kostenlose Demo buchen
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </a>
             <a
@@ -149,7 +148,7 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-5 text-sm font-medium text-blue-200"
           >
-            Keine Kreditkarte &nbsp;·&nbsp; Kein Risiko &nbsp;·&nbsp; Setup in 48h
+            Keine Kreditkarte &nbsp;·&nbsp; Keine Verpflichtung &nbsp;·&nbsp; 60-Tage Garantie
           </motion.p>
 
           {/* Trust Badges */}
