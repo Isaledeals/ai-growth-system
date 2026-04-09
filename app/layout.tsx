@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import dynamic from "next/dynamic";
 import { LazyMotion, domAnimation } from "framer-motion";
+import AuroraWrapper from "@/components/marketing/AuroraWrapper";
 import "./globals.css";
-
-// Lazy — non-blocking, only after hydration
-const AuroraBackground = dynamic(() => import("@/components/marketing/AuroraBackground"), {
-  ssr: false,
-  loading: () => null,
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -93,7 +87,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
       <body className="min-h-full flex flex-col">
-        <AuroraBackground />
+        <AuroraWrapper />
         <LazyMotion features={domAnimation} strict>
         <script
           type="application/ld+json"
