@@ -18,6 +18,8 @@ import {
   sendEmail,
   type BookingPayload,
 } from "@/lib/notifications";
+import { getSupabaseServerClient } from "@/lib/supabase/client";
+import type { LeadInsert } from "@/lib/supabase/types";
 
 interface BookingRequestBody {
   name: string;
@@ -165,6 +167,34 @@ export async function POST(request: NextRequest): Promise<Response> {
     const message = err instanceof Error ? err.message : "Unknown";
     console.error(`[booking] Failed to persist: ${message}`);
     // weitermachen — wir wollen den Nutzer nicht bestrafen, wenn der Disk schreibt fehlschlaegt
+  }
+
+  // 1b. Persist to Supabase (graceful — does not block response)
+  try {
+    const supabaseAdmin = getSupabaseServerClient();
+    const leadData: LeadInsert = {
+      name: validBody.name,
+      email: validBody.email,
+      phone: validBody.phone ?? null,
+      branche: validBody.branche ?? null,
+      employees: validBody.employees ?? null,
+      problem: validBody.problem ?? null,
+      preferred_date: validBody.date ?? null,
+      preferred_time: validBody.time ?? null,
+      status: "neu",
+      source: "landing_page",
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: dbError } = await (supabaseAdmin as any)
+      .from("leads")
+      .insert(leadData);
+    if (dbError) {
+      console.error("[Booking] Supabase insert failed:", dbError);
+    } else {
+      console.log(`[Booking] Lead saved to Supabase for ${validBody.email}`);
+    }
+  } catch (err) {
+    console.error("[Booking] Supabase error:", err instanceof Error ? err.message : err);
   }
 
   // 2. n8n Webhook (graceful)

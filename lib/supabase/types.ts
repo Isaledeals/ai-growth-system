@@ -288,6 +288,116 @@ export type ReviewUpdate = Partial<Omit<Review, "id" | "tenant_id" | "created_at
 export type AppointmentUpdate = Partial<Omit<Appointment, "id" | "tenant_id" | "created_at">>;
 
 // ---------------------------------------------------------------------------
+// Aufwind Closer CRM types
+// ---------------------------------------------------------------------------
+
+export type LeadStatus =
+  | "neu"
+  | "kontaktiert"
+  | "demo_gebucht"
+  | "angebot"
+  | "abschluss"
+  | "verloren";
+
+export type AufwindPlanType = "pro" | "premium";
+
+export type AufwindTenantStatus =
+  | "onboarding"
+  | "active"
+  | "paused"
+  | "cancelled";
+
+export interface Lead {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  branche: string | null;
+  employees: string | null;
+  problem: string | null;
+  preferred_date: string | null;
+  preferred_time: string | null;
+  status: LeadStatus;
+  notes: string | null;
+  closer_id: string | null;
+  source: string;
+}
+
+export interface LeadInsert {
+  id?: string;
+  created_at?: string;
+  name: string;
+  email: string;
+  phone?: string | null;
+  branche?: string | null;
+  employees?: string | null;
+  problem?: string | null;
+  preferred_date?: string | null;
+  preferred_time?: string | null;
+  status?: LeadStatus;
+  notes?: string | null;
+  closer_id?: string | null;
+  source?: string;
+}
+
+export interface LeadUpdate {
+  name?: string;
+  email?: string;
+  phone?: string | null;
+  branche?: string | null;
+  employees?: string | null;
+  problem?: string | null;
+  preferred_date?: string | null;
+  preferred_time?: string | null;
+  status?: LeadStatus;
+  notes?: string | null;
+  closer_id?: string | null;
+  source?: string;
+}
+
+export interface AufwindTenant {
+  id: string;
+  created_at: string;
+  business_name: string;
+  branche: string | null;
+  email: string;
+  phone: string | null;
+  plan: AufwindPlanType;
+  status: AufwindTenantStatus;
+  stripe_customer_id: string | null;
+  onboarding_completed: boolean;
+  config: Record<string, unknown>;
+  lead_id: string | null;
+}
+
+export type AufwindTenantInsert = Omit<AufwindTenant, "id" | "created_at"> & {
+  id?: string;
+  created_at?: string;
+};
+
+export type AufwindTenantUpdate = Partial<
+  Omit<AufwindTenant, "id" | "created_at">
+>;
+
+export interface AufwindActivity {
+  id: string;
+  created_at: string;
+  tenant_id: string | null;
+  type: string;
+  description: string;
+  metadata: Record<string, unknown>;
+}
+
+export type AufwindActivityInsert = Omit<
+  AufwindActivity,
+  "id" | "created_at"
+> & {
+  id?: string;
+  created_at?: string;
+};
+
+// ---------------------------------------------------------------------------
 // Supabase Database type (for createClient<Database>)
 // ---------------------------------------------------------------------------
 
@@ -333,6 +443,21 @@ export interface Database {
         Row: DunningEvent;
         Insert: DunningEventInsert;
         Update: never;
+      };
+      leads: {
+        Row: Lead;
+        Insert: LeadInsert;
+        Update: LeadUpdate;
+      };
+      aufwind_tenants: {
+        Row: AufwindTenant;
+        Insert: AufwindTenantInsert;
+        Update: AufwindTenantUpdate;
+      };
+      aufwind_activities: {
+        Row: AufwindActivity;
+        Insert: AufwindActivityInsert;
+        Update: Partial<Omit<AufwindActivity, "id" | "created_at">>;
       };
     };
     Views: {
