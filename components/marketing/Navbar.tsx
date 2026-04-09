@@ -43,18 +43,88 @@ export default function Navbar() {
           className="flex items-center gap-2.5 text-xl font-bold tracking-tight"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
         >
-          <div
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-white text-sm font-black shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #2563EB, #059669)' }}
+          {/* Aufwind AI — inline SVG logo mark */}
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
+            className="shrink-0"
           >
-            A
-          </div>
+            <defs>
+              {/* Gradient for light background (scrolled) */}
+              <linearGradient id="aufwind-grad-dark" x1="0" y1="36" x2="36" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#2563EB" />
+                <stop offset="100%" stopColor="#059669" />
+              </linearGradient>
+              {/* Gradient for dark background (hero) */}
+              <linearGradient id="aufwind-grad-light" x1="0" y1="36" x2="36" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#60A5FA" />
+                <stop offset="100%" stopColor="#34D399" />
+              </linearGradient>
+            </defs>
+            {/*
+              Symbol: Three rising wind-strokes that form an upward arc — like a gust lifting
+              something. The three bars grow in height left→right, all with rounded caps,
+              unified by a subtle ascending arc path underneath suggesting momentum / Auftrieb.
+              Left bar: short  |  Middle bar: medium  |  Right bar: tallest
+              All bars lean very slightly right to convey forward motion.
+            */}
+            {/* Ascending arc / baseline — the "wind flow" */}
+            <path
+              d="M5 28 Q18 20 31 10"
+              stroke={scrolled ? 'url(#aufwind-grad-dark)' : 'url(#aufwind-grad-light)'}
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.35"
+            />
+            {/* Left bar — shortest */}
+            <line
+              x1="8" y1="27"
+              x2="10" y2="21"
+              stroke={scrolled ? 'url(#aufwind-grad-dark)' : 'url(#aufwind-grad-light)'}
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
+            {/* Middle bar — medium */}
+            <line
+              x1="16" y1="27"
+              x2="19" y2="17"
+              stroke={scrolled ? 'url(#aufwind-grad-dark)' : 'url(#aufwind-grad-light)'}
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
+            {/* Right bar — tallest */}
+            <line
+              x1="25" y1="27"
+              x2="29" y2="10"
+              stroke={scrolled ? 'url(#aufwind-grad-dark)' : 'url(#aufwind-grad-light)'}
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
+            {/* Arrow tip on the right bar — upward momentum indicator */}
+            <polyline
+              points="24,14 29,10 32,15"
+              stroke={scrolled ? 'url(#aufwind-grad-dark)' : 'url(#aufwind-grad-light)'}
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+
+          {/* Wordmark */}
           <span className={`transition-colors duration-500 ${scrolled ? 'text-slate-900' : 'text-white'}`}>
             Aufwind{' '}
             <span
               className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(135deg, #60A5FA, #34D399)' }}
+              style={{
+                backgroundImage: scrolled
+                  ? 'linear-gradient(135deg, #2563EB, #059669)'
+                  : 'linear-gradient(135deg, #60A5FA, #34D399)',
+              }}
             >
               AI
             </span>
