@@ -156,8 +156,17 @@ export default function AuroraBackground() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) return
 
-    window.addEventListener('resize', resize)
-    loop()
+    // Defer canvas start until browser is idle — don't block LCP
+    const start = () => {
+      window.addEventListener('resize', resize)
+      loop()
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(start, { timeout: 2000 })
+    } else {
+      setTimeout(start, 300)
+    }
 
     return () => {
       cancelAnimationFrame(animId)

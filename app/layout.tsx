@@ -1,8 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { Geist, Geist_Mono } from "next/font/google";
-import AuroraBackground from "@/components/marketing/AuroraBackground";
+import dynamic from "next/dynamic";
+import { LazyMotion, domAnimation } from "framer-motion";
 import "./globals.css";
+
+// Lazy — non-blocking, only after hydration
+const AuroraBackground = dynamic(() => import("@/components/marketing/AuroraBackground"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,15 +22,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aufwind.ai"),
@@ -87,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${inter.variable} ${plusJakarta.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -97,6 +94,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <AuroraBackground />
+        <LazyMotion features={domAnimation} strict>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -145,6 +143,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        </LazyMotion>
       </body>
     </html>
   );
