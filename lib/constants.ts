@@ -11,9 +11,9 @@ export const SITE_CONFIG = {
   tagline: "KI-Automatisierung für lokale Unternehmen",
   bookingUrl: "https://isale.deals/book/aufwind-demo",
   externalBookingUrl: "https://isale.deals/book/aufwind-demo",
-  whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
+  whatsappNumber: "971523523481",
   whatsappMessage: "Hallo! Ich interessiere mich für Aufwind AI.",
-  phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
+  phone: "+971 52 352 3481",
   email: "kontakt@aufwind.ai",
   domain: "https://aufwind.ai",
   url: "https://aufwind.ai",
