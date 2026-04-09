@@ -9,9 +9,8 @@ export const SITE_CONFIG = {
   brand: "Aufwind AI",
   brandShort: "Aufwind",
   tagline: "KI-Automatisierung für lokale Unternehmen",
-  // Native Booking-Page (Demo-Buchung). Externer Slug bleibt als Fallback.
-  bookingUrl: "/buchen",
-  externalBookingUrl: "https://isale.deals/book/aufwind-demo", // iSale.deals Slug
+  bookingUrl: "https://isale.deals/book/aufwind-demo",
+  externalBookingUrl: "https://isale.deals/book/aufwind-demo",
   whatsappNumber: "491234567890",                   // TODO: Replace with real WhatsApp number
   whatsappMessage: "Hallo! Ich interessiere mich für Aufwind AI.",
   phone: "+49 123 456 7890",                       // TODO: Replace with Telefonnummer
