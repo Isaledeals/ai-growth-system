@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2, Phone, Calendar, Star, MessageSquare, Bell } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
+import ShimmerButton from '@/components/ui/ShimmerButton'
+import ShinyText from '@/components/ui/ShinyText'
+import BlurText from '@/components/ui/BlurText'
 
 const branchen = [
   'Zahnarztpraxis', 'Physiotherapie', 'Anwaltskanzlei',
@@ -95,12 +98,9 @@ export default function HeroSection() {
               custom={1} variants={fadeUp} initial="hidden" animate="visible"
               className="text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
             >
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'linear-gradient(135deg, #60A5FA 0%, #34D399 100%)' }}
-              >
+              <ShinyText className="text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.5rem]">
                 74% weniger
-              </span>
+              </ShinyText>
               <br />
               No-Shows.
               <br />
@@ -112,7 +112,10 @@ export default function HeroSection() {
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="mt-6 max-w-lg text-lg leading-relaxed text-slate-400 sm:text-xl"
             >
-              Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf — für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe.
+              <BlurText
+                text="Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf — für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe."
+                delay={0.4}
+              />
             </motion.p>
 
             {/* Bullets */}
@@ -134,17 +137,10 @@ export default function HeroSection() {
               custom={4} variants={fadeUp} initial="hidden" animate="visible"
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
-              <a
-                href={SITE_CONFIG.bookingUrl}
-                className="group inline-flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                style={{
-                  background: 'linear-gradient(135deg, #2563EB, #1D4ED8)',
-                  boxShadow: '0 0 0 1px rgba(37,99,235,0.5), 0 4px 24px rgba(37,99,235,0.45), inset 0 1px 0 rgba(255,255,255,0.15)',
-                }}
-              >
+              <ShimmerButton href={SITE_CONFIG.bookingUrl} size="md">
                 Kostenlose Demo buchen
-                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
+                <ArrowRight className="h-5 w-5" />
+              </ShimmerButton>
               <a
                 href="#wie-es-funktioniert"
                 onClick={(e) => { e.preventDefault(); document.querySelector('#wie-es-funktioniert')?.scrollIntoView({ behavior: 'smooth' }) }}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, ShieldCheck, Lock, BadgeCheck, ArrowRight, Phone } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
+import ShimmerButton from "@/components/ui/ShimmerButton";
 
 const trustBadges = [
   { icon: ShieldCheck, label: "DSGVO-konform" },
@@ -128,21 +129,15 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
-            <a
-              href={SITE_CONFIG.bookingUrl}
-              className="group inline-flex items-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-blue-700 shadow-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] sm:text-lg"
-            >
-              <Calendar className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
+            <ShimmerButton href={SITE_CONFIG.bookingUrl} size="lg">
+              <Calendar className="h-5 w-5" aria-hidden="true" />
               Kostenlose Demo buchen
-              <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-            </a>
-            <a
-              href={SITE_CONFIG.bookingUrl}
-              className="group inline-flex items-center gap-2.5 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50 hover:scale-[1.02] sm:text-lg"
-            >
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </ShimmerButton>
+            <ShimmerButton href={SITE_CONFIG.bookingUrl} size="lg" className="from-blue-500/80 to-blue-400/80 shadow-blue-400/20">
               <Phone className="h-5 w-5" aria-hidden="true" />
               Erstgespräch vereinbaren (kostenlos)
-            </a>
+            </ShimmerButton>
           </motion.div>
 
           {/* No-commitment note */}
