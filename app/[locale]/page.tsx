@@ -6,6 +6,7 @@ import InlineCTA from '@/components/marketing/InlineCTA'
 import Footer from '@/components/marketing/Footer'
 import ClientOverlays from '@/components/marketing/ClientOverlays'
 import FAQSchema from '@/components/marketing/FAQSchema'
+import RiseSection from '@/components/ui/RiseSection'
 import { getDictionary, type Locale } from '@/lib/dictionaries'
 
 // Lazy load below-the-fold sections
@@ -38,40 +39,73 @@ export default async function Home({
       <main>
         <HeroSection dict={dict.hero} />
         <SectionTransition />
-        <SocialProofBar dict={dict.socialProof} />
-        <ProblemSection dict={dict.problem} />
+
+        <RiseSection intensity="subtle">
+          <SocialProofBar dict={dict.socialProof} />
+        </RiseSection>
+
+        <RiseSection intensity="subtle">
+          <ProblemSection dict={dict.problem} />
+        </RiseSection>
 
         {/* CTA 1 — nach dem Schmerz, bevor Lösung erklärt wird */}
-        <InlineCTA
-          headline={dict.inlineCtas.cta1.headline}
-          sub={dict.inlineCtas.cta1.sub}
-          cta={dict.inlineCtas.cta1.cta}
-        />
+        <RiseSection intensity="subtle">
+          <InlineCTA
+            headline={dict.inlineCtas.cta1.headline}
+            sub={dict.inlineCtas.cta1.sub}
+            cta={dict.inlineCtas.cta1.cta}
+          />
+        </RiseSection>
 
-        <ModulesSection dict={dict.modules} />
-        <HowItWorksSection dict={dict.howItWorks} />
+        <RiseSection intensity="medium">
+          <ModulesSection dict={dict.modules} />
+        </RiseSection>
+
+        <RiseSection intensity="medium">
+          <HowItWorksSection dict={dict.howItWorks} />
+        </RiseSection>
 
         {/* CTA 2 — nach dem Setup-Verständnis, wenn Zweifel ausgeräumt */}
-        <InlineCTA
-          headline={dict.inlineCtas.cta2.headline}
-          sub={dict.inlineCtas.cta2.sub}
-          cta={dict.inlineCtas.cta2.cta}
-        />
+        <RiseSection intensity="subtle">
+          <InlineCTA
+            headline={dict.inlineCtas.cta2.headline}
+            sub={dict.inlineCtas.cta2.sub}
+            cta={dict.inlineCtas.cta2.cta}
+          />
+        </RiseSection>
 
         {/* Erst Beweis, dann ROI-Berechnung — psychologisch stärker */}
-        <CaseStudiesSection dict={dict.caseStudies} />
-        <ROICalculator dict={dict.roi} />
+        <RiseSection intensity="medium">
+          <CaseStudiesSection dict={dict.caseStudies} />
+        </RiseSection>
+
+        <RiseSection intensity="medium">
+          <ROICalculator dict={dict.roi} />
+        </RiseSection>
 
         {/* CTA 3 — nach dem Beweis + eigenem ROI, maximale Kaufbereitschaft */}
-        <InlineCTA
-          headline={dict.inlineCtas.cta3.headline}
-          cta={dict.inlineCtas.cta3.cta}
-        />
+        <RiseSection intensity="subtle">
+          <InlineCTA
+            headline={dict.inlineCtas.cta3.headline}
+            cta={dict.inlineCtas.cta3.cta}
+          />
+        </RiseSection>
 
-        <ComparisonSection dict={dict.comparison} />
-        <PricingSection dict={dict.pricing} />
-        <FAQSection dict={dict.faq} />
-        <FinalCTASection dict={dict.finalCta} />
+        <RiseSection intensity="medium">
+          <ComparisonSection dict={dict.comparison} />
+        </RiseSection>
+
+        <RiseSection intensity="strong">
+          <PricingSection dict={dict.pricing} />
+        </RiseSection>
+
+        <RiseSection intensity="subtle">
+          <FAQSection dict={dict.faq} />
+        </RiseSection>
+
+        <RiseSection intensity="strong">
+          <FinalCTASection dict={dict.finalCta} />
+        </RiseSection>
       </main>
       <Footer dict={dict.footer} />
       <FAQSchema />

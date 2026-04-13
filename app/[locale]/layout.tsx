@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import { LazyMotion, domAnimation } from 'framer-motion'
 import AuroraWrapper from '@/components/marketing/AuroraWrapper'
+import SmoothScroll from '@/components/ui/SmoothScroll'
+import ScrollProgress from '@/components/ui/ScrollProgress'
 import { getDictionary, type Locale } from '@/lib/dictionaries'
 import '../globals.css'
 
@@ -102,6 +104,8 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col">
         <AuroraWrapper />
         <LazyMotion features={domAnimation} strict>
+          <ScrollProgress />
+          <SmoothScroll>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -147,6 +151,7 @@ export default async function LocaleLayout({
             }}
           />
           {children}
+          </SmoothScroll>
         </LazyMotion>
       </body>
     </html>
