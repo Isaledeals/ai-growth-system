@@ -6,6 +6,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 import ShimmerButton from '@/components/ui/ShimmerButton'
 import ShinyText from '@/components/ui/ShinyText'
 import BlurText from '@/components/ui/BlurText'
+import MeshGradientBg from '@/components/ui/MeshGradientBg'
 
 const branchen = [
   'Zahnarztpraxis', 'Physiotherapie', 'Anwaltskanzlei',
@@ -33,48 +34,8 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0A0F1C] px-4 pt-28 pb-20 sm:px-6 sm:pt-32 lg:px-8">
 
-      {/* ── Aufwind Orbs (CSS animated) ── */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: '-15%', right: '-5%',
-            width: '65vmax', height: '65vmax',
-            background: 'radial-gradient(circle at 40% 40%, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.06) 40%, transparent 70%)',
-            filter: 'blur(40px)',
-            animation: 'orb-drift-a 18s ease-in-out infinite',
-          }}
-        />
-        <div
-          className="absolute rounded-full"
-          style={{
-            bottom: '-20%', left: '-10%',
-            width: '55vmax', height: '55vmax',
-            background: 'radial-gradient(circle at 60% 60%, rgba(5,150,105,0.14) 0%, rgba(5,150,105,0.04) 40%, transparent 70%)',
-            filter: 'blur(50px)',
-            animation: 'orb-drift-b 22s ease-in-out infinite',
-          }}
-        />
-        <div
-          className="absolute rounded-full"
-          style={{
-            top: '30%', left: '20%',
-            width: '40vmax', height: '40vmax',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            animation: 'orb-drift-c 28s ease-in-out infinite',
-          }}
-        />
-        {/* Subtle grid */}
-        <svg className="absolute inset-0 h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hero-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-grid)" />
-        </svg>
-      </div>
+      {/* ── MeshGradient WebGL Background ── */}
+      <MeshGradientBg />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
