@@ -5,6 +5,7 @@ import { Calendar, ShieldCheck, Lock, BadgeCheck, ArrowRight, Phone } from "luci
 import { SITE_CONFIG } from "@/lib/constants";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
 import ShimmerButton from "@/components/ui/ShimmerButton";
+import BackgroundPaths from "@/components/ui/BackgroundPaths";
 
 const trustBadges = [
   { icon: ShieldCheck, label: "DSGVO-konform" },
@@ -37,6 +38,8 @@ export default function FinalCTASection() {
       className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8"
       style={{ background: 'linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #1E40AF 100%)' }}
     >
+      <BackgroundPaths />
+
       {/* Background texture — subtle pattern */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         {/* Radial highlight top */}

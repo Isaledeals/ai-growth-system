@@ -3,6 +3,7 @@
 import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
+import TracingBeam from "@/components/ui/TracingBeam";
 import {
   Bot,
   Phone,
@@ -272,31 +273,33 @@ export default function ModulesSection() {
           </p>
         </motion.div>
 
-        {/* Top row: 4 cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-        >
-          {topRow.map((mod) => (
-            <ModuleCard key={mod.title} mod={mod} />
-          ))}
-        </motion.div>
+        <TracingBeam>
+          {/* Top row: 4 cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          >
+            {topRow.map((mod) => (
+              <ModuleCard key={mod.title} mod={mod} />
+            ))}
+          </motion.div>
 
-        {/* Bottom row: 4 cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-        >
-          {bottomRow.map((mod) => (
-            <ModuleCard key={mod.title} mod={mod} />
-          ))}
-        </motion.div>
+          {/* Bottom row: 4 cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          >
+            {bottomRow.map((mod) => (
+              <ModuleCard key={mod.title} mod={mod} />
+            ))}
+          </motion.div>
+        </TracingBeam>
       </div>
     </section>
   );
