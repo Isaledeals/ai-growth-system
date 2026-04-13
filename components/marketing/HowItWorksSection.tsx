@@ -12,29 +12,17 @@ interface Step {
   description: string;
 }
 
-const steps: Step[] = [
-  {
-    number: 1,
-    icon: Phone,
-    title: "45-Min Demo-Call",
-    description:
-      "Wir zeigen Ihnen wie es für Ihre Branche aussieht. Kostenlos, unverbindlich, ohne Vorbereitung Ihrerseits.",
-  },
-  {
-    number: 2,
-    icon: Settings,
-    title: "Buchungs-URL + Telefonnummer",
-    description:
-      "Sie schicken uns Ihre bestehende Buchungs-URL und Ihre Telefonnummer. Das ist alles. Kein IT-Projekt.",
-  },
-  {
-    number: 3,
-    icon: Rocket,
-    title: "Tag 5: Ihr System ist live",
-    description:
-      "Wir bauen alles. In 5 Werktagen ist Ihr KI-Assistent aktiv — ohne dass Sie auch nur einmal in ein Dashboard schauen müssen.",
-  },
-];
+const stepIcons = [Phone, Settings, Rocket]
+
+interface HowItWorksDict {
+  headlinePart1: string
+  headlinePart2: string
+  steps: { title: string; description: string }[]
+  guaranteeTitle: string
+  guaranteeText: string
+  cta: string
+  ctaSub: string
+}
 
 const containerVariants = {
   hidden: {},
@@ -91,13 +79,20 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       {/* Step indicator pill */}
       <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">
         <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-        Schritt {index + 1} von {steps.length}
+        {index + 1} / 3
       </div>
     </motion.div>
   );
 }
 
-export default function HowItWorksSection() {
+export default function HowItWorksSection({ dict }: { dict: HowItWorksDict }) {
+  const steps: Step[] = dict.steps.map((s, i) => ({
+    number: i + 1,
+    icon: stepIcons[i] ?? Phone,
+    title: s.title,
+    description: s.description,
+  }))
+
   return (
     <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
       {/* Subtle background */}
@@ -116,8 +111,8 @@ export default function HowItWorksSection() {
         >
           <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            Tag 1: Demo-Call.{" "}
-            <span className="gradient-text">Tag 5: Ihr KI-Assistent ist live.</span>
+            {dict.headlinePart1}{" "}
+            <span className="gradient-text">{dict.headlinePart2}</span>
           </h2>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-blue-600" />
         </motion.div>
@@ -157,10 +152,10 @@ export default function HowItWorksSection() {
         >
           <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl bg-gradient-to-b from-blue-600 to-emerald-500" />
           <p className="text-base font-bold text-emerald-800 sm:text-lg">
-            60-Tage Garantie
+            {dict.guaranteeTitle}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-emerald-700 max-w-2xl mx-auto">
-            Wenn Sie nach 60 Tagen nicht mindestens 8 Stunden pro Woche einsparen — bekommen Sie jeden Euro zurück. Ohne Diskussion.
+            {dict.guaranteeText}
           </p>
         </motion.div>
 
@@ -177,10 +172,10 @@ export default function HowItWorksSection() {
             className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-200/60 transition-all duration-300 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200/70 hover:scale-105 active:scale-[0.98]"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
-            Jetzt Demo-Call buchen
+            {dict.cta}
           </a>
           <p className="mt-3 text-sm text-muted">
-            Kostenlos &middot; Unverbindlich &middot; 45 Minuten
+            {dict.ctaSub}
           </p>
         </motion.div>
       </div>

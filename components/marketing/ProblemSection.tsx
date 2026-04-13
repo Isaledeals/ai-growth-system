@@ -6,6 +6,8 @@ import { PhoneOff, CalendarX, StarOff, UserX, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
 
+const painPointIcons = [PhoneOff, CalendarX, StarOff, UserX]
+
 interface PainPoint {
   icon: LucideIcon;
   title: string;
@@ -14,40 +16,12 @@ interface PainPoint {
   statLabel: string;
 }
 
-const painPoints: PainPoint[] = [
-  {
-    icon: PhoneOff,
-    title: "Verpasster Anruf = €150 weg",
-    description:
-      "Jeder 4. Anruf geht verloren weil niemand rangeht. Ø €150 pro Anruf — der Interessent wählt dann die Konkurrenz. Morgens: 3 Voicemails, 2 verpasste Anrufe, bevor Sie den ersten Patienten gesehen haben.",
-    stat: "25%",
-    statLabel: "aller Anrufe unbeantwortet",
-  },
-  {
-    icon: CalendarX,
-    title: "No-Show = leerer Stuhl",
-    description:
-      "18% Ihrer Termine erscheinen einfach nicht. Der Zeitslot ist weg, die Einnahmen fehlen, kurzfristige Nachbesetzung ist unmöglich. Ø €800–2.000 verlorener Umsatz pro Monat.",
-    stat: "18%",
-    statLabel: "No-Show-Rate im Schnitt",
-  },
-  {
-    icon: StarOff,
-    title: "Keine Bewertungen trotz guter Arbeit",
-    description:
-      "Nur 5% der zufriedenen Kunden bewerten freiwillig. Ihr Google-Profil wächst nicht — das der Konkurrenz schon. 47 Nachrichten am Morgen, aber keine einzige Bewertung am Abend.",
-    stat: "5%",
-    statLabel: "bewerten freiwillig",
-  },
-  {
-    icon: UserX,
-    title: "Kunden die nie zurückkommen",
-    description:
-      "62% Ihrer Bestandskunden waren seit 6+ Monaten nicht mehr da. Sie haben Sie vergessen — nicht umgekehrt. Das wären €300 pro Kunde — ohne Neukundenkosten.",
-    stat: "62%",
-    statLabel: "Kunden inaktiv seit 6 Monaten",
-  },
-];
+interface ProblemDict {
+  badge: string
+  headline: string
+  sub: string
+  items: { title: string; description: string; stat: string; statLabel: string }[]
+}
 
 const containerVariants = {
   hidden: {},
@@ -125,7 +99,12 @@ function PainPointCard({ point }: { point: PainPoint }) {
   );
 }
 
-export default function ProblemSection() {
+export default function ProblemSection({ dict }: { dict: ProblemDict }) {
+  const painPoints: PainPoint[] = dict.items.map((item, i) => ({
+    ...item,
+    icon: painPointIcons[i] ?? PhoneOff,
+  }))
+
   return (
     <section
       id="probleme"
@@ -152,14 +131,14 @@ export default function ProblemSection() {
           className="mb-14 text-center"
         >
           <span className="mb-4 inline-block rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-sm font-semibold text-red-600">
-            Das Problem
+            {dict.badge}
           </span>
           <AufwindBeam variant="badge" />
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Kennen Sie das?
+            {dict.headline}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Lokale Unternehmen verlieren täglich Umsatz durch diese vier Probleme — ohne es zu merken.
+            {dict.sub}
           </p>
           <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-red-300" />
         </motion.div>

@@ -7,11 +7,19 @@ import AufwindBeam from "@/components/marketing/AufwindBeam";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 import BackgroundPaths from "@/components/ui/BackgroundPaths";
 
-const trustBadges = [
-  { icon: ShieldCheck, label: "DSGVO-konform" },
-  { icon: Lock, label: "SSL-verschlüsselt" },
-  { icon: BadgeCheck, label: "60-Tage Garantie" },
-];
+const trustBadgeIcons = [ShieldCheck, Lock, BadgeCheck]
+
+interface FinalCtaDict {
+  badge: string
+  headline: string
+  headlineHighlight: string
+  sub: string
+  viewersNote: string
+  cta: string
+  ctaSecondary: string
+  disclaimer: string
+  trustBadges: { label: string }[]
+}
 
 const containerVariants = {
   hidden: {},
@@ -31,7 +39,7 @@ const fadeUpVariants = {
   },
 };
 
-export default function FinalCTASection() {
+export default function FinalCTASection({ dict }: { dict: FinalCtaDict }) {
   return (
     <section
       id="demo"
@@ -79,7 +87,7 @@ export default function FinalCTASection() {
           <motion.div variants={fadeUpVariants}>
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
               <Calendar className="h-4 w-4" aria-hidden="true" />
-              23 Unternehmen haben diese Woche eine Demo gebucht
+              {dict.badge}
             </span>
           </motion.div>
 
@@ -87,8 +95,8 @@ export default function FinalCTASection() {
           <motion.div variants={fadeUpVariants} className="w-full text-center">
             <AufwindBeam variant="badge" className="mb-3" />
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Ihr KI-Assistent.{' '}
-              <span className="text-blue-200">Nie krank. Nie im Urlaub. Immer für Ihre Kunden da.</span>
+              {dict.headline}{' '}
+              <span className="text-blue-200">{dict.headlineHighlight}</span>
             </h2>
             <AufwindBeam variant="wide" className="mt-4" />
           </motion.div>
@@ -98,7 +106,7 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-6 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg"
           >
-            Buchen Sie jetzt Ihren kostenlosen Demo-Call — in 48h zeigen wir Ihnen wie Aufwind AI für Ihre Branche aussieht.
+            {dict.sub}
           </motion.p>
 
           {/* Avatar row */}
@@ -123,7 +131,7 @@ export default function FinalCTASection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              12 weitere schauen sich gerade diese Seite an
+              {dict.viewersNote}
             </span>
           </motion.div>
 
@@ -134,12 +142,12 @@ export default function FinalCTASection() {
           >
             <ShimmerButton href={SITE_CONFIG.bookingUrl} size="lg">
               <Calendar className="h-5 w-5" aria-hidden="true" />
-              Kostenlose Demo buchen
+              {dict.cta}
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </ShimmerButton>
             <ShimmerButton href={SITE_CONFIG.bookingUrl} size="lg" className="from-blue-500/80 to-blue-400/80 shadow-blue-400/20">
               <Phone className="h-5 w-5" aria-hidden="true" />
-              Erstgespräch vereinbaren (kostenlos)
+              {dict.ctaSecondary}
             </ShimmerButton>
           </motion.div>
 
@@ -148,7 +156,7 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-5 text-sm font-medium text-blue-200"
           >
-            Keine Kreditkarte &nbsp;·&nbsp; Keine Verpflichtung &nbsp;·&nbsp; 60-Tage Garantie
+            {dict.disclaimer}
           </motion.p>
 
           {/* Trust Badges */}
@@ -156,8 +164,8 @@ export default function FinalCTASection() {
             variants={fadeUpVariants}
             className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10"
           >
-            {trustBadges.map((badge) => {
-              const Icon = badge.icon;
+            {dict.trustBadges.map((badge, idx) => {
+              const Icon = trustBadgeIcons[idx] ?? ShieldCheck;
               return (
                 <div
                   key={badge.label}

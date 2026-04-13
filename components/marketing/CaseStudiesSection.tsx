@@ -3,16 +3,6 @@
 import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Quote, ArrowRight } from "lucide-react";
-import { CASE_STUDIES } from "@/lib/constants";
-
-interface CaseStudyMeta {
-  description: string;
-  color: string;
-  bgColor: string;
-  textColor: string;
-  ringColor: string;
-  borderColor: string;
-}
 
 interface CaseStudyExtended {
   id: string;
@@ -28,40 +18,27 @@ interface CaseStudyExtended {
   borderColor: string;
 }
 
-const caseStudyMeta: Record<string, CaseStudyMeta> = {
-  "zahnarzt-weber": {
-    description:
-      "Zahnarztpraxis mit 3 Behandlungszimmern in München. Hohe No-Show-Rate und fehlende Online-Bewertungen bremsten das Wachstum.",
-    color: "text-blue-600",
-    bgColor: "bg-blue-50",
-    textColor: "text-blue-700",
-    ringColor: "ring-blue-200",
-    borderColor: "border-l-blue-500",
-  },
-  "beauty-glamour": {
-    description:
-      "Premium Beauty Studio in Hamburg. Stammkunden kamen seltener, neue Kunden fanden den Salon kaum online.",
-    color: "text-pink-600",
-    bgColor: "bg-pink-50",
-    textColor: "text-pink-700",
-    ringColor: "ring-pink-200",
-    borderColor: "border-l-pink-500",
-  },
-  "handwerk-mueller": {
-    description:
-      "Handwerksbetrieb mit 12 Mitarbeitern in Stuttgart. Angebote versandeten, Neukunden-Akquise war rein auf Empfehlung.",
-    color: "text-amber-600",
-    bgColor: "bg-amber-50",
-    textColor: "text-amber-700",
-    ringColor: "ring-amber-200",
-    borderColor: "border-l-amber-500",
-  },
-};
+const caseStudyStyles = [
+  { color: "text-blue-600",  bgColor: "bg-blue-50",  textColor: "text-blue-700",  ringColor: "ring-blue-200",  borderColor: "border-l-blue-500" },
+  { color: "text-pink-600",  bgColor: "bg-pink-50",  textColor: "text-pink-700",  ringColor: "ring-pink-200",  borderColor: "border-l-pink-500" },
+  { color: "text-amber-600", bgColor: "bg-amber-50", textColor: "text-amber-700", ringColor: "ring-amber-200", borderColor: "border-l-amber-500" },
+]
 
-const enrichedStudies: CaseStudyExtended[] = CASE_STUDIES.map((cs) => ({
-  ...cs,
-  ...caseStudyMeta[cs.id],
-}));
+interface CaseStudiesDict {
+  headline: string
+  headlineHighlight: string
+  sub: string
+  items: {
+    id: string
+    business: string
+    industry: string
+    description: string
+    quote: string
+    stats: { label: string; value: string }[]
+  }[]
+  cta: string
+  ctaSub: string
+}
 
 const containerVariants = {
   hidden: {},
@@ -159,7 +136,12 @@ function CaseStudyCard({ study }: { study: CaseStudyExtended }) {
   );
 }
 
-export default function CaseStudiesSection() {
+export default function CaseStudiesSection({ dict }: { dict: CaseStudiesDict }) {
+  const enrichedStudies: CaseStudyExtended[] = dict.items.map((item, i) => ({
+    ...item,
+    ...(caseStudyStyles[i] ?? caseStudyStyles[0]),
+  }))
+
   return (
     <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-white">
       {/* Background accents */}
@@ -178,11 +160,11 @@ export default function CaseStudiesSection() {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
-            So kann dein Ergebnis aussehen.{" "}
-            <span className="gradient-text">Branchenbeispiele.</span>
+            {dict.headline}{" "}
+            <span className="gradient-text">{dict.headlineHighlight}</span>
           </h2>
           <p className="mt-4 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto">
-            Beispielberechnungen basierend auf Branchendurchschnittswerten und typischen Ergebnissen vergleichbarer Unternehmen.
+            {dict.sub}
           </p>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
@@ -212,11 +194,11 @@ export default function CaseStudiesSection() {
             href="/buchen"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
           >
-            Werde die nächste Erfolgsgeschichte
+            {dict.cta}
             <ArrowRight className="h-5 w-5" aria-hidden="true" />
           </a>
           <p className="mt-3 text-sm text-slate-500">
-            Kostenlose Demo &middot; Keine Verpflichtung
+            {dict.ctaSub}
           </p>
         </motion.div>
       </div>

@@ -8,18 +8,29 @@ import ShinyText from '@/components/ui/ShinyText'
 import BlurText from '@/components/ui/BlurText'
 import MeshGradientBg from '@/components/ui/MeshGradientBg'
 
-const branchen = [
-  'Zahnarztpraxis', 'Physiotherapie', 'Anwaltskanzlei',
-  'Handwerksbetrieb', 'Beauty Studio', 'Immobilien',
-]
+const activityIcons = [Phone, Calendar, Star, MessageSquare, Bell]
+const activityColors = ['#60A5FA', '#34D399', '#FCD34D', '#A78BFA', '#34D399']
 
-const mockActivities = [
-  { icon: Phone,         text: 'Zahnarztpraxis Weber: Anruf entgegengenommen', time: 'gerade eben', color: '#60A5FA' },
-  { icon: Calendar,      text: 'Beauty Studio: 3 Termine gebucht',              time: 'vor 2 Min',   color: '#34D399' },
-  { icon: Star,          text: 'Handwerk Müller: 5★ Google-Bewertung',          time: 'vor 5 Min',   color: '#FCD34D' },
-  { icon: MessageSquare, text: 'Physiotherapie Kern: Follow-up gesendet',       time: 'vor 8 Min',   color: '#A78BFA' },
-  { icon: Bell,          text: 'Immobilienbüro Schmitt: No-Show verhindert',    time: 'vor 12 Min',  color: '#34D399' },
-]
+interface HeroDict {
+  liveBadge: string
+  highlightText: string
+  headlineLine2: string
+  headlineLine3: string
+  sub: string
+  bullets: string[]
+  cta: string
+  ctaSecondary: string
+  branchenLabel: string
+  branchen: string[]
+  trustStrip: string[]
+  dashboard: {
+    label: string
+    title: string
+    statusOnline: string
+    activities: { text: string; time: string }[]
+    stats: { label: string; value: string }[]
+  }
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -30,7 +41,14 @@ const fadeUp = {
   }),
 }
 
-export default function HeroSection() {
+export default function HeroSection({ dict }: { dict: HeroDict }) {
+  const mockActivities = dict.dashboard.activities.map((a, i) => ({
+    icon: activityIcons[i] ?? Phone,
+    text: a.text,
+    time: a.time,
+    color: activityColors[i] ?? '#60A5FA',
+  }))
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0A0F1C] px-4 pt-28 pb-20 sm:px-6 sm:pt-32 lg:px-8">
 
@@ -50,7 +68,7 @@ export default function HeroSection() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
-                Über 150 lokale Unternehmen vertrauen Aufwind AI
+                {dict.liveBadge}
               </span>
             </motion.div>
 
@@ -60,12 +78,12 @@ export default function HeroSection() {
               className="text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
             >
               <ShinyText className="text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.5rem]">
-                74% weniger
+                {dict.highlightText}
               </ShinyText>
               <br />
-              No-Shows.
+              {dict.headlineLine2}
               <br />
-              <span className="text-slate-400">Automatisch.</span>
+              <span className="text-slate-400">{dict.headlineLine3}</span>
             </motion.h1>
 
             {/* Sub-headline */}
@@ -74,18 +92,14 @@ export default function HeroSection() {
               className="mt-6 max-w-lg text-lg leading-relaxed text-slate-400 sm:text-xl"
             >
               <BlurText
-                text="Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf — für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe."
+                text={dict.sub}
                 delay={0.4}
               />
             </motion.p>
 
             {/* Bullets */}
             <motion.ul custom={3} variants={fadeUp} initial="hidden" animate="visible" className="mt-7 flex flex-col gap-3">
-              {[
-                '74% weniger No-Shows — nachgewiesen',
-                'Live in 5 Werktagen — kein Setup-Aufwand für Sie',
-                '60-Tage Geld-zurück-Garantie — kein Risiko',
-              ].map((item) => (
+              {dict.bullets.map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-slate-300">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
                   {item}
@@ -99,7 +113,7 @@ export default function HeroSection() {
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <ShimmerButton href={SITE_CONFIG.bookingUrl} size="md">
-                Kostenlose Demo buchen
+                {dict.cta}
                 <ArrowRight className="h-5 w-5" />
               </ShimmerButton>
               <a
@@ -107,15 +121,15 @@ export default function HeroSection() {
                 onClick={(e) => { e.preventDefault(); document.querySelector('#wie-es-funktioniert')?.scrollIntoView({ behavior: 'smooth' }) }}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-8 py-4 text-base font-semibold text-slate-300 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:border-white/25 hover:text-white"
               >
-                Wie es funktioniert
+                {dict.ctaSecondary}
               </a>
             </motion.div>
 
             {/* Branchen pills */}
             <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible" className="mt-9">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-600">Ihre Branche dabei?</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-600">{dict.branchenLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {branchen.map((b) => (
+                {dict.branchen.map((b) => (
                   <span
                     key={b}
                     className="rounded-full border border-white/8 bg-white/4 px-3 py-1 text-xs font-medium text-slate-500 backdrop-blur-sm transition-all hover:border-blue-500/30 hover:bg-blue-500/8 hover:text-blue-400 cursor-default"
@@ -158,8 +172,8 @@ export default function HeroSection() {
               {/* Header */}
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Live Dashboard</p>
-                  <h3 className="mt-0.5 text-sm font-bold text-white">Aufwind AI — Aktivitätsfeed</h3>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-600">{dict.dashboard.label}</p>
+                  <h3 className="mt-0.5 text-sm font-bold text-white">{dict.dashboard.title}</h3>
                 </div>
                 <div
                   className="flex items-center gap-1.5 rounded-full px-3 py-1"
@@ -169,7 +183,7 @@ export default function HeroSection() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                   </span>
-                  <span className="text-xs font-semibold text-emerald-400">Online</span>
+                  <span className="text-xs font-semibold text-emerald-400">{dict.dashboard.statusOnline}</span>
                 </div>
               </div>
 
@@ -204,17 +218,13 @@ export default function HeroSection() {
                 className="mt-4 grid grid-cols-3 gap-2 border-t pt-4"
                 style={{ borderColor: 'rgba(255,255,255,0.06)' }}
               >
-                {[
-                  { label: 'Heute gebucht', value: '12', color: '#60A5FA' },
-                  { label: 'No-Shows',       value: '0',  color: '#34D399' },
-                  { label: 'Neue Reviews',   value: '3',  color: '#FCD34D' },
-                ].map((s) => (
+                {dict.dashboard.stats.map((s, i) => (
                   <div
                     key={s.label}
                     className="rounded-lg p-2.5 text-center"
                     style={{ background: 'rgba(255,255,255,0.04)' }}
                   >
-                    <p className="text-xl font-bold" style={{ color: s.color }}>{s.value}</p>
+                    <p className="text-xl font-bold" style={{ color: ['#60A5FA', '#34D399', '#FCD34D'][i] ?? '#60A5FA' }}>{s.value}</p>
                     <p className="mt-0.5 text-[10px] text-slate-500">{s.label}</p>
                   </div>
                 ))}
@@ -231,13 +241,7 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t pt-10"
           style={{ borderColor: 'rgba(255,255,255,0.06)' }}
         >
-          {[
-            '🔒 DSGVO-konform',
-            '🇩🇪 Server Deutschland',
-            '⚡ Live in 5 Tagen',
-            '↩ Monatlich kündbar',
-            '✅ 60-Tage Garantie',
-          ].map((item) => (
+          {dict.trustStrip.map((item) => (
             <span key={item} className="text-sm font-medium text-slate-600">
               {item}
             </span>

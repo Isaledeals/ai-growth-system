@@ -5,50 +5,14 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Calendar, TrendingDown, Star, Users, ShieldCheck, MapPin, RefreshCw } from 'lucide-react'
 import AufwindBeam from '@/components/marketing/AufwindBeam'
 
-const liveActivities = [
-  'Zahnarztpraxis Dr. Weber hat gerade 3 neue Termine gebucht',
-  'Beauty Studio Glamour: 5-Sterne Bewertung erhalten',
-  'Handwerksbetrieb Müller: Neuer Lead aus Google',
-  'Immobilienbüro Kern: Follow-up automatisch versendet',
-  'Physiotherapie Hansen: No-Show durch Erinnerung verhindert',
-]
+const metricIcons = [Calendar, TrendingDown, Star, Users]
+const trustBadgeIcons = [ShieldCheck, MapPin, RefreshCw]
 
-const metrics = [
-  {
-    icon: Calendar,
-    value: 2847,
-    suffix: '+',
-    display: '2.847+',
-    label: 'Termine diese Woche',
-  },
-  {
-    icon: TrendingDown,
-    value: 74,
-    suffix: '%',
-    display: '74%',
-    label: 'No-Show-Reduktion',
-  },
-  {
-    icon: Star,
-    value: 49,
-    suffix: '/5',
-    display: '4.9/5',
-    label: 'Kundenbewertung',
-  },
-  {
-    icon: Users,
-    value: 150,
-    suffix: '+',
-    display: '150+',
-    label: 'Betriebe aktiv',
-  },
-]
-
-const trustBadges = [
-  { icon: ShieldCheck, text: 'DSGVO-konform' },
-  { icon: MapPin, text: 'Server in Deutschland 🇩🇪' },
-  { icon: RefreshCw, text: 'Monatlich kündbar' },
-]
+interface SocialProofDict {
+  metrics: { display: string; label: string }[]
+  trustBadges: { text: string }[]
+  liveActivities: string[]
+}
 
 const containerVariants = {
   hidden: {},
@@ -98,17 +62,17 @@ function AnimatedCounter({ target, suffix, inView }: { target: number; suffix: s
   return <>{formatted}{suffix}</>
 }
 
-export default function SocialProofBar() {
+export default function SocialProofBar({ dict }: { dict: SocialProofDict }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % liveActivities.length)
+      setActiveIndex((prev) => (prev + 1) % dict.liveActivities.length)
     }, 4000)
     return () => clearInterval(interval)
-  }, [])
+  }, [dict.liveActivities.length])
 
   return (
     <section className="relative bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -135,8 +99,8 @@ export default function SocialProofBar() {
 
           {/* Metrics grid */}
           <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
-            {metrics.map((metric) => {
-              const Icon = metric.icon
+            {dict.metrics.map((metric, idx) => {
+              const Icon = metricIcons[idx] ?? Calendar
               return (
                 <motion.div
                   key={metric.label}
@@ -147,11 +111,7 @@ export default function SocialProofBar() {
                     <Icon className="h-5 w-5 text-blue-600" aria-hidden="true" />
                   </div>
                   <span className="gradient-number text-2xl font-extrabold sm:text-3xl">
-                    <AnimatedCounter
-                      target={metric.value}
-                      suffix={metric.suffix}
-                      inView={isInView}
-                    />
+                    {metric.display}
                   </span>
                   <span className="text-sm font-medium text-slate-600">
                     {metric.label}
@@ -166,8 +126,8 @@ export default function SocialProofBar() {
             variants={itemVariants}
             className="mt-6 flex flex-wrap items-center justify-center gap-3 border-t border-slate-200 pt-5"
           >
-            {trustBadges.map((badge) => {
-              const Icon = badge.icon
+            {dict.trustBadges.map((badge, idx) => {
+              const Icon = trustBadgeIcons[idx] ?? ShieldCheck
               return (
                 <div
                   key={badge.text}
@@ -205,7 +165,7 @@ export default function SocialProofBar() {
                   transition={{ duration: 0.35, ease: 'easeInOut' as const }}
                   className="absolute inset-0 text-sm font-medium text-slate-600 text-center sm:text-left"
                 >
-                  {liveActivities[activeIndex]}
+                  {dict.liveActivities[activeIndex]}
                 </motion.p>
               </AnimatePresence>
             </div>

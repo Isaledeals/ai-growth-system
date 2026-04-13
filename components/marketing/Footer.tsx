@@ -1,25 +1,27 @@
 import type { ReactNode } from "react";
 import { SITE_CONFIG } from "@/lib/constants";
 
-const productLinks = [
-  { label: "KI-Module", href: "#module" },
-  { label: "Preise", href: "#preise" },
-  { label: "ROI-Rechner", href: "#roi" },
-  { label: "FAQ", href: "#faq" },
-];
+interface FooterDict {
+  tagline: string
+  columns: {
+    product: { title: string; links: { label: string; href: string }[] }
+    company: { title: string; links: { label: string; href: string }[] }
+    legal: { title: string; links: { label: string; href: string }[] }
+  }
+  copyright: string
+  madeIn: string
+}
 
-const companyLinks = [
-  { label: "So funktioniert's", href: "#so-funktionierts" },
-  { label: "Case Studies", href: "#ergebnisse" },
-  { label: "Demo buchen", href: SITE_CONFIG.bookingUrl },
-  { label: "Kontakt", href: `mailto:${SITE_CONFIG.email}` },
-];
-
-const legalLinks = [
-  { label: "Impressum", href: "/impressum" },
-  { label: "Datenschutz", href: "/datenschutz" },
-  { label: "AGB", href: "/agb" },
-];
+const defaultFooterDict: FooterDict = {
+  tagline: 'Das KI-System für lokale Unternehmen in Deutschland.',
+  columns: {
+    product: { title: 'Produkt', links: [{ label: 'KI-Module', href: '#module' }, { label: 'Preise', href: '#preise' }, { label: 'ROI-Rechner', href: '#roi' }, { label: 'FAQ', href: '#faq' }] },
+    company: { title: 'Unternehmen', links: [{ label: "So funktioniert's", href: '#so-funktionierts' }, { label: 'Case Studies', href: '#ergebnisse' }, { label: 'Demo buchen', href: '' }, { label: 'Kontakt', href: '' }] },
+    legal: { title: 'Rechtliches', links: [{ label: 'Impressum', href: '/impressum' }, { label: 'Datenschutz', href: '/datenschutz' }, { label: 'AGB', href: '/agb' }] },
+  },
+  copyright: 'Alle Rechte vorbehalten.',
+  madeIn: 'Entwickelt in Deutschland · DSGVO-konform',
+}
 
 const socialLinks: { icon: ReactNode; href: string; label: string }[] = [
   {
@@ -68,7 +70,14 @@ function FooterLinkColumn({
   );
 }
 
-export default function Footer() {
+export default function Footer({ dict = defaultFooterDict }: { dict?: FooterDict }) {
+  const productLinks = dict.columns.product.links
+  const companyLinks = dict.columns.company.links.map((l) => ({
+    ...l,
+    href: l.href || (l.label.toLowerCase().includes('demo') ? SITE_CONFIG.bookingUrl : `mailto:${SITE_CONFIG.email}`),
+  }))
+  const legalLinks = dict.columns.legal.links
+
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
@@ -97,8 +106,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
-              Das KI-System für lokale Unternehmen in Deutschland. Automatisiere Kundengewinnung,
-              Follow-ups und Terminbuchung — rund um die Uhr.
+              {dict.tagline}
             </p>
 
             {/* Contact info */}
@@ -127,9 +135,9 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <FooterLinkColumn title="Produkt" links={productLinks} />
-          <FooterLinkColumn title="Unternehmen" links={companyLinks} />
-          <FooterLinkColumn title="Rechtliches" links={legalLinks} />
+          <FooterLinkColumn title={dict.columns.product.title} links={productLinks} />
+          <FooterLinkColumn title={dict.columns.company.title} links={companyLinks} />
+          <FooterLinkColumn title={dict.columns.legal.title} links={legalLinks} />
         </div>
 
         {/* Divider */}
@@ -138,12 +146,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
           <p className="text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} Aufwind AI. Alle Rechte vorbehalten.
+            &copy; {new Date().getFullYear()} Aufwind AI. {dict.copyright}
           </p>
           <div className="flex items-center gap-1.5">
             <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
             <p className="text-xs text-slate-400">
-              Entwickelt in Deutschland &bull; DSGVO-konform
+              {dict.madeIn}
             </p>
           </div>
         </div>

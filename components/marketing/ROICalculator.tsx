@@ -29,40 +29,34 @@ interface IndustryOption {
   orderValueLabel: string;
 }
 
-const industries: IndustryOption[] = [
-  {
-    key: "zahnarzt",
-    label: "Zahnarzt",
-    icon: Stethoscope,
-    defaultInquiries: 80,
-    defaultOrderValue: 120,
-    orderValueLabel: "Kosten pro No-Show €",
-  },
-  {
-    key: "beauty",
-    label: "Beauty/Kosmetik",
-    icon: Sparkles,
-    defaultInquiries: 60,
-    defaultOrderValue: 80,
-    orderValueLabel: "Durchschnittlicher Auftragswert €",
-  },
-  {
-    key: "immobilien",
-    label: "Immobilien",
-    icon: Building2,
-    defaultInquiries: 40,
-    defaultOrderValue: 8000,
-    orderValueLabel: "Durchschnittlicher Dealwert €",
-  },
-  {
-    key: "handwerk",
-    label: "Handwerk",
-    icon: Wrench,
-    defaultInquiries: 50,
-    defaultOrderValue: 3500,
-    orderValueLabel: "Durchschnittlicher Auftragswert €",
-  },
-];
+const industryDefaults: Record<IndustryKey, { icon: LucideIcon; defaultInquiries: number; defaultOrderValue: number }> = {
+  zahnarzt:  { icon: Stethoscope, defaultInquiries: 80,  defaultOrderValue: 120  },
+  beauty:    { icon: Sparkles,    defaultInquiries: 60,  defaultOrderValue: 80   },
+  immobilien:{ icon: Building2,   defaultInquiries: 40,  defaultOrderValue: 8000 },
+  handwerk:  { icon: Wrench,      defaultInquiries: 50,  defaultOrderValue: 3500 },
+}
+
+interface RoiDict {
+  badge: string
+  headline: string
+  headlineHighlight: string
+  industries: { key: string; label: string; orderValueLabel: string }[]
+  step1Title: string
+  step1Sub: string
+  step2Title: string
+  step2Sub: string
+  sliderLabel: string
+  backButton: string
+  calculateButton: string
+  resultsAdditionalRevenue: string
+  resultsROI: string
+  resultsDaysToPayback: string
+  resultsCTA: string
+  resultsCTASub: string
+  adjustValues: string
+  stepAriaLabel: string
+  stepLabels: string[]
+}
 
 const MONTHLY_COST = 1297; // Growth plan as reference
 
@@ -134,9 +128,10 @@ interface ResultsDisplayProps {
   results: { additionalRevenue: number; roi: number; daysToPayback: number };
   resultsKey: number;
   onGoBack: () => void;
+  dict: RoiDict;
 }
 
-function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) {
+function ResultsDisplay({ results, resultsKey, onGoBack, dict }: ResultsDisplayProps) {
   const shouldAnimate = resultsKey > 0;
   const animatedRevenue = useAnimatedCounter(results.additionalRevenue, shouldAnimate, 1500);
   const animatedROI = useAnimatedCounter(Math.abs(results.roi), shouldAnimate, 1500);
@@ -158,7 +153,7 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
             {formatCurrency(shouldAnimate ? animatedRevenue : results.additionalRevenue)}
           </div>
           <div className="text-sm text-slate-500 mt-1">
-            Zusätzlicher Umsatz/Monat
+            {dict.resultsAdditionalRevenue}
           </div>
         </motion.div>
 
@@ -174,7 +169,7 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
             {results.roi > 0 ? "+" : results.roi < 0 ? "-" : ""}
             {shouldAnimate ? animatedROI : Math.abs(results.roi)}%
           </div>
-          <div className="text-sm text-slate-500 mt-1">ROI</div>
+          <div className="text-sm text-slate-500 mt-1">{dict.resultsROI}</div>
         </motion.div>
 
         {/* Days to Payback */}
@@ -189,7 +184,7 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
             {shouldAnimate ? animatedDays : results.daysToPayback}
           </div>
           <div className="text-sm text-slate-500 mt-1">
-            Amortisiert in Tagen
+            {dict.resultsDaysToPayback}
           </div>
         </motion.div>
       </div>
@@ -201,11 +196,10 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           className="pulse-glow inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-8 py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
         >
           <Phone className="h-5 w-5" aria-hidden="true" />
-          Diese Ergebnisse für DEIN Unternehmen — Demo buchen
+          {dict.resultsCTA}
         </a>
         <p className="mt-3 text-xs text-slate-500">
-          Kostenlos &middot; Unverbindlich &middot; Individuelle
-          Berechnung
+          {dict.resultsCTASub}
         </p>
       </div>
 
@@ -216,14 +210,20 @@ function ResultsDisplay({ results, resultsKey, onGoBack }: ResultsDisplayProps) 
           className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors duration-200 text-sm"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Werte anpassen
+          {dict.adjustValues}
         </button>
       </div>
     </>
   );
 }
 
-export default function ROICalculator() {
+export default function ROICalculator({ dict }: { dict: RoiDict }) {
+  const industries: IndustryOption[] = dict.industries.map((ind) => {
+    const key = ind.key as IndustryKey
+    const defaults = industryDefaults[key] ?? industryDefaults.zahnarzt
+    return { key, label: ind.label, orderValueLabel: ind.orderValueLabel, ...defaults }
+  })
+
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [selectedIndustry, setSelectedIndustry] = useState<IndustryKey | null>(
@@ -317,11 +317,11 @@ export default function ROICalculator() {
         >
           <div className="inline-flex items-center gap-2 mb-4 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700">
             <Calculator className="h-4 w-4 text-blue-600" aria-hidden="true" />
-            ROI-Rechner
+            {dict.badge}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
-            Berechne deinen ROI in{" "}
-            <span className="gradient-text">30 Sekunden</span>
+            {dict.headline}{" "}
+            <span className="gradient-text">{dict.headlineHighlight}</span>
           </h2>
           <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
         </motion.div>
@@ -342,7 +342,7 @@ export default function ROICalculator() {
                     goToStep(s);
                   }
                 }}
-                aria-label={`Schritt ${s}${s === 1 ? ': Branche wählen' : s === 2 ? ': Deine Zahlen' : ': Ergebnis'}`}
+                aria-label={`${dict.stepAriaLabel} ${s}: ${dict.stepLabels[s - 1] ?? ''}`}
                 aria-current={s === step ? "step" : undefined}
                 className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-all duration-300 ${
                   s === step
@@ -387,10 +387,10 @@ export default function ROICalculator() {
                 exit="exit"
               >
                 <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
-                  Wähle deine Branche
+                  {dict.step1Title}
                 </h3>
                 <p className="text-slate-500 mb-8 text-sm sm:text-base">
-                  Wir berechnen deinen ROI basierend auf echten Branchendaten.
+                  {dict.step1Sub}
                 </p>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                   {industries.map((industry) => {
@@ -440,10 +440,10 @@ export default function ROICalculator() {
                 exit="exit"
               >
                 <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
-                  Deine Zahlen
+                  {dict.step2Title}
                 </h3>
                 <p className="text-slate-500 mb-8 text-sm sm:text-base">
-                  Passe die Werte an dein Unternehmen an.
+                  {dict.step2Sub}
                 </p>
 
                 <div className="space-y-8">
@@ -451,7 +451,7 @@ export default function ROICalculator() {
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <label className="text-sm sm:text-base font-medium text-slate-700">
-                        Monatliche Anfragen
+                        {dict.sliderLabel}
                       </label>
                       <span className="text-xl sm:text-2xl font-bold gradient-text tabular-nums">
                         {monthlyInquiries}
@@ -463,7 +463,7 @@ export default function ROICalculator() {
                       max={200}
                       step={5}
                       value={monthlyInquiries}
-                      aria-label={`Monatliche Anfragen: ${monthlyInquiries}`}
+                      aria-label={`${dict.sliderLabel}: ${monthlyInquiries}`}
                       onChange={(e) =>
                         setMonthlyInquiries(Number(e.target.value))
                       }
@@ -502,13 +502,13 @@ export default function ROICalculator() {
                     className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors duration-200 text-sm sm:text-base"
                   >
                     <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                    Branche ändern
+                    {dict.backButton}
                   </button>
                   <button
                     onClick={() => goToStep(3)}
                     className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 active:scale-[0.98]"
                   >
-                    Berechnen
+                    {dict.calculateButton}
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
@@ -540,6 +540,7 @@ export default function ROICalculator() {
                   results={results}
                   resultsKey={resultsKey}
                   onGoBack={() => goToStep(2)}
+                  dict={dict}
                 />
               </motion.div>
             )}

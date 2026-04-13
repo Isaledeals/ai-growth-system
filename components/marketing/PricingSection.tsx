@@ -35,7 +35,16 @@ function mapTierToPlan(tier: PricingTier): "pro" | "premium" {
   return "pro";
 }
 
-function PricingCard({ tier }: { tier: PricingTier }) {
+interface PricingCardLabels {
+  perMonth: string
+  setupLabel: string
+  gratis: string
+  einmalig: string
+  urgencyLabel: string
+  startCta: string
+}
+
+function PricingCard({ tier, labels }: { tier: PricingTier; labels: PricingCardLabels }) {
   const isHighlight = tier.highlight === true;
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
@@ -140,7 +149,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
             isHighlight ? "text-blue-100" : "text-muted"
           }`}
         >
-          /Mo
+          {labels.perMonth}
         </span>
       </div>
 
@@ -150,7 +159,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
           isHighlight ? "text-blue-100" : "text-muted"
         }`}
       >
-        Setup:{" "}
+        {labels.setupLabel}{" "}
         {tier.originalSetup ? (
           <>
             <span className="line-through opacity-60">
@@ -161,14 +170,14 @@ function PricingCard({ tier }: { tier: PricingTier }) {
                 isHighlight ? "text-emerald-300" : "text-emerald-600"
               }`}
             >
-              GRATIS
+              {labels.gratis}
             </span>
           </>
         ) : (
           <span className="font-medium">
             {tier.setup === "GRATIS"
-              ? "GRATIS"
-              : `\u20AC${formatPrice(tier.setup as number)} einmalig`}
+              ? labels.gratis
+              : `\u20AC${formatPrice(tier.setup as number)} ${labels.einmalig}`}
           </span>
         )}
       </p>
@@ -177,7 +186,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       {isHighlight && tier.originalSetup && (
         <div className="relative mt-3 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-center">
           <p className="text-xs font-semibold text-emerald-300">
-            Spare &euro;{formatPrice(tier.originalSetup)} &mdash; Setup GRATIS bei Buchung diese Woche
+            {labels.urgencyLabel.replace('{amount}', formatPrice(tier.originalSetup ?? 0))}
           </p>
         </div>
       )}
@@ -217,7 +226,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       >
         {/* Shimmer sweep */}
         <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out" aria-hidden="true" />
-        <span className="relative z-10">Jetzt starten</span>
+        <span className="relative z-10">{labels.startCta}</span>
       </CheckoutButton>
     </motion.div>
   );
@@ -233,7 +242,35 @@ function PricingCard({ tier }: { tier: PricingTier }) {
   return cardContent;
 }
 
-export default function PricingSection() {
+interface PricingDict {
+  headline: string
+  headlineHighlight: string
+  anchors: { label: string; price: string; sub: string; note: string }[]
+  perMonth: string
+  setupLabel: string
+  gratis: string
+  einmalig: string
+  urgencyLabel: string
+  startCta: string
+  guaranteeTitle: string
+  guaranteeSub: string
+  tiers: { name: string; subtitle: string; badge?: string; modules: string[] }[]
+}
+
+export default function PricingSection({ dict }: { dict: PricingDict }) {
+  // Merge dict tier texts into PRICING structure
+  const pricingTiers = PRICING.map((tier, i) => {
+    const dictTier = dict.tiers[i]
+    if (!dictTier) return tier
+    return {
+      ...tier,
+      name: dictTier.name,
+      subtitle: dictTier.subtitle,
+      badge: dictTier.badge ?? tier.badge,
+      modules: dictTier.modules,
+    }
+  })
+
   return (
     <section
       id="preise"
@@ -256,28 +293,27 @@ export default function PricingSection() {
         >
           <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            Transparent. Fair.{" "}
-            <span className="gradient-text">Kein Kleingedrucktes.</span>
+            {dict.headline}{" "}
+            <span className="gradient-text">{dict.headlineHighlight}</span>
           </h2>
 
           {/* Preisanker — zeigt Kontext BEVOR die Preise sichtbar sind */}
           <div className="mt-8 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
-            {[
-              { label: 'Vollzeit-Empfang', price: '€3.500', sub: 'pro Monat', note: 'Urlaub · Krank · Kündigt', muted: true },
-              { label: 'Marketing-Agentur', price: '€4.000+', sub: 'pro Monat', note: 'Nur Leads, kein Service', muted: true },
-              { label: 'Aufwind AI', price: 'ab €697', sub: 'pro Monat', note: '24/7 · Nie krank · Vollauto.', muted: false },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className={`rounded-xl p-3 text-center ${item.muted ? 'bg-slate-100 opacity-70' : 'bg-white border-2 shadow-md'}`}
-                style={!item.muted ? { borderColor: '#2563EB', boxShadow: '0 4px 20px rgba(37,99,235,0.15)' } : {}}
-              >
-                <p className={`text-[11px] font-semibold uppercase tracking-wide mb-1 ${item.muted ? 'text-slate-400' : 'text-blue-600'}`}>{item.label}</p>
-                <p className={`text-xl font-extrabold tracking-tight ${item.muted ? 'text-slate-400 line-through' : 'gradient-number'}`}>{item.price}</p>
-                <p className={`text-[11px] ${item.muted ? 'text-slate-400' : 'text-slate-500'}`}>{item.sub}</p>
-                <p className={`mt-1.5 text-[10px] font-medium ${item.muted ? 'text-slate-400' : 'text-emerald-600'}`}>{item.note}</p>
-              </div>
-            ))}
+            {dict.anchors.map((item, i) => {
+              const muted = i < dict.anchors.length - 1
+              return (
+                <div
+                  key={item.label}
+                  className={`rounded-xl p-3 text-center ${muted ? 'bg-slate-100 opacity-70' : 'bg-white border-2 shadow-md'}`}
+                  style={!muted ? { borderColor: '#2563EB', boxShadow: '0 4px 20px rgba(37,99,235,0.15)' } : {}}
+                >
+                  <p className={`text-[11px] font-semibold uppercase tracking-wide mb-1 ${muted ? 'text-slate-400' : 'text-blue-600'}`}>{item.label}</p>
+                  <p className={`text-xl font-extrabold tracking-tight ${muted ? 'text-slate-400 line-through' : 'gradient-number'}`}>{item.price}</p>
+                  <p className={`text-[11px] ${muted ? 'text-slate-400' : 'text-slate-500'}`}>{item.sub}</p>
+                  <p className={`mt-1.5 text-[10px] font-medium ${muted ? 'text-slate-400' : 'text-emerald-600'}`}>{item.note}</p>
+                </div>
+              )
+            })}
           </div>
         </motion.div>
 
@@ -289,8 +325,19 @@ export default function PricingSection() {
           viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl mx-auto lg:gap-8 items-center"
         >
-          {PRICING.map((tier) => (
-            <PricingCard key={tier.name} tier={tier} />
+          {pricingTiers.map((tier) => (
+            <PricingCard
+              key={tier.name}
+              tier={tier}
+              labels={{
+                perMonth: dict.perMonth,
+                setupLabel: dict.setupLabel,
+                gratis: dict.gratis,
+                einmalig: dict.einmalig,
+                urgencyLabel: dict.urgencyLabel,
+                startCta: dict.startCta,
+              }}
+            />
           ))}
         </motion.div>
 
@@ -303,10 +350,10 @@ export default function PricingSection() {
           className="mt-10 max-w-2xl mx-auto rounded-2xl border border-emerald-200 bg-emerald-50 px-6 py-5 text-center"
         >
           <p className="text-sm font-bold text-emerald-800">
-            Keine Überraschungen. Monatlich kündbar ab Monat 3. Keine versteckten Kosten.
+            {dict.guaranteeTitle}
           </p>
           <p className="mt-1 text-sm text-emerald-700">
-            60-Tage Geld-zurück-Garantie wenn es sich nicht lohnt.
+            {dict.guaranteeSub}
           </p>
         </motion.div>
 

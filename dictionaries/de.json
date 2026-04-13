@@ -1,0 +1,433 @@
+{
+  "metadata": {
+    "title": "Aufwind AI — KI-Automatisierung für lokale Unternehmen",
+    "description": "Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf — für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe."
+  },
+  "navbar": {
+    "links": [
+      { "label": "Funktionen", "href": "#module" },
+      { "label": "Preise", "href": "#preise" },
+      { "label": "Branchen", "href": "#branchen" },
+      { "label": "Über uns", "href": "#demo" }
+    ],
+    "cta": "Demo buchen"
+  },
+  "hero": {
+    "liveBadge": "Über 150 lokale Unternehmen vertrauen Aufwind AI",
+    "highlightText": "74% weniger",
+    "headlineLine2": "No-Shows.",
+    "headlineLine3": "Automatisch.",
+    "sub": "Ihr KI-Assistent schläft nie, wird nie krank und vergisst keinen Rückruf — für Zahnarztpraxen, Physiotherapeuten, Anwaltskanzleien und Handwerksbetriebe.",
+    "bullets": [
+      "74% weniger No-Shows — nachgewiesen",
+      "Live in 5 Werktagen — kein Setup-Aufwand für Sie",
+      "60-Tage Geld-zurück-Garantie — kein Risiko"
+    ],
+    "cta": "Kostenlose Demo buchen",
+    "ctaSecondary": "Wie es funktioniert",
+    "branchenLabel": "Ihre Branche dabei?",
+    "branchen": [
+      "Zahnarztpraxis",
+      "Physiotherapie",
+      "Anwaltskanzlei",
+      "Handwerksbetrieb",
+      "Beauty Studio",
+      "Immobilien"
+    ],
+    "trustStrip": [
+      "DSGVO-konform",
+      "Server Deutschland",
+      "Live in 5 Tagen",
+      "Monatlich kündbar",
+      "60-Tage Garantie"
+    ],
+    "dashboard": {
+      "label": "Live Dashboard",
+      "title": "Aufwind AI — Aktivitätsfeed",
+      "statusOnline": "Online",
+      "activities": [
+        { "text": "Zahnarztpraxis Weber: Anruf entgegengenommen", "time": "gerade eben" },
+        { "text": "Beauty Studio: 3 Termine gebucht", "time": "vor 2 Min" },
+        { "text": "Handwerk Müller: 5★ Google-Bewertung", "time": "vor 5 Min" },
+        { "text": "Physiotherapie Kern: Follow-up gesendet", "time": "vor 8 Min" },
+        { "text": "Immobilienbüro Schmitt: No-Show verhindert", "time": "vor 12 Min" }
+      ],
+      "stats": [
+        { "label": "Heute gebucht", "value": "12" },
+        { "label": "No-Shows", "value": "0" },
+        { "label": "Neue Reviews", "value": "3" }
+      ]
+    }
+  },
+  "socialProof": {
+    "metrics": [
+      { "display": "2.847+", "label": "Termine diese Woche" },
+      { "display": "74%", "label": "No-Show-Reduktion" },
+      { "display": "4.9/5", "label": "Kundenbewertung" },
+      { "display": "150+", "label": "Betriebe aktiv" }
+    ],
+    "trustBadges": [
+      { "text": "DSGVO-konform" },
+      { "text": "Server in Deutschland" },
+      { "text": "Monatlich kündbar" }
+    ],
+    "liveActivities": [
+      "Zahnarztpraxis Dr. Weber hat gerade 3 neue Termine gebucht",
+      "Beauty Studio Glamour: 5-Sterne Bewertung erhalten",
+      "Handwerksbetrieb Müller: Neuer Lead aus Google",
+      "Immobilienbüro Kern: Follow-up automatisch versendet",
+      "Physiotherapie Hansen: No-Show durch Erinnerung verhindert"
+    ]
+  },
+  "problem": {
+    "badge": "Das Problem",
+    "headline": "Kennen Sie das?",
+    "sub": "Lokale Unternehmen verlieren täglich Umsatz durch diese vier Probleme — ohne es zu merken.",
+    "items": [
+      {
+        "title": "Verpasster Anruf = €150 weg",
+        "description": "Jeder 4. Anruf geht verloren weil niemand rangeht. Ø €150 pro Anruf — der Interessent wählt dann die Konkurrenz. Morgens: 3 Voicemails, 2 verpasste Anrufe, bevor Sie den ersten Patienten gesehen haben.",
+        "stat": "25%",
+        "statLabel": "aller Anrufe unbeantwortet"
+      },
+      {
+        "title": "No-Show = leerer Stuhl",
+        "description": "18% Ihrer Termine erscheinen einfach nicht. Der Zeitslot ist weg, die Einnahmen fehlen, kurzfristige Nachbesetzung ist unmöglich. Ø €800–2.000 verlorener Umsatz pro Monat.",
+        "stat": "18%",
+        "statLabel": "No-Show-Rate im Schnitt"
+      },
+      {
+        "title": "Keine Bewertungen trotz guter Arbeit",
+        "description": "Nur 5% der zufriedenen Kunden bewerten freiwillig. Ihr Google-Profil wächst nicht — das der Konkurrenz schon. 47 Nachrichten am Morgen, aber keine einzige Bewertung am Abend.",
+        "stat": "5%",
+        "statLabel": "bewerten freiwillig"
+      },
+      {
+        "title": "Kunden die nie zurückkommen",
+        "description": "62% Ihrer Bestandskunden waren seit 6+ Monaten nicht mehr da. Sie haben Sie vergessen — nicht umgekehrt. Das wären €300 pro Kunde — ohne Neukundenkosten.",
+        "stat": "62%",
+        "statLabel": "Kunden inaktiv seit 6 Monaten"
+      }
+    ]
+  },
+  "modules": {
+    "headline": "8 KI-Module. Ein System.",
+    "highlightText": "Null Aufwand.",
+    "sub": "Jedes Modul löst ein konkretes Problem das dir täglich Geld kostet.",
+    "items": [
+      {
+        "title": "KI-Chatbot 24/7",
+        "description": "Beantwortet Kundenanfragen in Sekunden — auf Website, WhatsApp, Instagram und Facebook. Qualifiziert Leads automatisch und bucht direkt Termine.",
+        "painPoint": "62% der Anfragen kommen außerhalb der Öffnungszeiten"
+      },
+      {
+        "title": "KI-Telefonassistent",
+        "description": "Dein virtueller Mitarbeiter am Telefon. Nimmt jeden Anruf an, beantwortet Fragen, bucht Termine — auch um 23 Uhr oder am Wochenende.",
+        "painPoint": "Jeder verpasste Anruf = Ø €150 verlorener Umsatz"
+      },
+      {
+        "title": "Smart Terminbuchung",
+        "description": "Kunden buchen online, per Chat oder am Telefon. Automatische Kalender-Synchronisation, Bestätigungen und intelligente Terminfindung.",
+        "painPoint": "Manuelles Hin-und-Her kostet 5+ Stunden pro Woche"
+      },
+      {
+        "title": "Automatisches Follow-up",
+        "description": "WhatsApp- und Email-Sequenzen die Interessenten warm halten. Nach 5 Min, 1 Std, 1 Tag — bis der Termin steht. Kein Lead geht mehr verloren.",
+        "painPoint": "80% der Leads brauchen 3-5 Kontaktpunkte bis zur Buchung"
+      },
+      {
+        "title": "No-Show Killer",
+        "description": "SMS- und WhatsApp-Erinnerungen 24h und 1h vor dem Termin. Bei Absage: Wartelisten-Nachbesetzung in Minuten statt leerem Stuhl.",
+        "painPoint": "No-Shows kosten lokale Unternehmen Ø €800-2.000/Monat"
+      },
+      {
+        "title": "Reputations-Autopilot",
+        "description": "Nach jedem Termin geht automatisch eine Review-Anfrage raus. Zufriedene Kunden bewerten auf Google, unzufriedene melden sich direkt bei dir.",
+        "painPoint": "Nur 5% der zufriedenen Kunden bewerten freiwillig"
+      },
+      {
+        "title": "Kundenreaktivierung",
+        "description": "Automatisch Kunden kontaktieren die seit 3, 6 oder 12 Monaten nicht mehr da waren. Personalisierte Nachrichten mit Angeboten bringen sie zurück.",
+        "painPoint": "Bestehende Kunden zurückgewinnen kostet 5x weniger"
+      },
+      {
+        "title": "Social Media Autopilot",
+        "description": "KI generiert Posts für Instagram, Facebook und Google Business. Automatische Updates wie freie Termine, neue Bewertungen oder Aktionen.",
+        "painPoint": "Konsistente Präsenz bringt 3x mehr Anfragen"
+      }
+    ]
+  },
+  "howItWorks": {
+    "headlinePart1": "Tag 1: Demo-Call.",
+    "headlinePart2": "Tag 5: Ihr KI-Assistent ist live.",
+    "steps": [
+      {
+        "title": "45-Min Demo-Call",
+        "description": "Wir zeigen Ihnen wie es für Ihre Branche aussieht. Kostenlos, unverbindlich, ohne Vorbereitung Ihrerseits."
+      },
+      {
+        "title": "Buchungs-URL + Telefonnummer",
+        "description": "Sie schicken uns Ihre bestehende Buchungs-URL und Ihre Telefonnummer. Das ist alles. Kein IT-Projekt."
+      },
+      {
+        "title": "Tag 5: Ihr System ist live",
+        "description": "Wir bauen alles. In 5 Werktagen ist Ihr KI-Assistent aktiv — ohne dass Sie auch nur einmal in ein Dashboard schauen müssen."
+      }
+    ],
+    "guaranteeTitle": "60-Tage Garantie",
+    "guaranteeText": "Wenn Sie nach 60 Tagen nicht mindestens 8 Stunden pro Woche einsparen — bekommen Sie jeden Euro zurück. Ohne Diskussion.",
+    "cta": "Jetzt Demo-Call buchen",
+    "ctaSub": "Kostenlos · Unverbindlich · 45 Minuten"
+  },
+  "caseStudies": {
+    "headline": "So kann dein Ergebnis aussehen.",
+    "headlineHighlight": "Branchenbeispiele.",
+    "sub": "Beispielberechnungen basierend auf Branchendurchschnittswerten und typischen Ergebnissen vergleichbarer Unternehmen.",
+    "items": [
+      {
+        "id": "zahnarzt-weber",
+        "business": "Beispiel: Zahnarztpraxis",
+        "industry": "Zahnarztpraxis, Großstadt",
+        "description": "Zahnarztpraxis mit 3 Behandlungszimmern in München. Hohe No-Show-Rate und fehlende Online-Bewertungen bremsten das Wachstum.",
+        "quote": "Wir verpassen keinen Anruf mehr. Allein der KI-Telefonassistent hat uns im ersten Monat 12 neue Patienten gebracht die sonst bei der Konkurrenz gelandet wären.",
+        "stats": [
+          { "label": "Mehr Terminbuchungen", "value": "+34%" },
+          { "label": "No-Show-Rate gesenkt", "value": "von 18% auf 4%" },
+          { "label": "Neue Google-Bewertungen", "value": "47 in 60 Tagen" },
+          { "label": "Verpasste Anrufe", "value": "0" }
+        ]
+      },
+      {
+        "id": "beauty-glamour",
+        "business": "Beispiel: Beauty Studio",
+        "industry": "Beauty & Kosmetik, Großstadt",
+        "description": "Premium Beauty Studio in Hamburg. Stammkunden kamen seltener, neue Kunden fanden den Salon kaum online.",
+        "quote": "Die Kundenreaktivierung allein bringt uns €2.400 Extra-Umsatz pro Monat. Kunden die wir komplett vergessen hatten kommen jetzt regelmäßig wieder.",
+        "stats": [
+          { "label": "Reaktivierte Kunden", "value": "38 in 90 Tagen" },
+          { "label": "Extra-Umsatz/Monat", "value": "€2.400" },
+          { "label": "Google-Bewertungen", "value": "4.2 → 4.8 Sterne" },
+          { "label": "Zeitersparnis/Woche", "value": "12 Stunden" }
+        ]
+      },
+      {
+        "id": "handwerk-mueller",
+        "business": "Beispiel: Elektrotechnik-Betrieb",
+        "industry": "Handwerk, Großstadt",
+        "description": "Handwerksbetrieb mit 12 Mitarbeitern in Stuttgart. Angebote versandeten, Neukunden-Akquise war rein auf Empfehlung.",
+        "quote": "Früher haben wir 30% der Anrufe verpasst weil wir auf der Baustelle waren. Jetzt nimmt die KI jeden Anruf an und bucht direkt Besichtigungstermine.",
+        "stats": [
+          { "label": "Verpasste Anrufe", "value": "von 30% auf 0%" },
+          { "label": "Neue Aufträge/Monat", "value": "+8" },
+          { "label": "Angebotsannahme", "value": "+28%" },
+          { "label": "Zeitersparnis/Woche", "value": "15 Stunden" }
+        ]
+      }
+    ],
+    "cta": "Werde die nächste Erfolgsgeschichte",
+    "ctaSub": "Kostenlose Demo · Keine Verpflichtung"
+  },
+  "roi": {
+    "badge": "ROI-Rechner",
+    "headline": "Berechne deinen ROI in",
+    "headlineHighlight": "30 Sekunden",
+    "industries": [
+      { "key": "zahnarzt", "label": "Zahnarzt", "orderValueLabel": "Kosten pro No-Show €" },
+      { "key": "beauty", "label": "Beauty/Kosmetik", "orderValueLabel": "Durchschnittlicher Auftragswert €" },
+      { "key": "immobilien", "label": "Immobilien", "orderValueLabel": "Durchschnittlicher Dealwert €" },
+      { "key": "handwerk", "label": "Handwerk", "orderValueLabel": "Durchschnittlicher Auftragswert €" }
+    ],
+    "step1Title": "Wähle deine Branche",
+    "step1Sub": "Wir berechnen deinen ROI basierend auf echten Branchendaten.",
+    "step2Title": "Deine Zahlen",
+    "step2Sub": "Passe die Werte an dein Unternehmen an.",
+    "sliderLabel": "Monatliche Anfragen",
+    "backButton": "Branche ändern",
+    "calculateButton": "Berechnen",
+    "resultsAdditionalRevenue": "Zusätzlicher Umsatz/Monat",
+    "resultsROI": "ROI",
+    "resultsDaysToPayback": "Amortisiert in Tagen",
+    "resultsCTA": "Diese Ergebnisse für DEIN Unternehmen — Demo buchen",
+    "resultsCTASub": "Kostenlos · Unverbindlich · Individuelle Berechnung",
+    "adjustValues": "Werte anpassen",
+    "stepAriaLabel": "Schritt",
+    "stepLabels": ["Branche wählen", "Deine Zahlen", "Ergebnis"]
+  },
+  "comparison": {
+    "headline": "Aufwind AI",
+    "headlineHighlight": "vs. Alles andere",
+    "sub": "Vergleiche selbst — und entscheide, was für dein Unternehmen am meisten Sinn macht.",
+    "colOurs": "Aufwind AI",
+    "colTools": "Mitarbeiter / GoHighLevel",
+    "colAgency": "Agentur",
+    "colFeature": "Feature",
+    "rows": [
+      { "feature": "Monatliche Kosten", "ours": "Ab €697", "tools": "€500–2.000+", "agency": "€3.000–10.000" },
+      { "feature": "Setup-Zeit", "ours": "48 Stunden", "tools": "Wochen", "agency": "Monate" },
+      { "feature": "24/7 Verfügbarkeit", "ours": true, "tools": false, "agency": false },
+      { "feature": "Kostet weniger als €0,50/h", "ours": true, "tools": false, "agency": false },
+      { "feature": "Kein Training nötig", "ours": true, "tools": false, "agency": true },
+      { "feature": "Sofort einsatzbereit", "ours": true, "tools": "Wochen", "agency": "Monate" },
+      { "feature": "Keine Fehler", "ours": true, "tools": "Teilweise", "agency": false },
+      { "feature": "Skalierbar", "ours": true, "tools": "Begrenzt", "agency": "Extra Kosten" },
+      { "feature": "No-Show Killer + Warteliste", "ours": true, "tools": false, "agency": false },
+      { "feature": "Google Reviews Autopilot", "ours": true, "tools": false, "agency": "Manuell" },
+      { "feature": "ROI in 30 Tagen", "ours": true, "tools": "Unsicher", "agency": "3–6 Monate" }
+    ],
+    "mobileLabels": {
+      "tools": "Mitarbeiter / Tools",
+      "agency": "Agentur"
+    },
+    "srYes": "Ja",
+    "srNo": "Nein"
+  },
+  "pricing": {
+    "headline": "Transparent. Fair.",
+    "headlineHighlight": "Kein Kleingedrucktes.",
+    "anchors": [
+      { "label": "Vollzeit-Empfang", "price": "€3.500", "sub": "pro Monat", "note": "Urlaub · Krank · Kündigt" },
+      { "label": "Marketing-Agentur", "price": "€4.000+", "sub": "pro Monat", "note": "Nur Leads, kein Service" },
+      { "label": "Aufwind AI", "price": "ab €697", "sub": "pro Monat", "note": "24/7 · Nie krank · Vollauto." }
+    ],
+    "perMonth": "/Mo",
+    "setupLabel": "Setup:",
+    "gratis": "GRATIS",
+    "einmalig": "einmalig",
+    "urgencyLabel": "Spare €{amount} — Setup GRATIS bei Buchung diese Woche",
+    "startCta": "Jetzt starten",
+    "guaranteeTitle": "Keine Überraschungen. Monatlich kündbar ab Monat 3. Keine versteckten Kosten.",
+    "guaranteeSub": "60-Tage Geld-zurück-Garantie wenn es sich nicht lohnt.",
+    "tiers": [
+      {
+        "name": "Pro",
+        "subtitle": "Alle 8 Module. Null Aufwand.",
+        "modules": [
+          "KI-Chatbot 24/7",
+          "KI-Telefonassistent",
+          "Smart Terminbuchung",
+          "No-Show Killer",
+          "Automatisches Follow-up",
+          "Reputations-Autopilot",
+          "Kundenreaktivierung",
+          "Social Media Autopilot"
+        ]
+      },
+      {
+        "name": "Premium",
+        "subtitle": "White-Glove Service für maximales Wachstum",
+        "badge": "Beliebteste Wahl",
+        "modules": [
+          "Alle 8 KI-Module inklusive",
+          "Dedicated Account Manager",
+          "Monatliche Strategie-Calls",
+          "Priority Support (< 2h)",
+          "Individuelle Anpassungen",
+          "Quartalsweise Optimierung"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "headline": "Häufige Fragen",
+    "items": [
+      {
+        "question": "Was kostet das wirklich — gibt es versteckte Kosten?",
+        "answer": "Pro kostet €697 pro Monat plus einmalig €499 Setup. Das ist alles. Kein Jahresvertrag im ersten Monat. Keine versteckten Onboarding-Gebühren. Monatlich kündbar ab Monat 3. Wenn es sich nach 60 Tagen nicht lohnt, erstatten wir die ersten zwei Monate vollständig zurück."
+      },
+      {
+        "question": "Ist Aufwind AI auch für kleine Betriebe?",
+        "answer": "Unsere kleinsten Kunden haben 2 Mitarbeiter und 80 Patienten pro Monat. Unsere größten haben 8 Filialen. Kein Mindestumsatz, keine Mindestgröße. Wenn Sie täglich mit Terminen, Kunden und Rückrufen kämpfen — sind Sie genau richtig."
+      },
+      {
+        "question": "Was wenn das System nicht funktioniert?",
+        "answer": "Sie müssen nichts konfigurieren, nichts lernen, nichts einrichten. Unser Team übernimmt den kompletten Setup in 5 Werktagen. Nach Tag 5 läuft Ihr KI-Assistent — ohne dass Sie auch nur einmal in ein Dashboard geschaut haben müssen."
+      },
+      {
+        "question": "Ist das DSGVO-konform?",
+        "answer": "Alle Daten Ihrer Kunden werden ausschließlich auf deutschen Servern gespeichert (Frankfurt). Keine Weitergabe an US-Dienste. Kein KI-Training mit Ihren Kundendaten. AVV liegt jedem Vertrag bei. Für Arztpraxen: vollständig konform mit §203 StGB und §22 BDSG."
+      },
+      {
+        "question": "Wie lange dauert der Setup?",
+        "answer": "Tag 1: Demo-Call (45 Min). Sie schicken uns Ihre bestehende Buchungs-URL. Tag 5: Ihr System ist live. Kein IT-Projekt, keine Wochen des Wartens."
+      },
+      {
+        "question": "Wie schnell sehe ich Ergebnisse?",
+        "answer": "Ab Tag 1. Sobald das System live ist, verpassen Sie keinen Anruf und keine Nachricht mehr. In den ersten 2–4 Wochen sehen unsere Kunden im Schnitt 25% mehr Terminbuchungen, 70% weniger No-Shows und die ersten automatisch generierten Google-Bewertungen."
+      },
+      {
+        "question": "Funktioniert das für meine Branche?",
+        "answer": "Unser System funktioniert für alle lokalen Dienstleister: Zahnärzte, Ärzte, Physiotherapeuten, Friseursalons, Beauty-Studios, Handwerksbetriebe, Fitnessstudios, Restaurants, Immobilienbüros und mehr. Wir passen jedes Modul individuell auf Ihr Geschäftsmodell an."
+      },
+      {
+        "question": "Wie unterscheidet ihr euch von einer normalen Marketing-Agentur?",
+        "answer": "Eine Agentur bringt Ihnen Leads — aber wer kümmert sich um die? Wir automatisieren alles NACH dem Lead: Anrufannahme, Terminbuchung, Erinnerungen, Follow-ups, Reviews und Reaktivierung. Und das 24/7, nicht nur von 9-17 Uhr. Für einen Bruchteil der Agenturkosten."
+      }
+    ]
+  },
+  "finalCta": {
+    "badge": "23 Unternehmen haben diese Woche eine Demo gebucht",
+    "headline": "Ihr KI-Assistent.",
+    "headlineHighlight": "Nie krank. Nie im Urlaub. Immer für Ihre Kunden da.",
+    "sub": "Buchen Sie jetzt Ihren kostenlosen Demo-Call — in 48h zeigen wir Ihnen wie Aufwind AI für Ihre Branche aussieht.",
+    "viewersNote": "12 weitere schauen sich gerade diese Seite an",
+    "cta": "Kostenlose Demo buchen",
+    "ctaSecondary": "Erstgespräch vereinbaren (kostenlos)",
+    "disclaimer": "Keine Kreditkarte · Keine Verpflichtung · 60-Tage Garantie",
+    "trustBadges": [
+      { "label": "DSGVO-konform" },
+      { "label": "SSL-verschlüsselt" },
+      { "label": "60-Tage Garantie" }
+    ]
+  },
+  "footer": {
+    "tagline": "Das KI-System für lokale Unternehmen in Deutschland. Automatisiere Kundengewinnung, Follow-ups und Terminbuchung — rund um die Uhr.",
+    "columns": {
+      "product": {
+        "title": "Produkt",
+        "links": [
+          { "label": "KI-Module", "href": "#module" },
+          { "label": "Preise", "href": "#preise" },
+          { "label": "ROI-Rechner", "href": "#roi" },
+          { "label": "FAQ", "href": "#faq" }
+        ]
+      },
+      "company": {
+        "title": "Unternehmen",
+        "links": [
+          { "label": "So funktioniert's", "href": "#so-funktionierts" },
+          { "label": "Case Studies", "href": "#ergebnisse" },
+          { "label": "Demo buchen", "href": "" },
+          { "label": "Kontakt", "href": "" }
+        ]
+      },
+      "legal": {
+        "title": "Rechtliches",
+        "links": [
+          { "label": "Impressum", "href": "/impressum" },
+          { "label": "Datenschutz", "href": "/datenschutz" },
+          { "label": "AGB", "href": "/agb" }
+        ]
+      }
+    },
+    "copyright": "Alle Rechte vorbehalten.",
+    "madeIn": "Entwickelt in Deutschland · DSGVO-konform"
+  },
+  "inlineCtas": {
+    "cta1": {
+      "headline": "Erkannt? Aufwind AI löst genau das — in 5 Tagen.",
+      "sub": "Buchen Sie jetzt Ihren kostenlosen Demo-Call und sehen Sie wie es für Ihre Branche aussieht.",
+      "cta": "Jetzt Demo vereinbaren"
+    },
+    "cta2": {
+      "headline": "Bereit loszulegen? Ihr System ist in 5 Tagen live.",
+      "sub": "Kein technisches Wissen nötig. Wir bauen alles für Sie.",
+      "cta": "Demo-Call buchen"
+    },
+    "cta3": {
+      "headline": "Sie haben die Zahlen gesehen. Jetzt Ihre eigene Praxis transformieren.",
+      "cta": "Kostenlose Demo buchen"
+    },
+    "defaultCta": "Kostenlose Demo buchen",
+    "defaultDisclaimer": "Keine Kreditkarte · Keine Verpflichtung · 60-Tage Garantie"
+  }
+}

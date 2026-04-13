@@ -3,8 +3,13 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { FAQ, type FaqItem } from "@/lib/constants";
+import type { FaqItem } from "@/lib/constants";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
+
+interface FaqDict {
+  headline: string
+  items: FaqItem[]
+}
 
 const FAQ_GLOW_COLOR = "rgba(59, 130, 246, 0.2)";
 
@@ -90,7 +95,7 @@ function FAQItem({
   );
 }
 
-export default function FAQSection() {
+export default function FAQSection({ dict }: { dict: FaqDict }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -118,8 +123,7 @@ export default function FAQSection() {
         >
           <AufwindBeam variant="badge" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            H&auml;ufige{" "}
-            <span className="gradient-text">Fragen</span>
+            {dict.headline}
           </h2>
           <p className="mt-4 text-muted text-base sm:text-lg max-w-xl mx-auto">
             Alles was Sie wissen m&uuml;ssen &mdash; transparent und ehrlich.
@@ -128,7 +132,7 @@ export default function FAQSection() {
 
         {/* FAQ Items */}
         <div className="flex flex-col gap-3">
-          {FAQ.map((item, index) => (
+          {dict.items.map((item, index) => (
             <FAQItem
               key={item.question}
               item={item}

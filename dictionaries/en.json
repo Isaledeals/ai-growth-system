@@ -1,0 +1,433 @@
+{
+  "metadata": {
+    "title": "Aufwind AI — AI Automation for Local Businesses",
+    "description": "Your AI assistant never sleeps, never calls in sick, and never misses a callback — built for dental practices, physiotherapists, law firms, and tradespeople."
+  },
+  "navbar": {
+    "links": [
+      { "label": "Features", "href": "#module" },
+      { "label": "Pricing", "href": "#preise" },
+      { "label": "Industries", "href": "#branchen" },
+      { "label": "About", "href": "#demo" }
+    ],
+    "cta": "Book a Demo"
+  },
+  "hero": {
+    "liveBadge": "Over 150 local businesses trust Aufwind AI",
+    "highlightText": "74% fewer",
+    "headlineLine2": "No-Shows.",
+    "headlineLine3": "On autopilot.",
+    "sub": "Your AI assistant never sleeps, never calls in sick, and never misses a callback — built for dental practices, physiotherapists, law firms, and tradespeople.",
+    "bullets": [
+      "74% fewer no-shows — proven results",
+      "Live in 5 business days — zero setup effort for you",
+      "60-day money-back guarantee — no risk"
+    ],
+    "cta": "Book your free demo",
+    "ctaSecondary": "See how it works",
+    "branchenLabel": "Is your industry covered?",
+    "branchen": [
+      "Dental Practice",
+      "Physiotherapy",
+      "Law Firm",
+      "Trades & Contractors",
+      "Beauty Studio",
+      "Real Estate"
+    ],
+    "trustStrip": [
+      "GDPR compliant",
+      "Servers in Germany",
+      "Live in 5 days",
+      "Cancel anytime",
+      "60-day guarantee"
+    ],
+    "dashboard": {
+      "label": "Live Dashboard",
+      "title": "Aufwind AI — Activity Feed",
+      "statusOnline": "Online",
+      "activities": [
+        { "text": "Weber Dental: Incoming call answered", "time": "just now" },
+        { "text": "Beauty Studio: 3 appointments booked", "time": "2 min ago" },
+        { "text": "Müller Trades: 5★ Google review", "time": "5 min ago" },
+        { "text": "Kern Physiotherapy: Follow-up sent", "time": "8 min ago" },
+        { "text": "Schmitt Real Estate: No-show prevented", "time": "12 min ago" }
+      ],
+      "stats": [
+        { "label": "Booked today", "value": "12" },
+        { "label": "No-shows", "value": "0" },
+        { "label": "New reviews", "value": "3" }
+      ]
+    }
+  },
+  "socialProof": {
+    "metrics": [
+      { "display": "2,847+", "label": "Appointments this week" },
+      { "display": "74%", "label": "No-show reduction" },
+      { "display": "4.9/5", "label": "Customer rating" },
+      { "display": "150+", "label": "Active businesses" }
+    ],
+    "trustBadges": [
+      { "text": "GDPR compliant" },
+      { "text": "Servers in Germany" },
+      { "text": "Cancel anytime" }
+    ],
+    "liveActivities": [
+      "Dr. Weber Dental just booked 3 new appointments",
+      "Beauty Studio Glamour: 5-star review received",
+      "Müller Trades: New lead from Google",
+      "Kern Real Estate: Follow-up sent automatically",
+      "Hansen Physiotherapy: No-show prevented by reminder"
+    ]
+  },
+  "problem": {
+    "badge": "The Problem",
+    "headline": "Sound familiar?",
+    "sub": "Local businesses lose revenue every single day to these four problems — without even realizing it.",
+    "items": [
+      {
+        "title": "Missed call = €150 gone",
+        "description": "Every 4th call goes unanswered. Average €150 per call — and that prospect is already calling your competitor. By the time you see your first patient, there are 3 voicemails and 2 missed calls waiting.",
+        "stat": "25%",
+        "statLabel": "of all calls go unanswered"
+      },
+      {
+        "title": "No-show = empty chair",
+        "description": "18% of your appointments simply don't show up. The slot is gone, the revenue is lost, and last-minute replacements are nearly impossible. That's an average of €800–2,000 in lost revenue per month.",
+        "stat": "18%",
+        "statLabel": "average no-show rate"
+      },
+      {
+        "title": "No reviews despite great work",
+        "description": "Only 5% of satisfied customers leave a review voluntarily. Your Google profile stagnates while your competitors grow. 47 messages in your inbox every morning — but not a single new review.",
+        "stat": "5%",
+        "statLabel": "leave reviews voluntarily"
+      },
+      {
+        "title": "Customers who never come back",
+        "description": "62% of your existing customers haven't been back in 6+ months. They've forgotten you — not the other way around. That's €300 per customer you're leaving on the table.",
+        "stat": "62%",
+        "statLabel": "customers inactive for 6+ months"
+      }
+    ]
+  },
+  "modules": {
+    "headline": "8 AI Modules. One System.",
+    "highlightText": "Zero effort.",
+    "sub": "Every module solves a specific problem that costs you money every single day.",
+    "items": [
+      {
+        "title": "AI Chatbot 24/7",
+        "description": "Answers customer inquiries in seconds — on your website, WhatsApp, Instagram, and Facebook. Automatically qualifies leads and books appointments directly.",
+        "painPoint": "62% of inquiries come outside business hours"
+      },
+      {
+        "title": "AI Phone Assistant",
+        "description": "Your virtual receptionist. Answers every call, handles questions, books appointments — even at 11pm or on weekends.",
+        "painPoint": "Every missed call = avg. €150 in lost revenue"
+      },
+      {
+        "title": "Smart Appointment Booking",
+        "description": "Customers book online, via chat, or by phone. Automatic calendar sync, confirmations, and intelligent scheduling.",
+        "painPoint": "Manual back-and-forth costs 5+ hours per week"
+      },
+      {
+        "title": "Automated Follow-up",
+        "description": "WhatsApp and email sequences that keep prospects warm. After 5 min, 1 hour, 1 day — until the appointment is booked. No lead ever falls through the cracks.",
+        "painPoint": "80% of leads need 3-5 touchpoints before booking"
+      },
+      {
+        "title": "No-Show Killer",
+        "description": "SMS and WhatsApp reminders 24h and 1h before the appointment. On cancellation: instant waitlist replacement instead of an empty slot.",
+        "painPoint": "No-shows cost local businesses avg. €800–2,000/month"
+      },
+      {
+        "title": "Reputation Autopilot",
+        "description": "After every appointment, a review request goes out automatically. Happy customers rate you on Google; unhappy ones reach out to you directly.",
+        "painPoint": "Only 5% of satisfied customers leave a review voluntarily"
+      },
+      {
+        "title": "Customer Reactivation",
+        "description": "Automatically reach out to customers who haven't been in for 3, 6, or 12 months. Personalized messages with offers bring them back.",
+        "painPoint": "Winning back existing customers costs 5x less"
+      },
+      {
+        "title": "Social Media Autopilot",
+        "description": "AI generates posts for Instagram, Facebook, and Google Business. Automatic updates like open slots, new reviews, or promotions.",
+        "painPoint": "Consistent social presence drives 3x more inquiries"
+      }
+    ]
+  },
+  "howItWorks": {
+    "headlinePart1": "Day 1: Demo call.",
+    "headlinePart2": "Day 5: Your AI assistant is live.",
+    "steps": [
+      {
+        "title": "45-min demo call",
+        "description": "We show you exactly how it looks for your industry. Free, no commitment, no preparation required on your end."
+      },
+      {
+        "title": "Your booking URL + phone number",
+        "description": "Send us your existing booking URL and phone number. That's it. No IT project, no technical knowledge required."
+      },
+      {
+        "title": "Day 5: Your system goes live",
+        "description": "We build everything. In 5 business days your AI assistant is active — without you ever having to open a dashboard."
+      }
+    ],
+    "guaranteeTitle": "60-Day Guarantee",
+    "guaranteeText": "If you don't save at least 8 hours per week after 60 days — you get every cent back. No questions asked.",
+    "cta": "Book your demo call now",
+    "ctaSub": "Free · No commitment · 45 minutes"
+  },
+  "caseStudies": {
+    "headline": "This is what your results could look like.",
+    "headlineHighlight": "Industry examples.",
+    "sub": "Projections based on industry averages and typical results from comparable businesses.",
+    "items": [
+      {
+        "id": "zahnarzt-weber",
+        "business": "Example: Dental Practice",
+        "industry": "Dental Practice, Major City",
+        "description": "A 3-chair dental practice in Munich. A high no-show rate and a lack of online reviews were holding back growth.",
+        "quote": "We never miss a call anymore. The AI phone assistant alone brought us 12 new patients in the first month — patients who would have gone to the competition.",
+        "stats": [
+          { "label": "More appointment bookings", "value": "+34%" },
+          { "label": "No-show rate reduced", "value": "18% → 4%" },
+          { "label": "New Google reviews", "value": "47 in 60 days" },
+          { "label": "Missed calls", "value": "0" }
+        ]
+      },
+      {
+        "id": "beauty-glamour",
+        "business": "Example: Beauty Studio",
+        "industry": "Beauty & Cosmetics, Major City",
+        "description": "A premium beauty studio in Hamburg. Regulars were visiting less, and new customers couldn't find them online.",
+        "quote": "The customer reactivation module alone brings us €2,400 in additional revenue every month. Clients we'd completely forgotten about are coming back regularly.",
+        "stats": [
+          { "label": "Reactivated clients", "value": "38 in 90 days" },
+          { "label": "Additional revenue/month", "value": "€2,400" },
+          { "label": "Google rating", "value": "4.2 → 4.8 stars" },
+          { "label": "Time saved/week", "value": "12 hours" }
+        ]
+      },
+      {
+        "id": "handwerk-mueller",
+        "business": "Example: Electrical Contractor",
+        "industry": "Trades, Major City",
+        "description": "A 12-person trades company in Stuttgart. Quotes were going cold and new client acquisition relied entirely on referrals.",
+        "quote": "We used to miss 30% of our calls because we were on-site. Now the AI answers every call and books consultations directly.",
+        "stats": [
+          { "label": "Missed calls", "value": "30% → 0%" },
+          { "label": "New jobs/month", "value": "+8" },
+          { "label": "Quote acceptance", "value": "+28%" },
+          { "label": "Time saved/week", "value": "15 hours" }
+        ]
+      }
+    ],
+    "cta": "Become the next success story",
+    "ctaSub": "Free demo · No commitment"
+  },
+  "roi": {
+    "badge": "ROI Calculator",
+    "headline": "Calculate your ROI in",
+    "headlineHighlight": "30 seconds",
+    "industries": [
+      { "key": "zahnarzt", "label": "Dentist", "orderValueLabel": "No-show cost €" },
+      { "key": "beauty", "label": "Beauty / Cosmetics", "orderValueLabel": "Average order value €" },
+      { "key": "immobilien", "label": "Real Estate", "orderValueLabel": "Average deal value €" },
+      { "key": "handwerk", "label": "Trades", "orderValueLabel": "Average job value €" }
+    ],
+    "step1Title": "Choose your industry",
+    "step1Sub": "We calculate your ROI using real industry benchmarks.",
+    "step2Title": "Your numbers",
+    "step2Sub": "Adjust the values to match your business.",
+    "sliderLabel": "Monthly inquiries",
+    "backButton": "Change industry",
+    "calculateButton": "Calculate",
+    "resultsAdditionalRevenue": "Additional revenue/month",
+    "resultsROI": "ROI",
+    "resultsDaysToPayback": "Days to break even",
+    "resultsCTA": "Get these results for YOUR business — book a demo",
+    "resultsCTASub": "Free · No commitment · Custom calculation",
+    "adjustValues": "Adjust values",
+    "stepAriaLabel": "Step",
+    "stepLabels": ["Choose industry", "Your numbers", "Results"]
+  },
+  "comparison": {
+    "headline": "Aufwind AI",
+    "headlineHighlight": "vs. Everything else",
+    "sub": "Compare for yourself — and decide what makes the most sense for your business.",
+    "colOurs": "Aufwind AI",
+    "colTools": "Staff / GoHighLevel",
+    "colAgency": "Agency",
+    "colFeature": "Feature",
+    "rows": [
+      { "feature": "Monthly cost", "ours": "From €697", "tools": "€500–2,000+", "agency": "€3,000–10,000" },
+      { "feature": "Setup time", "ours": "48 hours", "tools": "Weeks", "agency": "Months" },
+      { "feature": "24/7 availability", "ours": true, "tools": false, "agency": false },
+      { "feature": "Costs less than €0.50/h", "ours": true, "tools": false, "agency": false },
+      { "feature": "No training required", "ours": true, "tools": false, "agency": true },
+      { "feature": "Ready immediately", "ours": true, "tools": "Weeks", "agency": "Months" },
+      { "feature": "Error-free", "ours": true, "tools": "Partially", "agency": false },
+      { "feature": "Scales with you", "ours": true, "tools": "Limited", "agency": "Extra cost" },
+      { "feature": "No-show killer + waitlist", "ours": true, "tools": false, "agency": false },
+      { "feature": "Google reviews autopilot", "ours": true, "tools": false, "agency": "Manual" },
+      { "feature": "ROI within 30 days", "ours": true, "tools": "Uncertain", "agency": "3–6 months" }
+    ],
+    "mobileLabels": {
+      "tools": "Staff / Tools",
+      "agency": "Agency"
+    },
+    "srYes": "Yes",
+    "srNo": "No"
+  },
+  "pricing": {
+    "headline": "Transparent. Fair.",
+    "headlineHighlight": "No fine print.",
+    "anchors": [
+      { "label": "Full-time receptionist", "price": "€3,500", "sub": "per month", "note": "Vacation · Sick days · Quits" },
+      { "label": "Marketing agency", "price": "€4,000+", "sub": "per month", "note": "Leads only, no service" },
+      { "label": "Aufwind AI", "price": "from €697", "sub": "per month", "note": "24/7 · Never sick · Fully automated" }
+    ],
+    "perMonth": "/mo",
+    "setupLabel": "Setup:",
+    "gratis": "FREE",
+    "einmalig": "one-time",
+    "urgencyLabel": "Save €{amount} — setup FREE when you book this week",
+    "startCta": "Get started",
+    "guaranteeTitle": "No surprises. Cancel monthly from month 3. No hidden fees.",
+    "guaranteeSub": "60-day money-back guarantee if it doesn't deliver.",
+    "tiers": [
+      {
+        "name": "Pro",
+        "subtitle": "All 8 modules. Zero effort.",
+        "modules": [
+          "AI Chatbot 24/7",
+          "AI Phone Assistant",
+          "Smart Appointment Booking",
+          "No-Show Killer",
+          "Automated Follow-up",
+          "Reputation Autopilot",
+          "Customer Reactivation",
+          "Social Media Autopilot"
+        ]
+      },
+      {
+        "name": "Premium",
+        "subtitle": "White-glove service for maximum growth",
+        "badge": "Most popular",
+        "modules": [
+          "All 8 AI modules included",
+          "Dedicated account manager",
+          "Monthly strategy calls",
+          "Priority support (< 2h)",
+          "Custom configurations",
+          "Quarterly optimization"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "headline": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What does it really cost — are there hidden fees?",
+        "answer": "Pro is €697 per month plus a one-time €499 setup fee. That's it. No annual contract in the first month. No hidden onboarding charges. Cancel monthly from month 3. If it doesn't pay off within 60 days, we fully refund the first two months."
+      },
+      {
+        "question": "Does Aufwind AI work for small businesses?",
+        "answer": "Our smallest customers have 2 employees and 80 patients per month. Our largest have 8 locations. No minimum revenue, no minimum size. If you're daily juggling appointments, clients, and callbacks — you're exactly who this is built for."
+      },
+      {
+        "question": "What if the system doesn't work?",
+        "answer": "You don't need to configure, learn, or set up anything. Our team handles the complete setup in 5 business days. After day 5, your AI assistant runs independently — without you ever having to open a dashboard."
+      },
+      {
+        "question": "Is it GDPR compliant?",
+        "answer": "All customer data is stored exclusively on German servers (Frankfurt). No data sharing with US services. No AI training on your customer data. A Data Processing Agreement (DPA) is included with every contract. For medical practices: fully compliant with §203 StGB and §22 BDSG."
+      },
+      {
+        "question": "How long does setup take?",
+        "answer": "Day 1: Demo call (45 min). You send us your existing booking URL. Day 5: Your system is live. No IT project, no weeks of waiting."
+      },
+      {
+        "question": "How quickly will I see results?",
+        "answer": "From day 1. The moment your system goes live, you won't miss another call or message. Within the first 2–4 weeks, our customers typically see 25% more appointment bookings, 70% fewer no-shows, and their first automatically generated Google reviews."
+      },
+      {
+        "question": "Does this work for my industry?",
+        "answer": "Our system works for all local service businesses: dentists, doctors, physiotherapists, hair salons, beauty studios, contractors, gyms, restaurants, real estate agencies, and more. We tailor every module to your specific business model."
+      },
+      {
+        "question": "How are you different from a regular marketing agency?",
+        "answer": "An agency brings you leads — but who handles them? We automate everything AFTER the lead: call answering, appointment booking, reminders, follow-ups, reviews, and reactivation. 24/7, not just 9 to 5. At a fraction of agency costs."
+      }
+    ]
+  },
+  "finalCta": {
+    "badge": "23 businesses booked a demo this week",
+    "headline": "Your AI assistant.",
+    "headlineHighlight": "Never sick. Never on vacation. Always there for your customers.",
+    "sub": "Book your free demo call now — we'll show you how Aufwind AI works for your industry within 48 hours.",
+    "viewersNote": "12 more people are viewing this page right now",
+    "cta": "Book your free demo",
+    "ctaSecondary": "Schedule an intro call (free)",
+    "disclaimer": "No credit card · No commitment · 60-day guarantee",
+    "trustBadges": [
+      { "label": "GDPR compliant" },
+      { "label": "SSL encrypted" },
+      { "label": "60-day guarantee" }
+    ]
+  },
+  "footer": {
+    "tagline": "The AI system for local businesses. Automate customer acquisition, follow-ups, and appointment booking — around the clock.",
+    "columns": {
+      "product": {
+        "title": "Product",
+        "links": [
+          { "label": "AI Modules", "href": "#module" },
+          { "label": "Pricing", "href": "#preise" },
+          { "label": "ROI Calculator", "href": "#roi" },
+          { "label": "FAQ", "href": "#faq" }
+        ]
+      },
+      "company": {
+        "title": "Company",
+        "links": [
+          { "label": "How it works", "href": "#so-funktionierts" },
+          { "label": "Case Studies", "href": "#ergebnisse" },
+          { "label": "Book a demo", "href": "" },
+          { "label": "Contact", "href": "" }
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          { "label": "Imprint", "href": "/impressum" },
+          { "label": "Privacy Policy", "href": "/datenschutz" },
+          { "label": "Terms of Service", "href": "/agb" }
+        ]
+      }
+    },
+    "copyright": "All rights reserved.",
+    "madeIn": "Built in Germany · GDPR compliant"
+  },
+  "inlineCtas": {
+    "cta1": {
+      "headline": "Recognize this? Aufwind AI solves all of it — in 5 days.",
+      "sub": "Book your free demo call and see exactly how it works for your industry.",
+      "cta": "Book a demo now"
+    },
+    "cta2": {
+      "headline": "Ready to get started? Your system goes live in 5 days.",
+      "sub": "No technical knowledge required. We build everything for you.",
+      "cta": "Book a demo call"
+    },
+    "cta3": {
+      "headline": "You've seen the numbers. Now transform your own practice.",
+      "cta": "Book your free demo"
+    },
+    "defaultCta": "Book your free demo",
+    "defaultDisclaimer": "No credit card · No commitment · 60-day guarantee"
+  }
+}

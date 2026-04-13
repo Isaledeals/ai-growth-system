@@ -30,51 +30,50 @@ export default async function Home({
   params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
-  // dict available for future i18n wiring of components
-  await getDictionary(locale)
+  const dict = await getDictionary(locale as Locale)
 
   return (
     <>
-      <Navbar />
+      <Navbar dict={dict.navbar} locale={locale} />
       <main>
-        <HeroSection />
+        <HeroSection dict={dict.hero} />
         <SectionTransition />
-        <SocialProofBar />
-        <ProblemSection />
+        <SocialProofBar dict={dict.socialProof} />
+        <ProblemSection dict={dict.problem} />
 
         {/* CTA 1 — nach dem Schmerz, bevor Lösung erklärt wird */}
         <InlineCTA
-          headline="Erkannt? Aufwind AI löst genau das — in 5 Tagen."
-          sub="Buchen Sie jetzt Ihren kostenlosen Demo-Call und sehen Sie wie es für Ihre Branche aussieht."
-          cta="Jetzt Demo vereinbaren"
+          headline={dict.inlineCtas.cta1.headline}
+          sub={dict.inlineCtas.cta1.sub}
+          cta={dict.inlineCtas.cta1.cta}
         />
 
-        <ModulesSection />
-        <HowItWorksSection />
+        <ModulesSection dict={dict.modules} />
+        <HowItWorksSection dict={dict.howItWorks} />
 
         {/* CTA 2 — nach dem Setup-Verständnis, wenn Zweifel ausgeräumt */}
         <InlineCTA
-          headline="Bereit loszulegen? Ihr System ist in 5 Tagen live."
-          sub="Kein technisches Wissen nötig. Wir bauen alles für Sie."
-          cta="Demo-Call buchen"
+          headline={dict.inlineCtas.cta2.headline}
+          sub={dict.inlineCtas.cta2.sub}
+          cta={dict.inlineCtas.cta2.cta}
         />
 
         {/* Erst Beweis, dann ROI-Berechnung — psychologisch stärker */}
-        <CaseStudiesSection />
-        <ROICalculator />
+        <CaseStudiesSection dict={dict.caseStudies} />
+        <ROICalculator dict={dict.roi} />
 
         {/* CTA 3 — nach dem Beweis + eigenem ROI, maximale Kaufbereitschaft */}
         <InlineCTA
-          headline="Sie haben die Zahlen gesehen. Jetzt Ihre eigene Praxis transformieren."
-          cta="Kostenlose Demo buchen"
+          headline={dict.inlineCtas.cta3.headline}
+          cta={dict.inlineCtas.cta3.cta}
         />
 
-        <ComparisonSection />
-        <PricingSection />
-        <FAQSection />
-        <FinalCTASection />
+        <ComparisonSection dict={dict.comparison} />
+        <PricingSection dict={dict.pricing} />
+        <FAQSection dict={dict.faq} />
+        <FinalCTASection dict={dict.finalCta} />
       </main>
-      <Footer />
+      <Footer dict={dict.footer} />
       <FAQSchema />
       <ClientOverlays />
     </>

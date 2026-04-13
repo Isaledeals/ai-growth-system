@@ -5,14 +5,23 @@ import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE_CONFIG } from '@/lib/constants'
 
-const navLinks = [
-  { label: 'Funktionen', href: '#module' },
-  { label: 'Preise', href: '#preise' },
-  { label: 'Branchen', href: '#branchen' },
-  { label: 'Über uns', href: '#demo' },
-]
+interface NavbarDict {
+  links: { label: string; href: string }[]
+  cta: string
+}
 
-export default function Navbar() {
+const defaultNavDict: NavbarDict = {
+  links: [
+    { label: 'Funktionen', href: '#module' },
+    { label: 'Preise', href: '#preise' },
+    { label: 'Branchen', href: '#branchen' },
+    { label: 'Über uns', href: '#demo' },
+  ],
+  cta: 'Demo buchen',
+}
+
+export default function Navbar({ dict = defaultNavDict, locale = 'de' }: { dict?: NavbarDict; locale?: string }) {
+  const navLinks = dict.links
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -159,7 +168,7 @@ export default function Navbar() {
                 : 'border border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20'
             }`}
           >
-            Demo buchen
+            {dict.cta}
           </a>
         </div>
 
@@ -204,7 +213,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="mt-3 inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-base font-semibold text-white transition-all hover:bg-blue-700"
               >
-                Demo buchen
+                {dict.cta}
               </a>
             </div>
           </motion.div>

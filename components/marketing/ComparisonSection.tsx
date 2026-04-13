@@ -16,74 +16,33 @@ interface ComparisonRow {
   agency: CellType;
 }
 
-const rows: ComparisonRow[] = [
-  {
-    feature: "Monatliche Kosten",
-    ours: { kind: "text", value: "Ab \u20AC697", color: "green" },
-    tools: { kind: "text", value: "\u20AC500\u20132.000+", color: "red" },
-    agency: { kind: "text", value: "\u20AC3.000\u201310.000", color: "red" },
-  },
-  {
-    feature: "Setup-Zeit",
-    ours: { kind: "text", value: "48 Stunden", color: "green" },
-    tools: { kind: "text", value: "Wochen", color: "yellow" },
-    agency: { kind: "text", value: "Monate", color: "red" },
-  },
-  {
-    feature: "24/7 Verf\u00fcgbarkeit",
-    ours: { kind: "check" },
-    tools: { kind: "x" },
-    agency: { kind: "x" },
-  },
-  {
-    feature: "Kostet weniger als \u20AC0,50/h",
-    ours: { kind: "check" },
-    tools: { kind: "x" },
-    agency: { kind: "x" },
-  },
-  {
-    feature: "Kein Training n\u00f6tig",
-    ours: { kind: "check" },
-    tools: { kind: "x" },
-    agency: { kind: "check" },
-  },
-  {
-    feature: "Sofort einsatzbereit",
-    ours: { kind: "check" },
-    tools: { kind: "text", value: "Wochen", color: "yellow" },
-    agency: { kind: "text", value: "Monate", color: "red" },
-  },
-  {
-    feature: "Keine Fehler",
-    ours: { kind: "check" },
-    tools: { kind: "text", value: "Teilweise", color: "yellow" },
-    agency: { kind: "x" },
-  },
-  {
-    feature: "Skalierbar",
-    ours: { kind: "check" },
-    tools: { kind: "text", value: "Begrenzt", color: "yellow" },
-    agency: { kind: "text", value: "Extra Kosten", color: "red" },
-  },
-  {
-    feature: "No-Show Killer + Warteliste",
-    ours: { kind: "check" },
-    tools: { kind: "x" },
-    agency: { kind: "x" },
-  },
-  {
-    feature: "Google Reviews Autopilot",
-    ours: { kind: "check" },
-    tools: { kind: "x" },
-    agency: { kind: "text", value: "Manuell", color: "yellow" },
-  },
-  {
-    feature: "ROI in 30 Tagen",
-    ours: { kind: "check" },
-    tools: { kind: "text", value: "Unsicher", color: "yellow" },
-    agency: { kind: "text", value: "3\u20136 Monate", color: "red" },
-  },
-];
+type DictCellValue = string | boolean;
+
+function parseCellValue(val: DictCellValue): CellType {
+  if (val === true) return { kind: "check" }
+  if (val === false) return { kind: "x" }
+  const s = String(val)
+  // Detect green text values
+  if (s.startsWith("Ab €") || s === "48 Stunden") return { kind: "text", value: s, color: "green" }
+  // Detect red
+  if (s.startsWith("€") || s === "Monate" || s === "3–6 Monate") return { kind: "text", value: s, color: "red" }
+  // Yellow for rest
+  return { kind: "text", value: s, color: "yellow" }
+}
+
+interface ComparisonDict {
+  headline: string
+  headlineHighlight: string
+  sub: string
+  colOurs: string
+  colTools: string
+  colAgency: string
+  colFeature: string
+  rows: { feature: string; ours: DictCellValue; tools: DictCellValue; agency: DictCellValue }[]
+  mobileLabels: { tools: string; agency: string }
+  srYes: string
+  srNo: string
+}
 
 const lightColorClasses: Record<"green" | "yellow" | "red", string> = {
   green: "text-emerald-700 font-semibold",
@@ -91,7 +50,7 @@ const lightColorClasses: Record<"green" | "yellow" | "red", string> = {
   red: "text-red-500 font-medium",
 };
 
-function Cell({ cell, isOurs = false }: { cell: CellType; isOurs?: boolean }) {
+function Cell({ cell, isOurs = false, srYes = "Ja", srNo = "Nein" }: { cell: CellType; isOurs?: boolean; srYes?: string; srNo?: string }) {
   if (cell.kind === "check") {
     return (
       <span
@@ -104,7 +63,7 @@ function Cell({ cell, isOurs = false }: { cell: CellType; isOurs?: boolean }) {
           strokeWidth={3}
           aria-hidden="true"
         />
-        <span className="sr-only">Ja</span>
+        <span className="sr-only">{srYes}</span>
       </span>
     );
   }
@@ -112,7 +71,7 @@ function Cell({ cell, isOurs = false }: { cell: CellType; isOurs?: boolean }) {
     return (
       <span className="inline-flex items-center justify-center rounded-full bg-red-50 p-1">
         <X className="h-4 w-4 text-red-400" strokeWidth={3} aria-hidden="true" />
-        <span className="sr-only">Nein</span>
+        <span className="sr-only">{srNo}</span>
       </span>
     );
   }
@@ -167,7 +126,7 @@ function DesktopTableCard({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MobileComparisonCard({ row }: { row: ComparisonRow }) {
+function MobileComparisonCard({ row, dict }: { row: ComparisonRow; dict: ComparisonDict }) {
   return (
     <motion.div
       variants={fadeUpVariants}
@@ -180,24 +139,31 @@ function MobileComparisonCard({ row }: { row: ComparisonRow }) {
         {/* Aufwind AI — highlighted */}
         <div className="flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
           <span className="text-xs font-semibold text-blue-700">
-            Aufwind AI
+            {dict.colOurs}
           </span>
-          <Cell cell={row.ours} isOurs />
+          <Cell cell={row.ours} isOurs srYes={dict.srYes} srNo={dict.srNo} />
         </div>
         <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-50">
-          <span className="text-xs text-muted">Mitarbeiter / Tools</span>
-          <Cell cell={row.tools} />
+          <span className="text-xs text-muted">{dict.mobileLabels.tools}</span>
+          <Cell cell={row.tools} srYes={dict.srYes} srNo={dict.srNo} />
         </div>
         <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-50">
-          <span className="text-xs text-muted">Agentur</span>
-          <Cell cell={row.agency} />
+          <span className="text-xs text-muted">{dict.mobileLabels.agency}</span>
+          <Cell cell={row.agency} srYes={dict.srYes} srNo={dict.srNo} />
         </div>
       </div>
     </motion.div>
   );
 }
 
-export default function ComparisonSection() {
+export default function ComparisonSection({ dict }: { dict: ComparisonDict }) {
+  const rows: ComparisonRow[] = dict.rows.map((r) => ({
+    feature: r.feature,
+    ours: parseCellValue(r.ours),
+    tools: parseCellValue(r.tools),
+    agency: parseCellValue(r.agency),
+  }))
+
   return (
     <section
       id="vergleich"
@@ -219,12 +185,11 @@ export default function ComparisonSection() {
           className="mb-14 text-center"
         >
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Aufwind AI{" "}
-            <span className="gradient-text">vs. Alles andere</span>
+            {dict.headline}{" "}
+            <span className="gradient-text">{dict.headlineHighlight}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted sm:text-lg">
-            Vergleiche selbst &mdash; und entscheide, was f&uuml;r dein
-            Unternehmen am meisten Sinn macht.
+            {dict.sub}
           </p>
         </motion.div>
 
@@ -241,17 +206,17 @@ export default function ComparisonSection() {
               <thead>
                 <tr className="border-b border-slate-100">
                   <th className="px-6 py-5 text-sm font-medium text-muted w-[35%]">
-                    Feature
+                    {dict.colFeature}
                   </th>
                   {/* Aufwind AI — highlighted header */}
                   <th className="px-6 py-5 text-center text-sm font-bold text-blue-700 bg-blue-50/80">
-                    <span className="gradient-text text-base">Aufwind AI</span>
+                    <span className="gradient-text text-base">{dict.colOurs}</span>
                   </th>
                   <th className="px-6 py-5 text-center text-sm font-medium text-muted">
-                    Mitarbeiter / GoHighLevel
+                    {dict.colTools}
                   </th>
                   <th className="px-6 py-5 text-center text-sm font-medium text-muted">
-                    Agentur
+                    {dict.colAgency}
                   </th>
                 </tr>
               </thead>
@@ -269,13 +234,13 @@ export default function ComparisonSection() {
                     </td>
                     {/* Highlighted column */}
                     <td className="relative px-6 py-4 text-center bg-blue-50/40">
-                      <Cell cell={row.ours} isOurs />
+                      <Cell cell={row.ours} isOurs srYes={dict.srYes} srNo={dict.srNo} />
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Cell cell={row.tools} />
+                      <Cell cell={row.tools} srYes={dict.srYes} srNo={dict.srNo} />
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Cell cell={row.agency} />
+                      <Cell cell={row.agency} srYes={dict.srYes} srNo={dict.srNo} />
                     </td>
                   </motion.tr>
                 ))}
@@ -293,7 +258,7 @@ export default function ComparisonSection() {
           className="flex flex-col gap-4 md:hidden"
         >
           {rows.map((row) => (
-            <MobileComparisonCard key={row.feature} row={row} />
+            <MobileComparisonCard key={row.feature} row={row} dict={dict} />
           ))}
         </motion.div>
       </div>
