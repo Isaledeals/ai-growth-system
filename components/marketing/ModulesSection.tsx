@@ -22,8 +22,10 @@ interface Module {
   painPoint: string;
   iconBg: string;
   iconColor: string;
+  iconGlow: string;
   badgeBg: string;
   badgeText: string;
+  spotlightColor: string;
 }
 
 const modules: Module[] = [
@@ -35,8 +37,10 @@ const modules: Module[] = [
     painPoint: "62% der Anfragen kommen außerhalb der Öffnungszeiten",
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
+    iconGlow: "rgba(37, 99, 235, 0.25)",
     badgeBg: "bg-blue-50",
     badgeText: "text-blue-700",
+    spotlightColor: "rgba(37, 99, 235, 0.07)",
   },
   {
     icon: Phone,
@@ -46,8 +50,10 @@ const modules: Module[] = [
     painPoint: "Jeder verpasste Anruf = Ø €150 verlorener Umsatz",
     iconBg: "bg-rose-50",
     iconColor: "text-rose-600",
+    iconGlow: "rgba(225, 29, 72, 0.25)",
     badgeBg: "bg-rose-50",
     badgeText: "text-rose-700",
+    spotlightColor: "rgba(225, 29, 72, 0.07)",
   },
   {
     icon: CalendarCheck,
@@ -57,8 +63,10 @@ const modules: Module[] = [
     painPoint: "Manuelles Hin-und-Her kostet 5+ Stunden pro Woche",
     iconBg: "bg-violet-50",
     iconColor: "text-violet-600",
+    iconGlow: "rgba(124, 58, 237, 0.25)",
     badgeBg: "bg-violet-50",
     badgeText: "text-violet-700",
+    spotlightColor: "rgba(124, 58, 237, 0.07)",
   },
   {
     icon: MessageCircle,
@@ -68,8 +76,10 @@ const modules: Module[] = [
     painPoint: "80% der Leads brauchen 3-5 Kontaktpunkte bis zur Buchung",
     iconBg: "bg-emerald-50",
     iconColor: "text-emerald-600",
+    iconGlow: "rgba(5, 150, 105, 0.25)",
     badgeBg: "bg-emerald-50",
     badgeText: "text-emerald-700",
+    spotlightColor: "rgba(5, 150, 105, 0.07)",
   },
   {
     icon: ShieldCheck,
@@ -79,8 +89,10 @@ const modules: Module[] = [
     painPoint: "No-Shows kosten lokale Unternehmen Ø €800-2.000/Monat",
     iconBg: "bg-amber-50",
     iconColor: "text-amber-600",
+    iconGlow: "rgba(217, 119, 6, 0.25)",
     badgeBg: "bg-amber-50",
     badgeText: "text-amber-700",
+    spotlightColor: "rgba(217, 119, 6, 0.07)",
   },
   {
     icon: Star,
@@ -90,8 +102,10 @@ const modules: Module[] = [
     painPoint: "Nur 5% der zufriedenen Kunden bewerten freiwillig",
     iconBg: "bg-yellow-50",
     iconColor: "text-yellow-600",
+    iconGlow: "rgba(202, 138, 4, 0.25)",
     badgeBg: "bg-yellow-50",
     badgeText: "text-yellow-700",
+    spotlightColor: "rgba(202, 138, 4, 0.07)",
   },
   {
     icon: UserCheck,
@@ -101,8 +115,10 @@ const modules: Module[] = [
     painPoint: "Bestehende Kunden zurückgewinnen kostet 5x weniger",
     iconBg: "bg-cyan-50",
     iconColor: "text-cyan-600",
+    iconGlow: "rgba(8, 145, 178, 0.25)",
     badgeBg: "bg-cyan-50",
     badgeText: "text-cyan-700",
+    spotlightColor: "rgba(8, 145, 178, 0.07)",
   },
   {
     icon: Share2,
@@ -112,8 +128,10 @@ const modules: Module[] = [
     painPoint: "Konsistente Präsenz bringt 3x mehr Anfragen",
     iconBg: "bg-indigo-50",
     iconColor: "text-indigo-600",
+    iconGlow: "rgba(79, 70, 229, 0.25)",
     badgeBg: "bg-indigo-50",
     badgeText: "text-indigo-700",
+    spotlightColor: "rgba(79, 70, 229, 0.07)",
   },
 ];
 
@@ -139,32 +157,63 @@ function ModuleCard({ mod }: { mod: Module }) {
   const Icon = mod.icon;
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--spotlight-x", `${x}px`);
-    card.style.setProperty("--spotlight-y", `${y}px`);
-  }, []);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const card = cardRef.current;
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--spotlight-x", `${x}px`);
+      card.style.setProperty("--spotlight-y", `${y}px`);
+      card.style.setProperty("--spotlight-color", mod.spotlightColor);
+    },
+    [mod.spotlightColor]
+  );
 
   return (
     <motion.div
       ref={cardRef}
       variants={cardVariants}
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
       onMouseMove={handleMouseMove}
       className="spotlight-card light-card relative rounded-2xl p-6 cursor-default transition-all duration-300 group flex flex-col"
     >
-      {/* Spotlight overlay */}
-      <div className="spotlight-overlay" />
-
-      {/* Icon */}
+      {/* Spotlight overlay — color-aware per card */}
       <div
-        className={`relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${mod.iconBg} ${mod.iconColor} transition-transform duration-300 group-hover:scale-110`}
-      >
-        <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(320px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), var(--spotlight-color, rgba(37,99,235,0.07)) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Glassmorphic icon container */}
+      <div className="relative mb-4 flex-shrink-0">
+        <div
+          className={`
+            relative flex h-12 w-12 items-center justify-center rounded-xl
+            backdrop-blur-sm border border-white/60
+            transition-transform duration-300 group-hover:scale-110
+            ${mod.iconBg}
+          `}
+          style={{
+            boxShadow: `0 2px 8px ${mod.iconGlow}, inset 0 1px 0 rgba(255,255,255,0.8)`,
+          }}
+        >
+          {/* Inner glow ring */}
+          <div
+            className="absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{
+              background: `radial-gradient(circle at 50% 50%, ${mod.iconGlow} 0%, transparent 70%)`,
+            }}
+          />
+          <Icon
+            className={`relative h-6 w-6 ${mod.iconColor}`}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
+        </div>
       </div>
 
       {/* Title */}
