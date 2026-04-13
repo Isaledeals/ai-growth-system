@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Check, ShieldCheck, Zap } from "lucide-react";
 import AufwindBeam from "@/components/marketing/AufwindBeam";
 import { PRICING, type PricingTier } from "@/lib/constants";
 import CheckoutButton from "./CheckoutButton";
+import AnimatedBorder from "@/components/ui/AnimatedBorder";
 
 const containerVariants = {
   hidden: {},
@@ -37,7 +38,7 @@ function mapTierToPlan(tier: PricingTier): "pro" | "premium" {
 function PricingCard({ tier }: { tier: PricingTier }) {
   const isHighlight = tier.highlight === true;
   const cardRef = useRef<HTMLDivElement>(null);
-
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
@@ -46,14 +47,34 @@ function PricingCard({ tier }: { tier: PricingTier }) {
     const y = e.clientY - rect.top;
     card.style.setProperty("--spotlight-x", `${x}px`);
     card.style.setProperty("--spotlight-y", `${y}px`);
+
+    // 3D tilt — nur auf lg screens
+    if (window.innerWidth >= 1024) {
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateY = ((x - centerX) / centerX) * 6;
+      const rotateX = -((y - centerY) / centerY) * 6;
+      setTilt({ rotateX, rotateY });
+    }
   }, []);
 
-  return (
+  const handleMouseLeave = useCallback(() => {
+    setTilt({ rotateX: 0, rotateY: 0 });
+  }, []);
+
+  const tiltStyle = {
+    transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+    transition: tilt.rotateX === 0 && tilt.rotateY === 0 ? 'transform 0.4s ease' : 'transform 0.1s ease',
+  };
+
+  const cardContent = (
     <motion.div
       ref={cardRef}
       variants={cardVariants}
       whileHover={{ y: -4 }}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={tiltStyle}
       animate={isHighlight ? {
         boxShadow: [
           '0 0 20px rgba(37,99,235,0.3)',
@@ -62,9 +83,9 @@ function PricingCard({ tier }: { tier: PricingTier }) {
         ],
       } : undefined}
       transition={isHighlight ? { duration: 3, repeat: Infinity, ease: 'easeInOut' } : undefined}
-      className={`spotlight-card relative flex flex-col rounded-2xl p-6 sm:p-8 transition-all duration-300 group overflow-hidden ${
+      className={`spotlight-card relative flex flex-col rounded-2xl p-6 sm:p-8 transition-colors duration-300 group overflow-hidden ${
         isHighlight
-          ? "bg-gradient-to-br from-blue-600 to-blue-700 shadow-xl shadow-blue-200 ring-2 ring-blue-500 lg:scale-105 lg:z-10"
+          ? "bg-gradient-to-br from-blue-600 to-blue-700 shadow-xl shadow-blue-200"
           : "bg-white border-2 border-blue-200 shadow-lg"
       }`}
     >
@@ -192,16 +213,24 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       <CheckoutButton
         plan={mapTierToPlan(tier)}
         branche="default"
-        className={`relative mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed ${
-          isHighlight
-            ? "bg-white text-blue-700 hover:bg-blue-50 shadow-md hover:shadow-lg"
-            : "bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-blue-200/60"
-        }`}
+        className="group relative mt-8 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-emerald-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        Jetzt starten
+        {/* Shimmer sweep */}
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out" aria-hidden="true" />
+        <span className="relative z-10">Jetzt starten</span>
       </CheckoutButton>
     </motion.div>
   );
+
+  if (isHighlight) {
+    return (
+      <AnimatedBorder className="lg:scale-105 lg:z-10">
+        {cardContent}
+      </AnimatedBorder>
+    );
+  }
+
+  return cardContent;
 }
 
 export default function PricingSection() {
